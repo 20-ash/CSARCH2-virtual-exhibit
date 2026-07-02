@@ -18,18 +18,14 @@ const {
 import '../styles/era.css'
 ---
 <div class="era-wrapper">
-  <div class="image-column">
-    <img src={imgPath} alt={label} class="era-image" />
-  </div>
-</div>
+  
+<img src={imgPath} alt={label} class="era-image" />
 
-<div class="timeline-line-column">
-    <div class="line"></div>
-</div>
+<div class="line"></div>
 
 <div class="content-column">
     <div class="label-pill">{label}</div>
-    <p class="description">{about}</p>
+    <p class="about">{about}</p>
     <a href={href} class="link-pill">{linkLabel}</a>
   </div>
 </div>
