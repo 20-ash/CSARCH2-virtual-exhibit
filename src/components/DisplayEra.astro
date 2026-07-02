@@ -16,6 +16,7 @@ const {
 } = Astro.props;
 
 import '../styles/era.css'
+import "@fontsource/jetbrains-mono";
 ---
 <div class="era-wrapper">
   
@@ -25,7 +26,7 @@ import '../styles/era.css'
 
 <div class="content-column">
     <div class="label-pill">{label}</div>
-    <p class="about">{about}</p>
-    <a href={href} class="link-pill">{linkLabel}</a>
+    <p class="about">{about}</p>  
+    <a href={href} class="link-pill lower">{linkLabel}</a>
   </div>
 </div>
