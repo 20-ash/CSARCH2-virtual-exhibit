@@ -1,0 +1,35 @@
+---
+interface Props {
+    imgPath: string
+    label: string
+    about: string
+    href: string
+    linkLabel?: string
+}
+
+const {
+  imgPath,
+  label,
+  about,
+  href,
+  linkLabel = "Learn More",
+} = Astro.props;
+
+import '../styles/era.css'
+---
+<div class="era-wrapper">
+  <div class="image-column">
+    <img src={imgPath} alt={label} class="era-image" />
+  </div>
+</div>
+
+<div class="timeline-line-column">
+    <div class="line"></div>
+</div>
+
+<div class="content-column">
+    <div class="label-pill">{label}</div>
+    <p class="description">{about}</p>
+    <a href={href} class="link-pill">{linkLabel}</a>
+  </div>
+</div>

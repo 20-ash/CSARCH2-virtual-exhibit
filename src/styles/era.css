@@ -1,0 +1,64 @@
+.era-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.image-column {
+    padding-top: 8px; 
+}
+
+.era-image {
+    width: 367px;
+    height: 367px;
+    border-radius: 60%;
+    border: 2px solid rgb(111, 111, 111);
+    object-fit: cover;
+}
+
+.timeline-line-column {
+    display: flex;
+    justify-content: center; 
+}
+
+.line {
+    width: 2px;
+    background-color: black;
+    height: 100%; 
+}
+
+.content-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 48px; 
+}
+
+.label-pill {
+    background-color: #D9D9D9;
+    padding: 8px 16px;
+    border-radius: 9999px; 
+    font-weight: 600;
+    color: black;
+    margin-bottom: 12px;
+}
+
+.about {
+    margin: 0 0 16px 0;
+    line-height: 1.6;
+    color: #333;
+}
+
+.link-pill {
+    background-color: #D9D9D9;
+    padding: 6px 16px;
+    border-radius: 9999px;
+    text-decoration: none;
+    color: black;
+    font-size: 0.9rem;
+    align-self: flex-end; 
+    transition: background-color 0.2s ease;
+}
+
+.link-pill:hover {
+    background-color: #c4c4c4; 
+}

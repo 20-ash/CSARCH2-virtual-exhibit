@@ -5,6 +5,8 @@ author: "DE LEON, SOFIA YSABELA; GALVEZ, ANOUSHEH MONICK ROBENIOL; GUILLERMO, IA
 readingTime: "67 minutes"
 ---
 import '../styles/timeline.css'
+import DisplayEra from '../components/DisplayEra.astro'
+import crtImage from '../assets/crt.jpg'
 
 <div className='description'>
     Before screens, computers would show their outputs by printing them on stacks of paper or illuminating light bulbs on their front panels.
@@ -12,4 +14,12 @@ import '../styles/timeline.css'
     Displays made complex mathematical tools easily accessible to the public, revolutionized global entertainment, 
     and became a core foundation of other technological breakthroughs like the smartphone era.
 </div>
+
+<DisplayEra
+ imgPath={crtImage.src}
+ label='testlabel'
+ about='testabout'
+ href='testhref'
+ linkLabel='testlink'
+/>
 
