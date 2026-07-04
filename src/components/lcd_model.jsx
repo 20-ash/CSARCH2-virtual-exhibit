@@ -107,6 +107,19 @@ function BacklightSheet({ z, type, layout, selectedPart, setSelectedPart }) {
                 }
             }
         }
+    } else if (type === 'qdled') {
+        for (let row = 0; row < 15; row++) {
+            for (let col = 0; col < 20; col++) {
+                const x = -1.9 + col * 0.2;
+                const y = -1.4 + row * 0.2;
+                elements.push(
+                    <mesh position={[x, y, 0.1]}>
+                        <boxGeometry args={[0.06, 0.05, 0.025]} />
+                        <meshStandardMaterial color="#0044ff" emissive="#0044ff" emissiveIntensity={1.5} />
+                    </mesh>
+                );
+            }
+        }
     } else {
         const isEdgeLit = layout === 'edge-lit';
         const positions = isEdgeLit
@@ -282,7 +295,7 @@ function LcdPanel({ z }) {
     );
 }
 
-function LightBeam({ gap, animate, x = 0, y = 0, startZ: startZProp, endZ: endZProp, travelStart = 0, travelEnd = 0.7, radius = 0.06, glowRadius = 0.14 }) {
+function LightBeam({ gap, animate, x = 0, y = 0, startZ: startZProp, endZ: endZProp, travelStart = 0, travelEnd = 0.7, radius = 0.06, glowRadius = 0.14, color = "#7fd8ff", glowColor = "#ffffff" }) {
     const beamRef = useRef(null);
     const glowRef = useRef(null);
     const bz = startZProp !== undefined ? startZProp : -5 * gap;
@@ -334,11 +347,11 @@ function LightBeam({ gap, animate, x = 0, y = 0, startZ: startZProp, endZ: endZP
         <group>
             <mesh ref={beamRef} position={[x, y, bz + span / 2]} rotation={[Math.PI / 2, 0, 0]}>
                 <cylinderGeometry args={[radius, radius, span, 8]} />
-                <meshBasicMaterial color="#7fd8ff" transparent opacity={0} />
+                <meshBasicMaterial color={color} transparent opacity={0} />
             </mesh>
             <mesh ref={glowRef} position={[x, y, bz]}>
                 <sphereGeometry args={[glowRadius, 8, 8]} />
-                <meshBasicMaterial color="#ffffff" transparent opacity={0} />
+                <meshBasicMaterial color={glowColor} transparent opacity={0} />
             </mesh>
         </group>
     );
@@ -428,6 +441,40 @@ function LightGuidePlate({ z }) {
     );
 }
 
+function QuantumDotLayer({ z }) {
+    return (
+        <mesh position={[0, 0, z]}>
+            <planeGeometry args={[3.8, 2.8]} />
+            <meshStandardMaterial color="#8844cc" transparent opacity={0.25} side={2} />
+        </mesh>
+    );
+}
+
+function QdLightBeamArray({ gap, animate, positions, qdZ }) {
+    const phaseColors = ['#0066ff', '#ff4444', '#44ff44'];
+    return (
+        <group>
+            {positions.map(([x, y], i) => {
+                const c = phaseColors[i % 3];
+                return (
+                    <group key={i}>
+                        <LightBeam gap={gap} animate={animate} x={x} y={y}
+                            startZ={-5 * gap} endZ={qdZ}
+                            travelStart={0} travelEnd={0.3}
+                            radius={0.015} glowRadius={0.04}
+                            color="#0055ff" glowColor="#4488ff" />
+                        <LightBeam gap={gap} animate={animate} x={x} y={y}
+                            startZ={qdZ} endZ={0}
+                            travelStart={0.3} travelEnd={0.8}
+                            radius={0.015} glowRadius={0.04}
+                            color={c} glowColor={c} />
+                    </group>
+                );
+            })}
+        </group>
+    );
+}
+
 export default function LcdModel({ backlightType, layout, animateLight, selectedPart, setSelectedPart }) {
     const gap = 0.7;
 
@@ -441,6 +488,7 @@ export default function LcdModel({ backlightType, layout, animateLight, selected
                 <group position={[0, 0, 1.5]}>
                     <BacklightSheet z={-5 * gap} type={backlightType} layout={layout} selectedPart={selectedPart} setSelectedPart={setSelectedPart} />
                     {layout === 'edge-lit' && (backlightType === 'ccfl' || backlightType === 'led' || backlightType === 'miniled') && <LightGuidePlate z={-4.5 * gap} />}
+                    {backlightType === 'qdled' && <QuantumDotLayer z={-4.35 * gap} />}
                     <Polarizer z={-4 * gap} rotation={0} selectedPart={selectedPart} setSelectedPart={setSelectedPart} partId="firstfilter" />
                     <LiquidCrystalLayer z={-3 * gap} selectedPart={selectedPart} setSelectedPart={setSelectedPart} />
                     <Polarizer z={-2 * gap} rotation={Math.PI / 2} selectedPart={selectedPart} setSelectedPart={setSelectedPart} partId="secondfilter" />
@@ -472,6 +520,9 @@ export default function LcdModel({ backlightType, layout, animateLight, selected
                         ? <LightBeamArray gap={gap} animate={animateLight} positions={Array.from({ length: 88 }, (_, i) => [-1.65 + (i % 11) * 0.33, -1.15 + Math.floor(i / 11) * 0.33])} />
                         : backlightType === 'miniled' && layout === 'direct-lit'
                         ? <LightBeamArray gap={gap} animate={animateLight} positions={Array.from({ length: 300 }, (_, i) => [-1.9 + (i % 20) * 0.2, -1.4 + Math.floor(i / 20) * 0.2])} radius={0.015} glowRadius={0.04} />
+                        : backlightType === 'qdled'
+                        ? <QdLightBeamArray gap={gap} animate={animateLight} qdZ={-4.35 * gap}
+                            positions={Array.from({ length: 300 }, (_, i) => [-1.9 + (i % 20) * 0.2, -1.4 + Math.floor(i / 20) * 0.2])} />
                         : <LightBeam gap={gap} animate={animateLight} />}
                 </group>
 

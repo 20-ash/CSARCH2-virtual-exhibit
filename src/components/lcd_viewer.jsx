@@ -66,14 +66,6 @@ const PARTS = [
             "Encloses the whole assembly so electrons can travel freely from the gun to the screen without being scattered by air molecules.",
         processLCDDescription:
             "The entire component is enclosed in a specialized vacuum tube to prevent the electrons from colliding with air molecules. Eliminating this interference ensures the electrons can travel freely in a straight direction toward the phosphorescent screen."
-    },
-    {
-        id: "lgp",
-        label: "Light Guiding Panel (LGP)",
-        description:
-            "Encloses the whole assembly so electrons can travel freely from the gun to the screen without being scattered by air molecules.",
-        processLCDDescription:
-            "The entire component is enclosed in a specialized vacuum tube to prevent the electrons from colliding with air molecules. Eliminating this interference ensures the electrons can travel freely in a straight direction toward the phosphorescent screen."
     }
 ];
 
@@ -128,11 +120,11 @@ export default function LcdViewer() {
                     <button className={activeBtn(backlight, 'ccfl')} onClick={() => { setBacklight('ccfl'); setSelectedPart('ccfl')}  }>CCFL</button>
                     <button className={activeBtn(backlight, 'led')} onClick={() => { setBacklight('led'); setSelectedPart('led')}}>LED</button>
                     <button className={activeBtn(backlight, 'miniled')} onClick={() => { setBacklight('miniled'); setSelectedPart('miniled')}}>MiniLED</button>
+                    <button className={activeBtn(backlight, 'qdled')} disabled={layout === 'edge-lit'} onClick={() => { setBacklight('qdled'); setSelectedPart('qdled')}}>QDLED</button>
                     <span>Layout:</span>
                     <button className={activeBtn(layout, 'direct-lit')} onClick={() => setLayout('direct-lit')}>Direct</button>
-                    <button className={activeBtn(layout, 'edge-lit')} onClick={() => setLayout('edge-lit')}>Edge-lit</button>
+                    <button className={activeBtn(layout, 'edge-lit')} onClick={() => { setLayout('edge-lit'); if (backlight === 'qdled' || backlight === 'fald') { setBacklight('led'); setSelectedPart('led'); } }}>Edge-lit</button>
                     <button className={activeBtn(layout, 'fald')}>FALD</button>
-                    <button className={activeBtn(layout, 'qdled')}>QDLED</button>
                 </div>
                 <div className="controls">
                     <span>Light:</span>
