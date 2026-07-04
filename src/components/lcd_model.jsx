@@ -441,9 +441,9 @@ export default function LcdModel({ backlightType, layout, animateLight, selected
                 <group position={[0, 0, 1.5]}>
                     <BacklightSheet z={-5 * gap} type={backlightType} layout={layout} selectedPart={selectedPart} setSelectedPart={setSelectedPart} />
                     {layout === 'edge-lit' && (backlightType === 'ccfl' || backlightType === 'led' || backlightType === 'miniled') && <LightGuidePlate z={-4.5 * gap} />}
-                    <Polarizer z={-4 * gap} rotation={0} selectedPart={selectedPart} setSelectedPart={setSelectedPart} partId="first_filter" />
+                    <Polarizer z={-4 * gap} rotation={0} selectedPart={selectedPart} setSelectedPart={setSelectedPart} partId="firstfilter" />
                     <LiquidCrystalLayer z={-3 * gap} selectedPart={selectedPart} setSelectedPart={setSelectedPart} />
-                    <Polarizer z={-2 * gap} rotation={Math.PI / 2} selectedPart={selectedPart} setSelectedPart={setSelectedPart} partId="second_filter" />
+                    <Polarizer z={-2 * gap} rotation={Math.PI / 2} selectedPart={selectedPart} setSelectedPart={setSelectedPart} partId="secondfilter" />
                     <RgbColorFilters z={-1 * gap} selectedPart={selectedPart} setSelectedPart={setSelectedPart} />
                     <LcdPanel z={0} />
                     {backlightType === 'ccfl' && layout === 'direct-lit'
