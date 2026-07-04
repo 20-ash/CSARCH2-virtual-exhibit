@@ -33,23 +33,12 @@
     transition: all 0.15s ease;
 }
 
-.btn:hover:not(:disabled) {
-    border-color: #5076a7;
-    color: #5076a7;
-}
-
 .btn.active {
     background: #5076a7;
     color: white;
     border-color: #5076a7;
 }
 
-.btn:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-}
-
-/* --- LCD Viewer Layout (copied from CRT) --- */
 .lcd-split-layout {
     display: flex;
     flex-direction: row;
@@ -62,13 +51,14 @@
     background: var(--bg2);
     padding: 1.5rem;
     border-radius: var(--radius);
+    font-family: "JetBrains Mono", serif;
 }
 
 .lcd-info-side h2 {
     margin-top: 0;
     border-bottom: 2px solid var(--border);
     padding-bottom: 0.5rem;
-    font-family: "Lora Variable", serif;
+    font-family: "JetBrains Mono", serif;
 }
 
 .lcd-model-side {
@@ -88,6 +78,28 @@
     margin: 0;
     font-size: 0.95rem;
     line-height: 1.5;
+    margin-bottom: 1.4rem;
+}
+
+.lcd-dynamic-box {
+    padding: 1rem;
+    border-left: 4px solid #5076a7;
+    background: #f4f7f9;
+}
+
+.lcd-info__title {
+    margin: 0 0 0.5rem 0;
+    font-family: "JetBrains Mono", monospace;
+}
+
+.btn:hover:not(:disabled) {
+    border-color: #5076a7;
+    color: #5076a7;
+}
+
+.btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
 }
 
 .lcd-stage {
