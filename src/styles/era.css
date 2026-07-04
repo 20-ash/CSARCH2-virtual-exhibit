@@ -3,14 +3,15 @@
     flex-direction: row;
     justify-content: center;
     width: 88%;
-    height: 32rem;
+    min-height: 32rem;
+    height: auto
     gap: 1.5rem;
 }
 
 .era-image {
     max-width: 400px;
     width: 82%;
-    height: 74%;
+    height: 24rem;
     border-radius: 60%;
     border: 2px solid rgb(111, 111, 111);
     object-fit: cover;
@@ -29,7 +30,7 @@
     min-width: 0;
     align-items: stretch;
     width: 50%;
-    height: 74%;
+    height: auto;
     padding-right: 2rem;
 }
 
@@ -56,6 +57,7 @@
     overflow-wrap: break-word;
     word-break: break-word;
     font-family: "JetBrains Mono";
+    white-space: pre-line;
 }
 
 .link-pill {
