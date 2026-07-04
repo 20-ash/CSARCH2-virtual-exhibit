@@ -116,22 +116,26 @@ export default function LcdViewer() {
             </div>
             <div className="lcd-model-side">
                 <div className="controls">
-                    <span>Backlight:</span>
+                    <span>Backlight:</span>   
                     <button className={activeBtn(backlight, 'ccfl')} onClick={() => { setBacklight('ccfl'); setSelectedPart('ccfl')}  }>CCFL</button>
                     <button className={activeBtn(backlight, 'led')} onClick={() => { setBacklight('led'); setSelectedPart('led')}}>LED</button>
                     <button className={activeBtn(backlight, 'miniled')} onClick={() => { setBacklight('miniled'); setSelectedPart('miniled')}}>MiniLED</button>
-                    <button className={activeBtn(backlight, 'qdled')} disabled={layout === 'edge-lit'} onClick={() => { setBacklight('qdled'); setSelectedPart('qdled')}}>QDLED</button>
+                    <button className={activeBtn(backlight, 'qdled')} onClick={() => { setBacklight('qdled'); setSelectedPart('qdled')}}>QDLED</button>
+                </div>    
+                <div className="controls">   
                     <span>Layout:</span>
                     <button className={activeBtn(layout, 'direct-lit')} onClick={() => setLayout('direct-lit')}>Direct</button>
-                    <button className={activeBtn(layout, 'edge-lit')} onClick={() => { setLayout('edge-lit'); if (backlight === 'qdled' || backlight === 'fald') { setBacklight('led'); setSelectedPart('led'); } }}>Edge-lit</button>
+                    <button className={activeBtn(layout, 'edge-lit')} onClick={() => { setLayout('edge-lit'); if (backlight === 'fald') { setBacklight('led'); setSelectedPart('led'); } }}>Edge-lit</button>
                     <button className={activeBtn(layout, 'fald')}>FALD</button>
-                </div>
-                <div className="controls">
-                    <span>Light:</span>
+                </div>  
+                <div className="controls">   
+                    <span>Light:</span>         
                     <button className={activeBtn(animateLight, true)} onClick={() => setAnimateLight(!animateLight)}>
                         {animateLight ? 'Stop Light' : 'Animate Light'}
                     </button>
-                </div>
+                </div> 
+                    
+                
                 <LcdModel backlightType={backlight} layout={layout} animateLight={animateLight}
                     selectedPart={selectedPart} setSelectedPart={setSelectedPart} />
             </div>

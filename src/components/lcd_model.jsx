@@ -108,16 +108,45 @@ function BacklightSheet({ z, type, layout, selectedPart, setSelectedPart }) {
             }
         }
     } else if (type === 'qdled') {
-        for (let row = 0; row < 15; row++) {
-            for (let col = 0; col < 20; col++) {
-                const x = -1.9 + col * 0.2;
-                const y = -1.4 + row * 0.2;
+        if (layout === 'edge-lit') {
+            for (let col = 0; col < 11; col++) {
+                const x = -1.65 + col * 0.33;
                 elements.push(
-                    <mesh position={[x, y, 0.1]}>
+                    <mesh position={[x, 1.35, 0.1]}>
+                        <boxGeometry args={[0.06, 0.05, 0.025]} />
+                        <meshStandardMaterial color="#0044ff" emissive="#0044ff" emissiveIntensity={1.5} />
+                    </mesh>,
+                    <mesh position={[x, -1.35, 0.1]}>
                         <boxGeometry args={[0.06, 0.05, 0.025]} />
                         <meshStandardMaterial color="#0044ff" emissive="#0044ff" emissiveIntensity={1.5} />
                     </mesh>
                 );
+            }
+            for (let row = 0; row < 8; row++) {
+                const y = -1.15 + row * 0.33;
+                elements.push(
+                    <mesh position={[-1.85, y, 0.1]}>
+                        <boxGeometry args={[0.06, 0.05, 0.025]} />
+                        <meshStandardMaterial color="#0044ff" emissive="#0044ff" emissiveIntensity={1.5} />
+                    </mesh>,
+                    <mesh position={[1.85, y, 0.1]}>
+                        <boxGeometry args={[0.06, 0.05, 0.025]} />
+                        <meshStandardMaterial color="#0044ff" emissive="#0044ff" emissiveIntensity={1.5} />
+                    </mesh>
+                );
+            }
+        } else {
+            for (let row = 0; row < 15; row++) {
+                for (let col = 0; col < 20; col++) {
+                    const x = -1.9 + col * 0.2;
+                    const y = -1.4 + row * 0.2;
+                    elements.push(
+                        <mesh position={[x, y, 0.1]}>
+                            <boxGeometry args={[0.06, 0.05, 0.025]} />
+                            <meshStandardMaterial color="#0044ff" emissive="#0044ff" emissiveIntensity={1.5} />
+                        </mesh>
+                    );
+                }
             }
         }
     } else {
@@ -450,6 +479,50 @@ function QuantumDotLayer({ z }) {
     );
 }
 
+function QdEdgeLitLightBeam({ gap, animate }) {
+    const qdZ = -4.65 * gap;
+    const lgpZ = -4.5 * gap;
+    const edgePositions = [[-1.9, -0.9], [-1.9, 0], [-1.9, 0.9], [1.9, -0.9], [1.9, 0], [1.9, 0.9]];
+    const scattered = [];
+    for (let row = 0; row < 8; row++) {
+        for (let col = 0; col < 11; col++) {
+            scattered.push([-1.65 + col * 0.33, -1.15 + row * 0.33]);
+        }
+    }
+
+    return (
+        <group>
+            {edgePositions.map(([x, y], i) => (
+                <LightBeam key={`edge-${i}`} gap={gap} animate={animate}
+                    x={x} y={y} startZ={-5 * gap} endZ={qdZ}
+                    travelStart={0} travelEnd={0.2}
+                    radius={0.04} glowRadius={0.08}
+                    color="#0055ff" glowColor="#4488ff" />
+            ))}
+            {edgePositions.map(([x, y], i) => {
+                const c = ['#0066ff', '#ff4444', '#44ff44'][i % 3];
+                return (
+                    <LightBeam key={`qd-${i}`} gap={gap} animate={animate}
+                        x={x} y={y} startZ={qdZ} endZ={lgpZ}
+                        travelStart={0.2} travelEnd={0.35}
+                        radius={0.04} glowRadius={0.08}
+                        color={c} glowColor={c} />
+                );
+            })}
+            {scattered.map(([x, y], i) => {
+                const c = ['#0066ff', '#ff4444', '#44ff44'][i % 3];
+                return (
+                    <LightBeam key={`scatter-${i}`} gap={gap} animate={animate}
+                        x={x} y={y} startZ={lgpZ} endZ={0}
+                        travelStart={0.35} travelEnd={0.8}
+                        radius={0.015} glowRadius={0.04}
+                        color={c} glowColor={c} />
+                );
+            })}
+        </group>
+    );
+}
+
 function QdLightBeamArray({ gap, animate, positions, qdZ }) {
     const phaseColors = ['#0066ff', '#ff4444', '#44ff44'];
     return (
@@ -487,8 +560,8 @@ export default function LcdModel({ backlightType, layout, animateLight, selected
 
                 <group position={[0, 0, 1.5]}>
                     <BacklightSheet z={-5 * gap} type={backlightType} layout={layout} selectedPart={selectedPart} setSelectedPart={setSelectedPart} />
-                    {layout === 'edge-lit' && (backlightType === 'ccfl' || backlightType === 'led' || backlightType === 'miniled') && <LightGuidePlate z={-4.5 * gap} />}
-                    {backlightType === 'qdled' && <QuantumDotLayer z={-4.35 * gap} />}
+                    {layout === 'edge-lit' && (backlightType === 'ccfl' || backlightType === 'led' || backlightType === 'miniled' || backlightType === 'qdled') && <LightGuidePlate z={-4.5 * gap} />}
+                    {backlightType === 'qdled' && <QuantumDotLayer z={layout === 'edge-lit' ? -4.65 * gap : -4.35 * gap} />}
                     <Polarizer z={-4 * gap} rotation={0} selectedPart={selectedPart} setSelectedPart={setSelectedPart} partId="firstfilter" />
                     <LiquidCrystalLayer z={-3 * gap} selectedPart={selectedPart} setSelectedPart={setSelectedPart} />
                     <Polarizer z={-2 * gap} rotation={Math.PI / 2} selectedPart={selectedPart} setSelectedPart={setSelectedPart} partId="secondfilter" />
@@ -520,6 +593,8 @@ export default function LcdModel({ backlightType, layout, animateLight, selected
                         ? <LightBeamArray gap={gap} animate={animateLight} positions={Array.from({ length: 88 }, (_, i) => [-1.65 + (i % 11) * 0.33, -1.15 + Math.floor(i / 11) * 0.33])} />
                         : backlightType === 'miniled' && layout === 'direct-lit'
                         ? <LightBeamArray gap={gap} animate={animateLight} positions={Array.from({ length: 300 }, (_, i) => [-1.9 + (i % 20) * 0.2, -1.4 + Math.floor(i / 20) * 0.2])} radius={0.015} glowRadius={0.04} />
+                        : backlightType === 'qdled' && layout === 'edge-lit'
+                        ? <QdEdgeLitLightBeam gap={gap} animate={animateLight} />
                         : backlightType === 'qdled'
                         ? <QdLightBeamArray gap={gap} animate={animateLight} qdZ={-4.35 * gap}
                             positions={Array.from({ length: 300 }, (_, i) => [-1.9 + (i % 20) * 0.2, -1.4 + Math.floor(i / 20) * 0.2])} />
