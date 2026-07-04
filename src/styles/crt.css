@@ -1,20 +1,32 @@
-.crt-wrapper {
+/* --- COPY OF MODELO.CSS BASE STRUCTURE --- */
+.display-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start; /* Changed to flex-start so content aligns at the top */
     width: 100%;
 }
 
-.crt-controls {
+.info {
+    font-family: "JetBrains Mono";
+}
+
+.controls {
     display: flex;
     align-items: center;
     gap: 8px;
+    margin-bottom: 12px;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.crt-btn {
+.controls span {
+    font-weight: 600;
+    margin-right: 4px;
+    font-family: "JetBrains Mono", monospace;
+}
+
+.btn {
     padding: 6px 16px;
     border-radius: 9999px;
     border: 2px solid #ccc;
@@ -25,158 +37,106 @@
     transition: all 0.15s ease;
 }
 
-.crt-btn:hover {
+.btn:hover:not(:disabled) {
     border-color: #5076a7;
     color: #5076a7;
 }
 
-.crt-btn.active {
+.btn.active {
     background: #5076a7;
     color: white;
     border-color: #5076a7;
 }
 
-.crt-btn--anim {
-    border-color: #a75050;
+.btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
 }
 
-.crt-btn--anim.active {
-    background: #a75050;
-    border-color: #a75050;
+/* --- LEFT/RIGHT LAYOUT SPLIT --- */
+.crt-split-layout {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
 }
 
+.crt-info-side {
+    flex: 1;
+    background: var(--bg2);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    /* --- border: 1px solid var(--border); --- */
+    /* --- box-shadow: 5px 5px var(--border); --- */
+}
+
+.crt-info-side h2 {
+    margin-top: 0;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.5rem;
+    font-family: "Lora Variable", serif;
+}
+
+.crt-model-side {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.crt-dynamic-box {
+    padding: 1rem;
+    border-left: 4px solid #5076a7;
+    background: #f4f7f9;
+}
+
+.crt-info__title {
+    margin: 0 0 0.5rem 0;
+    font-family: "JetBrains Mono", monospace;
+}
+
+.crt-info__desc {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* --- SVG ANIMATIONS & PARTS --- */
 .crt-stage {
     width: 100%;
     max-width: 820px;
     background: #1c1c1c;
     border-radius: 12px;
-    padding: 16px;
-    box-sizing: border-box;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.crt-svg {
-    width: 100%;
-    height: auto;
-    display: block;
-}
+.part { cursor: pointer; transition: all 0.2s; }
+.part:hover { opacity: 0.8; }
+.part-active { stroke: #5076a7; stroke-width: 1; fill: rgba(80,118,167,0.3); }
+.part-label { fill: #cfd6de; font-family: "JetBrains Mono", monospace; font-size: 13px; pointer-events: none; }
 
-/* -- Diagram parts ------------------------------------------- */
-.part {
-    fill: #6f7b8a;
-    stroke: #cfd6de;
-    stroke-width: 1.5;
-    cursor: pointer;
-    transition: fill 0.2s ease, stroke 0.2s ease;
-}
-
-.part:hover {
-    fill: #8899ad;
-}
-
-.part-active {
-    fill: #5076a7;
-    stroke: #eaf1ff;
-    stroke-width: 2;
-}
-
-.vacuum {
-    fill: rgba(120, 140, 160, 0.12);
-    stroke: #7d8a99;
-    stroke-width: 2;
-}
-
-.vacuum.part-active {
-    fill: rgba(80, 118, 167, 0.22);
-    stroke: #5076a7;
-}
-
-.screen.part-active {
-    fill: #eaf6ff;
-    stroke: #5076a7;
-}
-
-.part-label {
-    fill: #cfd6de;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 13px;
-    pointer-events: none;
-}
-
-/* -- Electron beam -------------------------------------------- */
-.beam {
-    stroke: #7fd8ff;
-    stroke-width: 3;
-    stroke-linecap: round;
-    opacity: 0;
-}
-
-.beam-animate {
-    opacity: 1;
-    stroke-dasharray: 465;
-    stroke-dashoffset: 465;
-    animation: beam-travel 1.4s ease-in-out infinite;
-}
-
-.beam-glow {
-    fill: #bdeeff;
-    opacity: 0.9;
-    animation: beam-pulse 1.4s ease-in-out infinite;
-}
+.beam { stroke: #7fd8ff; stroke-width: 3; stroke-linecap: round; opacity: 0; }
+.beam-animate { opacity: 1; stroke-dasharray: 465; stroke-dashoffset: 465; animation: beam-travel 1.6s ease-in-out infinite; }
+.beam-glow { fill: #bdeeff; opacity: 0.9; animation: beam-pulse 1.6s ease-in-out infinite; }
 
 @keyframes beam-travel {
-    0% {
-        stroke-dashoffset: 465;
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    70% {
-        stroke-dashoffset: 0;
-        opacity: 1;
-    }
-    100% {
-        stroke-dashoffset: 0;
-        opacity: 0;
-    }
+    0% { stroke-dashoffset: 465; opacity: 0; }
+    10% { opacity: 1; }
+    70% { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 0; }
 }
 
 @keyframes beam-pulse {
-    0%, 65% {
-        r: 0;
-        opacity: 0;
-    }
-    72% {
-        r: 14;
-        opacity: 1;
-    }
-    100% {
-        r: 8;
-        opacity: 0;
-    }
+    0%, 65% { r: 0; opacity: 0; }
+    72% { r: 14; opacity: 1; }
+    100% { r: 8; opacity: 0; }
 }
 
-/* -- Info panel -------------------------------------------------- */
-.crt-info {
-    width: 100%;
-    max-width: 820px;
-    background: white;
-    border: 1px solid var(--border, #cecece);
-    border-radius: 8px;
-    padding: 1.25rem 1.5rem;
-    box-sizing: border-box;
-    font-family: "JetBrains Mono", monospace;
-}
-
-.crt-info__title {
-    margin: 0 0 8px 0;
-    font-size: 1.1rem;
-    color: #1e1e1e;
-}
-
-.crt-info__desc {
-    margin: 0;
-    line-height: 1.6;
-    letter-spacing: 0.03rem;
-    color: #333;
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+    .crt-split-layout {
+        flex-direction: column;
+    }
 }
