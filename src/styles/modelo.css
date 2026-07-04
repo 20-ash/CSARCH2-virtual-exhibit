@@ -92,6 +92,16 @@
     font-family: "JetBrains Mono", monospace;
 }
 
+.btn:hover:not(:disabled) {
+    border-color: #5076a7;
+    color: #5076a7;
+}
+
+.btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
 .lcd-stage {
     width: 100%;
     max-width: 820px;
