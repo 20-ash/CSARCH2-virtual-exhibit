@@ -1,14 +1,21 @@
 import CrtModel from "./crt_model.jsx";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import '../styles/crt.css';
 
+{/* 
+    CRT Parts Information:
+    label: Name of CRT Part
+    description: CRT Part Description
+    processCrtTitle: Name of the Process Associated with the CRT Part
+    processCrtDescription: Description of the Associated Process
+*/}
 const PARTS = [
     {
         id: "gun",
         label: "Electron Gun",
         description:
             "Generates, shapes, and focuses the stream of electrons into a beam. Consists of a heated cathode, anodes, and a focusing assembly.",
-        processCrtTitle: "Emission and Focusing",
+        processCrtTitle: "Thermionic Emission and Focusing",
         processCrtDescription:
             "The cathode inside the electron gun heats up, causing it to emit a huge amount of electrons. Positively charged anodes attract the negatively charged electrons from the cathode, accelerating them rapidly toward the screen. During this process, the electrons undergo a process called electrostatic focusing, wherein they are being focused into a beam so that it forms a small spot on the screen using a focusing assembly containing an electron lens.",
     },
@@ -41,16 +48,17 @@ const PARTS = [
     },
     {
         id: "vacuum",
-        label: "Vacuum Tube",
+        label: "Vacuum Tube Container",
         description:
             "Encloses the whole assembly so electrons can travel freely from the gun to the screen without being scattered by air molecules.",
         processCrtTitle: "Containment",
-        processCrtDescription: "The entire component is enclosed in a specialized vacuum tube to prevent the electrons from colliding with air molecules. Eliminating this interference ensures the electrons can travel freely in a straight direction toward the phosphorescent screen.",
+        processCrtDescription:
+            "The entire component is enclosed in a specialized vacuum tube to prevent the electrons from colliding with air molecules. Eliminating this interference ensures the electrons can travel freely in a straight direction toward the phosphorescent screen.",
     },
 ];
 
 export default function CrtViewer() {
-    const [selectedPart, setSelectedPart] = useState('gun');     
+    const [selectedPart, setSelectedPart] = useState('pins');     
     const [animate, setAnimate] = useState(false);    
 
     const activeBtn = (current, target) => `btn ${current === target ? 'active' : ''}`;
@@ -59,7 +67,7 @@ export default function CrtViewer() {
     return (
         <div className="crt-split-layout">
             
-            {/* LEFT SIDE: Information and Changing Text */}
+            {/* LEFT SIDE: Information Display */}
             <div className="crt-info-side">
                 <h2 className="crt-info__title">{activeInfo.label}</h2>
                 <p className="crt-info__desc">{activeInfo.description}</p>
@@ -72,6 +80,7 @@ export default function CrtViewer() {
 
             {/* RIGHT SIDE: Controls and 2D Model */}
             <div className="crt-model-side">
+                {/* 2D Model Parts */}
                 <div className="controls">
                     <span>Parts:</span>
                     <button className={activeBtn(selectedPart, 'gun')} onClick={() => setSelectedPart('gun')}>Gun</button>
@@ -81,6 +90,7 @@ export default function CrtViewer() {
                     <button className={activeBtn(selectedPart, 'vacuum')} onClick={() => setSelectedPart('vacuum')}>Vacuum</button>
                 </div>
 
+                {/* Beam Control */}
                 <div className="controls">
                     <span>Action:</span>
                     <button className={activeBtn(animate, true)} onClick={() => setAnimate(!animate)}>
@@ -88,7 +98,6 @@ export default function CrtViewer() {
                     </button>
                 </div>
                 
-                {/* Rendering the Model and passing the states as props */}
                 <CrtModel selectedPart={selectedPart} setSelectedPart={setSelectedPart} animate={animate} />
             </div>
 

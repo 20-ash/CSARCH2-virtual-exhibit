@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: flex-start; /* Changed to flex-start so content aligns at the top */
+    align-items: flex-start;
     width: 100%;
 }
 
@@ -66,8 +66,6 @@
     background: var(--bg2);
     padding: 1.5rem;
     border-radius: var(--radius);
-    /* --- border: 1px solid var(--border); --- */
-    /* --- box-shadow: 5px 5px var(--border); --- */
 }
 
 .crt-info-side h2 {
@@ -114,15 +112,28 @@
 
 .part { cursor: pointer; transition: all 0.2s; }
 .part:hover { opacity: 0.8; }
-.part-active { stroke: #5076a7; stroke-width: 1; fill: rgba(80,118,167,0.3); }
+
+/* Interactive Cascading Highlight Selection Rules */
+.part-active path, 
+.part-active rect, 
+.part-active ellipse, 
+.part-active line, 
+.part-active polygon { 
+    stroke: #5076a7 !important; 
+    stroke-width: 2px;
+    fill: rgba(80,118,167,0.3) !important; 
+}
+
+.part-active { stroke: #5076a7; stroke-width: 0.8; fill: rgba(80,118,167,0.3); }
+
 .part-label { fill: #cfd6de; font-family: "JetBrains Mono", monospace; font-size: 13px; pointer-events: none; }
 
 .beam { stroke: #7fd8ff; stroke-width: 3; stroke-linecap: round; opacity: 0; }
-.beam-animate { opacity: 1; stroke-dasharray: 465; stroke-dashoffset: 465; animation: beam-travel 1.6s ease-in-out infinite; }
+.beam-animate { opacity: 1; stroke-dasharray: 445; stroke-dashoffset: 445; animation: beam-travel 1.6s ease-in-out infinite; }
 .beam-glow { fill: #bdeeff; opacity: 0.9; animation: beam-pulse 1.6s ease-in-out infinite; }
 
 @keyframes beam-travel {
-    0% { stroke-dashoffset: 465; opacity: 0; }
+    0% { stroke-dashoffset: 445; opacity: 0; }
     10% { opacity: 1; }
     70% { stroke-dashoffset: 0; opacity: 1; }
     100% { stroke-dashoffset: 0; opacity: 0; }
