@@ -10,8 +10,19 @@ const canvasWrapper = {
     height: "400px",
 };
 
-function BacklightSheet({ z, type, layout }) {
+function BacklightSheet({ z, type, layout, selectedPart, setSelectedPart }) {
+    const planeRef = useRef(null);
     const elements = [];
+
+    useFrame((state) => {
+        if (!planeRef.current) return;
+        if (selectedPart === type) {
+            const pulse = 0.2 + 0.2 * Math.sin(state.clock.elapsedTime * 3);
+            planeRef.current.material.emissiveIntensity = pulse;
+        } else {
+            planeRef.current.material.emissiveIntensity = 0;
+        }
+    });
     if (type === 'led') {
         if (layout === 'edge-lit') {
             for (let col = 0; col < 11; col++) {
@@ -115,26 +126,47 @@ function BacklightSheet({ z, type, layout }) {
     }
 
     return (
-        <group position={[0, 0, z]}>
-            <mesh>
+        <group position={[0, 0, z]}
+            onClick={() => setSelectedPart(type)}
+            onPointerOver={() => { document.body.style.cursor = 'pointer'; }}
+            onPointerOut={() => { document.body.style.cursor = 'auto'; }}
+        >
+            <mesh ref={planeRef}>
                 <planeGeometry args={[4, 3]} />
-                <meshStandardMaterial color="white" side={2} />
+                <meshStandardMaterial color="white" side={2} emissive="#4488ff" emissiveIntensity={0} />
             </mesh>
             {elements}
         </group>
     );
 }
 
-function Polarizer({ z, rotation = 0 }) {
+function Polarizer({ z, rotation = 0, selectedPart, setSelectedPart, partId }) {
+    const meshRef = useRef(null);
+
+    useFrame((state) => {
+        if (!meshRef.current) return;
+        if (selectedPart === partId) {
+            const pulse = 0.2 + 0.2 * Math.sin(state.clock.elapsedTime * 3);
+            meshRef.current.material.emissiveIntensity = pulse;
+        } else {
+            meshRef.current.material.emissiveIntensity = 0;
+        }
+    });
+
     return (
-        <mesh position={[0, 0, z]} rotation={[0, 0, rotation]}>
+        <mesh ref={meshRef} position={[0, 0, z]} rotation={[0, 0, rotation]}
+            onClick={() => setSelectedPart(partId)}
+            onPointerOver={() => { document.body.style.cursor = 'pointer'; }}
+            onPointerOut={() => { document.body.style.cursor = 'auto'; }}
+        >
             <boxGeometry args={[3.8, 2.8, 0.05]} />
-            <meshStandardMaterial color="#333" transparent opacity={0.6} />
+            <meshStandardMaterial color="#333" transparent opacity={0.6} emissive="#4488ff" emissiveIntensity={0} />
         </mesh>
     );
 }
 
-function LiquidCrystalLayer({ z }) {
+function LiquidCrystalLayer({ z, selectedPart, setSelectedPart }) {
+    const meshRef = useRef(null);
     const texture = useMemo(() => {
         const size = 512;
         const cellSize = 32;
@@ -172,15 +204,30 @@ function LiquidCrystalLayer({ z }) {
         return tex;
     }, []);
 
+    useFrame((state) => {
+        if (!meshRef.current) return;
+        if (selectedPart === 'crystal') {
+            const pulse = 0.2 + 0.2 * Math.sin(state.clock.elapsedTime * 3);
+            meshRef.current.material.emissiveIntensity = pulse;
+        } else {
+            meshRef.current.material.emissiveIntensity = 0;
+        }
+    });
+
     return (
-        <mesh position={[0, 0, z]}>
+        <mesh ref={meshRef} position={[0, 0, z]}
+            onClick={() => setSelectedPart('crystal')}
+            onPointerOver={() => { document.body.style.cursor = 'pointer'; }}
+            onPointerOut={() => { document.body.style.cursor = 'auto'; }}
+        >
             <boxGeometry args={[3.8, 2.8, 0.15]} />
-            <meshStandardMaterial map={texture} transparent opacity={0.8} roughness={0.6} />
+            <meshStandardMaterial map={texture} transparent opacity={0.8} roughness={0.6} emissive="#4488ff" emissiveIntensity={0} />
         </mesh>
     );
 }
 
-function RgbColorFilters({ z }) {
+function RgbColorFilters({ z, selectedPart, setSelectedPart }) {
+    const meshRef = useRef(null);
     const texture = useMemo(() => {
         const canvas = document.createElement("canvas");
         canvas.width = 512;
@@ -202,10 +249,24 @@ function RgbColorFilters({ z }) {
         return new CanvasTexture(canvas);
     }, []);
 
+    useFrame((state) => {
+        if (!meshRef.current) return;
+        if (selectedPart === 'rgb') {
+            const pulse = 0.2 + 0.2 * Math.sin(state.clock.elapsedTime * 3);
+            meshRef.current.material.emissiveIntensity = pulse;
+        } else {
+            meshRef.current.material.emissiveIntensity = 0;
+        }
+    });
+
     return (
-        <mesh position={[0, 0, z]}>
+        <mesh ref={meshRef} position={[0, 0, z]}
+            onClick={() => setSelectedPart('rgb')}
+            onPointerOver={() => { document.body.style.cursor = 'pointer'; }}
+            onPointerOut={() => { document.body.style.cursor = 'auto'; }}
+        >
             <planeGeometry args={[3.6, 2.6]} />
-            <meshStandardMaterial map={texture} transparent opacity={0.8} side={2} />
+            <meshStandardMaterial map={texture} transparent opacity={0.8} side={2} emissive="#4488ff" emissiveIntensity={0} />
         </mesh>
     );
 }
@@ -367,8 +428,8 @@ function LightGuidePlate({ z }) {
     );
 }
 
-export default function LcdModel({ backlightType, layout, exploded, animateLight }) {
-    const gap = exploded ? 0.7 : 0.05;
+export default function LcdModel({ backlightType, layout, animateLight, selectedPart, setSelectedPart }) {
+    const gap = 0.7;
 
     return (
         <div style={canvasWrapper}>
@@ -378,12 +439,12 @@ export default function LcdModel({ backlightType, layout, exploded, animateLight
                 <directionalLight position={[2, 3, 5]} intensity={0.8} />
 
                 <group position={[0, 0, 1.5]}>
-                    <BacklightSheet z={-5 * gap} type={backlightType} layout={layout} />
+                    <BacklightSheet z={-5 * gap} type={backlightType} layout={layout} selectedPart={selectedPart} setSelectedPart={setSelectedPart} />
                     {layout === 'edge-lit' && (backlightType === 'ccfl' || backlightType === 'led' || backlightType === 'miniled') && <LightGuidePlate z={-4.5 * gap} />}
-                    <Polarizer z={-4 * gap} rotation={0} />
-                    <LiquidCrystalLayer z={-3 * gap} />
-                    <Polarizer z={-2 * gap} rotation={Math.PI / 2} />
-                    <RgbColorFilters z={-1 * gap} />
+                    <Polarizer z={-4 * gap} rotation={0} selectedPart={selectedPart} setSelectedPart={setSelectedPart} partId="first_filter" />
+                    <LiquidCrystalLayer z={-3 * gap} selectedPart={selectedPart} setSelectedPart={setSelectedPart} />
+                    <Polarizer z={-2 * gap} rotation={Math.PI / 2} selectedPart={selectedPart} setSelectedPart={setSelectedPart} partId="second_filter" />
+                    <RgbColorFilters z={-1 * gap} selectedPart={selectedPart} setSelectedPart={setSelectedPart} />
                     <LcdPanel z={0} />
                     {backlightType === 'ccfl' && layout === 'direct-lit'
                         ? <LightBeamArray gap={gap} animate={animateLight} positions={[[-0.9, -0.7], [0, -0.7], [0.9, -0.7], [-0.9, 0], [0, 0], [0.9, 0], [-0.9, 0.7], [0, 0.7], [0.9, 0.7]]} />
