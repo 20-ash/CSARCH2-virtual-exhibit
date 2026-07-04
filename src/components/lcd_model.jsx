@@ -1,29 +1,57 @@
-import { useMemo } from "react";
-import { Canvas, useLoader } from "@react-three/fiber";
+import { useMemo, useRef } from "react";
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { TextureLoader, CanvasTexture, RepeatWrapping } from "three";
 import lcdTextureSrc from "../assets/lcd.jpg";
 
 const canvasWrapper = {
     width: "100%",
-    minHeight: "500px",
-    height: "500px",
+    maxWidth: "820px",
+    height: "400px",
 };
 
-function BacklightSheet({ z }) {
-    const tubes = [];
-    const positions = [
-        [-0.8, 0.6], [0, 0.6], [0.8, 0.6],
-        [-0.8, -0.6], [0, -0.6], [0.8, -0.6],
-    ];
-    positions.forEach(([x, y]) => {
-        tubes.push(
-            <mesh position={[x, y, 0.1]} rotation={[0, 0, Math.PI / 2]}>
-                <cylinderGeometry args={[0.08, 0.08, 2.5, 12]} />
-                <meshStandardMaterial color="white" emissive="#ffffee" emissiveIntensity={1.5} />
-            </mesh>
-        );
-    });
+function BacklightSheet({ z, type }) {
+    const elements = [];
+    if (type === 'led') {
+        for (let row = 0; row < 8; row++) {
+            for (let col = 0; col < 11; col++) {
+                const x = -1.65 + col * 0.33;
+                const y = -1.15 + row * 0.33;
+                elements.push(
+                    <mesh position={[x, y, 0.1]}>
+                        <boxGeometry args={[0.12, 0.1, 0.04]} />
+                        <meshStandardMaterial color="white" emissive="#eeffff" emissiveIntensity={1.5} />
+                    </mesh>
+                );
+            }
+        }
+    } else if (type === 'miniled') {
+        for (let row = 0; row < 15; row++) {
+            for (let col = 0; col < 20; col++) {
+                const x = -1.9 + col * 0.2;
+                const y = -1.4 + row * 0.2;
+                elements.push(
+                    <mesh position={[x, y, 0.1]}>
+                        <boxGeometry args={[0.06, 0.05, 0.025]} />
+                        <meshStandardMaterial color="white" emissive="#eeffff" emissiveIntensity={1.5} />
+                    </mesh>
+                );
+            }
+        }
+    } else {
+        const positions = [
+            [-0.8, 0.6], [0, 0.6], [0.8, 0.6],
+            [-0.8, -0.6], [0, -0.6], [0.8, -0.6],
+        ];
+        positions.forEach(([x, y]) => {
+            elements.push(
+                <mesh position={[x, y, 0.1]} rotation={[0, 0, Math.PI / 2]}>
+                    <cylinderGeometry args={[0.08, 0.08, 2.5, 12]} />
+                    <meshStandardMaterial color="white" emissive="#ffffee" emissiveIntensity={1.5} />
+                </mesh>
+            );
+        });
+    }
 
     return (
         <group position={[0, 0, z]}>
@@ -31,7 +59,7 @@ function BacklightSheet({ z }) {
                 <planeGeometry args={[4, 3]} />
                 <meshStandardMaterial color="white" side={2} />
             </mesh>
-            {tubes}
+            {elements}
         </group>
     );
 }
@@ -132,7 +160,56 @@ function LcdPanel({ z }) {
     );
 }
 
-export default function LcdModel({ backlightType, layout, exploded }) {
+function LightBeam({ gap, animate }) {
+    const beamRef = useRef(null);
+    const glowRef = useRef(null);
+    const backlightZ = -5 * gap;
+    const screenZ = 0;
+    const span = screenZ - backlightZ;
+
+    useFrame((state) => {
+        if (!animate) {
+            if (beamRef.current) beamRef.current.material.opacity = 0;
+            if (glowRef.current) glowRef.current.material.opacity = 0;
+            return;
+        }
+
+        const t = (state.clock.elapsedTime * 0.7) % 1;
+        const travel = Math.min(t / 0.7, 1);
+        const beamT = t < 0.7 ? travel : 1;
+        const beamOpacity = t > 0.85 ? Math.max(0, 1 - (t - 0.85) / 0.15) : 1;
+
+        const frontZ = backlightZ + beamT * span;
+        const midpoint = (backlightZ + frontZ) / 2;
+
+        if (beamRef.current) {
+            beamRef.current.position.z = midpoint;
+            beamRef.current.scale.y = beamT;
+            beamRef.current.material.opacity = beamOpacity * 0.7;
+        }
+        const contactOpacity = beamT >= 1 ? 1 : 0;
+        if (glowRef.current) {
+            glowRef.current.position.z = frontZ;
+            const pulse = 0.4 + 0.6 * (Math.sin(state.clock.elapsedTime * 10) * 0.5 + 0.5);
+            glowRef.current.material.opacity = beamOpacity * pulse * contactOpacity;
+        }
+    });
+
+    return (
+        <group>
+            <mesh ref={beamRef} position={[0, 0, backlightZ + span / 2]} rotation={[Math.PI / 2, 0, 0]}>
+                <cylinderGeometry args={[0.06, 0.06, span, 8]} />
+                <meshBasicMaterial color="#7fd8ff" transparent opacity={0} />
+            </mesh>
+            <mesh ref={glowRef} position={[0, 0, backlightZ]}>
+                <sphereGeometry args={[0.14, 8, 8]} />
+                <meshBasicMaterial color="#ffffff" transparent opacity={0} />
+            </mesh>
+        </group>
+    );
+}
+
+export default function LcdModel({ backlightType, layout, exploded, animateLight }) {
     const gap = exploded ? 0.7 : 0.05;
 
     return (
@@ -143,12 +220,13 @@ export default function LcdModel({ backlightType, layout, exploded }) {
                 <directionalLight position={[2, 3, 5]} intensity={0.8} />
 
                 <group position={[0, 0, 1.5]}>
-                    <BacklightSheet z={-5 * gap} />
+                    <BacklightSheet z={-5 * gap} type={backlightType} />
                     <Polarizer z={-4 * gap} rotation={0} />
                     <LiquidCrystalLayer z={-3 * gap} />
                     <Polarizer z={-2 * gap} rotation={Math.PI / 2} />
                     <RgbColorFilters z={-1 * gap} />
                     <LcdPanel z={0} />
+                    <LightBeam gap={gap} animate={animateLight} />
                 </group>
 
                 <OrbitControls enableDamping={false} target={[0, 0, 1.5 - 2.5 * gap]} />
