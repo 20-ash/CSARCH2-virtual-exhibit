@@ -1,0 +1,161 @@
+.display-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.controls span {
+    font-weight: 600;
+    margin-right: 4px;
+    font-family: "JetBrains Mono", monospace;
+}
+
+.btn {
+    padding: 6px 16px;
+    border-radius: 9999px;
+    border: 2px solid #ccc;
+    background: white;
+    cursor: pointer;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    transition: all 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.btn.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.microled-split-layout {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+}
+
+.microled-info-side {
+    flex: 1;
+    background: var(--bg2);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+}
+
+.microled-info-side h2 {
+    margin-top: 0;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.5rem;
+    font-family: "Lora Variable", serif;
+}
+
+.microled-model-side {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.microled-dynamic-box {
+    padding: 1rem;
+    border-left: 4px solid var(--accent);
+    background: var(--bg2);
+}
+
+.microled-info__title {
+    margin: 0 0 0.5rem 0;
+    font-family: "JetBrains Mono", monospace;
+}
+
+.microled-info__desc {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.microled-stage {
+    width: 100%;
+    max-width: 820px;
+    border-radius: var(--radius);
+    padding: 20px;
+}
+
+.part { cursor: pointer; transition: all 0.2s; }
+.part:hover { opacity: 0.8; }
+
+.part-label {
+    fill: var(--text);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    pointer-events: none;
+}
+
+.part-active path,
+.part-active rect,
+.part-active ellipse,
+.part-active line,
+.part-active polygon {
+    stroke: var(--accent) !important;
+    stroke-width: 2px;
+    fill: color-mix(in srgb, var(--accent) 30%, transparent) !important;
+}
+
+/* Light rays exiting through the cover glass */
+.ray {
+    opacity: 0;
+}
+
+.ray-animate {
+    stroke-dasharray: 150;
+    stroke-dashoffset: 150;
+    stroke-linecap: round;
+    opacity: 1;
+    animation: ray-travel 1.8s ease-in-out infinite;
+}
+
+.ray-g { animation-delay: 0.2s; }
+.ray-b { animation-delay: 0.4s; }
+
+@keyframes ray-travel {
+    0% { stroke-dashoffset: 150; opacity: 0; }
+    15% { opacity: 1; }
+    70% { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ray-animate {
+        animation: none;
+        stroke-dasharray: none;
+        stroke-dashoffset: 0;
+        opacity: 0.7;
+    }
+}
+
+@media (max-width: 1024px) {
+    .microled-split-layout {
+        flex-direction: column;
+    }
+}
