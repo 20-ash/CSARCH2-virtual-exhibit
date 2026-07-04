@@ -1,0 +1,50 @@
+.display-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.info {
+    font-family: "JetBrains Mono";
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.controls span {
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+.btn {
+    padding: 6px 16px;
+    border-radius: 9999px;
+    border: 2px solid #ccc;
+    background: white;
+    cursor: pointer;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    transition: all 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+    border-color: #5076a7;
+    color: #5076a7;
+}
+
+.btn.active {
+    background: #5076a7;
+    color: white;
+    border-color: #5076a7;
+}
+
+.btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
