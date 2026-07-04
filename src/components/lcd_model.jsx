@@ -10,43 +10,104 @@ const canvasWrapper = {
     height: "400px",
 };
 
-function BacklightSheet({ z, type }) {
+function BacklightSheet({ z, type, layout }) {
     const elements = [];
     if (type === 'led') {
-        for (let row = 0; row < 8; row++) {
+        if (layout === 'edge-lit') {
             for (let col = 0; col < 11; col++) {
                 const x = -1.65 + col * 0.33;
-                const y = -1.15 + row * 0.33;
                 elements.push(
-                    <mesh position={[x, y, 0.1]}>
+                    <mesh position={[x, 1.35, 0.1]}>
+                        <boxGeometry args={[0.12, 0.1, 0.04]} />
+                        <meshStandardMaterial color="white" emissive="#eeffff" emissiveIntensity={1.5} />
+                    </mesh>,
+                    <mesh position={[x, -1.35, 0.1]}>
                         <boxGeometry args={[0.12, 0.1, 0.04]} />
                         <meshStandardMaterial color="white" emissive="#eeffff" emissiveIntensity={1.5} />
                     </mesh>
                 );
             }
+            for (let row = 0; row < 8; row++) {
+                const y = -1.15 + row * 0.33;
+                elements.push(
+                    <mesh position={[-1.85, y, 0.1]}>
+                        <boxGeometry args={[0.12, 0.1, 0.04]} />
+                        <meshStandardMaterial color="white" emissive="#eeffff" emissiveIntensity={1.5} />
+                    </mesh>,
+                    <mesh position={[1.85, y, 0.1]}>
+                        <boxGeometry args={[0.12, 0.1, 0.04]} />
+                        <meshStandardMaterial color="white" emissive="#eeffff" emissiveIntensity={1.5} />
+                    </mesh>
+                );
+            }
+        } else {
+            for (let row = 0; row < 8; row++) {
+                for (let col = 0; col < 11; col++) {
+                    const x = -1.65 + col * 0.33;
+                    const y = -1.15 + row * 0.33;
+                    elements.push(
+                        <mesh position={[x, y, 0.1]}>
+                            <boxGeometry args={[0.12, 0.1, 0.04]} />
+                            <meshStandardMaterial color="white" emissive="#eeffff" emissiveIntensity={1.5} />
+                        </mesh>
+                    );
+                }
+            }
         }
     } else if (type === 'miniled') {
-        for (let row = 0; row < 15; row++) {
-            for (let col = 0; col < 20; col++) {
-                const x = -1.9 + col * 0.2;
-                const y = -1.4 + row * 0.2;
+        if (layout === 'edge-lit') {
+            for (let col = 0; col < 19; col++) {
+                const x = -1.8 + col * 0.2;
                 elements.push(
-                    <mesh position={[x, y, 0.1]}>
+                    <mesh position={[x, 1.4, 0.1]}>
+                        <boxGeometry args={[0.06, 0.05, 0.025]} />
+                        <meshStandardMaterial color="white" emissive="#eeffff" emissiveIntensity={1.5} />
+                    </mesh>,
+                    <mesh position={[x, -1.4, 0.1]}>
                         <boxGeometry args={[0.06, 0.05, 0.025]} />
                         <meshStandardMaterial color="white" emissive="#eeffff" emissiveIntensity={1.5} />
                     </mesh>
                 );
             }
+            for (let row = 0; row < 14; row++) {
+                const y = -1.3 + row * 0.2;
+                elements.push(
+                    <mesh position={[-1.9, y, 0.1]}>
+                        <boxGeometry args={[0.06, 0.05, 0.025]} />
+                        <meshStandardMaterial color="white" emissive="#eeffff" emissiveIntensity={1.5} />
+                    </mesh>,
+                    <mesh position={[1.9, y, 0.1]}>
+                        <boxGeometry args={[0.06, 0.05, 0.025]} />
+                        <meshStandardMaterial color="white" emissive="#eeffff" emissiveIntensity={1.5} />
+                    </mesh>
+                );
+            }
+        } else {
+            for (let row = 0; row < 15; row++) {
+                for (let col = 0; col < 20; col++) {
+                    const x = -1.9 + col * 0.2;
+                    const y = -1.4 + row * 0.2;
+                    elements.push(
+                        <mesh position={[x, y, 0.1]}>
+                            <boxGeometry args={[0.06, 0.05, 0.025]} />
+                            <meshStandardMaterial color="white" emissive="#eeffff" emissiveIntensity={1.5} />
+                        </mesh>
+                    );
+                }
+            }
         }
     } else {
-        const positions = [
-            [-0.8, 0.6], [0, 0.6], [0.8, 0.6],
-            [-0.8, -0.6], [0, -0.6], [0.8, -0.6],
-        ];
+        const isEdgeLit = layout === 'edge-lit';
+        const positions = isEdgeLit
+            ? [[-1.9, -0.9], [-1.9, 0], [-1.9, 0.9], [1.9, -0.9], [1.9, 0], [1.9, 0.9]]
+            : [[-1.3, -0.7], [0, -0.7], [1.3, -0.7],
+               [-1.3, 0], [0, 0], [1.3, 0],
+               [-1.3, 0.7], [0, 0.7], [1.3, 0.7]];
+        const height = isEdgeLit ? 0.8 : 1.2;
         positions.forEach(([x, y]) => {
             elements.push(
-                <mesh position={[x, y, 0.1]} rotation={[0, 0, Math.PI / 2]}>
-                    <cylinderGeometry args={[0.08, 0.08, 2.5, 12]} />
+                <mesh position={[x, y, 0.1]} rotation={isEdgeLit ? [0, 0, 0] : [0, 0, Math.PI / 2]}>
+                    <cylinderGeometry args={[0.08, 0.08, height, 12]} />
                     <meshStandardMaterial color="white" emissive="#ffffee" emissiveIntensity={1.5} />
                 </mesh>
             );
@@ -160,36 +221,49 @@ function LcdPanel({ z }) {
     );
 }
 
-function LightBeam({ gap, animate }) {
+function LightBeam({ gap, animate, x = 0, y = 0, startZ: startZProp, endZ: endZProp, travelStart = 0, travelEnd = 0.7, radius = 0.06, glowRadius = 0.14 }) {
     const beamRef = useRef(null);
     const glowRef = useRef(null);
-    const backlightZ = -5 * gap;
-    const screenZ = 0;
-    const span = screenZ - backlightZ;
+    const bz = startZProp !== undefined ? startZProp : -5 * gap;
+    const sz = endZProp !== undefined ? endZProp : 0;
+    const span = sz - bz;
 
     useFrame((state) => {
         if (!animate) {
+            if (beamRef.current) { beamRef.current.material.opacity = 0; beamRef.current.visible = false; }
+            if (glowRef.current) { glowRef.current.material.opacity = 0; glowRef.current.visible = false; }
+            return;
+        }
+        if (beamRef.current) beamRef.current.visible = true;
+        if (glowRef.current) glowRef.current.visible = true;
+
+        const globalT = (state.clock.elapsedTime * 0.7) % 1;
+
+        if (globalT < travelStart) {
             if (beamRef.current) beamRef.current.material.opacity = 0;
             if (glowRef.current) glowRef.current.material.opacity = 0;
             return;
         }
 
-        const t = (state.clock.elapsedTime * 0.7) % 1;
-        const travel = Math.min(t / 0.7, 1);
-        const beamT = t < 0.7 ? travel : 1;
-        const beamOpacity = t > 0.85 ? Math.max(0, 1 - (t - 0.85) / 0.15) : 1;
+        const local = (globalT - travelStart) / (1 - travelStart);
+        const travelNorm = (travelEnd - travelStart) / (1 - travelStart);
+        const fadeNorm = (0.85 - travelStart) / (1 - travelStart);
 
-        const frontZ = backlightZ + beamT * span;
-        const midpoint = (backlightZ + frontZ) / 2;
+        const pTravel = Math.min(local / travelNorm, 1);
+        const beamT = local < travelNorm ? pTravel : 1;
+        const beamOpacity = local > fadeNorm ? Math.max(0, 1 - (local - fadeNorm) / ((1 - fadeNorm) || 0.001)) : 1;
+
+        const frontZ = bz + beamT * span;
+        const midpoint = (bz + frontZ) / 2;
 
         if (beamRef.current) {
-            beamRef.current.position.z = midpoint;
+            beamRef.current.position.set(x, y, midpoint);
             beamRef.current.scale.y = beamT;
             beamRef.current.material.opacity = beamOpacity * 0.7;
         }
         const contactOpacity = beamT >= 1 ? 1 : 0;
         if (glowRef.current) {
-            glowRef.current.position.z = frontZ;
+            glowRef.current.position.set(x, y, frontZ);
             const pulse = 0.4 + 0.6 * (Math.sin(state.clock.elapsedTime * 10) * 0.5 + 0.5);
             glowRef.current.material.opacity = beamOpacity * pulse * contactOpacity;
         }
@@ -197,15 +271,99 @@ function LightBeam({ gap, animate }) {
 
     return (
         <group>
-            <mesh ref={beamRef} position={[0, 0, backlightZ + span / 2]} rotation={[Math.PI / 2, 0, 0]}>
-                <cylinderGeometry args={[0.06, 0.06, span, 8]} />
+            <mesh ref={beamRef} position={[x, y, bz + span / 2]} rotation={[Math.PI / 2, 0, 0]}>
+                <cylinderGeometry args={[radius, radius, span, 8]} />
                 <meshBasicMaterial color="#7fd8ff" transparent opacity={0} />
             </mesh>
-            <mesh ref={glowRef} position={[0, 0, backlightZ]}>
-                <sphereGeometry args={[0.14, 8, 8]} />
+            <mesh ref={glowRef} position={[x, y, bz]}>
+                <sphereGeometry args={[glowRadius, 8, 8]} />
                 <meshBasicMaterial color="#ffffff" transparent opacity={0} />
             </mesh>
         </group>
+    );
+}
+
+function LightBeamArray({ gap, animate, positions, radius, glowRadius }) {
+    return (
+        <group>
+            {positions.map(([x, y], i) => (
+                <LightBeam key={i} gap={gap} animate={animate} x={x} y={y}
+                    radius={radius} glowRadius={glowRadius} />
+            ))}
+        </group>
+    );
+}
+
+function EdgeLitLightBeam({ gap, animate, edgePositions, entryRadius = 0.06, entryGlowRadius = 0.14 }) {
+    const lgpZ = -4.5 * gap;
+    const edges = edgePositions || [[-1.9, -0.9], [-1.9, 0], [-1.9, 0.9], [1.9, -0.9], [1.9, 0], [1.9, 0.9]];
+    const scattered = [];
+    for (let row = 0; row < 8; row++) {
+        for (let col = 0; col < 11; col++) {
+            scattered.push([-1.65 + col * 0.33, -1.15 + row * 0.33]);
+        }
+    }
+
+    return (
+        <group>
+            {edges.map(([x, y], i) => (
+                <LightBeam key={`edge-${i}`} gap={gap} animate={animate}
+                    x={x} y={y} startZ={-5 * gap} endZ={lgpZ}
+                    travelStart={0} travelEnd={0.25}
+                    radius={entryRadius} glowRadius={entryGlowRadius} />
+            ))}
+            {scattered.map(([x, y], i) => (
+                <LightBeam key={`scatter-${i}`} gap={gap} animate={animate}
+                    x={x} y={y} startZ={lgpZ} endZ={0}
+                    travelStart={0.25} travelEnd={0.7}
+                    radius={0.025} glowRadius={0.05} />
+            ))}
+        </group>
+    );
+}
+
+function LightGuidePlate({ z }) {
+    const texture = useMemo(() => {
+        const canvas = document.createElement('canvas');
+        canvas.width = 512;
+        canvas.height = 384;
+        const ctx = canvas.getContext('2d');
+
+        ctx.fillStyle = 'rgba(200, 210, 240, 0.15)';
+        ctx.fillRect(0, 0, 512, 384);
+
+        const cx = 256, cy = 192, maxR = 280;
+        for (let i = 0; i < 1200; i++) {
+            const x = Math.random() * 512;
+            const y = Math.random() * 384;
+            const dist = Math.sqrt((x - cx) ** 2 + (y - cy) ** 2) / maxR;
+            const scatterChance = 0.15 + dist * 0.6;
+            if (Math.random() < scatterChance) {
+                const r = 1 + Math.random() * 2.5;
+                const br = 190 + Math.floor(Math.random() * 65);
+                ctx.beginPath();
+                ctx.arc(x, y, r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${br}, ${br + 5}, 255, ${0.15 + Math.random() * 0.35})`;
+                ctx.fill();
+            }
+        }
+
+        const grad = ctx.createRadialGradient(cx, cy, 10, cx, cy, maxR);
+        grad.addColorStop(0, 'rgba(200, 210, 255, 0.15)');
+        grad.addColorStop(0.5, 'rgba(200, 210, 255, 0.35)');
+        grad.addColorStop(1, 'rgba(220, 230, 255, 0.7)');
+        ctx.fillStyle = grad;
+        ctx.globalCompositeOperation = 'multiply';
+        ctx.fillRect(0, 0, 512, 384);
+
+        return new CanvasTexture(canvas);
+    }, []);
+
+    return (
+        <mesh position={[0, 0, z]}>
+            <planeGeometry args={[3.8, 2.8]} />
+            <meshStandardMaterial map={texture} transparent opacity={0.85} side={2} />
+        </mesh>
     );
 }
 
@@ -220,13 +378,40 @@ export default function LcdModel({ backlightType, layout, exploded, animateLight
                 <directionalLight position={[2, 3, 5]} intensity={0.8} />
 
                 <group position={[0, 0, 1.5]}>
-                    <BacklightSheet z={-5 * gap} type={backlightType} />
+                    <BacklightSheet z={-5 * gap} type={backlightType} layout={layout} />
+                    {layout === 'edge-lit' && (backlightType === 'ccfl' || backlightType === 'led' || backlightType === 'miniled') && <LightGuidePlate z={-4.5 * gap} />}
                     <Polarizer z={-4 * gap} rotation={0} />
                     <LiquidCrystalLayer z={-3 * gap} />
                     <Polarizer z={-2 * gap} rotation={Math.PI / 2} />
                     <RgbColorFilters z={-1 * gap} />
                     <LcdPanel z={0} />
-                    <LightBeam gap={gap} animate={animateLight} />
+                    {backlightType === 'ccfl' && layout === 'direct-lit'
+                        ? <LightBeamArray gap={gap} animate={animateLight} positions={[[-0.9, -0.7], [0, -0.7], [0.9, -0.7], [-0.9, 0], [0, 0], [0.9, 0], [-0.9, 0.7], [0, 0.7], [0.9, 0.7]]} />
+                        : backlightType === 'ccfl' && layout === 'edge-lit'
+                        ? <EdgeLitLightBeam gap={gap} animate={animateLight} />
+                        : backlightType === 'led' && layout === 'edge-lit'
+                        ? <EdgeLitLightBeam gap={gap} animate={animateLight}
+                            edgePositions={Array.from({ length: 38 }, (_, i) => {
+                                if (i < 11) return [-1.65 + i * 0.33, 1.35];
+                                if (i < 22) return [-1.65 + (i - 11) * 0.33, -1.35];
+                                if (i < 30) return [-1.85, -1.15 + (i - 22) * 0.33];
+                                return [1.85, -1.15 + (i - 30) * 0.33];
+                            })}
+                            entryRadius={0.04} entryGlowRadius={0.08} />
+                        : backlightType === 'miniled' && layout === 'edge-lit'
+                        ? <EdgeLitLightBeam gap={gap} animate={animateLight}
+                            edgePositions={Array.from({ length: 66 }, (_, i) => {
+                                if (i < 19) return [-1.8 + i * 0.2, 1.4];
+                                if (i < 38) return [-1.8 + (i - 19) * 0.2, -1.4];
+                                if (i < 52) return [-1.9, -1.3 + (i - 38) * 0.2];
+                                return [1.9, -1.3 + (i - 52) * 0.2];
+                            })}
+                            entryRadius={0.02} entryGlowRadius={0.04} />
+                        : backlightType === 'led' && layout === 'direct-lit'
+                        ? <LightBeamArray gap={gap} animate={animateLight} positions={Array.from({ length: 88 }, (_, i) => [-1.65 + (i % 11) * 0.33, -1.15 + Math.floor(i / 11) * 0.33])} />
+                        : backlightType === 'miniled' && layout === 'direct-lit'
+                        ? <LightBeamArray gap={gap} animate={animateLight} positions={Array.from({ length: 300 }, (_, i) => [-1.9 + (i % 20) * 0.2, -1.4 + Math.floor(i / 20) * 0.2])} radius={0.015} glowRadius={0.04} />
+                        : <LightBeam gap={gap} animate={animateLight} />}
                 </group>
 
                 <OrbitControls enableDamping={false} target={[0, 0, 1.5 - 2.5 * gap]} />

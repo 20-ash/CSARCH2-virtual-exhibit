@@ -24,7 +24,7 @@ export default function LcdViewer() {
                     <button className={activeBtn(backlight, 'miniled')} onClick={() => setBacklight('miniled')}>MiniLED</button>
                     <span>Layout:</span>
                     <button className={activeBtn(layout, 'direct-lit')} onClick={() => setLayout('direct-lit')}>Direct</button>
-                    <button className={activeBtn(layout, 'edge-lit')} disabled>Edge-lit</button>
+                    <button className={activeBtn(layout, 'edge-lit')} onClick={() => setLayout('edge-lit')}>Edge-lit</button>
                     <button className={activeBtn(layout, 'fald')} disabled>FALD</button>
                     <span>
                         <button className="btn" onClick={() => setExploded(!exploded)}>
