@@ -1,127 +1,128 @@
 import OledModel from "./oled_model.jsx";
 import React, { useState } from "react";
-import '../styles/modelo.css';
+import '../styles/oled.css';
 
 const PARTS = [
     {
         id: "substrate",
         label: "Substrate",
         description:
-            "The base layer, often made of glass, plastic or metalic foil, that provides structural support for the mechanical support for the device",
-        processLCDDescription:
-            "**"
+            "The base layer, often made of glass, plastic or metallic foil, that provides structural and mechanical support for the device.",
+        processOLEDDescription:
+            "Provides a stable foundation for depositing all other OLED layers; must be flat, clean, and resistant to heat and chemicals."
     },
     {
         id: "anode",
         label: "Anode",
         description:
             "A transparent and conductive electrode, commonly made of indium tin oxide (ITO), that serves as the positive electrode of the OLED.",
-        processLCDDescription:
-            "**"
+        processOLEDDescription:
+            "Injects positive charge carriers (holes) into the organic layers when voltage is applied."
     },
     {
         id: "cathode",
         label: "Cathode",
         description:
             "The negative electrode of the OLED, that may be transparent or reflective, depending on the display's design.",
-        processLCDDescription:
-            "**"
+        processOLEDDescription:
+            "Injects negative charge carriers (electrons) into the organic layers when voltage is applied."
     },
     {
         id: "htl",
         label: "Hole Transport Layer (HTL)",
         description:
-            "The layer that facilitates hole movement from the anode, towards the emissive layer.",
-        processLCDDescription:
-            "**."
+            "The layer that facilitates hole movement from the anode towards the emissive layer.",
+        processOLEDDescription:
+            "Moves holes efficiently while blocking electrons to ensure recombination happens in the correct region."
     },
     {
         id: "eml",
         label: "Emissive Layer (EML)",
         description:
             "The layer where electron–hole recombination occurs to produce light.",
-        processLCDDescription:
-            "**."
+        processOLEDDescription:
+            "When electrons and holes meet here, energy is released in the form of visible light; color depends on the organic material used."
     },
     {
         id: "etl",
         label: "Electron Transport Layer (ETL)",
         description:
-            "The layer that assists movement of electron flow from the cathode toward the emissive region.",
-        processLCDDescription:
-            "**."
-    }
-];
-
-const lightType = [
-    {
-        id: "direct",
-        label: "Direct-Lit",
-        description: "The entire back panel of a display is packed with bulbs. This achieves uniform brightness across the screen along with good color accuracy.",
-        processLCDDescription:
-            "As the beam travels through the neck of the tube, it passes through the deflection system. Here, the current in the horizontal and vertical coils is being altered to control the trajectory of the electron beam to hit any position on the screen. Hence, the image may be displayed using the whole display screen."
+            "The layer that assists movement of electrons from the cathode toward the emissive region.",
+        processOLEDDescription:
+            "Moves electrons efficiently while blocking holes to improve light output and efficiency."
     },
     {
-        id: "edge",
-        label: "Edge-lit",
-        description: "Bulbs are only installed at the edges of a back panel. A plate then captures the light from the edges and distributes it across the display. This results in more affordable displays and less power consumption than direct-lit at the cost of poorer light uniformity across the screen."
+        id: "encapsulation",
+        label: "Encapsulation Layer",
+        description:
+            "Protective barrier that seals the OLED structure to prevent damage from moisture, oxygen, and physical contact.",
+        processOLEDDescription:
+            "Extends the lifespan of the display by keeping air and water away from sensitive organic materials."
     }
 ];
 
-export default function LcdViewer() {
-    const [selectedPart, setSelectedPart] = useState('ccfl');
-    const [backlight, setBacklight] = useState('ccfl');     
-    const [layout, setLayout] = useState('direct-lit');    
+const panelType = [
+    {
+        id: "oled",
+        label: "OLED Structure",
+        description: "OLED displays are self-emissive — each pixel produces its own light without needing a separate backlight source. This allows thinner design, deeper blacks, and faster response times compared to LCD."
+    }
+];
+
+export default function OledViewer() {
+    const [selectedPart, setSelectedPart] = useState('substrate');
     const [animateLight, setAnimateLight] = useState(false);
     const activeBtn = (current, target) =>
         `btn ${current === target ? 'active' : ''}`;
-    const layoutInfo = lightType.find(l => l.id === layout.replace('-lit', '')) || lightType[0];
+    const panelInfo = panelType[0];
     const activeInfo = PARTS.find((p) => p.id === selectedPart) || PARTS[0];
 
     return (
-        <div className="lcd-split-layout">
-            <div className="lcd-info-side">
-                <h2 className="lcd-info__title">General Process</h2>
-                <p className="lcd-info__desc">An LCD is composed of a light source, two polarizing glasses, RGB color filters, and a liquid crystal layer. 
-                    The light source converts electric currents into light which then proceeds to the first polarizing glass.
-                    Afterwards, light moves to the liquid crystal layer where the lightwave's angle changes. 
-                    The second polarizing glass adjusts brightness by blocking some of the light.
-                    From here, light now proceeds to each pixel's rgb filters and show up on a display as the pixel's color.
-                    </p>
+        <div className="oled-split-layout">
+            <div className="oled-info-side">
+                <h2 className="oled-info__title">General Process</h2>
+                <p className="oled-info__desc">An OLED is a self-emissive display made of organic semiconductor layers sandwiched between two electrodes. 
+                    When voltage is applied, electrons and holes are injected from opposite sides and move toward each other.
+                    They meet and recombine in the emissive layer, releasing energy as visible light through electroluminescence. 
+                    Each pixel works independently and can be fully turned off, resulting in true black levels, high contrast, and fast response times. 
 
-                <div className="lcd-dynamic-box" style={{ marginTop: '2rem' }}>
-                    <h3 className="lcd-info__title">{activeInfo.label}</h3>
-                    <p className="lcd-info__desc">{activeInfo.description}</p>
-                    <h3 className="lcd-info__title">Information</h3>
-                    <p className="lcd-info__desc">{activeInfo.processLCDDescription}</p>
-                    <h3 className="lcd-info__title">{layoutInfo.label}</h3>
-                    <p className="lcd-info__desc">{layoutInfo.description}</p>                  
+                </p>
+
+                <div className="oled-dynamic-box" style={{ marginTop: '2rem' }}>
+                    <h3 className="oled-info__title">{activeInfo.label}</h3>
+                    <p className="oled-info__desc">{activeInfo.description}</p>
+                    <h3 className="oled-info__title">Function</h3>
+                    <p className="oled-info__desc">{activeInfo.processOLEDDescription}</p>
+                    <h3 className="oled-info__title">{panelInfo.label}</h3>
+                    <p className="oled-info__desc">{panelInfo.description}</p>
                 </div>
             </div>
-            <div className="lcd-model-side">
+            <div className="oled-model-side">
                 <div className="controls">
-                    <span>Backlight:</span>   
-                    <button className={activeBtn(backlight, 'ccfl')} onClick={() => { setBacklight('ccfl'); setSelectedPart('ccfl')}  }>CCFL</button>
-                    <button className={activeBtn(backlight, 'led')} onClick={() => { setBacklight('led'); setSelectedPart('led')}}>LED</button>
-                    <button className={activeBtn(backlight, 'miniled')} onClick={() => { setBacklight('miniled'); setSelectedPart('miniled')}}>MiniLED</button>
-                    <button className={activeBtn(backlight, 'qdled')} onClick={() => { setBacklight('qdled'); setSelectedPart('qdled')}}>QDLED</button>
-                </div>    
-                <div className="controls">   
-                    <span>Layout:</span>
-                    <button className={activeBtn(layout, 'direct-lit')} onClick={() => setLayout('direct-lit')}>Direct</button>
-                    <button className={activeBtn(layout, 'edge-lit')} onClick={() => { setLayout('edge-lit'); if (backlight === 'fald') { setBacklight('led'); setSelectedPart('led'); } }}>Edge-lit</button>
-                    <button className={activeBtn(layout, 'fald')}>FALD</button>
-                </div>  
-                <div className="controls">   
-                    <span>Light:</span>         
+                    <span>Select Layer:</span>
+                    {PARTS.map(part => (
+                        <button
+                            key={part.id}
+                            className={activeBtn(selectedPart, part.id)}
+                            onClick={() => setSelectedPart(part.id)}
+                        >
+                            {part.label.replace(' Layer', '').replace(' (', '\n(')}
+                        </button>
+                    ))}
+                </div>
+
+                <div className="controls">
+                    <span>Light:</span>
                     <button className={activeBtn(animateLight, true)} onClick={() => setAnimateLight(!animateLight)}>
                         {animateLight ? 'Stop Light' : 'Animate Light'}
                     </button>
-                </div> 
-                    
-                
-                <LcdModel backlightType={backlight} layout={layout} animateLight={animateLight}
-                    selectedPart={selectedPart} setSelectedPart={setSelectedPart} />
+                </div>
+
+                <OledModel
+                    animateLight={animateLight}
+                    selectedPart={selectedPart}
+                    setSelectedPart={setSelectedPart}
+                />
             </div>
         </div>
     );
