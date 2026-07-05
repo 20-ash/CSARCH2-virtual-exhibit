@@ -9,7 +9,7 @@ const PARTS = [
         description:
             "A material that has the ability to take the shape of its container like a liquid while still having its modecules be structured in a common pattern as seen with crystals.",
         processLCDDescription:
-            "Once electric current is delivered into the crystal layer, it's individual molecules change orientation. This gives the liquid crystal layer the ability to act as a steering wheel as the angle of the light passing through it changes with the molecules' orientation."
+            "Once electric current is delivered into the crystal layer, it's individual molecules change orientation. This gives the liquid crystal layer the ability to act as a steering wheel as the angle of the light passing through it changes with the molecules' orientation. In practice, this means the liquid crystal layer determines the brightness of a display."
     },
     {
         id: "ccfl",
@@ -33,39 +33,39 @@ const PARTS = [
         description:
             "MiniLEDs for all intents and purposes are a variant of an LED display. The difference being that the LED bulbs are typically around half the size of normal LEDs.",
         processLCDDescription:
-            "Displays utilizing MiniLED typically pack more bulbs into the backlight panel compared to their LED counterparts. The primary advantage of this backlight is better contrast and less bloom granted the display supports local dimming."
+            "Displays utilizing MiniLED typically pack more bulbs into the backlight panel compared to their LED counterparts. The primary advantage of this backlight is better contrast and less bloom, granted the display supports local dimming."
     },
     {
         id: "firstfilter",
         label: "First Polarizing Filter",
         description:
-            "Encloses the whole assembly so electrons can travel freely from the gun to the screen without being scattered by air molecules.",
+            "The layer that typically sits close to the backlight source. This layer utilizes a chemical film applied to a piece of plastic. This film has the property of absorbing light waves.",
         processLCDDescription:
-            "The entire component is enclosed in a specialized vacuum tube to prevent the electrons from colliding with air molecules. Eliminating this interference ensures the electrons can travel freely in a straight direction toward the phosphorescent screen."
+            "This layer's role is to filter lightwaves that match the angle of the film's orientation. Lightwaves that run parallel to the film are absorbed while the rest get to pass through."
     },
     {
         id: "secondfilter",
         label: "Second polarizing Filter",
         description:
-            "Encloses the whole assembly so electrons can travel freely from the gun to the screen without being scattered by air molecules.",
+            "This layer shares the same composition as the first polarizing filter. Where the second polairizing filter differs is the orientation of its chemical film. It's positioned to be perpendicular to that of the first polarizing filter.",
         processLCDDescription:
-            "The entire component is enclosed in a specialized vacuum tube to prevent the electrons from colliding with air molecules. Eliminating this interference ensures the electrons can travel freely in a straight direction toward the phosphorescent screen."
+            "The second polarizing filter acts as the layer that blocks or let light pass through into the RGB filters depending on their angle from the liquid crystal layer."
     },
     {
         id: "rgb",
         label: "RGB Color Filters",
         description:
-            "Encloses the whole assembly so electrons can travel freely from the gun to the screen without being scattered by air molecules.",
+            "The RGB color filters are components present in every pixel on a display. These are the red, green, and blue subpixels. Eacn subpixel owns a transistor.",
         processLCDDescription:
-            "The entire component is enclosed in a specialized vacuum tube to prevent the electrons from colliding with air molecules. Eliminating this interference ensures the electrons can travel freely in a straight direction toward the phosphorescent screen."
+            "If light is able to pass through the second polarizing filter, different combinations of electric current are then applied to change the structure of the subpixels. These differing structures determine how much light gets to pass into each subpixel and mix together to make the target color."
     },
     {
         id: "qdled",
         label: "Quantum Dot Light Emitting Diode (QDLED)",
         description:
-            "Encloses the whole assembly so electrons can travel freely from the gun to the screen without being scattered by air molecules.",
+            "This backlight still uses LED bulbs similar to LED and MiniLED displays. However, QDLED displays instead exchange white light for blue light. They also introduce a new quantum dot layer in between the backlight panel and the first polarizing filter.",
         processLCDDescription:
-            "The entire component is enclosed in a specialized vacuum tube to prevent the electrons from colliding with air molecules. Eliminating this interference ensures the electrons can travel freely in a straight direction toward the phosphorescent screen."
+            "When blue light hits the quantum dot layer, some waves pass through as is resulting in pure blue light, others are transformed into pure red and pure green. Thanks to this, once the light reaches the color filters, the resulting pixels produce more accurate and vibrant colors."
     }
 ];
 
