@@ -15,25 +15,25 @@ const PARTS = [
         id: "ccfl",
         label: "Cold Cathode Fluorescent Lamp (CCFL)",
         description:
-            "A glass tube containing mercury vapor coated with phosphors.",
+            "A glass tube containing mercury vapor coated with phosphors. CCFL tubes produce their lighting by accepting electric current to excite the mercury vapor housed inside the tube. This process produces UV light which then hits the outer phosphor coating on the tube to produce white light to be used by the display.",
         processLCDDescription:
-            "The tube produces UV light which is then converted into white light upon striking the phosphor coating. CCFL is."
+            "For the majority of modern displays, CCFL is widely considered to be obsolete. CCFL tubes are big, necessitating bulkier displays to fit and the fact that its brightness can be affected by the environment's temperature."
     },
     {
         id: "led",
-        label: "Light Emitting Diode (LED)",
+        label: "Light-Emitting Diode (LED)",
         description:
-            "The most popular type of backlighting currently in LCD displays replacing CCFL. LED bulbs instead contain a semiconductor that produces light upon accepting electric current.",
+            "The most popular type of backlighting currently in LCD displays replacing CCFL. LED bulbs instead contain a semiconductor that produces white light upon accepting electric current.",
         processLCDDescription:
-            "LED displays deliver more brightness on account of better electric efficiency. Thanks to the smaller size of LED bulbs, deeper blacks and more vibrant colors are achieved through LED displays thanks to less bloom."
+            "LED displays deliver more brightness compared to CCFL on account of better electric efficiency. Thanks to the smaller size of LED bulbs, deeper blacks and more vibrant colors are achieved through LED displays thanks to less bloom."
     },
     {
         id: "miniled",
-        label: "Mini Light Emitting Diode (MiniLED)",
+        label: "Mini Light-Emitting Diode (MiniLED)",
         description:
-            "Coated with phosphorescent material (often tiny dots or stripes). It lights up when struck by the electron beam, creating the image.",
+            "MiniLEDs for all intents and purposes are a variant of an LED display. The difference being that the LED bulbs are typically around half the size of normal LEDs.",
         processLCDDescription:
-            "The electrons strike the phosphor coating of the screen. As they strike the phosphor coating, the electrons' kinetic energy is converted into visible light. Finally, an image is conjured."
+            "Displays utilizing MiniLED typically pack more bulbs into the backlight panel compared to their LED counterparts. The primary advantage of this backlight is better contrast and less bloom granted the display supports local dimming."
     },
     {
         id: "firstfilter",
@@ -126,7 +126,7 @@ export default function LcdViewer() {
                     <span>Layout:</span>
                     <button className={activeBtn(layout, 'direct-lit')} onClick={() => setLayout('direct-lit')}>Direct</button>
                     <button className={activeBtn(layout, 'edge-lit')} onClick={() => { setLayout('edge-lit'); if (backlight === 'fald') { setBacklight('led'); setSelectedPart('led'); } }}>Edge-lit</button>
-                    <button className={activeBtn(layout, 'fald')}>FALD</button>
+                    {/* <button className={activeBtn(layout, 'fald')}>FALD</button> */}
                 </div>  
                 <div className="controls">   
                     <span>Light:</span>         

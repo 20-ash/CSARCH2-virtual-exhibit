@@ -554,7 +554,7 @@ export default function LcdModel({ backlightType, layout, animateLight, selected
     return (
         <div style={canvasWrapper}>
             <Canvas camera={{ position: [0, 1, 4], fov: 80 }} gl={{ preserveDrawingBuffer: true, antialias: true }} dpr={[1, 2]}>
-                <color attach="background" args={["#578f6a"]} />
+                <color attach="background" args={["#4d5352"]} />
                 <ambientLight intensity={0.4} />
                 <directionalLight position={[2, 3, 5]} intensity={0.8} />
 
