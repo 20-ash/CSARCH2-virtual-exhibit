@@ -1,5 +1,6 @@
 # <mark>🖥️ The Glass Canvas: How Screens Evolved</mark>
 
+[Click to incremental readme](#incremental-readme)
 ---
 
 ## 👥 Group Members (Group 7)
@@ -76,3 +77,8 @@ The platform is organized into the following logical sections:
 ## <mark>📷 Tentative Style Guide Snapshot</mark>
 <mark>![Tentative Style Guide Snapshot](timeline.png)</mark>
 <mark>![Tentative Style Guide Snapshot](component.png)</mark>
+
+---
+
+## <mark>Incremental Readme</mark>
+* Testing
