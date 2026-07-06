@@ -1,8 +1,7 @@
 import { useMemo, useRef } from "react";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { TextureLoader, CanvasTexture, RepeatWrapping } from "three";
-import lcdTextureSrc from "../assets/lcd.jpg";
+import { CanvasTexture, RepeatWrapping } from "three";
 
 const canvasWrapper = {
     width: "100%",
@@ -314,12 +313,10 @@ function RgbColorFilters({ z, selectedPart, setSelectedPart }) {
 }
 
 function LcdPanel({ z }) {
-    const textureSrc = typeof lcdTextureSrc === "string" ? lcdTextureSrc : lcdTextureSrc.src;
-    const texture = useLoader(TextureLoader, textureSrc);
     return (
-        <mesh position={[0, 0, z]} >
+        <mesh position={[0, 0, z]}>
             <planeGeometry args={[3.6, 2.6]} />
-            <meshStandardMaterial map={texture} side={2} />
+            <meshStandardMaterial color="#1a1a1a" transparent opacity={0.85} roughness={0.1} metalness={0.05} side={2} />
         </mesh>
     );
 }
