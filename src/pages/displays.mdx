@@ -12,6 +12,8 @@ import lcdImage from '../assets/lcd.jpg'
 import oledImage from '../assets/oled.jpg'
 import microImage from '../assets/microled.jpg'
 
+export const base = process.env.VERCEL ? '..' : '/virtual-exhibit-template';
+
 {/* About Texts of the different Display Techs */}
 
 export const crtAbout = `
@@ -42,7 +44,7 @@ However, CRT also comes with its limitations. Its advantage of being bright may 
  imgPath={crtImage.src}
  label='CRT - Year of Commercial Availability'
  about={crtAbout}
- href='/virtual-exhibit-template/model_pages/crt'
+ href={`${base}/model_pages/crt`}
  linkLabel='Go to 2D Model'
 />
 
@@ -53,7 +55,7 @@ However, CRT also comes with its limitations. Its advantage of being bright may 
  about='Plasma Display Panel (PDP) attained its name from the use of noble gases ionized to make another state of matter, plasma.
  First use started in the University of Illinois in 1964.
  PDPs were used widely in computer terminals, display boards, public display installations, and many more.'
- href='/virtual-exhibit-template/model_pages/plasma'
+ href={`${base}/model_pages/plasma`}
  linkLabel='Go To 2D Model'
 />
 
@@ -64,7 +66,7 @@ However, CRT also comes with its limitations. Its advantage of being bright may 
  about='Liquid Crystal Display (LCD) gets its name thanks to the use of a liquid crystal layer for regulating light. 
  They first became commercially available in 1970. 
  LCDs see plenty of use in computer monitors, TVs, smartphones, car dashboard screens, among many others.'
- href='/virtual-exhibit-template/model_pages/modelo'
+ href={`${base}/model_pages/modelo`}
  linkLabel='Go To 3D Model'
 />
 
@@ -73,7 +75,7 @@ However, CRT also comes with its limitations. Its advantage of being bright may 
  imgPath={oledImage.src}
  label='OLED Family - Year of Commercial Availability'
  about='the mitochondria is the powerhouse of the cell'
- href='/virtual-exhibit-template/model_pages/oled'
+ href={`${base}/model_pages/oled`}
  linkLabel='Go To 3D Model'
 />
 
@@ -82,7 +84,7 @@ However, CRT also comes with its limitations. Its advantage of being bright may 
  imgPath={microImage.src}
  label='MicroLED - Year of Commercial Availability'
  about='the mitochondria is the powerhouse of the cell'
- href='/virtual-exhibit-template/model_pages/microled'
+ href={`${base}/model_pages/microled`}
  linkLabel='Go to 2D Model  '
 />
 
