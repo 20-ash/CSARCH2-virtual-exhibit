@@ -1,14 +1,14 @@
 ---
-layout: '../layouts/ExhibitLayout.astro'
-title: "The Cathode Ray Tube"
+layout: '../../layouts/ExhibitLayout.astro'
+title: "Liquid Crystal Display (LCD) Family"
 author: "DE LEON, SOFIA YSABELA; GALVEZ, ANOUSHEH MONICK ROBENIOL; GUILLERMO, IAIN DRAEZEN SY; LEE, ASHLEY FIONA SANTOS; TIU, AVRAM NATHANIEL PAGUNTALAN;"
 readingTime: "67 minutes"
 ---
 
-import CrtViewer from '../components/crt_viewer.jsx'
-import '../styles/crt.css'
+import LcdViewer from '../../components/lcd_viewer.jsx'
+import '../../styles/modelo.css'
 import "@fontsource/jetbrains-mono";
 
 <div className='display-container'>
-    <CrtViewer client:load />
+<LcdViewer client:load />
 </div>
