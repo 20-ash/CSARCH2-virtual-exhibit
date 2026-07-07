@@ -117,3 +117,6 @@ The platform is organized into the following logical sections:
 *   The team prepared to deploy the current website. Some issues were experienced in attempting to deploy the website due to the way the astro config file's base path is set against the vercel's way of setting its own base path.
 *   After looking through how the provided ExhibitLayout asto components does its dynamic url, modifications were made to the astro config file to dynamically set the base url of the routes, recognizing when is it in deployment and when is it in production.
 *   The team is considering implementing a new read more pop up feature on the frontend to resolve the dilemma on not being limited from the amount of textual information we can present on screen.
+
+### July 7, 2026
+*   The team finalized their submission for the Mid-milestone submission.
