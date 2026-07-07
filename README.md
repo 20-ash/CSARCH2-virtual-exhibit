@@ -80,7 +80,7 @@ The platform is organized into the following logical sections:
 
 ---
 
-## <mark>📚 References</mark>
+## 📚 References
 
 * Absen. (2022, January 26). *Analysis of Micro LED large screen display technology Chip and encapsulation structure*. https://www.absen.com/analysis-of-micro-led-large-screen-display-technology-chip-and-encapsulation-structure
 * Adrian. (2025, December 17). *OLED Display: key advantages and disadvantages*. https://www.allpcb.com/allelectrohub/oled-display-key-advantages-and-disadvantages
