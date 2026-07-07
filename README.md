@@ -1,4 +1,4 @@
-# <mark>🖥️ The Glass Canvas: How Screens Evolved</mark>
+# 🖥️ The Glass Canvas: How Screens Evolved
 
 [Click to incremental readme](#incremental-readme)
 ---
@@ -11,7 +11,7 @@
 *   **TIU, AVRAM NATHANIEL PAGUNTALAN**
 
 ## 🎯 Group Theme
-<mark>**Understanding different display technologies and how they produce images on screen.**</mark>
+**Understanding different display technologies and how they produce images on screen.**
 
 ## 🛠️ Tech Stack
 ![Astro](https://img.shields.io/badge/Astro-BC52EE?style=for-the-badge&logo=astro&logoColor=white)
@@ -26,20 +26,20 @@
 ---
 
 ## 📝 Project Description
-<mark>An interactive educational platform designed to help users understand the different types of displays developed and how its components work together to deliver visuals to us. The platform covers key components such as why display screens were developed, the uses of each display type, and comparing them to each other. Users can explore detailed explanations, interactive visualizations, and dynamic content that demonstrate the role of each component and how the components work together to produce light and process it to produce images.</mark> The project is built using Astro for the application structure, React for interactive user interfaces, MDX for content-driven learning experiences, React Three Fiber (R3F) for 3d models, and Drei as a collection of helper functions for R3F.
+An interactive educational platform designed to help users understand the different types of displays developed and how its components work together to deliver visuals to us. The platform covers key components such as why display screens were developed, the uses of each display type, and comparing them to each other. Users can explore detailed explanations, interactive visualizations, and dynamic content that demonstrate the role of each component and how the components work together to produce light and process it to produce images. The project is built using Astro for the application structure, React for interactive user interfaces, MDX for content-driven learning experiences, React Three Fiber (R3F) for 3d models, and Drei as a collection of helper functions for R3F.
 
 ---
 
 ## 🗺️ Exhibit Navigation
 The platform is organized into the following logical sections:
 
-1.  <mark>**Rationale**: Discusses why display technology was developed and what needs did it address.</mark>
-2.  <mark>**Timeline**: A user will be presented with a long scroll timeline to choose which display tech they wish to learn more about. Each entry in the timeline will provide a year on when the screen became commercially available to the public along with a high-level overview on how each display type works and their applications.</mark>
-3.  <mark>**The Cathode Ray Tube**: Discuss what a cathode ray tube is, its parts, and how it works. This section will also show its advantages and limitations, along with its applications in the past and present.</mark>
-4.  <mark>**Plasma**: Similar to the Cathode Ray Tube, its origins, applications, and inner workings will be discussed. Will also cover its early and late use during its era along with its decline.</mark>
-5.  <mark>**LCD Family**: Will mainly focus on its core principles of a liquid crystal layer, having two polarizing light filters, susceptibility to light bleed, power delivery, backlighting, and how the other variations either replace some of the components or build on top of it.</mark>
-6.  <mark>**OLED Family**: Exploring its application in consumer electronics, IoT, embedded systems, industrial, and automotive.</mark>
-7.  <mark>**MicroLED**: Currently an in development display screen type. Combines the strengths of LCD and OLED type screens.</mark>
+1.  **Rationale**: Discusses why display technology was developed and what needs did it address.
+2.  **Timeline**: A user will be presented with a long scroll timeline to choose which display tech they wish to learn more about. Each entry in the timeline will provide a year on when the screen became commercially available to the public along with a high-level overview on how each display type works and their applications.
+3.  **The Cathode Ray Tube**: Discuss what a cathode ray tube is, its parts, and how it works. This section will also show its advantages and limitations, along with its applications in the past and present.
+4.  **Plasma**: Similar to the Cathode Ray Tube, its origins, applications, and inner workings will be discussed. Will also cover its early and late use during its era along with its decline.
+5.  **LCD Family**: Will mainly focus on its core principles of a liquid crystal layer, having two polarizing light filters, susceptibility to light bleed, power delivery, backlighting, and how the other variations either replace some of the components or build on top of it.
+6.  **OLED Family**: Exploring its application in consumer electronics, IoT, embedded systems, industrial, and automotive.
+7.  **MicroLED**: Currently an in development display screen type. Combines the strengths of LCD and OLED type screens.
 
 ---
 
@@ -48,7 +48,7 @@ The platform is organized into the following logical sections:
 ### 3D Component Explorer
 *   Component descriptions will be displayed accordingly depending on the component the user clicks on the 3d model.
 *   User can rotate the 3d model.
-*   <mark>Shows animations to simulate how light passes from its source and is processed into colors.</mark>
+*   Shows animations to simulate how light passes from its source and is processed into colors.
 *   Paragraph description next to the 3d model. Will update depending on the currently selected component.
 *   The model should automatically zoom in. To the component the user wishes to know more about.
 
@@ -57,31 +57,31 @@ The platform is organized into the following logical sections:
 ## 📖 Exhibition Content Outline
 
 ### Introduction
-*   <mark>**The Rationale**: Why display screens were developed and the fundamental human need for visual data interfaces.</mark>
-*   <mark>**The Timeline**: The evolutionary leap from analog tubes to microscopic LEDs.</mark>
+*   **The Rationale**: Why display screens were developed and the fundamental human need for visual data interfaces.
+*   **The Timeline**: The evolutionary leap from analog tubes to microscopic LEDs.
 
-### <mark>Legacy Display Technologies</mark>
-*   <mark>**The Cathode Ray Tube (CRT)**: Principles of electron guns, vacuum tubes, and phosphor interaction.</mark>
-*   <mark>**Plasma Displays**: The transition to flat panels using noble gases, UV light, and individual pixel cells.</mark>
+### Legacy Display Technologies
+*   **The Cathode Ray Tube (CRT)**: Principles of electron guns, vacuum tubes, and phosphor interaction.
+*   **Plasma Displays**: The transition to flat panels using noble gases, UV light, and individual pixel cells.
 
-### <mark>The LCD Architecture</mark>
-*   <mark>**Liquid Crystal Displays (LCD)**: The mechanics of polarizing filters, liquid crystal layers, and backlight transmission.</mark>
-*   <mark>**Improvements Overtime**: Rise of LED for backlight transmission, local dimming with MiniLED, and the quantum dot layer with QDLED.</mark>
+### The LCD Architecture
+*   **Liquid Crystal Displays (LCD)**: The mechanics of polarizing filters, liquid crystal layers, and backlight transmission.
+*   **Improvements Overtime**: Rise of LED for backlight transmission, local dimming with MiniLED, and the quantum dot layer with QDLED.
 
-### <mark>Modern & Emerging Innovations</mark>
-*   <mark>**The OLED Family**: The shift to self-emitting pixels, organic compounds, and the elimination of backlights.</mark>
-*   <mark>**MicroLED**: The synthesis of LCD and OLED strengths, utilizing microscopic LEDs for unparalleled brightness and contrast.</mark>
-
----
-
-## <mark>📷 Tentative Style Guide Snapshot</mark>
-<mark>![Tentative Style Guide Snapshot](timeline.png)</mark>
-<mark>![Tentative Style Guide Snapshot](component.png)</mark>
+### Modern & Emerging Innovations
+*   **The OLED Family**: The shift to self-emitting pixels, organic compounds, and the elimination of backlights.
+*   **MicroLED**: The synthesis of LCD and OLED strengths, utilizing microscopic LEDs for unparalleled brightness and contrast.
 
 ---
 
-## 📚 References
+## 📷 Tentative Style Guide Snapshot
+![Tentative Style Guide Snapshot](timeline.png)
+![Tentative Style Guide Snapshot](component.png)
 
+---
+
+## <mark>📚 References</mark>
+<mark>
 * Absen. (2022, January 26). *Analysis of Micro LED large screen display technology Chip and encapsulation structure*. https://www.absen.com/analysis-of-micro-led-large-screen-display-technology-chip-and-encapsulation-structure
 * Adrian. (2025, December 17). *OLED Display: key advantages and disadvantages*. https://www.allpcb.com/allelectrohub/oled-display-key-advantages-and-disadvantages
 * Aethir. (2025, February 13). *AI applications using GPUs*. https://ecosystem.aethir.com/blog-posts/ai-applications-using-gpus-enhancing-computational-efficiency-and-performance
@@ -183,12 +183,12 @@ The platform is organized into the following logical sections:
 * Williams, N. (n.d.). *History of OLEDs*. Ossila. https://www.ossila.com/pages/history-of-oleds
 * Wilson, M. (2024, August 28). *What is VGA? Understanding video graphics array technology*. HP. https://www.hp.com/us-en/shop/tech-takes/what-is-vga-comprehensive-guide-video-graphics-array
 * Woodford, C. (2022, September 1). *OLEDs (Organic LEDs) and LEPs (light-emitting polymers)*. Explain That Stuff. https://www.explainthatstuff.com/how-oleds-and-leps-work.html
-
+</mark>
 ---
 
-## AI Disclosure & Declaration
+## <mark>AI Disclosure & Declaration</mark>
 
-We hereby declare that we have used Artificial Intelligence (AI) tools in the preparation of this assignment.
+<mark>We hereby declare that we have used Artificial Intelligence (AI) tools in the preparation of this assignment.
 
 We understand that while AI can assist in generating ideas, providing information, and suggesting edits, it is our responsibility to critically evaluate the accuracy and relevance of the content generated by AI.
 
@@ -198,46 +198,46 @@ Below, we provide specific details of how AI tools were used in our assignment:
 | :--- | :--- | :--- | :--- |
 | **Generative AI (Gemini)** | Assist in the creation of the Interactive Models. | - Explain the syntax for the 2D CRT Model from a public GitHub repository.<br>- Assist in plotting the coordinates in the website. | - Adjusted the numerical values of the 2D CRT Model to improve its structure.<br>- Created and edited the necessary CSS elements to fit our own group’s visual.<br>- Adjusted the other CSS elements to improve the model’s visual and animation.<br>- Copied the code from a group member for the dynamic changing of content/text. |
 | **Generative AI OpenCode Big Pickle** | First time using mdx, react three fiber, astro, and the entire tech stack for this project. | - Asked AI what components should I be importing from my tech stack in order to perform my stated feature.<br>- Acted as a code debugger looking at my implementation for reasons why my CSS implementation was not working or why my 3d model was crashing from my implementation.<br>- Requested it to show how to implement some of the boilerplate code needed to make the 3d model work.<br>- Under guidance from AI, we wrote some of the logic in the LCD model needed to make it work. | - Adjusting the hardcoded numerical values 3d model canvas.<br>- Made the implementation for the timeline component as well as wrote the necessary CSS file to set up the look of the timeline.<br>- Copying the styling made by a different group member, setup the frontend wiring and states needed to have the frontend accept user interactions for the LCD page.<br>- Wrote the content alone for the LCD structure and implemented their dynamic changing on the frontend.<br>- Came up with the idea of dynamically changing text descriptions on the frontend and decided how the user interaction is supposed to go. |
-
+</mark>
 ---
 
-## Incremental Readme
+## <mark>Incremental Readme</mark>
 
-### July 1, 2026
-*   Not much time was spent working on this project outside of inpsecting the layout of the project template for development.
+### <mark>July 1, 2026</mark>
+*   <mark>Not much time was spent working on this project outside of inpsecting the layout of the project template for development.</mark>
 
-### July 2, 2026
-*   Majority of the content planning was already done during the proposal as well as an initial draft on what should the information be presented in the website.
+### <mark>July 2, 2026</mark>
+*   <mark>Majority of the content planning was already done during the proposal as well as an initial draft on what should the information be presented in the website.
 *   Time was spent figuring out how routing works in Astro and basic syntax usage on the tech stack for 3d modelling.
 *   Referencing the website design made during the proposal, the group decided to instead have the timeline be built off a reusable astro component with a line in a center to construct the full timeline of the project as a series of pieces.
 *   The group decided that the timeline astro component should be a flex box with the picture of the display technology to the left, a long thin line in the center, and a column based flex box container to house the display technology label, it's description, and its clickable button for the future model viewer.
-*   Fortunately most of the basic html and css skills taught during CCAPDEV were able to translate here directly, admittedly completing the component took longer that we'd like due to the constant fight with css in trying to get the positions of our elements working in relation to the existing template layout provided.
+*   Fortunately most of the basic html and css skills taught during CCAPDEV were able to translate here directly, admittedly completing the component took longer that we'd like due to the constant fight with css in trying to get the positions of our elements working in relation to the existing template layout provided.</mark>
 
-### July 3, 2026
-*   By the time the timeline component was finished is when we finally got to finding our image assets for the timeline and starting encoding the textual information about our different display technologies from our draft.
+### <mark>July 3, 2026</mark>
+*   <mark>By the time the timeline component was finished is when we finally got to finding our image assets for the timeline and starting encoding the textual information about our different display technologies from our draft.
 *   Most of the time spent during this day was on working with the 3d models themselves and how exactly to design the interactive controls and dynamic text descriptions for the different display components.
 *   Around this time with a tester webpage, the group was able to successfully render a 3d model for the lcd display without any interactions or textual information yet outside of the rotation controls.
 *   We had to look back at our website design for the model webpage since we noticed a problem in our original design of stacking buttons vertically. It didn't look good and doesn't scale well given each display technology would have different categories and groupings of interactions based on our content.
 *   Fortunately one of the group members finished crafting the full design of the model viewer webpage accounting for the scaling of different buttons. This was the design implemented by the CRT model webpage. This design was then copied for the rest of the models.
 *   The LCD model was then adapted to the style CRT model uses. This is when we realized we can finally implement our idea of being able to click on a component on a model and it gets highlighted and dynamically updates our textbox to reflect the selected component.
-*   By the end of this day, the LCD model accomplished the implementation of some interactions and animations.
+*   By the end of this day, the LCD model accomplished the implementation of some interactions and animations.</mark>
 
-### July 4, 2026
-*   This time was spent to refine the initial content draft for each display tecnology. Plasma, OLED, and MicroLED received revisions to the length of their content in a separate google docs to better reflect how to divide its information across the different textboxes present in our website.
+### <mark>July 4, 2026</mark>
+*   <mark>This time was spent to refine the initial content draft for each display tecnology. Plasma, OLED, and MicroLED received revisions to the length of their content in a separate google docs to better reflect how to divide its information across the different textboxes present in our website.
 *   This is around the time OLED began making their own 3d model implementation referencing the works of CRT and LCD to setup. Some interactions with OLED was accomplished around this time period.
 *   Here, LCD finished its interactions ranging from light simulation, selectable components, and swapping out meshes to match the current selected backlighting.
-*   The group then contemplated how to fit a good chunk of the content written in our draft to convey the information needed about the different display technologies accounting for the limited real estate in the webpages.
+*   The group then contemplated how to fit a good chunk of the content written in our draft to convey the information needed about the different display technologies accounting for the limited real estate in the webpages.</mark>
 
-### July 5, 2026
-*   A design decision was made to better utilize the screen space for interactive buttons. Buttons categories were lined up in vertically but the buttons belonging into each category were lined up horizontally. This change enabled more horizontal room for the dynamic textbox and model living in their respective webpages.
+### <mark>July 5, 2026</mark>
+*   <mark>A design decision was made to better utilize the screen space for interactive buttons. Buttons categories were lined up in vertically but the buttons belonging into each category were lined up horizontally. This change enabled more horizontal room for the dynamic textbox and model living in their respective webpages.
 *   Most time was spent encoding and refining the information to be presented in the website. The LCD model at this time accomplished its all of its current features after a lengthy battle on how to have the light beam simulation properly fade in and fade out at the correct positions.
 *   LCD model ran into a problem with its current design on how to implement FALD. Currently, FALD will be implemented for the final website submission instead.
-*   The OLED model accomplished finishing its own features and dynamic text content around this time.
+*   The OLED model accomplished finishing its own features and dynamic text content around this time.</mark>
 
-### July 6, 2026
-*   The team prepared to deploy the current website. Some issues were experienced in attempting to deploy the website due to the way the astro config file's base path is set against the vercel's way of setting its own base path.
+### <mark>July 6, 2026</mark>
+*   <mark>The team prepared to deploy the current website. Some issues were experienced in attempting to deploy the website due to the way the astro config file's base path is set against the vercel's way of setting its own base path.
 *   After looking through how the provided ExhibitLayout asto components does its dynamic url, modifications were made to the astro config file to dynamically set the base url of the routes, recognizing when is it in deployment and when is it in production.
-*   The team is considering implementing a new read more pop up feature on the frontend to resolve the dilemma on not being limited from the amount of textual information we can present on screen.
+*   The team is considering implementing a new read more pop up feature on the frontend to resolve the dilemma on not being limited from the amount of textual information we can present on screen.</mark>
 
-### July 7, 2026
-*   The team finalized their submission for the Mid-milestone submission.
+### <mark>July 7, 2026</mark>
+*   <mark>The team finalized their submission for the Mid-milestone submission.</mark>
