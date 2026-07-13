@@ -5,7 +5,7 @@ export default function MicroLEDModel({ selectedPart, setSelectedPart, animate }
 
     return (
         <div className="microled-stage">
-            <svg viewBox="0 0 480 240" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 480 280" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
 
                 {/* Cover Glass */}
                 <g className={`part ${isOn("cover") ? "part-active" : ""}`} onClick={() => setSelectedPart("cover")}>
