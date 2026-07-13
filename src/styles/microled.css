@@ -6,6 +6,10 @@
     width: 100%;
 }
 
+.info {
+    font-family: "JetBrains Mono";
+}
+
 .controls {
     display: flex;
     align-items: center;
@@ -33,14 +37,14 @@
 }
 
 .btn:hover:not(:disabled) {
-    border-color: var(--accent);
-    color: var(--accent);
+    border-color: #5076a7;
+    color: #5076a7;
 }
 
 .btn.active {
-    background: var(--accent);
+    background: #5076a7;
     color: white;
-    border-color: var(--accent);
+    border-color: #5076a7;
 }
 
 .btn:disabled {
@@ -60,14 +64,14 @@
     background: var(--bg2);
     padding: 1.5rem;
     border-radius: var(--radius);
-    border: 1px solid var(--border);
+    font-family: "JetBrains Mono", serif;
 }
 
 .microled-info-side h2 {
     margin-top: 0;
     border-bottom: 2px solid var(--border);
     padding-bottom: 0.5rem;
-    font-family: "Lora Variable", serif;
+    font-family: "JetBrains Mono", serif;
 }
 
 .microled-model-side {
