@@ -129,6 +129,8 @@
     fill: rgba(80,118,167,0.3) !important;
 }
 
+.part-label { fill: #cfd6de; font-family: "JetBrains Mono", monospace; font-size: 13px; pointer-events: none; }
+
 /* Light rays exiting through the cover glass */
 .ray {
     opacity: 0;
