@@ -100,8 +100,10 @@
 .microled-stage {
     width: 100%;
     max-width: 820px;
+    background: #1c1c1c;
     border-radius: var(--radius);
     padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .part { cursor: pointer; transition: all 0.2s; }
