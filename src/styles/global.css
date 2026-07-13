@@ -217,4 +217,17 @@ footer {
         position: sticky;
         top: 2rem; /* Gap between top of viewport and component during scroll */
     }
+
+    .display-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 1rem;
+        width: 100%;
+    }
+    .controls {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
 }

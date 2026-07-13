@@ -150,4 +150,19 @@
     .crt-split-layout {
         flex-direction: column;
     }
+    .display-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 1rem;
+        width: 100%;
+    }
+    .controls {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .crt-stage {
+        padding: 10px;
+    }
 }
