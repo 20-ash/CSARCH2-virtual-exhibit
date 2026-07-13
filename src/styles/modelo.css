@@ -113,6 +113,12 @@
 
 @media (max-width: 1024px) {
     .lcd-split-layout {
-        flex-direction: column;
+        flex-direction: column-reverse; 
+        gap: 1.5rem;
+    }
+    .lcd-info-side,
+    .lcd-model-side {
+        width: 100%; /* Forces containers to take full width */
+        flex: none; /* Disables flex ratios like flex: 1.5 */
     }
 }

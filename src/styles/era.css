@@ -86,3 +86,27 @@
 .link-pill:hover {
     background-color: #c4c4c4; 
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .era-wrapper {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 1rem 0;
+    }
+    .era-image {
+        width: 80%;
+        max-width: 250px;
+    }
+    .line {
+        width: 80%;
+        height: 2px;
+        margin: 1.5rem 0;
+    }
+    .content-column {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+}
