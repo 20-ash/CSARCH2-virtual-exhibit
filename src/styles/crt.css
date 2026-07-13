@@ -82,6 +82,7 @@
     align-items: center;
     width: 100%;
     padding-right: 2.5rem;
+    box-sizing: border-box;
 }
 
 .crt-dynamic-box {
