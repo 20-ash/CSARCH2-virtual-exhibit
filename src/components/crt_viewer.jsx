@@ -69,8 +69,8 @@ export default function CrtViewer({ onBack }) {
     return (
         <div className="crt-container-wrapper">
             <div className="back-button-container" style={{ padding: '0.5rem' }}>
-                <a href={`${BASE_URL}/displays`} className="btn back-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
-                    ← Go Back to Exhibit
+                <a href={`${BASE_URL}/displays`} className="link-pill lower">
+                    ← Go Back
                 </a>
             </div>
 
