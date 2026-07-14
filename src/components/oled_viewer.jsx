@@ -1,6 +1,9 @@
 import OledModel from "./oled_model.jsx";
 import React, { useState } from "react";
 import '../styles/oled.css';
+import '../styles/era.css';
+
+const BASE_URL = import.meta.env.BASE_URL || "/";
 
 const PARTS = [
     {
@@ -78,51 +81,58 @@ export default function OledViewer() {
     const activeInfo = PARTS.find((p) => p.id === selectedPart) || PARTS[0];
 
     return (
-        <div className="oled-split-layout">
-            <div className="oled-info-side">
-                <h2 className="oled-info__title">General Process</h2>
-                <p className="oled-info__desc">An OLED is a self-emissive display made of organic semiconductor layers sandwiched between two electrodes. 
-                    When voltage is applied, electrons and holes are injected from opposite sides and move toward each other.
-                    They meet and recombine in the emissive layer, releasing energy as visible light through electroluminescence. 
-                    Each pixel works independently and can be fully turned off, resulting in true black levels, high contrast, and fast response times. 
-
-                </p>
-
-                <div className="oled-dynamic-box" style={{ marginTop: '2rem' }}>
-                    <h3 className="oled-info__title">{activeInfo.label}</h3>
-                    <p className="oled-info__desc">{activeInfo.description}</p>
-                    <h3 className="oled-info__title">Function</h3>
-                    <p className="oled-info__desc">{activeInfo.processOLEDDescription}</p>
-                    <h3 className="oled-info__title">{panelInfo.label}</h3>
-                    <p className="oled-info__desc">{panelInfo.description}</p>
-                </div>
+        <div>
+            <div className="back-button-container" style={{ padding: '0.5rem' }}>
+                <a href={`${BASE_URL}/displays`} className="link-pill lower">
+                    ← Go Back
+                </a>
             </div>
-            <div className="oled-model-side">
-                <div className="controls">
-                    <span>Select Layer:</span>
-                    {PARTS.map(part => (
-                        <button
-                            key={part.id}
-                            className={activeBtn(selectedPart, part.id)}
-                            onClick={() => setSelectedPart(part.id)}
-                        >
-                            {part.label.replace(' Layer', '').replace(' (', '\n(')}
+            <div className="oled-split-layout">
+                <div className="oled-info-side">
+                    <h2 className="oled-info__title">General Process</h2>
+                    <p className="oled-info__desc">An OLED is a self-emissive display made of organic semiconductor layers sandwiched between two electrodes. 
+                        When voltage is applied, electrons and holes are injected from opposite sides and move toward each other.
+                        They meet and recombine in the emissive layer, releasing energy as visible light through electroluminescence. 
+                        Each pixel works independently and can be fully turned off, resulting in true black levels, high contrast, and fast response times. 
+
+                    </p>
+
+                    <div className="oled-dynamic-box" style={{ marginTop: '2rem' }}>
+                        <h3 className="oled-info__title">{activeInfo.label}</h3>
+                        <p className="oled-info__desc">{activeInfo.description}</p>
+                        <h3 className="oled-info__title">Function</h3>
+                        <p className="oled-info__desc">{activeInfo.processOLEDDescription}</p>
+                        <h3 className="oled-info__title">{panelInfo.label}</h3>
+                        <p className="oled-info__desc">{panelInfo.description}</p>
+                    </div>
+                </div>
+                <div className="oled-model-side">
+                    <div className="controls">
+                        <span>Select Layer:</span>
+                        {PARTS.map(part => (
+                            <button
+                                key={part.id}
+                                className={activeBtn(selectedPart, part.id)}
+                                onClick={() => setSelectedPart(part.id)}
+                            >
+                                {part.label.replace(' Layer', '').replace(' (', '\n(')}
+                            </button>
+                        ))}
+                    </div>
+
+                    <div className="controls">
+                        <span>Light:</span>
+                        <button className={activeBtn(animateLight, true)} onClick={() => setAnimateLight(!animateLight)}>
+                            {animateLight ? 'Stop Light' : 'Animate Light'}
                         </button>
-                    ))}
-                </div>
+                    </div>
 
-                <div className="controls">
-                    <span>Light:</span>
-                    <button className={activeBtn(animateLight, true)} onClick={() => setAnimateLight(!animateLight)}>
-                        {animateLight ? 'Stop Light' : 'Animate Light'}
-                    </button>
+                    <OledModel
+                        animateLight={animateLight}
+                        selectedPart={selectedPart}
+                        setSelectedPart={setSelectedPart}
+                    />
                 </div>
-
-                <OledModel
-                    animateLight={animateLight}
-                    selectedPart={selectedPart}
-                    setSelectedPart={setSelectedPart}
-                />
             </div>
         </div>
     );

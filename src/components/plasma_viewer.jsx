@@ -1,6 +1,9 @@
 import PlasmaModel from "./plasma_model.jsx";
 import React, { useState } from "react";
 import '../styles/plasma.css';
+import '../styles/era.css';
+
+const BASE_URL = import.meta.env.BASE_URL || "/";
 
 const PARTS = [
     {
@@ -67,43 +70,50 @@ export default function PlasmaViewer() {
     const activeInfo = PARTS.find((p) => p.id === selectedPart) || PARTS[0];
 
     return (
-        <div className="plasma-split-layout">
-
-            {/* LEFT SIDE: Info Display */}
-            <div className="plasma-info-side">
-                <h2 className="plasma-info__title">{activeInfo.label}</h2>
-                <p className="plasma-info__desc">{activeInfo.description}</p>
-
-                <div className="plasma-dynamic-box" style={{ marginTop: '2rem' }}>
-                    <h3 className="plasma-info__title">{activeInfo.processPlasmaTitle}</h3>
-                    <p className="plasma-info__desc">{activeInfo.processPlasmaDescription}</p>
-                </div>
+        <div>
+            <div className="back-button-container" style={{ padding: '0.5rem' }}>
+                <a href={`${BASE_URL}/displays`} className="link-pill lower">
+                    ← Go Back
+                </a>
             </div>
+            <div className="plasma-split-layout">
 
-            {/* RIGHT SIDE: Controls, 2D Model */}
-            <div className="plasma-model-side">
-                {/* 2D Model Parts */}
-                <div className="controls">
-                    <span>Parts:</span>
-                    <button className={activeBtn(selectedPart, 'substrates')} onClick={() => setSelectedPart('substrates')}>Substrates</button>
-                    <button className={activeBtn(selectedPart, 'address')} onClick={() => setSelectedPart('address')}>Address</button>
-                    <button className={activeBtn(selectedPart, 'sustain')} onClick={() => setSelectedPart('sustain')}>Sustain</button>
-                    <button className={activeBtn(selectedPart, 'gas')} onClick={() => setSelectedPart('gas')}>Gas Cell</button>
-                    <button className={activeBtn(selectedPart, 'mgo')} onClick={() => setSelectedPart('mgo')}>MgO Layer</button>
-                    <button className={activeBtn(selectedPart, 'phosphor')} onClick={() => setSelectedPart('phosphor')}>Phosphor</button>
+                {/* LEFT SIDE: Info Display */}
+                <div className="plasma-info-side">
+                    <h2 className="plasma-info__title">{activeInfo.label}</h2>
+                    <p className="plasma-info__desc">{activeInfo.description}</p>
+
+                    <div className="plasma-dynamic-box" style={{ marginTop: '2rem' }}>
+                        <h3 className="plasma-info__title">{activeInfo.processPlasmaTitle}</h3>
+                        <p className="plasma-info__desc">{activeInfo.processPlasmaDescription}</p>
+                    </div>
                 </div>
 
-                {/* Animation Control */}
-                <div className="controls">
-                    <span>Action:</span>
-                    <button className={activeBtn(animate, true)} onClick={() => setAnimate(!animate)}>
-                        {animate ? 'Stop Discharge' : 'Animate Discharge'}
-                    </button>
+                {/* RIGHT SIDE: Controls, 2D Model */}
+                <div className="plasma-model-side">
+                    {/* 2D Model Parts */}
+                    <div className="controls">
+                        <span>Parts:</span>
+                        <button className={activeBtn(selectedPart, 'substrates')} onClick={() => setSelectedPart('substrates')}>Substrates</button>
+                        <button className={activeBtn(selectedPart, 'address')} onClick={() => setSelectedPart('address')}>Address</button>
+                        <button className={activeBtn(selectedPart, 'sustain')} onClick={() => setSelectedPart('sustain')}>Sustain</button>
+                        <button className={activeBtn(selectedPart, 'gas')} onClick={() => setSelectedPart('gas')}>Gas Cell</button>
+                        <button className={activeBtn(selectedPart, 'mgo')} onClick={() => setSelectedPart('mgo')}>MgO Layer</button>
+                        <button className={activeBtn(selectedPart, 'phosphor')} onClick={() => setSelectedPart('phosphor')}>Phosphor</button>
+                    </div>
+
+                    {/* Animation Control */}
+                    <div className="controls">
+                        <span>Action:</span>
+                        <button className={activeBtn(animate, true)} onClick={() => setAnimate(!animate)}>
+                            {animate ? 'Stop Discharge' : 'Animate Discharge'}
+                        </button>
+                    </div>
+
+                    <PlasmaModel selectedPart={selectedPart} setSelectedPart={setSelectedPart} animate={animate} />
                 </div>
 
-                <PlasmaModel selectedPart={selectedPart} setSelectedPart={setSelectedPart} animate={animate} />
             </div>
-
         </div>
     );
 }

@@ -1,6 +1,9 @@
 import MicroLEDModel from "./microled_model.jsx";
 import React, { useState } from "react";
 import '../styles/microled.css';
+import '../styles/era.css';
+
+const BASE_URL = import.meta.env.BASE_URL || "/";
 
 {/*
     MicroLED Parts Information:
@@ -56,41 +59,48 @@ export default function MicroLEDViewer() {
     const activeInfo = PARTS.find((p) => p.id === selectedPart) || PARTS[0];
 
     return (
-        <div className="microled-split-layout">
-
-            {/* LEFT SIDE: Information Display */}
-            <div className="microled-info-side">
-                <h2 className="microled-info__title">{activeInfo.label}</h2>
-                <p className="microled-info__desc">{activeInfo.description}</p>
-
-                <div className="microled-dynamic-box" style={{ marginTop: '2rem' }}>
-                    <h3 className="microled-info__title">{activeInfo.processMicroledTitle}</h3>
-                    <p className="microled-info__desc">{activeInfo.processMicroledDescription}</p>
-                </div>
+        <div>
+            <div className="back-button-container" style={{ padding: '0.5rem' }}>
+                <a href={`${BASE_URL}/displays`} className="link-pill lower">
+                    ← Go Back
+                </a>
             </div>
+            <div className="microled-split-layout">
 
-            {/* RIGHT SIDE: Controls and 2D Model */}
-            <div className="microled-model-side">
-                {/* 2D Model Parts */}
-                <div className="controls">
-                    <span>Parts:</span>
-                    <button className={activeBtn(selectedPart, 'backplane')} onClick={() => setSelectedPart('backplane')}>Backplane</button>
-                    <button className={activeBtn(selectedPart, 'electrode')} onClick={() => setSelectedPart('electrode')}>Electrode</button>
-                    <button className={activeBtn(selectedPart, 'chips')} onClick={() => setSelectedPart('chips')}>Chips</button>
-                    <button className={activeBtn(selectedPart, 'cover')} onClick={() => setSelectedPart('cover')}>Cover</button>
+                {/* LEFT SIDE: Information Display */}
+                <div className="microled-info-side">
+                    <h2 className="microled-info__title">{activeInfo.label}</h2>
+                    <p className="microled-info__desc">{activeInfo.description}</p>
+
+                    <div className="microled-dynamic-box" style={{ marginTop: '2rem' }}>
+                        <h3 className="microled-info__title">{activeInfo.processMicroledTitle}</h3>
+                        <p className="microled-info__desc">{activeInfo.processMicroledDescription}</p>
+                    </div>
                 </div>
 
-                {/* Light Control */}
-                <div className="controls">
-                    <span>Action:</span>
-                    <button className={activeBtn(animate, true)} onClick={() => setAnimate(!animate)}>
-                        {animate ? 'Stop Light' : 'Animate Light'}
-                    </button>
+                {/* RIGHT SIDE: Controls and 2D Model */}
+                <div className="microled-model-side">
+                    {/* 2D Model Parts */}
+                    <div className="controls">
+                        <span>Parts:</span>
+                        <button className={activeBtn(selectedPart, 'backplane')} onClick={() => setSelectedPart('backplane')}>Backplane</button>
+                        <button className={activeBtn(selectedPart, 'electrode')} onClick={() => setSelectedPart('electrode')}>Electrode</button>
+                        <button className={activeBtn(selectedPart, 'chips')} onClick={() => setSelectedPart('chips')}>Chips</button>
+                        <button className={activeBtn(selectedPart, 'cover')} onClick={() => setSelectedPart('cover')}>Cover</button>
+                    </div>
+
+                    {/* Light Control */}
+                    <div className="controls">
+                        <span>Action:</span>
+                        <button className={activeBtn(animate, true)} onClick={() => setAnimate(!animate)}>
+                            {animate ? 'Stop Light' : 'Animate Light'}
+                        </button>
+                    </div>
+
+                    <MicroLEDModel selectedPart={selectedPart} setSelectedPart={setSelectedPart} animate={animate} />
                 </div>
 
-                <MicroLEDModel selectedPart={selectedPart} setSelectedPart={setSelectedPart} animate={animate} />
             </div>
-
         </div>
     );
 }

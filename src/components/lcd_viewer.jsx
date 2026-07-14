@@ -1,6 +1,9 @@
 import LcdModel from "./lcd_model.jsx";
 import React, { useState } from "react";
 import '../styles/modelo.css';
+import '../styles/era.css';
+
+const BASE_URL = import.meta.env.BASE_URL || "/";
 
 const PARTS = [
     {
@@ -95,49 +98,57 @@ export default function LcdViewer() {
     const activeInfo = PARTS.find((p) => p.id === selectedPart) || PARTS[0];
 
     return (
-        <div className="lcd-split-layout">
-            <div className="lcd-info-side">
-                <h2 className="lcd-info__title">General Process</h2>
-                <p className="lcd-info__desc">An LCD is composed of a light source, two polarizing glasses, RGB color filters, and a liquid crystal layer. 
-                    The light source converts electric currents into light which then proceeds to the first polarizing glass.
-                    Afterwards, light moves to the liquid crystal layer where the lightwave's angle changes. 
-                    The second polarizing glass adjusts brightness by blocking some of the light.
-                    From here, light now proceeds to each pixel's rgb filters and show up on a display as the pixel's color.
-                    </p>
-
-                <div className="lcd-dynamic-box" style={{ marginTop: '2rem' }}>
-                    <h3 className="lcd-info__title">{activeInfo.label}</h3>
-                    <p className="lcd-info__desc">{activeInfo.description}</p>
-                    <h3 className="lcd-info__title">Information</h3>
-                    <p className="lcd-info__desc">{activeInfo.processLCDDescription}</p>
-                    <h3 className="lcd-info__title">{layoutInfo.label}</h3>
-                    <p className="lcd-info__desc">{layoutInfo.description}</p>                  
-                </div>
+        <div>
+            <div className="back-button-container" style={{ padding: '0.5rem' }}>
+                <a href={`${BASE_URL}/displays`} className="link-pill lower">
+                    ← Go Back
+                </a>
             </div>
-            <div className="lcd-model-side">
-                <div className="controls">
-                    <span>Backlight:</span>   
-                    <button className={activeBtn(backlight, 'ccfl')} onClick={() => { setBacklight('ccfl'); setSelectedPart('ccfl')}  }>CCFL</button>
-                    <button className={activeBtn(backlight, 'led')} onClick={() => { setBacklight('led'); setSelectedPart('led')}}>LED</button>
-                    <button className={activeBtn(backlight, 'miniled')} onClick={() => { setBacklight('miniled'); setSelectedPart('miniled')}}>MiniLED</button>
-                    <button className={activeBtn(backlight, 'qdled')} onClick={() => { setBacklight('qdled'); setSelectedPart('qdled')}}>QDLED</button>
-                </div>    
-                <div className="controls">   
-                    <span>Layout:</span>
-                    <button className={activeBtn(layout, 'direct-lit')} onClick={() => setLayout('direct-lit')}>Direct</button>
-                    <button className={activeBtn(layout, 'edge-lit')} onClick={() => { setLayout('edge-lit'); if (backlight === 'fald') { setBacklight('led'); setSelectedPart('led'); } }}>Edge-lit</button>
-                    {/* <button className={activeBtn(layout, 'fald')}>FALD</button> */}
-                </div>  
-                <div className="controls">   
-                    <span>Light:</span>         
-                    <button className={activeBtn(animateLight, true)} onClick={() => setAnimateLight(!animateLight)}>
-                        {animateLight ? 'Stop Light' : 'Animate Light'}
-                    </button>
-                </div> 
+
+            <div className="lcd-split-layout">
+                <div className="lcd-info-side">
+                    <h2 className="lcd-info__title">General Process</h2>
+                    <p className="lcd-info__desc">An LCD is composed of a light source, two polarizing glasses, RGB color filters, and a liquid crystal layer. 
+                        The light source converts electric currents into light which then proceeds to the first polarizing glass.
+                        Afterwards, light moves to the liquid crystal layer where the lightwave's angle changes. 
+                        The second polarizing glass adjusts brightness by blocking some of the light.
+                        From here, light now proceeds to each pixel's rgb filters and show up on a display as the pixel's color.
+                        </p>
+
+                    <div className="lcd-dynamic-box" style={{ marginTop: '2rem' }}>
+                        <h3 className="lcd-info__title">{activeInfo.label}</h3>
+                        <p className="lcd-info__desc">{activeInfo.description}</p>
+                        <h3 className="lcd-info__title">Information</h3>
+                        <p className="lcd-info__desc">{activeInfo.processLCDDescription}</p>
+                        <h3 className="lcd-info__title">{layoutInfo.label}</h3>
+                        <p className="lcd-info__desc">{layoutInfo.description}</p>                  
+                    </div>
+                </div>
+                <div className="lcd-model-side">
+                    <div className="controls">
+                        <span>Backlight:</span>   
+                        <button className={activeBtn(backlight, 'ccfl')} onClick={() => { setBacklight('ccfl'); setSelectedPart('ccfl')}  }>CCFL</button>
+                        <button className={activeBtn(backlight, 'led')} onClick={() => { setBacklight('led'); setSelectedPart('led')}}>LED</button>
+                        <button className={activeBtn(backlight, 'miniled')} onClick={() => { setBacklight('miniled'); setSelectedPart('miniled')}}>MiniLED</button>
+                        <button className={activeBtn(backlight, 'qdled')} onClick={() => { setBacklight('qdled'); setSelectedPart('qdled')}}>QDLED</button>
+                    </div>    
+                    <div className="controls">   
+                        <span>Layout:</span>
+                        <button className={activeBtn(layout, 'direct-lit')} onClick={() => setLayout('direct-lit')}>Direct</button>
+                        <button className={activeBtn(layout, 'edge-lit')} onClick={() => { setLayout('edge-lit'); if (backlight === 'fald') { setBacklight('led'); setSelectedPart('led'); } }}>Edge-lit</button>
+                        {/* <button className={activeBtn(layout, 'fald')}>FALD</button> */}
+                    </div>  
+                    <div className="controls">   
+                        <span>Light:</span>         
+                        <button className={activeBtn(animateLight, true)} onClick={() => setAnimateLight(!animateLight)}>
+                            {animateLight ? 'Stop Light' : 'Animate Light'}
+                        </button>
+                    </div> 
+                        
                     
-                
-                <LcdModel backlightType={backlight} layout={layout} animateLight={animateLight}
-                    selectedPart={selectedPart} setSelectedPart={setSelectedPart} />
+                    <LcdModel backlightType={backlight} layout={layout} animateLight={animateLight}
+                        selectedPart={selectedPart} setSelectedPart={setSelectedPart} />
+                </div>
             </div>
         </div>
     );
