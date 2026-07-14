@@ -16,20 +16,115 @@
     --small: 0.8rem;
 }
 
-/* https://css-pattern.com/quatrefoils/ */
+/* https://uiverse.io/SachinKumar666/friendly-shrimp-23 */
 html {
-  --s: 60px; /* control the size*/
-  --c1: #d2c8b1;
-  --c2: #7da7ca;
-  
-  --_g: #0000 83%,var(--c1) 85% 99%,#0000 101%;
+  min-height: 100%;
+  position: relative;
+  background-color: #2b4c7e !important; 
+  overflow-x: hidden;
+}
+
+/* Base properties for both pattern pseudo-elements */
+html::before,
+html::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+}
+
+html::before {
   background:
-    radial-gradient(27% 29% at right ,var(--_g)) calc(var(--s)/ 2) var(--s),
-    radial-gradient(27% 29% at left  ,var(--_g)) calc(var(--s)/-2) var(--s),
-    radial-gradient(29% 27% at top   ,var(--_g)) 0 calc(var(--s)/ 2),
-    radial-gradient(29% 27% at bottom,var(--_g)) 0 calc(var(--s)/-2)
-    var(--c2);
-  background-size: calc(2*var(--s)) calc(2*var(--s));
+    linear-gradient(
+        135deg,
+        transparent 0%,
+        transparent 47%,
+        #567ebb 47%,
+        #567ebb 53%,
+        transparent 53%,
+        transparent 100%
+      )
+      0 0/2em 2em,
+    linear-gradient(
+        45deg,
+        #3a6098 0%,
+        #3a6098 47%,
+        transparent 47%,
+        transparent 53%,
+        #3a6098 53%,
+        #3a6098 100%
+      )
+      0 0/2em 2em,
+    linear-gradient(
+        -45deg,
+        #1d365a 0%,
+        #1d365a 47%,
+        transparent 47%,
+        transparent 53%,
+        #1d365a 53%,
+        #1d365a 100%
+      )
+      0 0/2em 2em,
+    linear-gradient(
+        45deg,
+        transparent 0%,
+        transparent 47%,
+        #4b72ab 47%,
+        #4b72ab 53%,
+        transparent 53%,
+        transparent 100%
+      )
+      1em 1em/2em 2em;
+  opacity: 0.5;
+  animation: patternFloat 20s linear infinite;
+}
+
+/* Scattered dots overlay */
+html::after {
+  background:
+    radial-gradient(
+        circle at 25% 25%,
+        rgba(255, 255, 255, 0.15) 0.5em,
+        transparent 0.5em
+      )
+      0 0/4em 4em,
+    radial-gradient(
+        circle at 75% 75%,
+        rgba(255, 255, 255, 0.1) 0.3em,
+        transparent 0.3em
+      )
+      0 0/4em 4em,
+    radial-gradient(
+        circle at 75% 25%,
+        rgba(13, 35, 69, 0.1) 0.4em,
+        transparent 0.4em
+      )
+      2em 0/4em 4em,
+    radial-gradient(
+        circle at 25% 75%,
+        rgba(13, 35, 69, 0.15) 0.2em,
+        transparent 0.2em
+      )
+      2em 2em/4em 4em;
+  z-index: -1;
+}
+
+@keyframes patternFloat {
+  0% {
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      1em 1em;
+  }
+  100% {
+    background-position:
+      2em 2em,
+      2em 2em,
+      2em 2em,
+      3em 3em;
+  }
 }
 
 body {
