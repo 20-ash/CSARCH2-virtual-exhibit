@@ -1,0 +1,175 @@
+/* https://uiverse.io/SachinKumar666/friendly-shrimp-23 */
+/* --- Global Animated Background Pattern (From Uiverse.io by SachinKumar666) --- */
+html {
+  min-height: 100%;
+  position: relative;
+  background-image: none !important;
+  background: #2b4c7e !important;
+  background-color: #2b4c7e !important; 
+  overflow-x: hidden;
+}
+
+/* Base properties for both pattern pseudo-elements */
+html::before,
+html::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* Diagonal linear pattern overlay */
+html::before {
+  background:
+    linear-gradient(
+        135deg,
+        transparent 0%,
+        transparent 47%,
+        #567ebb 47%,
+        #567ebb 53%,
+        transparent 53%,
+        transparent 100%
+      )
+      0 0/2em 2em,
+    linear-gradient(
+        45deg,
+        #3a6098 0%,
+        #3a6098 47%,
+        transparent 47%,
+        transparent 53%,
+        #3a6098 53%,
+        #3a6098 100%
+      )
+      0 0/2em 2em,
+    linear-gradient(
+        -45deg,
+        #1d365a 0%,
+        #1d365a 47%,
+        transparent 47%,
+        transparent 53%,
+        #1d365a 53%,
+        #1d365a 100%
+      )
+      0 0/2em 2em,
+    linear-gradient(
+        45deg,
+        transparent 0%,
+        transparent 47%,
+        #4b72ab 47%,
+        #4b72ab 53%,
+        transparent 53%,
+        transparent 100%
+      )
+      1em 1em/2em 2em !important;
+  opacity: 0.5;
+  animation: patternFloat 20s linear infinite;
+}
+
+/* Scattered dots overlay */
+html::after {
+  background:
+    radial-gradient(
+        circle at 25% 25%,
+        rgba(255, 255, 255, 0.15) 0.5em,
+        transparent 0.5em
+      )
+      0 0/4em 4em,
+    radial-gradient(
+        circle at 75% 75%,
+        rgba(255, 255, 255, 0.1) 0.3em,
+        transparent 0.3em
+      )
+      0 0/4em 4em,
+    radial-gradient(
+        circle at 75% 25%,
+        rgba(13, 35, 69, 0.1) 0.4em,
+        transparent 0.4em
+      )
+      2em 0/4em 4em,
+    radial-gradient(
+        circle at 25% 75%,
+        rgba(13, 35, 69, 0.15) 0.2em,
+        transparent 0.2em
+      )
+      2em 2em/4em 4em !important;
+  z-index: -1;
+}
+
+@keyframes patternFloat {
+  0% {
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      1em 1em;
+  }
+  100% {
+    background-position:
+      2em 2em,
+      2em 2em,
+      2em 2em,
+      3em 3em;
+  }
+}
+
+/* Block 1: The inner Title block inside the Header (replaces the whole top section) */
+.header__titleblock { 
+    background-color: #439A86 !important;
+    background-image: none !important;
+    border-radius: var(--radius, 8px) !important;
+    padding: 10px 20px !important;
+}
+
+.header__titleblock strong {
+    font-family: "JetBrains Mono", monospace !important;
+    color: #fffefc !important;
+}
+
+.header__titleblock .header__subtitle {
+    font-family: "JetBrains Mono", monospace !important; 
+    color: #cbd5e1 !important;                          /* Change author subtitle color */
+}
+
+/* Block 2: Table of Contents Block (ignoring the empty padder container) */
+.toc:not(.padder) {
+    background-color: #BCD8C1 !important;
+    background: #BCD8C1 !important;
+}
+
+.toc:not(.padder) h2 {
+    font-family: "JetBrains Mono", monospace !important;
+    color: #37371F !important;
+    border-bottom: 1px solid #37371F !important;
+}
+
+/* The clickable links inside the table of contents */
+.toc:not(.padder) .toc__item a {
+    font-family: "JetBrains Mono", monospace !important;
+    color: #37371F !important;
+    text-decoration-color: #37371F !important;
+}
+
+/* Block 3: The Main Page Title Banner Block */
+.content__titlemeta {
+    background-color: #BCD8C1 !important;
+    background: #BCD8C1 !important;
+    border-radius: var(--radius, 8px) !important;
+}
+
+.content__titlemeta h1 {
+    font-family: "JetBrains Mono", serif !important;
+    color: #37371F !important;
+}
+
+.content__titlemeta span {
+    font-family: "JetBrains Mono", monospace !important;
+    color: #37371F !important;
+}
+
+/* Block 4: The educational body/article card */
+.article {
+    background-color: color4 !important;
+    background: color4 !important;
+    border-radius: var(--radius, 8px) !important;
+}
