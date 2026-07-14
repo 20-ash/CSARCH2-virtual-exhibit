@@ -2,6 +2,8 @@ import CrtModel from "./crt_model.jsx";
 import React, { useState } from "react";
 import '../styles/crt.css';
 
+const BASE_URL = import.meta.env.BASE_URL || "/";
+
 {/* 
     CRT Parts Information:
     label: Name of CRT Part
@@ -57,7 +59,7 @@ const PARTS = [
     },
 ];
 
-export default function CrtViewer() {
+export default function CrtViewer({ onBack }) {
     const [selectedPart, setSelectedPart] = useState('pins');     
     const [animate, setAnimate] = useState(false);    
 
@@ -65,42 +67,50 @@ export default function CrtViewer() {
     const activeInfo = PARTS.find((p) => p.id === selectedPart) || PARTS[0];
 
     return (
-        <div className="crt-split-layout">
-            
-            {/* LEFT SIDE: Information Display */}
-            <div className="crt-info-side">
-                <h2 className="crt-info__title">{activeInfo.label}</h2>
-                <p className="crt-info__desc">{activeInfo.description}</p>
-
-                <div className="crt-dynamic-box" style={{ marginTop: '2rem' }}>
-                    <h3 className="crt-info__title">{activeInfo.processCrtTitle}</h3>
-                    <p className="crt-info__desc">{activeInfo.processCrtDescription}</p>
-                </div>
+        <div className="crt-container-wrapper">
+            <div className="back-button-container" style={{ padding: '0.5rem' }}>
+                <a href={`${BASE_URL}/displays`} className="btn back-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
+                    ← Go Back to Exhibit
+                </a>
             </div>
 
-            {/* RIGHT SIDE: Controls and 2D Model */}
-            <div className="crt-model-side">
-                {/* 2D Model Parts */}
-                <div className="controls">
-                    <span>Parts:</span>
-                    <button className={activeBtn(selectedPart, 'gun')} onClick={() => setSelectedPart('gun')}>Gun</button>
-                    <button className={activeBtn(selectedPart, 'grid')} onClick={() => setSelectedPart('grid')}>Grid</button>
-                    <button className={activeBtn(selectedPart, 'deflection')} onClick={() => setSelectedPart('deflection')}>Deflection</button>
-                    <button className={activeBtn(selectedPart, 'screen')} onClick={() => setSelectedPart('screen')}>Screen</button>
-                    <button className={activeBtn(selectedPart, 'vacuum')} onClick={() => setSelectedPart('vacuum')}>Vacuum</button>
-                </div>
-
-                {/* Beam Control */}
-                <div className="controls">
-                    <span>Action:</span>
-                    <button className={activeBtn(animate, true)} onClick={() => setAnimate(!animate)}>
-                        {animate ? 'Stop Beam' : 'Animate Beam'}
-                    </button>
-                </div>
+            <div className="crt-split-layout">
                 
-                <CrtModel selectedPart={selectedPart} setSelectedPart={setSelectedPart} animate={animate} />
-            </div>
+                {/* LEFT SIDE: Information Display */}
+                <div className="crt-info-side">
+                    <h2 className="crt-info__title">{activeInfo.label}</h2>
+                    <p className="crt-info__desc">{activeInfo.description}</p>
 
+                    <div className="crt-dynamic-box" style={{ marginTop: '2rem' }}>
+                        <h3 className="crt-info__title">{activeInfo.processCrtTitle}</h3>
+                        <p className="crt-info__desc">{activeInfo.processCrtDescription}</p>
+                    </div>
+                </div>
+
+                {/* RIGHT SIDE: Controls and 2D Model */}
+                <div className="crt-model-side">
+                    {/* 2D Model Parts */}
+                    <div className="controls">
+                        <span>Parts:</span>
+                        <button className={activeBtn(selectedPart, 'gun')} onClick={() => setSelectedPart('gun')}>Gun</button>
+                        <button className={activeBtn(selectedPart, 'grid')} onClick={() => setSelectedPart('grid')}>Grid</button>
+                        <button className={activeBtn(selectedPart, 'deflection')} onClick={() => setSelectedPart('deflection')}>Deflection</button>
+                        <button className={activeBtn(selectedPart, 'screen')} onClick={() => setSelectedPart('screen')}>Screen</button>
+                        <button className={activeBtn(selectedPart, 'vacuum')} onClick={() => setSelectedPart('vacuum')}>Vacuum</button>
+                    </div>
+
+                    {/* Beam Control */}
+                    <div className="controls">
+                        <span>Action:</span>
+                        <button className={activeBtn(animate, true)} onClick={() => setAnimate(!animate)}>
+                            {animate ? 'Stop Beam' : 'Animate Beam'}
+                        </button>
+                    </div>
+                    
+                    <CrtModel selectedPart={selectedPart} setSelectedPart={setSelectedPart} animate={animate} />
+                </div>
+
+            </div>
         </div>
     );
 }
