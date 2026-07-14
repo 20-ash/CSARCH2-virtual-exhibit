@@ -16,23 +16,20 @@
     --small: 0.8rem;
 }
 
-/* https://css-pattern.com/cubes-illusion/ */
+/* https://css-pattern.com/quatrefoils/ */
 html {
-    --s: 200px; /* control the size*/
-    --c1: #2c2c2c;
-    --c2: #464148;
-    --c3: #3c3738;
-
-    background:
-        repeating-conic-gradient(from 30deg, #0000 0 120deg, var(--c3) 0 50%)
-            calc(var(--s) / 2) calc(var(--s) * tan(30deg) / 2),
-        repeating-conic-gradient(
-            from 30deg,
-            var(--c1) 0 60deg,
-            var(--c2) 0 120deg,
-            var(--c3) 0 50%
-        );
-    background-size: var(--s) calc(var(--s) * tan(30deg));
+  --s: 60px; /* control the size*/
+  --c1: #d2c8b1;
+  --c2: #7da7ca;
+  
+  --_g: #0000 83%,var(--c1) 85% 99%,#0000 101%;
+  background:
+    radial-gradient(27% 29% at right ,var(--_g)) calc(var(--s)/ 2) var(--s),
+    radial-gradient(27% 29% at left  ,var(--_g)) calc(var(--s)/-2) var(--s),
+    radial-gradient(29% 27% at top   ,var(--_g)) 0 calc(var(--s)/ 2),
+    radial-gradient(29% 27% at bottom,var(--_g)) 0 calc(var(--s)/-2)
+    var(--c2);
+  background-size: calc(2*var(--s)) calc(2*var(--s));
 }
 
 body {
