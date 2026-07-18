@@ -96,6 +96,8 @@ export default function OledViewer() {
                         Each pixel works independently and can be fully turned off, resulting in true black levels, high contrast, and fast response times. 
                     </p>
 
+                    <br /><br />
+                    
                    <h2 className="oled-info__title">Evolution</h2>
                     <p className="about">
                         QD-OLED (Quantum Dot Organic Light-Emitting Diode) is an advanced display technology that combines OLED’s self-emissive properties with quantum dot color conversion.
