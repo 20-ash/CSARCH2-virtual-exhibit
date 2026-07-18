@@ -66,6 +66,30 @@
     white-space: pre-line;
 }
 
+.see-more {
+    margin: 0 0 16px 0;
+    line-height: 1.6;
+    letter-spacing: 0.08rem;
+    color: #333;
+    font-family: "JetBrains Mono";
+}
+
+.see-more summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #5076a7;
+    margin-bottom: 12px;
+}
+
+.see-more summary:hover {
+    text-decoration: underline;
+}
+
+.see-more p {
+    margin: 0;
+    white-space: pre-line;
+}
+
 .link-pill {
     background-color: #D9D9D9;
     padding: 6px 16px;

@@ -3,6 +3,7 @@ interface Props {
     imgPath: string
     label: string
     about: string
+    details?: string
     href: string
     linkLabel?: string
 }
@@ -11,6 +12,7 @@ const {
   imgPath,
   label,
   about,
+  details,
   href,
   linkLabel = "Learn More",
 } = Astro.props;
@@ -26,7 +28,13 @@ import "@fontsource/jetbrains-mono";
 
 <div class="content-column">
     <div class="label-pill">{label}</div>
-    <p class="about">{about}</p>  
+    <p class="about">{about}</p>
+    {details &&
+      <details class="see-more">
+        <summary>See more</summary>
+        <p class="details">{details}</p>
+      </details>
+    }
     <a href={href} class="link-pill lower">{linkLabel}</a>
   </div>
 </div>
