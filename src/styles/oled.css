@@ -69,6 +69,11 @@
     width: 100%;
     padding-right: 2.5rem;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
 }
 
 .oled-info__title {
@@ -122,5 +127,6 @@
     .oled-model-side {
         width: 100%;
         flex: none;
+        
     }
 }

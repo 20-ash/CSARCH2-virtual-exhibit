@@ -94,19 +94,40 @@ export default function OledViewer() {
                         When voltage is applied, electrons and holes are injected from opposite sides and move toward each other.
                         They meet and recombine in the emissive layer, releasing energy as visible light through electroluminescence. 
                         Each pixel works independently and can be fully turned off, resulting in true black levels, high contrast, and fast response times. 
-
                     </p>
 
-                    <div className="oled-dynamic-box" style={{ marginTop: '2rem' }}>
-                        <h3 className="oled-info__title">{activeInfo.label}</h3>
-                        <p className="oled-info__desc">{activeInfo.description}</p>
-                        <h3 className="oled-info__title">Function</h3>
-                        <p className="oled-info__desc">{activeInfo.processOLEDDescription}</p>
-                        <h3 className="oled-info__title">{panelInfo.label}</h3>
-                        <p className="oled-info__desc">{panelInfo.description}</p>
-                    </div>
+                   <h2 className="oled-info__title">Evolution</h2>
+                    <p className="about">
+                        QD-OLED (Quantum Dot Organic Light-Emitting Diode) is an advanced display technology that combines OLED’s self-emissive properties with quantum dot color conversion.
+                        Introduced commercially in 2022 by Samsung Display, it uses blue OLED light as the primary source, while quantum dots convert 
+                        portions of the blue light into red and green, producing more accurate 
+                        colors, higher brightness, and a wider color gamut.
+                    </p>
+
+                    <details className="see-more">
+                        <summary>See More</summary>
+                        <p>
+                            A QD-OLED panel consists of a blue OLED layer, a quantum dot layer for 
+                            color conversion, and a TFT backplane that controls individual pixels. 
+                            Unlike traditional displays that use color filters, QD-OLED generates 
+                            colors more efficiently by converting light, allowing each pixel to 
+                            produce deep blacks, high contrast, fast response times, and wide 
+                            viewing angles.
+                         </p>
+                        <br /><br />
+                         <p>
+                            QD-OLED is mainly used in premium TVs and gaming monitors due to its 
+                            excellent HDR performance, vibrant colors, smooth motion, and low 
+                            response time. However, it still has limitations such as possible 
+                            burn-in, higher cost, text fringing, and reflections from glossy panels.
+                        </p>
+                    </details>
                 </div>
+
                 <div className="oled-model-side">
+                    <p>
+                        💡 Try interacting with the model below!
+                    </p>
                     <div className="controls">
                         <span>Select Layer:</span>
                         {PARTS.map(part => (
@@ -132,6 +153,14 @@ export default function OledViewer() {
                         selectedPart={selectedPart}
                         setSelectedPart={setSelectedPart}
                     />
+                    <div className="oled-dynamic-box" style={{ marginTop: '2rem' }}>
+                        <h3 className="oled-info__title">{activeInfo.label}</h3>
+                        <p className="oled-info__desc">{activeInfo.description}</p>
+                        <h3 className="oled-info__title">Function</h3>
+                        <p className="oled-info__desc">{activeInfo.processOLEDDescription}</p>
+                        <h3 className="oled-info__title">{panelInfo.label}</h3>
+                        <p className="oled-info__desc">{panelInfo.description}</p>
+                    </div>
                 </div>
             </div>
         </div>
