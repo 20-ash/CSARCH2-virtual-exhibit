@@ -81,7 +81,9 @@ export default function OledViewer() {
     const activeInfo = PARTS.find((p) => p.id === selectedPart) || PARTS[0];
 
     return (
-        <div>
+         <div className="oled-page">
+            <div className="oled-bg"></div>
+            
             <div className="back-button-container" style={{ padding: '0.5rem' }}>
                 <a href={`${BASE_URL}/displays`} className="link-pill lower">
                     ← Go Back
