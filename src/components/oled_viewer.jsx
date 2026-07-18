@@ -158,12 +158,13 @@ export default function OledViewer() {
                         setSelectedPart={setSelectedPart}
                     />
                     <div className="oled-dynamic-box" style={{ marginTop: '2rem' }}>
+                         <h3 className="oled-info__title">{panelInfo.label}</h3>
+                        <p className="oled-info__desc">{panelInfo.description}</p>
                         <h3 className="oled-info__title">{activeInfo.label}</h3>
                         <p className="oled-info__desc">{activeInfo.description}</p>
                         <h3 className="oled-info__title">Function</h3>
                         <p className="oled-info__desc">{activeInfo.processOLEDDescription}</p>
-                        <h3 className="oled-info__title">{panelInfo.label}</h3>
-                        <p className="oled-info__desc">{panelInfo.description}</p>
+                       
                     </div>
                 </div>
             </div>
