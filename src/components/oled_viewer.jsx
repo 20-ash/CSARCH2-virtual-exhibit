@@ -457,15 +457,13 @@ export default function OledViewer() {
                                 White OLED (WOLED) uses a white OLED light source combined with color filters to create red, green, and blue pixels.
                                 It maintains OLED’s self-emissive design, providing deep blacks, high contrast, and wide viewing angles.    
                                 However, color filters reduce light efficiency compared to newer OLED approaches like QD-OLED.
-                                <br /><br />
+                                <br></br>  <br></br>
                                 WOLED panels typically use four subpixels: red, green, blue, and white.
                                 Instead of using separate OLED emitters for each color, a white OLED
                                 layer produces light that passes through color filters to create the
                                 required colors. The additional white subpixel improves brightness by
                                 allowing unfiltered light to pass through when needed.
                             </p>
-
-                            <br />
 
                             <h3 className="oled-info_title">QD-OLED</h3>
                             <p className="oled-info_desc">
@@ -489,8 +487,9 @@ export default function OledViewer() {
                             <h2 className="oled-info_title">Introduction and Fundamentals</h2>
                             <p className="oled-info_desc">
                                 OLED, or Organic Light-Emitting Diode, is a flat-panel display technology in which each individual pixel emits its own light. This was first developed in 1987 by Ching W. Tang and Steven Van Slyke at Eastman Kodak Company. It consists of multiple thin organic semiconductor layers arranged between two conductive electrodes (anode and cathode), in which light is generated via electroluminescence when an electric field is applied. Electron–hole recombination occurs within the emissive organic layer, releasing energy as visible photons.
-                            </p>
-                            <p className="oled-info_desc" style={{ marginTop: '1rem' }}>
+                            
+                                <br></br> <br></br>
+
                                 Because OLEDs are self-emissive, each pixel acts as an independent light source and doesn’t require a backlight unit. This architecture reduces structural thickness and improves power efficiency compared to Liquid Crystal Display (LCD) systems. OLEDs also exhibit high contrast ratios due to true black levels, wide viewing angles, and fast response times resulting from direct light emission. Additionally, the thin-film organic structure enables mechanical flexibility, allowing implementation in flexible and transparent display configurations.
                             </p>
 

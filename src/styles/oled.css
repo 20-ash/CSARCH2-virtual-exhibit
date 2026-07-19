@@ -197,7 +197,10 @@
     }
 
     .oled-info_desc {
-        font-size: 0.9rem; 
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 1.4rem;
     }
 
     .btn {
