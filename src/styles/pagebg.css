@@ -73,3 +73,62 @@
 }
 
 /* END OF BG ANIMATION */
+
+/* Block 1: The inner Title block inside the Header (replaces the whole top section) */
+.custom-header .header__titleblock { 
+    background-color: #ffffff;
+    background-image: none;
+    border-radius: var(--radius, 8px);
+    padding: 10px 20px;
+}
+
+.custom-header .header__titleblock strong {
+    font-family: "JetBrains Mono", monospace;
+    color: #000000;
+}
+
+.custom-header .header__titleblock .header__subtitle {
+    font-family: "JetBrains Mono", monospace; 
+    color: #000000;
+}
+
+/* Block 2: Table of Contents Block (ignoring the empty padder container) */
+.custom-toc .toc:not(.padder) {
+    background-color: #BCD8C1;
+}
+
+.toc:not(.padder) h2 {
+    font-family: "JetBrains Mono", monospace !important;
+    color: #37371F !important;
+    border-bottom: 1px solid #37371F !important;
+}
+
+/* The clickable links inside the table of contents */
+.custom-toc .toc:not(.padder) .toc__item a {
+    font-family: "JetBrains Mono", monospace;
+    color: #37371F;
+    text-decoration-color: #37371F;
+}
+
+/* Block 3: The Main Page Title Banner Block */
+.custom-title-banner .content__titlemeta {
+    background-color: #BCD8C1;
+    border-radius: var(--radius, 8px);
+}
+
+.custom-title-banner .content__titlemeta h1 {
+    font-family: "JetBrains Mono", serif;
+    color: #37371F;
+}
+
+.custom-title-banner .content__titlemeta span {
+    font-family: "JetBrains Mono", monospace;
+    color: #37371F;
+}
+
+/* Block 4: The educational body/article card */
+.custom-article .article {
+    --custom-article-bg: #7596b6;
+    background-color: var(--custom-article-bg);
+    border-radius: var(--radius, 8px);
+}
