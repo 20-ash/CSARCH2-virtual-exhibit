@@ -1,134 +1,121 @@
 .display-container {
-   display: flex;
-   flex-direction: row;
-   justify-content: center;
-   align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
-
 
 .info {
-   font-family: "JetBrains Mono";
+    font-family: "JetBrains Mono";
 }
-
 
 .controls {
-   display: flex;
-   align-items: center;
-   gap: 8px;
-   margin-bottom: 12px;
-   flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
 }
-
 
 .controls span {
-   font-weight: 600;
-   margin-right: 4px;
+    font-weight: 600;
+    margin-right: 4px;
 }
-
 
 .btn {
-   padding: 6px 16px;
-   border-radius: 9999px;
-   border: 2px solid #ccc;
-   background: white;
-   cursor: pointer;
-   font-family: "JetBrains Mono", monospace;
-   font-size: 0.85rem;
-   transition: all 0.15s ease;
+    padding: 6px 16px;
+    border-radius: 9999px;
+    border: 2px solid #ccc;
+    background: white;
+    cursor: pointer;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    transition: all 0.15s ease;
 }
-
 
 .btn.active {
-   background: #5076a7;
-   color: white;
-   border-color: #5076a7;
+    background: #5076a7;
+    color: white;
+    border-color: #5076a7;
 }
-
 
 .btn:hover:not(:disabled) {
-   border-color: #5076a7;
-   color: #5076a7;
+    border-color: #5076a7;
+    color: #5076a7;
 }
-
 
 .btn:disabled {
-   opacity: 0.4;
-   cursor: not-allowed;
+    opacity: 0.4;
+    cursor: not-allowed;
 }
-
 
 .oled-split-layout {
-   display: flex;
-   flex-direction: row;
-   gap: 2rem;
-   width: 100%;
-   align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+    align-items: flex-start;
 }
-
 
 .oled-top-side {
-   display: flex;
-   flex-direction: row;
-   gap: 2rem;
-   width: 100%;
-   align-items: flex-start;
-   flex: 1;
-   background: var(--bg2);
-   padding: 1.5rem;
-   border-radius: var(--radius);
-   font-family: "JetBrains Mono", serif;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    align-items: flex-start;
+    flex: 1;
+    background: var(--bg2);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    font-family: "JetBrains Mono", serif;
+    box-sizing: border-box;
 }
-
 
 .oled-info-side {
-   flex: 1;
-   background: var(--bg2);
-   padding: 1.5rem;
-   border-radius: var(--radius);
-   font-family: "JetBrains Mono", serif;
+    flex: 1;
+    background: var(--bg2);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    font-family: "JetBrains Mono", serif;
+    box-sizing: border-box;
 }
-
 
 .oled-info-side h2 {
-   margin-top: 0;
-   border-bottom: 2px solid var(--border);
-   padding-bottom: 0.5rem;
-   font-family: "JetBrains Mono", serif;
+    margin-top: 0;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.5rem;
+    font-family: "JetBrains Mono", serif;
 }
-
 
 .oled-info__title {
-   margin: 0 0 0.5rem 0;
-   font-family: "JetBrains Mono", monospace;
+    margin: 0 0 0.5rem 0;
+    font-family: "JetBrains Mono", monospace;
 }
-
 
 .oled-info__desc {
-   margin: 0;
-   font-size: 0.95rem;
-   line-height: 1.5;
-   margin-bottom: 1.4rem;
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.4rem;
 }
 
-
 .oled-dynamic-box {
-   padding: 1rem;
-   border-left: 4px solid #5076a7;
-   background: #f4f7f9;
+    padding: 1rem;
+    border-left: 4px solid #5076a7;
+    background: #f4f7f9;
 }
 
 .oled-model-side {
-   flex: 1.5;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: space-evenly;
-   gap: 1rem;
-   width: 100%;
-   padding-right: 2.5rem;
-   box-sizing: border-box;
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
 }
-
 
 .oled-stage {
     width: 100%;
@@ -137,41 +124,64 @@
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-sizing: border-box;
 }
 
 .oled-image {
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-  border-radius: 8px;
-  width: 100%;
-  height: auto;
-  display: block;
-  opacity: 0.98;
-  transform: translateY(0);
-
-  animation: scrollFadeSoft 1s ease-out forwards;
-  animation-timeline: view();
-  animation-range: exit 10% exit 40%;
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.98;
+    transform: translateY(0);
+    margin: 1.5rem 0; 
+    animation: scrollFadeSoft 1s ease-out forwards;
+    animation-timeline: view();
+    animation-range: exit 10% exit 40%;
 }
 
 @keyframes scrollFadeSoft {
-  from {
-    opacity: 0.98;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0.4;
-    transform: translateY(12px);
-  }
+    from {
+        opacity: 0.98;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0.4;
+        transform: translateY(12px);
+    }
 }
 
 @media (max-width: 1024px) {
-   .oled-split-layout {
-       flex-direction: column-reverse;
-       gap: 1.5rem;
-   }
-   .oled-info-side,
-   .oled-model-side {
-       width: 100%;
-       flex: none;
-   }
+    .oled-split-layout {
+        flex-direction: column-reverse;
+        gap: 1.5rem;
+        padding: 0;
+    }
+
+    .oled-info-side,
+    .oled-model-side {
+        width: 100%;
+        flex: none;
+        padding: 1.25rem;
+    }
+
+    .oled-stage {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .oled-top-side {
+        padding: 1rem;
+    }
+
+    .oled-info__desc {
+        font-size: 0.9rem; 
+    }
+
+    .btn {
+        font-size: 0.8rem;
+        padding: 5px 12px;
+    }
 }
