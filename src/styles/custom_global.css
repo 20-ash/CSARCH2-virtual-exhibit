@@ -66,7 +66,9 @@ html::before {
   animation: patternFloat 20s linear infinite;
 }
 
+
 /* Scattered dots overlay */
+/*remove for cleaner look*/
 html::after {
   background:
     radial-gradient(
