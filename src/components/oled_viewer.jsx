@@ -93,7 +93,7 @@ const QUESTION_POOL = [
         correct: 1
     },
     {
-        question: "Which layer is where light is actually produced?",
+        question: "Which layer produces light in an OLED display?",
         options: ["Substrate", "Anode", "Emissive Layer", "Encapsulation"],
         correct: 2
     },
@@ -111,6 +111,11 @@ const QUESTION_POOL = [
         question: "What does OLED stand for?",
         options: ["Organic Light Emitting Diode", "Optical Light Energy Display", "Original LED", "Organic Low Emission Device"],
         correct: 0
+    },
+    {
+        question: "Which OLED type uses red, green, blue, and white subpixels?",
+        options: ["QD-OLED", "WOLED", "AMOLED", "PMOLED"],
+        correct: 1
     },
     {
         question: "Who were the first developers of OLED technology?",
@@ -138,13 +143,13 @@ const QUESTION_POOL = [
         correct: 2
     },
     {
-        question: "Which OLED type uses red, green, blue, AND white subpixels?",
-        options: ["QD-OLED", "WOLED", "AMOLED", "PMOLED"],
+        question: "True or False: OLED requires a separate backlight to work.",
+        options: ["True", "False"],
         correct: 1
     },
     {
-        question: "True or false: OLED requires a separate backlight to work.",
-        options: ["True", "False"],
+        question: "What does the Hole Transport Layer do?",
+        options: ["Blocks all light", "Moves holes from anode to emissive layer", "Creates electricity", "Converts blue to red"],
         correct: 1
     },
     {
@@ -157,11 +162,6 @@ const QUESTION_POOL = [
         options: ["Thicker design", "Slower response", "Risk of burn-in", "Needs backlight"],
         correct: 2
     },
-    {
-        question: "What does the Hole Transport Layer do?",
-        options: ["Blocks all light", "Moves holes from anode to emissive layer", "Creates electricity", "Converts blue to red"],
-        correct: 1
-    }
 ];
 
 // Simple sound effects for the quiz
