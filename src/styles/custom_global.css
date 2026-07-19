@@ -1,20 +1,26 @@
 /* https://uiverse.io/SelfMadeSystem/smart-termite-74 */
 /* --- Global Animated Background Pattern (From Uiverse.io by SelfMadeSystem) --- */
-/* https://uiverse.io/SachinKumar666/friendly-shrimp-23 */
-/* --- Global Setup --- */
 html {
   min-height: 100%;
   position: relative;
+  background-image: none !important;
+  background: #000 !important;
+  background-color: #000 !important; 
   overflow-x: hidden;
-  background: none !important;
-  background-color: transparent !important;
 }
 
-/* --- Main OLED Animated Background --- */
-.oled-bg {
+/* Base properties for both pattern pseudo-elements */
+html::before,
+html::after {
+  content: "";
   position: fixed;
   inset: 0;
+  pointer-events: none;
   z-index: -2;
+}
+
+/* Grid + hue animation*/
+html::before {
   --c: 7px;
   background-color: #000;
   background-image:
@@ -33,32 +39,40 @@ html {
     200% 20.7846097px;
   --p: 0px 0px, 6px 10.39230485px;
   background-position: var(--p), 0% 0%, 0% 0%, 0% 0px;
-  animation: wee 40s linear infinite, filt 6s linear infinite;
-  pointer-events: none;
+  animation: patternFloat 20s linear infinite, hueRotate 6s linear infinite;
 }
 
-/* --- Scattered Dots Overlay (with float animation) --- */
-.oled-bg::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
+/* Scattered dots overlay — can remove for cleaner look */
+html::after {
   background:
-    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.15) 0.5em, transparent 0.5em) 0 0/4em 4em,
-    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 0.3em, transparent 0.3em) 0 0/4em 4em,
-    radial-gradient(circle at 75% 25%, rgba(13, 35, 69, 0.1) 0.4em, transparent 0.4em) 2em 0/4em 4em,
-    radial-gradient(circle at 25% 75%, rgba(13, 35, 69, 0.15) 0.2em, transparent 0.2em) 2em 2em/4em 4em;
-  animation: patternFloat 20s linear infinite;
+    radial-gradient(
+        circle at 25% 25%,
+        rgba(255, 255, 255, 0.15) 0.5em,
+        transparent 0.5em
+      )
+      0 0/4em 4em,
+    radial-gradient(
+        circle at 75% 75%,
+        rgba(255, 255, 255, 0.1) 0.3em,
+        transparent 0.3em
+      )
+      0 0/4em 4em,
+    radial-gradient(
+        circle at 75% 25%,
+        rgba(13, 35, 69, 0.1) 0.4em,
+        transparent 0.4em
+      )
+      2em 0/4em 4em,
+    radial-gradient(
+        circle at 25% 75%,
+        rgba(13, 35, 69, 0.15) 0.2em,
+        transparent 0.2em
+      )
+      2em 2em/4em 4em !important;
+  z-index: -1;
 }
 
-/* --- Animations --- */
-@keyframes filt {
-  0% { filter: hue-rotate(0deg); }
-  to { filter: hue-rotate(360deg); }
-}
-
-@keyframes wee {
+@keyframes patternFloat {
   0% {
     background-position:
       var(--p),
@@ -67,7 +81,7 @@ html {
       -1200% -600%,
       400% 41.5692194px;
   }
-  to {
+  100% {
     background-position:
       var(--p),
       0% 0%,
@@ -77,13 +91,9 @@ html {
   }
 }
 
-@keyframes patternFloat {
-  0% {
-    background-position: 0 0, 0 0, 2em 0, 2em 2em;
-  }
-  100% {
-    background-position: 2em 2em, 2em 2em, 4em 2em, 4em 4em;
-  }
+@keyframes hueRotate {
+  0% { filter: hue-rotate(0deg); }
+  to { filter: hue-rotate(360deg); }
 }
 
 /* Block 1: The inner Title block inside the Header (replaces the whole top section) */
