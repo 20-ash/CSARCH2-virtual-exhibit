@@ -11,7 +11,7 @@ const PARTS = [
         id: "crystal",
         label: "Liquid Crystal Layer",
         description:
-            "A material that has the ability to take the shape of its container like a liquid while still having its modecules be structured in a common pattern as seen with crystals.",
+            "A material with the properties of taking the shape of its container like liquid and having its modecules be structured in a common pattern as seen with crystals.",
         processLCDDescription:
             "Once electric current is delivered into the crystal layer, it's individual molecules change orientation. This gives the liquid crystal layer the ability to act as a steering wheel as the angle of the light passing through it changes with the molecules' orientation. In practice, this means the liquid crystal layer determines the brightness of a display."
     },
