@@ -117,7 +117,6 @@
    background: #f4f7f9;
 }
 
-
 .oled-model-side {
    flex: 1.5;
    display: flex;
@@ -132,24 +131,38 @@
 
 
 .oled-stage {
-   width: 100%;
-   max-width: 820px;
-   background: #1c1c1c;
-   border-radius: 12px;
-   padding: 20px;
-   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    width: 100%;
+    max-width: 820px;
+    background: #1c1c1c;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-
 
 .oled-image {
-   width: 100%;
-   max-width: 500px;
-   height: auto;
-   display: block;
-   margin: 1rem auto;
-   border-radius: 12px;
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.98;
+  transform: translateY(0);
+
+  animation: scrollFadeSoft 1s ease-out forwards;
+  animation-timeline: view();
+  animation-range: exit 10% exit 40%;
 }
 
+@keyframes scrollFadeSoft {
+  from {
+    opacity: 0.98;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0.4;
+    transform: translateY(12px);
+  }
+}
 
 @media (max-width: 1024px) {
    .oled-split-layout {

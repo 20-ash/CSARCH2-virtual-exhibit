@@ -141,7 +141,9 @@ export default function OledViewer() {
                            <p className="oled-info__desc">{panelInfo.description}</p>                 
                        </div>
                    </div>
+                   
                    <div className="oled-model-side">
+                    <br></br>
                        <p className="oled-info__desc">💡 Select a layer or animate the light below!</p>
                        <div className="controls">
                            <span>Select Layer:</span>  
@@ -187,15 +189,14 @@ export default function OledViewer() {
                                QD-OLED.
                            </p>
 
-                            <h3 className="oled-info__title">White OLED (WOLED)</h3>
+                            <h3 className="oled-info__title">WOLED</h3>
                             <p className="oled-info__desc">
-                                WOLED uses a white OLED light source combined with color filters to create red, green, and blue pixels.
+                                White OLED (WOLED) uses a white OLED light source combined with color filters to create red, green, and blue pixels.
                                 It maintains OLED’s self-emissive design, providing deep blacks, high contrast, and wide viewing angles.    
                                 However, color filters reduce light efficiency compared to newer OLED approaches like QD-OLED.
 
-                            </p>
-                            
-                            <p className="oled-info__desc">
+                            <br></br>   <br></br> 
+                                  
                                 WOLED panels typically use four subpixels: red, green, blue, and white.
                                 Instead of using separate OLED emitters for each color, a white OLED
                                 layer produces light that passes through color filters to create the
@@ -204,22 +205,22 @@ export default function OledViewer() {
                             </p>
 
                             <br></br>
-                            
-                            <h3 className="oled-info__title">Quantum Dot OLED (QD-OLED)</h3>
+
+                            <h3 className="oled-info__title">QD-OLED</h3>
                             <p className="oled-info__desc">
-                                QD-OLED is an advanced OLED technology that uses
+                                Quantum Dot OLED (QD-OLED) is an advanced OLED technology that uses
                                 a blue OLED light source with quantum dots to convert blue light into red
                                 and green. Introduced commercially in 2022 by Samsung Display, it improves
                                 light efficiency, producing higher brightness, a wider color gamut, and
                                 better HDR performance while maintaining OLED's deep blacks and fast
                                 response times.
-                            </p>
+                        
+                                <br></br>   <br></br>  
 
-                            <p className="oled-info__desc">
                                 A QD-OLED panel consists of a blue OLED layer, a quantum dot layer for
                                 color conversion, and a TFT backplane that controls individual pixels.
                                 Unlike traditional displays that rely on color filters, QD-OLED creates
-                                colors through light conversion, improving color accuracy and efficiency.
+                                    olors through light conversion, improving color accuracy and efficiency.
                             </p>
                        </>
                    )}
