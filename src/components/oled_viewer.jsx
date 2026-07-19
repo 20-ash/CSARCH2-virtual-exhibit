@@ -1,6 +1,7 @@
 import OledModel from "./oled_model.jsx";
 import React, { useState } from "react";
 import '../styles/oled.css';
+import '../styles/pagebg.css';
 import '../styles/era.css';
 
 const BASE_URL = import.meta.env.BASE_URL || "/";
@@ -82,7 +83,7 @@ export default function OledViewer() {
 
     return (
          <div className="oled-page">
-            <div className="oled-bg"></div>
+            <div className="bg"></div>
             
             <div className="back-button-container" style={{ padding: '0.5rem' }}>
                 <a href={`${BASE_URL}/displays`} className="link-pill lower">
