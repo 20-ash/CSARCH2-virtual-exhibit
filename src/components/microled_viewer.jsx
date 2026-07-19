@@ -1,6 +1,7 @@
 import MicroLEDModel from "./microled_model.jsx";
 import React, { useState } from "react";
 import '../styles/microled.css';
+import '../styles/pagebg.css';
 import '../styles/era.css';
 
 const BASE_URL = import.meta.env.BASE_URL || "/";
@@ -60,6 +61,7 @@ export default function MicroLEDViewer() {
 
     return (
         <div>
+            <div className="bg"></div>
             <div className="back-button-container" style={{ padding: '0.5rem' }}>
                 <a href={`${BASE_URL}/displays`} className="link-pill lower">
                     ← Go Back
