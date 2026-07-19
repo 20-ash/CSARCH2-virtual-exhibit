@@ -1,3 +1,4 @@
+/* General layout for display*/
 .display-container {
     display: flex;
     flex-direction: row;
@@ -5,10 +6,12 @@
     align-items: center;
 }
 
+/* Text formatting/styling */
 .info {
     font-family: "JetBrains Mono";
 }
 
+/* Buttons and controls */
 .controls {
     display: flex;
     align-items: center;
@@ -22,6 +25,7 @@
     margin-right: 4px;
 }
 
+/* Button Style*/
 .btn {
     padding: 6px 16px;
     border-radius: 9999px;
@@ -87,12 +91,12 @@
     font-family: "JetBrains Mono", serif;
 }
 
-.oled-info__title {
+.oled-info_title {
     margin: 0 0 0.5rem 0;
     font-family: "JetBrains Mono", monospace;
 }
 
-.oled-info__desc {
+.oled-info_desc {
     margin: 0;
     font-size: 0.95rem;
     line-height: 1.5;
@@ -117,6 +121,7 @@
     box-sizing: border-box;
 }
 
+/* 3D model container */
 .oled-stage {
     width: 100%;
     max-width: 820px;
@@ -141,6 +146,7 @@
     animation-range: exit 10% exit 40%;
 }
 
+/* Text formatting/styling */
 @keyframes scrollFadeSoft {
     from {
         opacity: 0.98;
@@ -152,6 +158,20 @@
     }
 }
 
+/* Quiz result animations*/
+@keyframes bounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.05); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* layout for smaller screens*/
 @media (max-width: 1024px) {
     .oled-split-layout {
         flex-direction: column-reverse;
@@ -176,7 +196,7 @@
         padding: 1rem;
     }
 
-    .oled-info__desc {
+    .oled-info_desc {
         font-size: 0.9rem; 
     }
 
