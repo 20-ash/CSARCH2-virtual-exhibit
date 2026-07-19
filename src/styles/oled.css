@@ -118,6 +118,7 @@
     flex-direction: row;
     gap: 2rem;
     width: 100%;
+    align-items: flex-start;
 }
 
 .oled-info-side {
@@ -203,4 +204,13 @@
         flex: none;
         
     }
+}
+
+.oled-image {
+    width: 100%;
+    max-width: 500 px;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+    border-radius: 12px;
 }

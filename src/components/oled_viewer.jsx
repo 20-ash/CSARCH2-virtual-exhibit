@@ -99,31 +99,44 @@ export default function OledViewer() {
                     </p>
 
                     <br /><br />
-                    
+
                    <h2 className="oled-info__title">Evolution</h2>
+                   <img 
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpoVbuxQzf0FG3W4sQJkM7Cj3ygVx3nsZ99jVbM64K-Q&s=10"
+                        alt="OLED display structure"
+                        className="oled-image"
+                    />
+                    
                     <p className="about">
-                        QD-OLED (Quantum Dot Organic Light-Emitting Diode) is an advanced display technology that combines OLED’s self-emissive properties with quantum dot color conversion.
-                        Introduced commercially in 2022 by Samsung Display, it uses blue OLED light as the primary source, while quantum dots convert 
-                        portions of the blue light into red and green, producing more accurate 
-                        colors, higher brightness, and a wider color gamut.
+                        As OLED technology advanced, manufacturers developed different implementations
+                        to improve display performance. The two main types used today are WOLED and
+                        QD-OLED.
                     </p>
 
                     <details className="see-more">
                         <summary>See More</summary>
                         <p>
-                            A QD-OLED panel consists of a blue OLED layer, a quantum dot layer for 
-                            color conversion, and a TFT backplane that controls individual pixels. 
-                            Unlike traditional displays that use color filters, QD-OLED generates 
-                            colors more efficiently by converting light, allowing each pixel to 
-                            produce deep blacks, high contrast, fast response times, and wide 
-                            viewing angles.
+                            WOLED (White OLED) uses a white OLED light source with color filters
+                            to produce red, green, and blue pixels. It preserves OLED's self-emissive
+                            design, delivering deep blacks, high contrast, and wide viewing angles.
+                            However, some light is lost through the color filters, making it less
+                            efficient than QD-OLED in brightness and color performance.
                          </p>
                         <br /><br />
                          <p>
-                            QD-OLED is mainly used in premium TVs and gaming monitors due to its 
-                            excellent HDR performance, vibrant colors, smooth motion, and low 
-                            response time. However, it still has limitations such as possible 
-                            burn-in, higher cost, text fringing, and reflections from glossy panels.
+                            QD-OLED (Quantum Dot OLED) is an advanced OLED technology that uses
+                            a blue OLED light source with quantum dots to convert blue light into red
+                            and green. Introduced commercially in 2022 by Samsung Display, it improves
+                            light efficiency, producing higher brightness, a wider color gamut, and
+                            better HDR performance while maintaining OLED's deep blacks and fast
+                            response times.
+                        </p>
+                        <br /><br />
+                        <p>
+                            A QD-OLED panel consists of a blue OLED layer, a quantum dot layer for
+                            color conversion, and a TFT backplane that controls individual pixels.
+                            Unlike traditional displays that rely on color filters, QD-OLED creates
+                            colors through light conversion, improving color accuracy and efficiency.
                         </p>
                     </details>
                 </div>
