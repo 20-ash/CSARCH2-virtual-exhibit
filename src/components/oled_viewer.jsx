@@ -634,7 +634,7 @@ export default function OledViewer() {
                                     }}>
                                         {score === 5 ? "🌟 PERFECT SCORE! YOU’RE AN OLED EXPERT!" 
                                          : score >= 3 ? "✨ AWESOME JOB! YOU KNOW YOUR OLED STUFF!" 
-                                         : "💥 NICE TRY! ALMOST THERE! EXPLORE THE TABS AGAIN AND CHALLENGE YOURSELF ONCE MORE!"}
+                                         : "💥 NICE TRY! EXPLORE THE TABS AGAIN AND CHALLENGE YOURSELF ONCE MORE!"}
                                     </p>
                                     
                                      {/* Reset Quiz Button */}
