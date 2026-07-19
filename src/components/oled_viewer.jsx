@@ -420,6 +420,8 @@ export default function OledViewer() {
                         <div className="oled-model-side">
                             <p className="oled-info_desc">
                                 💡 Select a layer or animate the light below!
+                                <br></br>
+                                Move the model around to view the different layers!
                             </p>
 
                             <div className="controls">
