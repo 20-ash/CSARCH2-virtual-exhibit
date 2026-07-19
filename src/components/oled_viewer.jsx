@@ -99,17 +99,17 @@ const QUESTION_POOL = [
     },
     {
         question: "What is the main advantage OLED has over LCD?",
-        options: ["Uses backlight", "Self-emissive pixels", "Cheaper to make", "Shorter lifespan"],
+        options: ["Uses a backlight", "Self-emissive pixels", "Cheaper to manufacture", "Shorter lifespan"],
         correct: 1
     },
     {
         question: "Which technology uses quantum dots to convert blue light?",
-        options: ["WOLED", "LCD", "QD-OLED", "Plasma"],
+        options: ["WOLED", "OLED", "QD-OLED", "LCD"],
         correct: 2
     },
     {
         question: "What does OLED stand for?",
-        options: ["Organic Light Emitting Diode", "Optical Light Energy Display", "Original LED", "Organic Low Emission Device"],
+        options: ["Organic Light Emitting Diode", "Optical Light Energy Display", "Original Light Emitting Diode", "Organic Low Emission Device"],
         correct: 0
     },
     {
@@ -124,12 +124,12 @@ const QUESTION_POOL = [
     },
     {
         question: "What material is commonly used for the transparent anode?",
-        options: ["Silicon", "Indium Tin Oxide (ITO)", "Copper", "Plastic"],
+        options: ["Silicon", "Indium Tin Oxide", "Copper", "Plastic"],
         correct: 1
     },
     {
         question: "What happens when electrons and holes meet in the emissive layer?",
-        options: ["The display turns off", "Heat is created", "Light is produced", "Electricity stops"],
+        options: ["The display turns off", "Heat is generated", "Light is produced", "Electricity stops"],
         correct: 2
     },
     {
@@ -149,7 +149,7 @@ const QUESTION_POOL = [
     },
     {
         question: "What does the Hole Transport Layer do?",
-        options: ["Blocks all light", "Moves holes from anode to emissive layer", "Creates electricity", "Converts blue to red"],
+        options: ["Blocks all light", "Moves holes from anode to emissive layer", "Creates electricity", "Converts blue light to red light"],
         correct: 1
     },
     {
@@ -159,7 +159,7 @@ const QUESTION_POOL = [
     },
     {
         question: "Which is a key disadvantage of OLED compared to LCD?",
-        options: ["Thicker design", "Slower response", "Risk of burn-in", "Needs backlight"],
+        options: ["Thicker display structure", "Slower pixel response", "Risk of image burn-in", "Requires a backlight"],
         correct: 2
     },
 ];
