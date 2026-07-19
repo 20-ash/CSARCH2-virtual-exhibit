@@ -58,7 +58,7 @@
     flex-direction: row;
     gap: 2rem;
     width: 100%;
-    align-items: flex-start;
+    /* align-items: flex-start; */
 }
 
 .oled-top-side {
@@ -81,7 +81,7 @@
     padding: 1.5rem;
     border-radius: var(--radius);
     font-family: "JetBrains Mono", serif;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
 }
 
 .oled-info-side h2 {
@@ -114,10 +114,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
     gap: 1rem;
     width: 100%;
-    padding: 0;
+    padding: 0; 
     box-sizing: border-box;
 }
 

@@ -383,57 +383,79 @@ export default function OledViewer() {
             </div>
 
             {activeTab === 'model' ? (
-                <div className="oled-split-layout">
-                    <div className="oled-info-side">
+                <>
+                    <div className="oled-top-side">
                         <h2 className="oled-info_title">General Process</h2>
                         <p className="oled-info_desc">
-                           An OLED is a self-emissive display made of organic semiconductor layers sandwiched between two electrodes.
-                           When voltage is applied, electrons and holes are injected from opposite sides and move toward each other.
-                           They meet and recombine in the emissive layer, releasing energy as visible light through electroluminescence.
-                           Each pixel works independently and can be fully turned off, resulting in true black levels, high contrast, and fast response times.
+                            An OLED is a self-emissive display made of organic semiconductor layers
+                            sandwiched between two electrodes. When voltage is applied, electrons
+                            and holes are injected from opposite sides and move toward each other.
+                            They meet and recombine in the emissive layer, releasing energy as
+                            visible light through electroluminescence. Each pixel works independently
+                            and can be fully turned off, resulting in true black levels, high
+                            contrast, and fast response times.
                         </p>
-
-                        <div className="oled-dynamic-box" style={{ marginTop: '2rem' }}>
-                            <h3 className="oled-info_title">{activeInfo.label}</h3>
-                            <p className="oled-info_desc">{activeInfo.description}</p>
-                            <h3 className="oled-info_title">Function</h3>
-                            <p className="oled-info_desc">{activeInfo.processOLEDDescription}</p>
-                            <h3 className="oled-info_title">{panelInfo.label}</h3>
-                            <p className="oled-info_desc">{panelInfo.description}</p>                 
-                        </div>
                     </div>
-                   
-                    <div className="oled-model-side">
-                        <br></br>
-                        <p className="oled-info_desc">💡 Select a layer or animate the light below!</p>
-                        <div className="controls">
-                            <span>Select Layer:</span>  
-                            {PARTS.map(part => (
+
+                    <div className="oled-split-layout">
+                        <div className="oled-info-side">
+                            <div className="oled-dynamic-box">
+                                <h3 className="oled-info_title">{activeInfo.label}</h3>
+                                <p className="oled-info_desc">
+                                    {activeInfo.description}
+                                </p>
+
+                                <h3 className="oled-info_title">Function</h3>
+                                <p className="oled-info_desc">
+                                    {activeInfo.processOLEDDescription}
+                                </p>
+
+                                <h3 className="oled-info_title">{panelInfo.label}</h3>
+                                <p className="oled-info_desc">
+                                    {panelInfo.description}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="oled-model-side">
+                            <p className="oled-info_desc">
+                                💡 Select a layer or animate the light below!
+                            </p>
+
+                            <div className="controls">
+                                <span>Select Layer:</span>
+
+                                {PARTS.map(part => (
+                                    <button
+                                        key={part.id}
+                                        className={activeBtn(selectedPart, part.id)}
+                                        onClick={() => setSelectedPart(part.id)}
+                                    >
+                                        {part.label.replace(' Layer', '').replace(' (', '\n(')}
+                                    </button>
+                                ))}
+                            </div>
+
+                            <div className="controls">
+                                <span>Light:</span>
+
                                 <button
-                                    key={part.id}
-                                    className={activeBtn(selectedPart, part.id)}
-                                    onClick={() => setSelectedPart(part.id)}
+                                    className={activeBtn(animateLight, true)}
+                                    onClick={() => setAnimateLight(!animateLight)}
                                 >
-                                    {part.label.replace(' Layer', '').replace(' (', '\n(')}
+                                    {animateLight ? 'Stop Light' : 'Animate Light'}
                                 </button>
-                            ))}
-                        </div>   
+                            </div>
 
-                        <div className="controls">  
-                            <span>Light:</span>        
-                            <button className={activeBtn(animateLight, true)} onClick={() => setAnimateLight(!animateLight)}>
-                                {animateLight ? 'Stop Light' : 'Animate Light'}
-                            </button>
+                            <OledModel
+                                animateLight={animateLight}
+                                selectedPart={selectedPart}
+                                setSelectedPart={setSelectedPart}
+                            />
                         </div>
-                          
-                        <OledModel
-                            animateLight={animateLight}
-                            selectedPart={selectedPart}
-                            setSelectedPart={setSelectedPart}
-                        />
                     </div>
-                </div>
-           ) : (
+                </>
+            ): (
                 <div className="oled-top-side">
                     {activeTab === 'evolution' && (
                         <>
