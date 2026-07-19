@@ -127,6 +127,9 @@ export default function LcdViewer() {
                     </div>
                 </div>
                 <div className="lcd-model-side">
+                    <p>
+                        💡 Try interacting with the model below!
+                    </p>
                     <div className="controls">
                         <span>Backlight:</span>   
                         <button className={activeBtn(backlight, 'ccfl')} onClick={() => { setBacklight('ccfl'); setSelectedPart('ccfl')}  }>CCFL</button>
@@ -150,6 +153,9 @@ export default function LcdViewer() {
                     
                     <LcdModel backlightType={backlight} layout={layout} animateLight={animateLight}
                         selectedPart={selectedPart} setSelectedPart={setSelectedPart} />
+                    <p>
+                        Rotate and click on one of the layers for more info.
+                    </p>
                 </div>
             </div>
         </div>
