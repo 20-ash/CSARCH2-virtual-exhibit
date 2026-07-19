@@ -109,7 +109,8 @@ export default function OledViewer() {
                     
                     <p className="about">
                         As OLED technology advanced, manufacturers developed different implementations
-                        to improve display performance. The two main types used today are WOLED and
+                        to improve display performance. Compared with LCD, OLED removes the need for a backlight by 
+                        allowing each pixel to produce its own light.The two main types used today are WOLED and
                         QD-OLED.
                     </p>
 
