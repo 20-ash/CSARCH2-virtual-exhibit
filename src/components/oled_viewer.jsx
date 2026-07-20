@@ -517,6 +517,44 @@ export default function OledViewer() {
                                 Because OLEDs are self-emissive, each pixel acts as an independent light source and doesn’t require a backlight unit. This architecture reduces structural thickness and improves power efficiency compared to Liquid Crystal Display (LCD) systems. OLEDs also exhibit high contrast ratios due to true black levels, wide viewing angles, and fast response times resulting from direct light emission. Additionally, the thin-film organic structure enables mechanical flexibility, allowing implementation in flexible and transparent display configurations.
                             </p>
 
+                            {/* Trial Glowing Pixel Grid  */}
+                                <h2 className="oled-info_title"> Close-up View of OLED Pixels</h2>
+                                <div style={{ margin: '0rem 0' }}>
+                            
+                                    {/* Pixel grid structure */}
+                                    <div className="oled-pixels">
+                                        <div className="pixel red"></div>
+                                        <div className="pixel green"></div>
+                                        <div className="pixel blue"></div>
+
+                                        <div className="pixel green"></div>
+                                        <div className="pixel blue"></div>
+                                        <div className="pixel red"></div>
+
+                                        <div className="pixel blue"></div>
+                                        <div className="pixel red"></div>
+                                        <div className="pixel green"></div>
+
+                                        <div className="pixel red"></div>
+                                        <div className="pixel green"></div>
+                                        <div className="pixel blue"></div>
+
+                                        <div className="pixel green"></div>
+                                        <div className="pixel blue"></div>
+                                        <div className="pixel red"></div>
+
+                                        <div className="pixel blue"></div>
+                                        <div className="pixel red"></div>
+                                        <div className="pixel green"></div>
+                                    </div>
+
+                                    <ul className="oled-info_desc" style={{ marginTop: '1rem' }}>
+                                        <li><strong>Self-Emissive:</strong> Every subpixel generates its own light</li>
+                                        <li><strong>True Black:</strong> Pixels turn completely off with zero glow</li>
+                                        <li><strong>Color Precision:</strong> Red, green, and blue mix to produce billions of shades</li>
+                                    </ul>
+                                </div>
+                            
                             <h3 className="oled-info_title" style={{ marginTop: '2rem' }}>How OLED Works</h3>
                             <p className="oled-info_desc">
                                 OLEDs work by applying a voltage across organic semiconductor layers, which causes electrons and holes to be injected from opposite electrodes and move toward each other. When they meet, they recombine in the emissive region and release energy in the form of visible light through electroluminescence. Each pixel operates independently, meaning it can be switched on or off and controlled in brightness based on the amount of current applied. This direct light emission allows precise pixel-level control, resulting in fast response times, high contrast, and true black levels when no current is supplied to a pixel.

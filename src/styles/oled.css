@@ -207,3 +207,54 @@
         padding: 5px 12px;
     }
 }
+
+/* OLED Pixel Grid Container */
+.oled-pixels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  max-width: 280px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #000;
+  border-radius: 12px;
+}
+
+/* Base Pixel Style */
+.oled-pixels .pixel {
+  width: 100%;
+  height: 70px;
+  border-radius: 4px;
+  animation: pixelGlow 2.5s ease-in-out infinite alternate;
+}
+
+/* Color abd Glow for Each Subpixel */
+.oled-pixels .pixel.red {
+  background: #ff3c3c;
+  box-shadow: 0 0 18px 4px rgba(255, 60, 60, 0.6);
+  animation-delay: 0s;
+}
+
+.oled-pixels .pixel.green {
+  background: #3cff64;
+  box-shadow: 0 0 18px 4px rgba(60, 255, 100, 0.6);
+  animation-delay: 0.4s;
+}
+
+.oled-pixels .pixel.blue {
+  background: #508cff;
+  box-shadow: 0 0 18px 4px rgba(80, 140, 255, 0.6);
+  animation-delay: 0.8s;
+}
+
+/* Glow Pulse Animation */
+@keyframes pixelGlow {
+  0% {
+    opacity: 0.6;
+    box-shadow: 0 0 10px 2px currentColor;
+  }
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 25px 8px currentColor;
+  }
+}
