@@ -240,5 +240,11 @@ The platform is organized into the following logical sections:
 *   <mark>After looking through how the provided ExhibitLayout asto components does its dynamic url, modifications were made to the astro config file to dynamically set the base url of the routes, recognizing when is it in deployment and when is it in production.</mark>
 *   <mark>The team is considering implementing a new read more pop up feature on the frontend to resolve the dilemma on not being limited from the amount of textual information we can present on screen.</mark>
 
-### <mark>July 7, 2026</mark>
-*   <mark>The team finalized their submission for the Mid-milestone submission.</mark>
+### <mark>July 19, 2026</mark>
+*   <mark>Time was spent finding inspiration online and ready made UI design components to be implemented on the website.</mark>
+*   <mark>After selecting premade UI components online. They were implemented on each display technology subpage by creasing a new css file to override the designs provided by the template global css.</mark>
+*   <mark>Team deliberated on adding another interactive element and additional content in the form of a short quiz and page subtabs.</mark>
+
+### <mark>July 20, 2026</mark>
+*   <mark>Team decided that only some display technologies will contain subtabs on account of the width of information being technology dependent.</mark>
+*   <mark>Troubleshooting why the github deployment does not seem to implement changes we make on new pushes.</mark>
