@@ -241,10 +241,13 @@ The platform is organized into the following logical sections:
 *   <mark>The team is considering implementing a new read more pop up feature on the frontend to resolve the dilemma on not being limited from the amount of textual information we can present on screen.</mark>
 
 ### <mark>July 19, 2026</mark>
+*   <mark>Timeline was revamped to include a see more component and summarized display descriptions to prevent text clutter.</mark>
 *   <mark>Time was spent finding inspiration online and ready made UI design components to be implemented on the website.</mark>
-*   <mark>After selecting premade UI components online. They were implemented on each display technology subpage by creasing a new css file to override the designs provided by the template global css.</mark>
+*   <mark>After selecting premade UI components online. They were implemented on each display technology subpage by creasing a new css file to override the designs provided by the template global css without modifying it.</mark>
 *   <mark>Team deliberated on adding another interactive element and additional content in the form of a short quiz and page subtabs.</mark>
 
 ### <mark>July 20, 2026</mark>
+*   <mark>OLED spearheaded the implementation of the subtabs that the other pages will follow.</mark>
 *   <mark>Team decided that only some display technologies will contain subtabs on account of the width of information being technology dependent.</mark>
 *   <mark>Troubleshooting why the github deployment does not seem to implement changes we make on new pushes.</mark>
+*   <mark>Finalized submission of the website.</mark>
