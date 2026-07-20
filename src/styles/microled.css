@@ -59,10 +59,25 @@
     width: 100%;
 }
 
+.microled-top-side {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    align-items: flex-start;
+    flex: 1;
+    background: var(--bg2);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    font-family: "JetBrains Mono", serif;
+    box-sizing: border-box;
+}
+
 .microled-info-side {
     flex: 1;
     background: var(--bg2);
     padding: 1.5rem;
+    border-radius: var(--radius);
     font-family: "JetBrains Mono", serif;
 }
 
@@ -78,8 +93,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
     width: 100%;
-    padding-right: 2.5rem;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -98,74 +114,109 @@
     margin: 0;
     font-size: 0.95rem;
     line-height: 1.5;
+    margin-bottom: 1.4rem;
+}
+
+.microled-image {
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.98;
+    transform: translateY(0);
+    margin: 1.5rem 0;
+    animation: scrollFadeSoft 1s ease-out forwards;
+    animation-timeline: view();
+    animation-range: exit 10% exit 40%;
+}
+
+@keyframes scrollFadeSoft {
+    from {
+        opacity: 0.98;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0.4;
+        transform: translateY(12px);
+    }
+}
+
+.microled-adv-lim ul {
+    margin: 0;
+    padding-left: 1.1rem;
+}
+
+.microled-adv-lim li {
+    margin-bottom: 0.5rem;
 }
 
 .microled-stage {
     width: 100%;
-    max-width: 820px;
-    background: #1c1c1c;
+    max-width: 900px;
+    background: #f4f6f7;
+    border: 1px solid #e2e6e8;
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-sizing: border-box;
+    margin: 0 auto;
 }
 
 .part { cursor: pointer; transition: all 0.2s; }
-.part:hover { opacity: 0.8; }
+.part:hover { opacity: 0.85; }
+
+/* Interactive selection highlight for whichever layer is active */
+.part-active rect,
+.part-active circle {
+    
+    stroke: #5076a7 !important;
+    stroke-width: 3px;
+    filter: drop-shadow(0 0 4px rgba(15, 110, 86, 0.45));
+}
 
 .part-label {
-    fill: var(--text);
     font-family: "JetBrains Mono", monospace;
-    font-size: 13px;
-    pointer-events: none;
+    font-size: 11px;
+    fill: #333;
 }
 
-.part-active path,
-.part-active rect,
-.part-active ellipse,
-.part-active line,
-.part-active polygon {
-    stroke: #5076a7 !important; 
-    stroke-width: 2px;
-    fill: rgba(80,118,167,0.3) !important;
-}
-
-.part-label { fill: #cfd6de; font-family: "JetBrains Mono", monospace; font-size: 13px; pointer-events: none; }
-
-/* Light rays exiting through the cover glass */
+/* Light rays exiting upward through the electrode and cover glass */
 .ray {
-    opacity: 0;
+    opacity: 0.15;
+    stroke-linecap: round;
 }
 
 .ray-animate {
-    stroke-dasharray: 150;
-    stroke-dashoffset: 150;
-    stroke-linecap: round;
-    opacity: 1;
-    animation: ray-travel 1.8s ease-in-out infinite;
+    animation: ray-shine 1.6s ease-in-out infinite;
 }
 
-.ray-g { animation-delay: 0.2s; }
-.ray-b { animation-delay: 0.4s; }
-
-@keyframes ray-travel {
-    0% { stroke-dashoffset: 150; opacity: 0; }
-    15% { opacity: 1; }
-    70% { stroke-dashoffset: 0; opacity: 1; }
-    100% { stroke-dashoffset: 0; opacity: 0; }
+@keyframes ray-shine {
+    0%, 35% { opacity: 0.15; }
+    55% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { opacity: 0.15; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .ray-animate {
-        animation: none;
-        stroke-dasharray: none;
-        stroke-dashoffset: 0;
-        opacity: 0.7;
-    }
+
+/* Quiz result animations */
+@keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.05); }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); opacity: 1; }
 }
 
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile */
 @media (max-width: 1024px) {
     .microled-split-layout {
-        flex-direction: column;
+        flex-direction: column-reverse;
+        padding: 0;
     }
     .display-container {
         flex-direction: column;
@@ -180,6 +231,73 @@
         margin-bottom: 1rem;
     }
     .microled-stage {
-        padding: 10px;
+        padding: 16px;
     }
+    .microled-info-side,
+    .microled-model-side {
+        width: 100%;
+        flex: none;
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .microled-top-side {
+        padding: 1rem;
+    }
+    .btn {
+        font-size: 0.8rem;
+        padding: 5px 12px;
+    }
+}
+
+/* Micro-LED Chip Grid Container*/
+.microled-cells {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 10px;
+  background: #000;
+  border-radius: 7px;
+}
+
+/* Base Cell Style */
+.microled-cells .cell {
+  width: 100%;
+  height: 50px;
+  border-radius: 2px;
+  animation: chipGlow 2.5s ease-in-out infinite alternate;
+}
+
+/* Color and Glow for each RGB chip*/
+.microled-cells .cell.red {
+  background: #E24B4A;
+  box-shadow: 0 0 18px 4px rgba(226, 75, 74, 0.6);
+  animation-delay: 0s;
+}
+
+.microled-cells .cell.green {
+  background: #639922;
+  box-shadow: 0 0 18px 4px rgba(99, 153, 34, 0.6);
+  animation-delay: 0.4s;
+}
+
+.microled-cells .cell.blue {
+  background: #378ADD;
+  box-shadow: 0 0 18px 4px rgba(55, 138, 221, 0.6);
+  animation-delay: 0.8s;
+}
+
+/* Glow Pulse Animation */
+@keyframes chipGlow {
+  0% {
+    opacity: 0.6;
+    box-shadow: 0 0 10px 2px currentColor;
+  }
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 25px 8px currentColor;
+  }
 }

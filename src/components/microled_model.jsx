@@ -45,7 +45,7 @@ export default function MicroLEDModel({ selectedPart, setSelectedPart, animate }
                 <text x="335" y="120" className="part-label" textAnchor="start">Micro-LED Chips</text>
 
                 <line x1="320" y1="161" x2="330" y2="161" stroke="#999" />
-                <text x="335" y="165" className="part-label" textAnchor="start">Common Electrode</text>
+                <text x="335" y="165" className="part-label" textAnchor="start">Electrode</text>
 
                 <line x1="320" y1="211" x2="330" y2="211" stroke="#999" />
                 <text x="335" y="215" className="part-label" textAnchor="start">TFT Backplane</text>

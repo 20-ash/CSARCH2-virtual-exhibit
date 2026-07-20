@@ -1,5 +1,5 @@
 import MicroLEDModel from "./microled_model.jsx";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import '../styles/microled.css';
 import '../styles/pagebg.css';
 import '../styles/era.css';
@@ -34,7 +34,7 @@ const PARTS = [
     },
     {
         id: "electrode",
-        label: "Common Electrode",
+        label: "Electrode",
         description:
             "A shared, transparent conductive layer above the chip array that completes the circuit, carrying current out of each chip's top contact.",
         processMicroledTitle: "Completing the Circuit",
@@ -52,57 +52,655 @@ const PARTS = [
     },
 ];
 
+const TABS = [
+    { id: "model", label: "Model" },
+    { id: "evolution", label: "Evolution" },
+    { id: "tech", label: "Technical Description" },
+    { id: "apps", label: "Applications & Performance" },
+    { id: "quiz", label: "Quiz Challenge" },
+    { id: "refs", label: "References" }
+];
+
+const QUESTION_POOL = [
+    {
+        question: "In what year was MicroLED technology invented?",
+        options: ["1994", "2000", "2012", "2018"],
+        correct: 1
+    },
+    {
+        question: "MicroLED technology was originally developed by researchers at which university?",
+        options: ["MIT", "Stanford University", "Texas Tech University", "Seoul National University"],
+        correct: 2
+    },
+    {
+        question: "Which company launched the first commercial MicroLED-based display, the 55-inch \"Crystal LED,\" in 2012?",
+        options: ["Samsung", "Sony", "LG", "Apple"],
+        correct: 1
+    },
+    {
+        question: "What did Samsung call its 146-inch MicroLED display unveiled at CES 2018?",
+        options: ["The Wall", "Crystal LED", "QLED Prime", "MicroVision"],
+        correct: 0
+    },
+    {
+        question: "What currently limits MicroLED to premium televisions, wearables, and AR devices?",
+        options: ["Manufacturing complexity and cost", "Poor contrast performance", "Limited color gamut", "Slow response time"],
+        correct: 0
+    },
+    {
+        question: "Which layer houses the circuitry that drives current to each micro-LED chip individually?",
+        options: ["Cover Glass", "Common Electrode", "TFT Backplane", "Phosphor Coating"],
+        correct: 2
+    },
+    {
+        question: "What happens inside a chip's semiconductor layers to produce light?",
+        options: [
+            "Liquid crystals twist to block or pass light",
+            "Electrons and holes recombine and release energy as light",
+            "Gas ionizes into plasma and emits ultraviolet photons",
+            "A backlight shines through a color filter"
+        ],
+        correct: 1
+    },
+    {
+        question: "What is the role of the common electrode in a MicroLED display?",
+        options: [
+            "It seals the panel from moisture and dust",
+            "It stores the image data for each frame",
+            "It completes the circuit by carrying current out of each chip's top contact",
+            "It converts ultraviolet light into visible color"
+        ],
+        correct: 2
+    },
+    {
+        question: "What is the purpose of the cover glass in a MicroLED panel?",
+        options: [
+            "It drives current to each chip",
+            "It protects the chip array while letting emitted light pass through",
+            "It generates the red, green, and blue light",
+            "It completes the electrical circuit"
+        ],
+        correct: 1
+    },
+    {
+        question: "True or False: A MicroLED display needs a backlight unit to produce an image.",
+        options: ["True", "False"],
+        correct: 1
+    },
+    {
+        question: "Roughly how small can an individual micro-LED chip be?",
+        options: ["Smaller than 100 micrometers", "About 5 millimeters", "About 1 centimeter", "About 1 inch"],
+        correct: 0
+    },
+    {
+        question: "According to the \"Best of Both Worlds\" section, what does MicroLED inherit from LCD?",
+        options: ["High brightness and the sturdiness of inorganic materials", "Organic self-emission", "Backlight light leakage", "Liquid-crystal switching"],
+        correct: 0
+    },
+    {
+        question: "Why are flip-chip micro-LEDs the most commonly used chip design?",
+        options: [
+            "They glow brighter than other designs",
+            "They are easier to bond and integrate onto the driving backplane",
+            "They don't require a common electrode",
+            "They can be made without a TFT backplane"
+        ],
+        correct: 1
+    },
+    {
+        question: "What is one of the biggest manufacturing challenges facing MicroLED today?",
+        options: [
+            "Mass transfer of millions of microscopic LEDs with high precision",
+            "A shortage of glass substrates",
+            "Excessive screen burn-in",
+            "Inability to display color"
+        ],
+        correct: 0
+    },
+    {
+        question: "True or False: Because each pixel is its own emitter, MicroLED displays are not prone to burn-in.",
+        options: ["True", "False"],
+        correct: 0
+    },
+];
+
+const playSound = (soundType) => {
+    try {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const volume = audioContext.createGain();
+
+        oscillator.connect(volume);
+        volume.connect(audioContext.destination);
+
+        if (soundType === "correct") {
+            oscillator.type = "sine";
+            oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime);
+            oscillator.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1);
+            oscillator.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.2);
+
+            volume.gain.setValueAtTime(0.5, audioContext.currentTime);
+            volume.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.4);
+
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.4);
+
+        } else if (soundType === "wrong") {
+            oscillator.type = "triangle";
+            oscillator.frequency.setValueAtTime(311.13, audioContext.currentTime);
+            oscillator.frequency.setValueAtTime(220, audioContext.currentTime + 0.15);
+
+            volume.gain.setValueAtTime(0.45, audioContext.currentTime);
+            volume.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.3);
+
+        } else if (soundType === "complete") {
+            const melody = [523.25, 587.33, 659.25, 783.99, 1046.5];
+
+            melody.forEach((note, index) => {
+                const noteOsc = audioContext.createOscillator();
+                const noteVolume = audioContext.createGain();
+
+                noteOsc.connect(noteVolume);
+                noteVolume.connect(audioContext.destination);
+
+                noteOsc.type = "sine";
+                noteOsc.frequency.value = note;
+
+                noteVolume.gain.setValueAtTime(0.4, audioContext.currentTime + index * 0.12);
+                noteVolume.gain.exponentialRampToValueAtTime(
+                    0.01,
+                    audioContext.currentTime + index * 0.12 + 0.5
+                );
+
+                noteOsc.start(audioContext.currentTime + index * 0.12);
+                noteOsc.stop(audioContext.currentTime + index * 0.12 + 0.5);
+            });
+        }
+    } catch (err) {
+    }
+};
+
+const getRandomQuestions = (count) => {
+    const shuffled = [...QUESTION_POOL].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+};
+
 export default function MicroLEDViewer() {
+    const [activeTab, setActiveTab] = useState('model');
     const [selectedPart, setSelectedPart] = useState('backplane');
     const [animate, setAnimate] = useState(false);
-
     const activeBtn = (current, target) => `btn ${current === target ? 'active' : ''}`;
     const activeInfo = PARTS.find((p) => p.id === selectedPart) || PARTS[0];
 
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [selectedAnswer, setSelectedAnswer] = useState(null);
+    const [score, setScore] = useState(0);
+    const [quizComplete, setQuizComplete] = useState(false);
+    const [quizQuestions, setQuizQuestions] = useState([]);
+    const canvasRef = useRef(null);
+    const particlesRef = useRef([]);
+    const animFrameRef = useRef(null);
+
+    useEffect(() => {
+        if (activeTab === 'quiz') {
+            setQuizQuestions(getRandomQuestions(5));
+        }
+    }, [activeTab]);
+
+    const handleAnswer = (index) => {
+        setSelectedAnswer(index);
+        const isCorrect = index === quizQuestions[currentQuestion].correct;
+        playSound(isCorrect ? 'correct' : 'wrong');
+        if (isCorrect) setScore(prev => prev + 1);
+
+        setTimeout(() => {
+            if (currentQuestion < quizQuestions.length - 1) {
+                setCurrentQuestion(prev => prev + 1);
+                setSelectedAnswer(null);
+            } else {
+                setQuizComplete(true);
+                playSound('complete');
+            }
+        }, 1200);
+    };
+
+    const resetQuiz = () => {
+        setCurrentQuestion(0);
+        setSelectedAnswer(null);
+        setScore(0);
+        setQuizComplete(false);
+        setQuizQuestions(getRandomQuestions(5));
+        particlesRef.current = [];
+        if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
+    };
+
+    useEffect(() => {
+        if (!quizComplete || score !== quizQuestions.length || !canvasRef.current) return;
+
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        const colors = ['#0f6e56', '#E24B4A', '#639922', '#378ADD', '#cfe9fb', '#5076a7'];
+
+        const resizeCanvas = () => {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        };
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        for (let i = 0; i < 180; i++) {
+            particlesRef.current.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * -canvas.height,
+                size: Math.random() * 8 + 4,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                speedX: (Math.random() - 0.5) * 4,
+                speedY: Math.random() * 3 + 2,
+                rotation: Math.random() * 360,
+                rotationSpeed: (Math.random() - 0.5) * 8
+            });
+        }
+
+        const animate = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesRef.current = particlesRef.current.filter(p => p.y < canvas.height + 20);
+
+            particlesRef.current.forEach(p => {
+                p.x += p.speedX;
+                p.y += p.speedY;
+                p.rotation += p.rotationSpeed;
+
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate((p.rotation * Math.PI) / 180);
+
+                ctx.fillStyle = p.color;
+                ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+                ctx.restore();
+            });
+
+            if (particlesRef.current.length > 0) {
+                animFrameRef.current = requestAnimationFrame(animate);
+            }
+        };
+        animate();
+
+        return () => {
+            window.removeEventListener('resize', resizeCanvas);
+            if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
+        };
+    }, [quizComplete, score, quizQuestions.length]);
+
     return (
-        <div>
+        <div className="microled-page">
             <div className="bg"></div>
+
             <div className="back-button-container" style={{ padding: '0.5rem' }}>
                 <a href={`${BASE_URL}/displays`} className="link-pill lower">
                     ← Go Back
                 </a>
             </div>
-            <div className="microled-split-layout">
 
-                {/* LEFT SIDE: Information Display */}
-                <div className="microled-info-side">
-                    <h2 className="microled-info__title">{activeInfo.label}</h2>
-                    <p className="microled-info__desc">{activeInfo.description}</p>
-
-                    <div className="microled-dynamic-box" style={{ marginTop: '2rem' }}>
-                        <h3 className="microled-info__title">{activeInfo.processMicroledTitle}</h3>
-                        <p className="microled-info__desc">{activeInfo.processMicroledDescription}</p>
-                    </div>
-                </div>
-
-                {/* RIGHT SIDE: Controls and 2D Model */}
-                <div className="microled-model-side">
-                    {/* 2D Model Parts */}
-                    <div className="controls">
-                        <span>Parts:</span>
-                        <button className={activeBtn(selectedPart, 'backplane')} onClick={() => setSelectedPart('backplane')}>Backplane</button>
-                        <button className={activeBtn(selectedPart, 'electrode')} onClick={() => setSelectedPart('electrode')}>Electrode</button>
-                        <button className={activeBtn(selectedPart, 'chips')} onClick={() => setSelectedPart('chips')}>Chips</button>
-                        <button className={activeBtn(selectedPart, 'cover')} onClick={() => setSelectedPart('cover')}>Cover</button>
-                    </div>
-
-                    {/* Light Control */}
-                    <div className="controls">
-                        <span>Action:</span>
-                        <button className={activeBtn(animate, true)} onClick={() => setAnimate(!animate)}>
-                            {animate ? 'Stop Light' : 'Animate Light'}
-                        </button>
-                    </div>
-
-                    <MicroLEDModel selectedPart={selectedPart} setSelectedPart={setSelectedPart} animate={animate} />
-                </div>
-
+            <div style={{ padding: '0 1rem 1rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                {TABS.map(tab => (
+                    <button
+                        key={tab.id}
+                        className={activeBtn(activeTab, tab.id)}
+                        onClick={() => setActiveTab(tab.id)}
+                    >
+                        {tab.label}
+                    </button>
+                ))}
             </div>
+
+            {activeTab === 'model' ? (
+                <>
+                    <div className="microled-top-side">
+                        <h2 className="microled-info__title">General Process</h2>
+                        <p className="microled-info__desc">
+                            A MicroLED display is built on a TFT backplane wired with its own miniature
+                            switch for every red, green, and blue chip. When current is delivered to a chip,
+                            electrons and holes recombine inside its semiconductor layers and release the
+                            energy as light directly, with no backlight involved. That light exits through a
+                            shared common electrode and finally through a protective cover glass to reach the
+                            viewer. Because every chip is its own light source and can be dimmed or switched
+                            off individually, MicroLED panels are capable of true black levels and precise,
+                            pixel-level control, much like other self-emissive display technologies.
+                        </p>
+                    </div>
+
+                    <div className="microled-split-layout">
+                        <div className="microled-info-side">
+                            <div className="microled-dynamic-box">
+                                <h3 className="microled-info__title">{activeInfo.label}</h3>
+                                <p className="microled-info__desc">
+                                    {activeInfo.description}
+                                </p>
+                                <br />
+
+                                <h3 className="microled-info__title">{activeInfo.processMicroledTitle}</h3>
+                                <p className="microled-info__desc">
+                                    {activeInfo.processMicroledDescription}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="microled-model-side">
+                            <p className="microled-info__desc">
+                                💡 Select a layer or animate the light emission below!
+                                <br></br>
+                                Check the model to know more about the different layers!
+                            </p>
+
+                            <div className="controls">
+                                <span>Parts:</span>
+                                <button className={activeBtn(selectedPart, 'backplane')} onClick={() => setSelectedPart('backplane')}>Backplane</button>
+                                <button className={activeBtn(selectedPart, 'electrode')} onClick={() => setSelectedPart('electrode')}>Electrode</button>
+                                <button className={activeBtn(selectedPart, 'chips')} onClick={() => setSelectedPart('chips')}>Chips</button>
+                                <button className={activeBtn(selectedPart, 'cover')} onClick={() => setSelectedPart('cover')}>Cover</button>
+                            </div>
+
+                            <div className="controls">
+                                <span>Action:</span>
+                                <button className={activeBtn(animate, true)} onClick={() => setAnimate(!animate)}>
+                                    {animate ? 'Stop Light' : 'Animate Light'}
+                                </button>
+                            </div>
+
+                            <MicroLEDModel selectedPart={selectedPart} setSelectedPart={setSelectedPart} animate={animate} />
+                        </div>
+                    </div>
+                </>
+            ) : (
+                <div className="microled-top-side">
+                    {activeTab === 'evolution' && (
+                        <>
+                            <h2 className="microled-info__title">Evolution</h2>
+                            <img
+                               src="https://blog.delmic.com/hs-fs/hubfs/Website/Blog/2023_CL_MicroLEDs_Figure%201.png?width=3063&height=1488&name=2023_CL_MicroLEDs_Figure%201.png"
+                               alt="Microled evolution structure"
+                               className="microled-image"
+                               style={{ marginTop: '0.5rem', marginBottom: '1rem' }}
+                            />
+
+                            <p className="microled-info__desc">
+                                MicroLED is a comparatively young display technology. It moved from a
+                                university research finding, to a handful of large commercial demonstrations,
+                                to today's push toward mainstream televisions, wearables, and Augmented Reality (AR) devices,
+                                all within about two and a half decades.
+                            </p>
+
+                            <h3 className="microled-info__title">Origins</h3>
+                            <p className="microled-info__desc">
+                                MicroLED technology traces back to 2000, when a research group at Texas Tech
+                                University first demonstrated arrays of microscopic, individually addressable
+                                LEDs. For over a decade the technology mostly stayed in research labs while
+                                the mass-transfer and driving methods needed to make it practical were
+                                worked out.
+                            </p>
+
+                            <h3 className="microled-info__title">First Commercial Demonstrations</h3>
+                            <p className="microled-info__desc">
+                                In 2012, Sony unveiled the first large commercial MicroLED display, a
+                                55-inch "Crystal LED" panel built from millions of individually driven
+                                red, green, and blue chips. The demonstration showed off the format's deep
+                                blacks and wide color coverage, and set the direction other manufacturers
+                                would follow. Samsung entered the space in 2018 with a 146-inch modular
+                                MicroLED display called "The Wall," shown at CES, which pushed the
+                                technology toward tiled, large-format installations.
+                            </p>
+
+                            <h3 className="microled-info__title">Current State</h3>
+                            <p className="microled-info__desc">
+                                Today, MicroLED is emerging in premium televisions, wearables, and AR
+                                devices, with manufacturers continuing to refine the mass-transfer processes
+                                needed to place millions of microscopic chips accurately and affordably.
+                                High tooling costs and a limited number of qualified suppliers still keep
+                                MicroLED mostly in the premium and large-format tiers, but the underlying
+                                technology continues to mature year over year.
+                            </p>
+                        </>
+                    )}
+
+                    {activeTab === 'tech' && (
+                        <>
+                            <h2 className="microled-info__title">Introduction and Fundamentals</h2>
+                            <p className="microled-info__desc">
+                                MicroLED (also known as mLED or µLED) is a display technology built from
+                                tiny, self-emitting LED devices that directly create each color pixel,
+                                producing bright, energy-efficient, and high-contrast images. Because the
+                                LEDs themselves emit light and can be individually controlled, MicroLED is
+                                structurally simpler than an LCD, which relies on a separate backlight and
+                                color filters. This gives MicroLED better contrast and response time along
+                                with high efficiency, and, unlike LCD, allows displays to be made flexible.
+                                Its main drawbacks are manufacturing complexity and cost, which currently
+                                limit it to premium televisions, wearables, and AR devices.
+                            </p>
+
+                            <h3 className="microled-info__title" style={{ marginTop: '2rem' }}>How MicroLED Works</h3>
+                            <p className="microled-info__desc">
+                                Each micro-LED chip is built from semiconductor layers, one with an excess
+                                of electrons and one with a deficit of them (holes), joined at a central
+                                junction. When voltage from the TFT backplane reaches a chip, electrons and
+                                holes move toward each other, collide at that junction, and release the
+                                energy as light. A single pixel is made from red, green, and blue chips,
+                                each independently driven to a different brightness, so combining their
+                                output produces every color the pixel displays. Current returns from the
+                                top of each chip through a shared common electrode, and the light finally
+                                passes through a protective cover glass to reach the viewer. Individual
+                                micro-LEDs are typically smaller than 100 micrometers, and flip-chip designs,
+                                where the electrodes sit on the chip's bottom face and bond directly to the
+                                backplane, are the most common because they are easier to integrate at scale.
+                            </p>
+
+                            <h3 className="microled-info__title" style={{ marginTop: '2rem' }}>The Best of Both Worlds</h3>
+                            <p className="microled-info__desc">
+                                MicroLED borrows its strongest traits from the two display technologies it
+                                aims to replace. From OLED it inherits self-emission, high contrast, and
+                                wide viewing angles, but because it uses inorganic semiconductor materials
+                                instead of organic compounds, it tends to consume less power, tolerate a
+                                wider range of temperatures, and last longer without burn-in. From LCD it
+                                inherits high brightness and the sturdiness of inorganic materials, without
+                                LCD's characteristic weakness: light leaking through the liquid-crystal
+                                layer even when a pixel should be fully black. Since every MicroLED pixel is
+                                its own inorganic emitter, there is no backlight to leak in the first place.
+                            </p>
+
+                            {/* Close-up visual of MicroLED chips */}
+                            <h2 className="microled-info__title">Close-up View of MicroLED Chips</h2>
+                            <div style={{ margin: '0rem 0' }}>
+
+                                <div className="microled-cells">
+                                    <div className="cell red"></div>
+                                    <div className="cell green"></div>
+                                    <div className="cell blue"></div>
+                                </div>
+
+                                <p className="microled-info__desc" style={{ marginTop: '1rem', textAlign: 'center' }}>
+                                    Each pixel is built from one red, one green, and one blue chip, each
+                                    independently driven and combined to form a full-color image.
+                                </p>
+                            </div>
+                        </>
+                    )}
+
+                    {activeTab === 'apps' && (
+                        <>
+                            <h2 className="microled-info__title">Applications</h2>
+                            <p className="microled-info__desc">
+                                MicroLED is emerging wherever brightness, contrast, and long-term reliability
+                                matter most. Documented and demonstrated uses include: premium and
+                                large-format televisions, tiled commercial display walls, wearables, and
+                                AR devices, alongside research pushing MicroLED toward flexible and
+                                near-eye displays.
+                            </p>
+
+                            <h2 className="microled-info__title">Performance Evaluation</h2>
+                            <h3 className="microled-info__title">Advantages</h3>
+                            <div className="microled-adv-lim">
+                                <ul className="microled-info__desc">
+                                    <li>Brighter output with colors that read as more accurate and true to life</li>
+                                    <li>Deep, true blacks and strong contrast without needing a separate backlight</li>
+                                    <li>Thinner, lighter, and more power-efficient thanks to the self-illuminating design</li>
+                                    <li>Extremely fast response times, well suited to gaming and fast video</li>
+                                    <li>Long lifespan with no burn-in and strong tolerance to heat and humidity</li>
+                                    <li>Can be built on curved or flexible backplanes for varied screen shapes</li>
+                                </ul>
+                            </div>
+
+                            <h3 className="microled-info__title">Limitations</h3>
+                            <div className="microled-adv-lim">
+                                <ul className="microled-info__desc">
+                                    <li>Specialized tools and dedicated fabrication facilities make production costly</li>
+                                    <li>Only a small number of suppliers can currently provide the required materials</li>
+                                    <li>Mass transfer technology for placing millions of microscopic LEDs is still maturing</li>
+                                    <li>High manufacturing complexity narrows which companies can enter the market</li>
+                                </ul>
+                            </div>
+                        </>
+                    )}
+
+                    {activeTab === 'quiz' && (
+                        <div style={{ maxWidth: '700px', margin: '0 auto', width: '100%' }}>
+                            <h2 className="microled-info__title">🧠 MicroLED Quiz Challenge</h2>
+                            <p className="microled-info__desc">
+                                Test what you've learned about MicroLED display technology! Answer all
+                                5 questions to get your score.
+                                <br /><br />
+                                🔊 Turn your volume up for the full experience!
+                            </p>
+
+                            {!quizComplete && quizQuestions.length > 0 ? (
+                                <div style={{ marginTop: '2rem' }}>
+
+                                    <div style={{ marginBottom: '1rem', fontSize: '0.9rem', color: '#666' }}>
+                                        Question {currentQuestion + 1} of {quizQuestions.length}
+                                    </div>
+
+                                    <h3 className="microled-info__title" style={{ marginBottom: '1.5rem' }}>
+                                        {quizQuestions[currentQuestion].question}
+                                    </h3>
+
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                                        {quizQuestions[currentQuestion].options.map((option, index) => (
+                                            <button
+                                                key={index}
+                                                onClick={() => handleAnswer(index)}
+                                                disabled={selectedAnswer !== null}
+                                                style={{
+                                                    padding: '0.85rem 1.25rem',
+                                                    textAlign: 'left',
+                                                    borderRadius: '8px',
+                                                    border: '2px solid #ddd',
+                                                    background: selectedAnswer === null
+                                                        ? 'white'
+                                                        : index === quizQuestions[currentQuestion].correct
+                                                            ? '#d4edda'
+                                                            : selectedAnswer === index
+                                                                ? '#f8d7da'
+                                                                : 'white',
+                                                    borderColor: selectedAnswer === null
+                                                        ? '#ddd'
+                                                        : index === quizQuestions[currentQuestion].correct
+                                                            ? '#28a745'
+                                                            : selectedAnswer === index
+                                                                ? '#dc3545'
+                                                                : '#ddd',
+                                                    cursor: selectedAnswer === null ? 'pointer' : 'default',
+                                                    transition: 'all 0.2s ease'
+                                                }}
+                                            >
+                                                {option}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ) : quizComplete ? (
+                                <div style={{ textAlign: 'center', marginTop: '2rem', padding: '2.5rem', borderRadius: '12px', background: 'rgba(15, 110, 86, 0.08)', position: 'relative', overflow: 'hidden', border: '3px solid #0f6e56' }}>
+
+                                    {score === quizQuestions.length && (
+                                        <canvas
+                                            ref={canvasRef}
+                                            style={{
+                                                position: 'absolute',
+                                                top: 0,
+                                                left: 0,
+                                                width: '100%',
+                                                height: '100%',
+                                                pointerEvents: 'none'
+                                            }}
+                                        />
+                                    )}
+
+                                    <h3 className="microled-info__title" style={{ animation: 'bounceIn 0.6s ease-out', fontSize: '2.2rem', fontWeight: '900', position: 'relative', zIndex: 2 }}>🎉 QUIZ COMPLETE! 🎉</h3>
+
+                                    <p style={{
+                                        fontSize: '4rem',
+                                        fontWeight: '900',
+                                        margin: '1.5rem 0',
+                                        color: '#0f6e56',
+                                        animation: 'bounceIn 0.8s ease-out 0.2s both',
+                                        letterSpacing: '2px',
+                                        textShadow: '0 4px 12px rgba(15, 110, 86, 0.3)',
+                                        position: 'relative',
+                                        zIndex: 2
+                                    }}>
+                                        {score} / {quizQuestions.length}
+                                    </p>
+
+                                    <p className="microled-info__desc" style={{
+                                        fontSize: '1.4rem',
+                                        fontWeight: '700',
+                                        animation: 'fadeUp 0.8s ease-out 0.4s both',
+                                        lineHeight: '1.6',
+                                        position: 'relative',
+                                        zIndex: 2
+                                    }}>
+                                        {score === 5 ? "🌟 PERFECT SCORE! YOU'RE A MICROLED EXPERT!"
+                                            : score >= 3 ? "✨ AWESOME JOB! YOU KNOW YOUR MICROLED STUFF!"
+                                                : "💥 NICE TRY! EXPLORE THE TABS AGAIN AND CHALLENGE YOURSELF ONCE MORE!"}
+                                    </p>
+
+                                    <button
+                                        onClick={resetQuiz}
+                                        className="btn"
+                                        style={{ marginTop: '2rem', fontSize: '1.1rem', padding: '0.8rem 2rem', animation: 'fadeUp 0.8s ease-out 0.6s both', position: 'relative', zIndex: 2 }}
+                                    >
+                                        TRY AGAIN
+                                    </button>
+                                </div>
+                            ) : (
+                                <p className="microled-info__desc" style={{ textAlign: 'center', marginTop: '2rem' }}>Loading quiz...</p>
+                            )}
+                        </div>
+                    )}
+
+                    {activeTab === 'refs' && (
+                        <>
+                            <h2 className="microled-info__title">References</h2>
+                            <ul className="microled-info__desc" style={{ lineHeight: '1.7', paddingLeft: '1.5rem' }}>
+                                <li>Absen. (2023). <em>Analysis of Micro LED large screen display technology Chip and encapsulation structure</em>.</li>
+                                <li>CMG Visuals. (n.d.). <em>What is a microLED display and why it's superior to OLED</em>.</li>
+                                <li>Delmic. (n.d.). <em>MicroLED: the next revolution in display technology</em>.</li>
+                                <li>FlatpanelsHD. (2016, October 21). <em>An introduction to MicroLED; a new self-emitting display technology</em>.</li>
+                                <li>GreyB. (2025, February 7). <em>Micro-LED precision fabrication</em>.</li>
+                                <li>HandWiki. (2025). <em>Engineering: MicroLED</em>.</li>
+                                <li>Kim, T. S., Ryu, J., Park, J., Liu, R., Choi, J., Kim, J., Hong, Y. J., Kim, D., & Shin, J. (2025). <em>Future trends of display technology: micro-LEDs toward transparent, free-form, and near-eye displays</em>. Light Science & Applications, 14(1), 335.</li>
+                                <li>MicroLED Association. (2025). <em>MicroLED microdisplays soft-standard</em> (Edition 2.0).</li>
+                                <li>MicroLED-Info. (n.d.). <em>What is MicroLED</em>.</li>
+                                <li>minimicroled.com. (2025, February 14). <em>The History and Development of Micro LED Technology</em>.</li>
+                                <li>PatSnap Eureka. (2025, October 24). <em>What Are OLED vs MicroLED's Key Technical Challenges</em>.</li>
+                                <li>PTCLed. (2025, January 22). <em>MicroLED VS OLED VS Mini LED: Which Display is the Future</em>.</li>
+                                <li>RF Wireless World. (n.d.). <em>What is Micro LED: Advantages and Disadvantages</em>.</li>
+                                <li>TechRadar. (2025). <em>QLED vs OLED vs micro-LED: Which is the best TV tech in 2025?</em>.</li>
+                            </ul>
+                        </>
+                    )}
+                </div>
+            )}
         </div>
     );
 }
