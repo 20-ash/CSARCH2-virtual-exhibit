@@ -565,7 +565,7 @@ export default function MicroLEDViewer() {
 
                     {activeTab === 'quiz' && (
                         <div style={{ maxWidth: '700px', margin: '0 auto', width: '100%' }}>
-                            <h2 className="microled-info__title">🧠 MicroLED Quiz Challenge</h2>
+                            <h2 className="microled-info__title">MicroLED Quiz Challenge</h2>
                             <p className="microled-info__desc">
                                 Test what you've learned about MicroLED display technology! Answer all
                                 5 questions to get your score.
