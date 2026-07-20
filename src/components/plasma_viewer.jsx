@@ -365,6 +365,7 @@ export default function PlasmaViewer() {
                                 <p className="plasma-info__desc">
                                     {activeInfo.description}
                                 </p>
+                                <br />
 
                                 <h3 className="plasma-info__title">{activeInfo.processPlasmaTitle}</h3>
                                 <p className="plasma-info__desc">
