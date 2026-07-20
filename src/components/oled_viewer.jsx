@@ -233,6 +233,7 @@ const getRandomQuestions = (count) => {
 
 export default function OledViewer() {
     const [activeTab, setActiveTab] = useState('model');             // Which section is currently open (3D model or quiz)
+    const [hoveredIdx, setHoveredIdx] = useState(null);             // for the hover effect in the menu tab
     const [selectedPart, setSelectedPart] = useState('substrate');   // Selected OLED layer to show details
     const [animateLight, setAnimateLight] = useState(false);         // Selected OLED layer to show details
     const activeBtn = (current, target) => `btn ${current === target ? 'active' : ''}`;  // Selected OLED layer to show details
@@ -370,14 +371,28 @@ export default function OledViewer() {
             </div>
 
             {/* Button to return to display timeline */}
-            <div style={{ padding: '0 1rem 1rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-                {TABS.map(tab => (
+            <div 
+                className="tabs-wrap"
+                style={{
+                    '--active-index': TABS.findIndex(t => t.id === activeTab),
+                    '--hover-index': hoveredIdx !== null ? hoveredIdx : TABS.findIndex(t => t.id === activeTab),
+                    '--is-hovered': hoveredIdx !== null ? 1 : 0
+                }}
+            >
+                {/* The sliding indicators driven gracefully by CSS variables */}
+                <div className="tab-slidebar" />
+                <div className="tab-bar" />
+
+                {/* Render the custom styled menu tab buttons */}
+                {TABS.map((tab, idx) => (
                     <button
                         key={tab.id}
-                        className={activeBtn(activeTab, tab.id)} // Changes the displayed section
-                        onClick={() => setActiveTab(tab.id)}    // Changes the displayed section
+                        className={`tab-label ${activeTab === tab.id ? 'active' : ''}`}
+                        onClick={() => setActiveTab(tab.id)}
+                        onMouseEnter={() => setHoveredIdx(idx)}
+                        onMouseLeave={() => setHoveredIdx(null)}
                     >
-                        {tab.label}
+                        <span>{tab.label}</span>
                     </button>
                 ))}
             </div>
@@ -439,13 +454,11 @@ export default function OledViewer() {
                             </div>
 
                             <div className="controls">
-                                <span>Light:</span>
-
                                 <button
-                                    className={activeBtn(animateLight, true)}
+                                    className={`btn-animate-light ${animateLight ? 'active-glow' : ''}`}
                                     onClick={() => setAnimateLight(!animateLight)}
                                 >
-                                    {animateLight ? 'Stop Light' : 'Animate Light'}
+                                    {animateLight ? 'Stop Light' : 'Click To Animate Light'}
                                 </button>
                             </div>
 

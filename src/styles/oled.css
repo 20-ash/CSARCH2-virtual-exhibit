@@ -258,3 +258,155 @@
     box-shadow: 0 0 25px 8px currentColor;
   }
 }
+
+/* https://uiverse.io/ilkhoeri/slippery-elephant-47 */
+/* --- Custom Menu Tab Navigation Styling --- */
+.tabs-wrap {
+  --round: 10px;
+  --p-x: 8px;
+  --p-y: 4px;
+  --w-label: 110px; /* Adjusted slightly to fit words like "Evolution" */
+  
+  /* Palette Variables mapped to your dark layout or custom choices */
+  --color-pure: #ffffff;
+  --color-primary: #e8e8e8;
+  --color-secondary: #212121;
+  --muted: #5076a7; /* Using your project's blue theme highlight color */
+
+  display: flex;
+  align-items: center;
+  padding: var(--p-y) var(--p-x);
+  position: relative;
+  background: var(--color-primary);
+  border-radius: var(--round);
+  max-width: 100%;
+  width: fit-content;
+  margin: 0 auto 1.5rem; /* Centers the tab menu bar */
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  z-index: 1;
+}
+
+/* Hide defaults for our custom pseudo-buttons */
+.tab-label {
+  cursor: pointer;
+  outline: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  background: transparent;
+  border: none;
+  padding: 12px 16px;
+  width: var(--w-label);
+  min-width: var(--w-label);
+  text-decoration: none;
+  user-select: none;
+  transition: color 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* Replaces input:checked + label styling seamlessly with your React state */
+.tab-label.active {
+  color: var(--color-pure) !important;
+}
+
+/* Sliding Background indicator card */
+/* Update the sliding background to follow the hover index, falling back to active index */
+.tab-slidebar {
+  position: absolute;
+  height: calc(100% - (var(--p-y) * 4));
+  width: var(--w-label);
+  border-radius: calc(var(--round) - var(--p-y));
+  background: var(--muted);
+  transform-origin: 0 0 0;
+  z-index: 0;
+  transition: transform 0.4s cubic-bezier(0.33, 0.83, 0.99, 0.98), background-color 0.2s ease;
+  left: var(--p-x);
+  
+  /* Slides smoothly when hovering OR when active tab changes */
+  transform: translateX(calc(var(--hover-index) * 100%)) scaleX(1);
+}
+
+/* Subtle visual feedback change on hover */
+.tabs-wrap:has(.tab-label:hover) .tab-slidebar {
+  opacity: 0.85; /* Makes it slightly translucent or lighter when hovering around */
+}
+
+/* The top/bottom border bar accents still stick strictly to the real selected active tab */
+.tab-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: absolute;
+  transform-origin: 0 0 0;
+  height: 100%;
+  width: var(--w-label);
+  z-index: 3;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.33, 0.83, 0.99, 0.98);
+  left: var(--p-x);
+  
+  transform: translateX(calc(var(--active-index) * 100%)) scaleX(1);
+}
+
+.tab-bar::before,
+.tab-bar::after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: var(--color-secondary);
+}
+.tab-bar::before {
+  top: 0;
+  border-radius: 0 0 9999px 9999px;
+}
+.tab-bar::after {
+  bottom: 0;
+  border-radius: 9999px 9999px 0 0;
+}
+
+/* https://uiverse.io/zjssun/tidy-sloth-40 */
+/* Custom Glow Button Design - Initialized State Visible */
+.btn-animate-light {
+  padding: 10px 20px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  font-family: "JetBrains Mono", monospace;
+  transition: all 0.4s ease;
+
+  /* Visible by default (Blue border, subtle background tint, and soft glow) */
+  color: #008cff;
+  background: rgba(0, 140, 255, 0.05);
+  border: 2px solid #008cff;
+  box-shadow: 0 2px 4px rgba(0, 140, 255, 0.1);
+}
+
+/* Hover State - Crank up the intensity */
+.btn-animate-light:hover,
+.btn-animate-light:focus {
+  color: #ffffff;
+  background: #008cff;
+  border: 2px solid #008cff;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 8px rgba(0, 140, 255, 0.5), 0 4px 12px rgba(0, 140, 255, 0.3);
+}
+
+/* Active State - When "STOP LIGHT" is running (Keeps the strong neon look) */
+.btn-animate-light.active-glow {
+  color: #ffffff;
+  background: #008cff;
+  border: 2px solid #008cff;
+  box-shadow: 0 0 8px rgba(0, 140, 255, 0.6);
+}
