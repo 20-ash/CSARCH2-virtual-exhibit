@@ -591,6 +591,13 @@ export default function OledViewer() {
                                 <p className="oled-info_desc">
                                     OLED displays are used in many applications where good image quality, low power use, and flexible design are important. They are commonly used in consumer electronics; this includes smartphones, televisions, tablets, smartwatches, and computer monitors. They are also used in automotive systems, such as digital dashboards, infotainment screens, and head-up displays (HUDs); wearable devices and VR/AR systems; industrial control panels and instruments; and IoT smart home devices and low-power sensors.
                                 </p>
+
+                                <img
+                                    src="../src/assets/OLEDcp.png"
+                                    alt="OLED cp"
+                                    className="oled-image"
+                                    style={{ marginTop: '0.5rem', marginBottom: '1rem' }}
+                                />
                             </>
                         )}
 
