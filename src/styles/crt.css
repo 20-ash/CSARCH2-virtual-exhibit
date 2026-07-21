@@ -529,7 +529,7 @@
 .sonic-app-display {
   width: 80px;
   height: 80px;
-  background: url('../src/assets/sonic-walk.gif') no-repeat center center;
+  background: url('/src/assets/sonic-walk.gif') no-repeat center center;
   background-size: contain;
   image-rendering: pixelated;     /* Preserves crisp retro pixels */
   image-rendering: crisp-edges;
@@ -539,7 +539,7 @@
 .mario-app-display {
   width: 80px;
   height: 80px;
-  background: url('../src/assets/mario-walk.gif') no-repeat center center;
+  background: url('/src/assets/mario-walk.gif') no-repeat center center;
   background-size: contain;
   image-rendering: pixelated;     /* Preserves crisp retro pixels */
   image-rendering: crisp-edges;
