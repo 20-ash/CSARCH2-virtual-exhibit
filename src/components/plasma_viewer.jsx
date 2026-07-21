@@ -645,6 +645,8 @@ export default function PlasmaViewer() {
                             <p className="plasma-info__desc">
                                 Test what you've learned about Plasma Display Panel technology! Answer all
                                 5 questions to get your score.
+                                <br /><br />
+                                🔊 Turn your volume up for the full experience!
                             </p>
 
                             {!quizComplete && quizQuestions.length > 0 ? (
