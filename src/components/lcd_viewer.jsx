@@ -448,6 +448,10 @@ export default function LcdViewer() {
                             <p className="lcd-info_desc">
                                 Development on LCD displays began in the 1960s with it's inventor, George H. Heilmeier working with Radio Corporation of America (RCA). By 1968, the world's first LCD display was unveiled to the world. Moving into the 1970s, further research was done on improving the performance of lcds to expand its range of application. The same decade saw lcd entering the industry.
                             </p>
+
+                            <p className="lcd-info_desc">
+                                The shift from bulky Cathode Ray Tube (CRT) monitors to LCD meant replacing bulky glass tubes with a slim and low-profile design, paving the way for the thin smartphone and tablet screens we use today. LCDs are also more efficient by consuming less power while generating less heat.
+                            </p>
                         </>
                     )}
 

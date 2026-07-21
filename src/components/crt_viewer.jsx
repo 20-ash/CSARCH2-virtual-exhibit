@@ -88,8 +88,8 @@ const QUESTION_POOL = [
         correct: 0
     },
     {
-        question: "Who invented the primitive CRT (Braun Tube) in 1897?",
-        options: ["Thomas Edison", "Nikola Tesla", "Karl Ferdinand Braun", "Ching W. Tang"],
+        question: "Who invented the CRT?",
+        options: ["Thomas Edison", "Nikola Tesla", "Karl Ferdinand Braun", "Roger Uy"],
         correct: 2
     },
     {
@@ -99,13 +99,33 @@ const QUESTION_POOL = [
     },
     {
         question: "What is the primary function of the Control Grid within a CRT?",
-        options: ["It alters the beam's direction", "It changes display brightness by modulating beam intensity", "It maintains vacuum compression", "It converts kinetic energy into visible light"],
+        options: ["It alters the beam's direction", "It changes display brightness by adjusting beam intensity", "It maintains vacuum compression", "It converts kinetic energy into visible light"],
         correct: 1
     },
     {
         question: "Why is the internal chamber of a CRT completely vacuum-sealed?",
         options: ["To prevent traveling electrons from scattering due to air molecules", "To reduce heavy operational heat build-up", "To lower the overall physical weight", "To increase ambient brightness"],
         correct: 0
+    },
+    {
+        question: "When was CRT invented?",
+        options: ["1895", "1896", "1897", "1898"],
+        correct: 2
+    },
+    {
+        question: "Which is NOT an application of CRT?",
+        options: ["Oscilloscope", "Early Radar Systems", "MRI Machines", "Old Cellphones"],
+        correct: 3
+    },
+    {
+        question: "What did the inventor of the CRT first name it?",
+        options: ["Vacuum Tube", "Braun Tube", "Light Tube", "Phosphor Tube"],
+        correct: 1
+    },
+    {
+        question: "Which of the following is NOT a disadvantage of CRT?",
+        options: ["Portability", "Size", "Required Power", "Response Time"],
+        correct: 1
     }
 ];
 
@@ -446,12 +466,38 @@ export default function CrtViewer() {
                     {activeTab === 'apps' && (
                         <>
                             <h2 className="crt-info_title">Applications</h2>
+
+                            {/* Scientific Text */}
+                            <div className="crt-intro-split">    
+                                {/* LEFT SIDE: Text Content */}
+                                <div className="crt-intro-text">
+                                    <p className="crt-info_desc">
+                                        In the early years of its invention, CRT was mainly used as a scientific tool. An example of its application is in the oscilloscope, which is used to study the electrical waveforms produced by oscillations. CRT is used to visualize the graphs of the electrical signal over time.
+                                    </p>
+                                </div>
+
+                                {/* RIGHT SIDE: Image */}
+                                <div className="crt-inventor-side">
+                                    <div className="circle-image-frame">
+                                        <img 
+                                            src="/src/assets/Oscilloscope.jpg" 
+                                            alt="Oscilloscope" 
+                                            className="inventor-img"
+                                        />
+                                    </div>
+                                    <p className="inventor-caption">
+                                        <strong>Oscilloscope</strong><br />
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* War Text */}
                             <div className="crt-intro-split">    
                                 {/* LEFT SIDE: Image */}
                                 <div className="crt-inventor-side">
                                     <div className="circle-image-frame">
                                         <img 
-                                            src="https://maxmarineelectronics.com/wp-content/uploads/2018/04/SAM_4241.jpg" 
+                                            src="/src/assets/radar.png" 
                                             alt="Radar" 
                                             className="inventor-img"
                                         />
@@ -469,8 +515,50 @@ export default function CrtViewer() {
                                 </div>
                             </div>
 
+                            {/* TV Text */}
+                            <div className="crt-intro-split">    
+                                {/* LEFT SIDE: Text Content */}
+                                <div className="crt-intro-text">
+                                    <p className="crt-info_desc">
+                                        Then, as time moved on, CRT also developed into the technology being used in early television. It first started as only being able to show monochrome pictures (black and white), but later evolved and was able to show other colors. 
+                                    </p>
+                                </div>
+
+                                {/* RIGHT SIDE: Image */}
+                                <div className="crt-inventor-side">
+                                    <div className="circle-image-frame">
+                                        <img 
+                                            src="/src/assets/television.gif" 
+                                            alt="CRT Television" 
+                                            className="inventor-img"
+                                        />
+                                    </div>
+                                    <p className="inventor-caption">
+                                        <strong>CRT Television</strong><br />
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* modern applications first part */}
                             <p className="crt-info_desc">
-                                In the present era, CRT usage has diminished with the emergence of newer display technologies. Currently, CRTS are only being used in specific areas due to certain constraints. An example would be in medical imaging devices such as MRI and X-Ray machines, where their high contrast and grayscale capabilities are useful in obtaining more precise analysis. Another area where CRT is still being used is in heavy machinery in the mining, construction, and manufacturing fields due to its reliability in withstanding the various environmental variables in these fields and providing accurate and consistent data to operators. Then, aside from these, CRT is still being used because of legacy systems or old technologies that are still being used today. For example, legacy military and aviation systems and retro gaming still use CRT since it can still provide a good display and replacing them would be costly.
+                                In the present era, CRT usage has diminished with the emergence of newer display technologies. Currently, CRTS are only being used in specific areas due to certain constraints. An example would be in medical imaging devices such as MRI and X-Ray machines, where their high contrast and grayscale capabilities are useful in obtaining more precise analysis. Another area where CRT is still being used is in heavy machinery in the mining, construction, and manufacturing fields due to its reliability in withstanding the various environmental variables in these fields and providing accurate and consistent data to operators.
+                            </p>
+
+                            <div style={{ textAlign: 'center', width: '100%' }}>
+                                <img
+                                    src="/src/assets/mri.png"
+                                    alt="MRI Machine"
+                                    className="crt-image"
+                                    style={{ marginTop: '0.5rem', marginBottom: '1rem' }}
+                                />
+                                <p className="inventor-caption">
+                                    <strong>MRI Machine</strong>
+                                </p>
+                            </div>
+
+                            {/* modern applications second part */}
+                            <p className="crt-info_desc">
+                                Then, aside from these, CRT is still being used because of legacy systems or old technologies that are still being used today. For example, legacy military and aviation systems and retro gaming still use CRT since it can still provide a good display and replacing them would be costly.
                             </p>
 
                             <div className="char-app-container">
