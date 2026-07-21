@@ -746,23 +746,87 @@ export default function MicroLEDViewer() {
                         <>
                             <h2 className="microled-info__title">References</h2>
                             <ul className="microled-info__desc" style={{ lineHeight: '1.7', paddingLeft: '1.5rem' }}>
-                                <li>Absen. (2023). <em>Analysis of Micro LED large screen display technology Chip and encapsulation structure</em>.</li>
-                                <li>CMG Visuals. (n.d.). <em>What is a microLED display and why it's superior to OLED</em>.</li>
-                                <li>Delmic. (n.d.). <em>MicroLED: the next revolution in display technology</em>.</li>
-                                <li>FlatpanelsHD. (2016, October 21). <em>An introduction to MicroLED; a new self-emitting display technology</em>.</li>
-                                <li>GreyB. (2025, February 7). <em>Micro-LED precision fabrication</em>.</li>
-                                <li>HandWiki. (2025). <em>Engineering: MicroLED</em>.</li>
-                                <li>Kim, T. S., Ryu, J., Park, J., Liu, R., Choi, J., Kim, J., Hong, Y. J., Kim, D., & Shin, J. (2025). <em>Future trends of display technology: micro-LEDs toward transparent, free-form, and near-eye displays</em>. Light Science & Applications, 14(1), 335.</li>
-                                <li>MicroLED Association. (2025). <em>MicroLED microdisplays soft-standard</em> (Edition 2.0).</li>
-                                <li>MicroLED-Info. (n.d.). <em>What is MicroLED</em>.</li>
-                                <li>minimicroled.com. (2025, February 14). <em>The History and Development of Micro LED Technology</em>.</li>
-                                <li>PatSnap Eureka. (2025, October 24). <em>What Are OLED vs MicroLED's Key Technical Challenges</em>.</li>
-                                <li>PTCLed. (2025, January 22). <em>MicroLED VS OLED VS Mini LED: Which Display is the Future</em>.</li>
-                                <li>RF Wireless World. (n.d.). <em>What is Micro LED: Advantages and Disadvantages</em>.</li>
-                                <li>TechRadar. (2025). <em>QLED vs OLED vs micro-LED: Which is the best TV tech in 2025?</em>.</li>
-                                <li>Texas Tech University, Department of Electrical & Computer Engineering. (n.d.). <em>Hongxing Jiang, PhD</em> [Faculty profile].</li>
-                                <li>Texas Tech University, Department of Electrical & Computer Engineering. (n.d.). <em>Jingyu Lin, PhD</em> [Faculty profile].</li>
-                                <li>Wikipedia. (2025). <em>MicroLED</em>.</li>
+                                <li>
+                                    Absen. (2023). <em>Analysis of Micro LED large screen display technology Chip and encapsulation structure</em>.
+                                    <a href="https://www.absen.com/analysis-of-micro-led-large-screen-display-technology-chip-and-encapsulation-structure" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                        Link to Article
+                                    </a>
+                                </li>
+                                <li>
+                                    CMG Visuals. (n.d.). <em>What is a microLED display and why it's superior to OLED</em>.
+                                    <a href="https://www.cmgvisuals.com/led-screen-blog/what-is-a-microled-display-and-why-its-superior-to-oled" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                        Link to Article
+                                    </a>
+                                </li>
+                                <li>
+                                    Delmic. (n.d.). <em>MicroLED: the next revolution in display technology</em>.
+                                    <a href="https://blog.delmic.com/microled-revolutionary-technology" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                        Link to Article
+                                    </a>
+                                </li>
+                                <li>
+                                    FlatpanelsHD. (2016, October 21). <em>An introduction to MicroLED; a new self-emitting display technology</em>.
+                                    <a href="https://www.flatpanelshd.com/focus.php?subaction=showfull&id=1477048275" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                        Link to Article
+                                    </a>
+                                </li>
+                                <li>
+                                    GreyB. (2025, February 7). <em>Micro-LED precision fabrication</em>.
+                                    <a href="https://xray.greyb.com/micro-leds/micro-led-display-fabrication" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                        Link to Article
+                                    </a>
+                                </li>
+                                <li>
+                                    HandWiki. (2025). <em>Engineering: MicroLED</em>.
+                                    <a href="https://handwiki.org/wiki/Engineering:MicroLED" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                        Link to Article
+                                    </a>
+                                </li>
+                                <li>
+                                    Kim, T. S., Ryu, J., Park, J., Liu, R., Choi, J., Kim, J., Hong, Y. J., Kim, D., & Shin, J. (2025). <em>Future trends of display technology: micro-LEDs toward transparent, free-form, and near-eye displays</em>. Light Science & Applications, 14(1), 335.
+                                </li>
+                                <li>
+                                    MicroLED Association. (2025). <em>MicroLED microdisplays soft-standard</em> (Edition 2.0).
+                                    <a href="https://www.microledassociation.com/wp-content/uploads/2025/02/MIA-MicroLED-standardization-microdisplays-2025-02.pdf" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                        Link to Article
+                                    </a>
+                                </li>
+                                <li>
+                                    MicroLED-Info. (n.d.). <em>What is MicroLED</em>.
+                                    <a href="https://www.microled-info.com/introduction" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                        Link to Article
+                                    </a>
+                                </li>
+                                <li>
+                                    minimicroled.com. (2025, February 14). <em>The History and Development of Micro LED Technology</em>.
+                                    <a href="https://www.minimicroled.com/the-history-development-micro-led-technology/" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                        Link to Article
+                                    </a>
+                                </li>
+                                <li>
+                                    PatSnap Eureka. (2025, October 24). <em>What Are OLED vs MicroLED's Key Technical Challenges</em>.
+                                    <a href="https://eureka.patsnap.com/report-oled-vs-microled-key-technical-challenges" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                        Link to Article
+                                    </a>
+                                </li>
+                                <li>
+                                    PTCLed. (2025, January 22). <em>MicroLED VS OLED VS Mini LED: Which Display is the Future</em>.
+                                    <a href="https://www.ptcled.com/academy/microled-vs-oled-vs-miniled.html" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                        Link to Article
+                                    </a>
+                                </li>
+                                <li>
+                                    RF Wireless World. (n.d.). <em>What is Micro LED: Advantages and Disadvantages</em>.
+                                    <a href="https://www.rfwireless-world.com/terminology/micro-led-advantages-disadvantages" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                        Link to Article
+                                    </a>
+                                </li>
+                                <li>
+                                    TechRadar. (2025). <em>QLED vs OLED vs micro-LED: Which is the best TV tech in 2025?</em>.
+                                    <a href="https://www.techradar.com/televisions/qled-vs-oled-vs-micro-led-which-is-the-best-tv-tech-in-2025" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                        Link to Article
+                                    </a>
+                                </li>
                             </ul>
                         </>
                     )}
