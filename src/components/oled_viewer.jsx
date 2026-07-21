@@ -532,7 +532,7 @@ export default function OledViewer() {
                                     <div className="oled-inventor-side">
                                         <div className="inventor-frame">
                                             <img 
-                                                src="../src/assets/OLEDinventors.jpeg" 
+                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWIZ4IXe6BshUfj4wlNYWPZqATuGAF2FQTcv6Sc3h3yM3NjkL7NhFFxEC82u3zcuJJieiTApgsDS4JIT1in-_9tR-ss3hrfdbDU40EGE-9&s=10" 
                                                 alt="Ching W. Tang and Steven Van Slyke" 
                                                 className="inventor-img"
                                             />
