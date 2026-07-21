@@ -247,7 +247,7 @@ The platform is organized into the following logical sections:
 *   <mark>Team deliberated on adding another interactive element and additional content in the form of a short quiz and page subtabs.</mark>
 
 ### <mark>July 20, 2026</mark>
-*   <mark>OLED spearheaded the implementation of the subtabs that the other pages will follow.</mark>
-*   <mark>Team decided that only some display technologies will contain subtabs on account of the width of information being technology dependent.</mark>
+*   <mark>OLED and CRT spearheaded the implementation of the subtabs.</mark>
+*   <mark>Team decided to follow oled's adjustment to webpage.</mark>
 *   <mark>Troubleshooting why the github deployment does not seem to implement changes we make on new pushes.</mark>
 *   <mark>Finalized submission of the website.</mark>

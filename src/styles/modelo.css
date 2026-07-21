@@ -113,14 +113,238 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
+/* === LCD PAGE LAYOUT (CRT-aligned) === */
+.lcd-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- NAVIGATION HEADER --- */
+.lcd-nav-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.lcd-nav-header .back-button-container {
+    position: static;
+    transform: none;
+    z-index: 10;
+}
+
+/* --- TOP SIDE (General Process + non-model tabs) --- */
+.lcd-top-side {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    align-items: flex-start;
+    flex: 1;
+    background: var(--bg2);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    font-family: "JetBrains Mono", serif;
+    box-sizing: border-box;
+    margin-bottom: 2rem;
+}
+
+.lcd-info_title {
+    margin: 0 0 0.5rem 0;
+    font-family: "JetBrains Mono", monospace;
+}
+
+.lcd-info_desc {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* --- CUSTOM TAB NAVIGATION --- */
+.tabs-wrap {
+  --round: 10px;
+  --p-x: 8px;
+  --p-y: 4px;
+  --w-label: 135px;
+
+  --color-pure: #ffffff;
+  --color-primary: #e8e8e8;
+  --color-secondary: #212121;
+  --muted: #5076a7;
+
+  display: flex;
+  align-items: center;
+  padding: var(--p-y) var(--p-x);
+  position: relative;
+  background: var(--color-primary);
+  border-radius: var(--round);
+  max-width: 100%;
+  width: fit-content;
+  margin: 0 auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  z-index: 1;
+}
+
+.tab-label {
+  cursor: pointer;
+  outline: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  background: transparent;
+  border: none;
+  padding: 10px 8px;
+  width: var(--w-label);
+  min-width: var(--w-label);
+  text-decoration: none;
+  user-select: none;
+  transition: color 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  font-family: "JetBrains Mono", monospace;
+  line-height: 1.2;
+}
+
+.tab-label.active {
+  color: var(--color-pure) !important;
+}
+
+.tab-slidebar {
+  position: absolute;
+  height: calc(100% - (var(--p-y) * 2));
+  width: var(--w-label);
+  border-radius: calc(var(--round) - var(--p-y));
+  background: var(--muted);
+  transform-origin: 0 0 0;
+  z-index: 0;
+  transition: transform 0.4s cubic-bezier(0.33, 0.83, 0.99, 0.98), background-color 0.2s ease;
+  left: var(--p-x);
+  transform: translateX(calc(var(--hover-index) * 100%)) scaleX(1);
+}
+
+.tabs-wrap:has(.tab-label:hover) .tab-slidebar {
+  opacity: 0.85;
+}
+
+.tab-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: absolute;
+  transform-origin: 0 0 0;
+  height: 100%;
+  width: var(--w-label);
+  z-index: 3;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.33, 0.83, 0.99, 0.98);
+  left: var(--p-x);
+  transform: translateX(calc(var(--active-index) * 100%)) scaleX(1);
+}
+
+.tab-bar::before,
+.tab-bar::after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: var(--color-secondary);
+}
+.tab-bar::before { top: 0; border-radius: 0 0 9999px 9999px; }
+.tab-bar::after { bottom: 0; border-radius: 9999px 9999px 0 0; }
+
+/* --- ANIMATE LIGHT BUTTON --- */
+.btn-animate-light {
+  padding: 10px 20px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  font-family: "JetBrains Mono", monospace;
+  transition: all 0.4s ease;
+  color: #008cff;
+  background: rgba(0, 140, 255, 0.05);
+  border: 2px solid #008cff;
+  box-shadow: 0 2px 4px rgba(0, 140, 255, 0.1);
+}
+
+.btn-animate-light:hover,
+.btn-animate-light:focus {
+  color: #ffffff;
+  background: #008cff;
+  border: 2px solid #008cff;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 8px rgba(0, 140, 255, 0.5), 0 4px 12px rgba(0, 140, 255, 0.3);
+}
+
+.btn-animate-light.active-glow {
+  color: #ffffff;
+  background: #008cff;
+  border: 2px solid #008cff;
+  box-shadow: 0 0 8px rgba(0, 140, 255, 0.6);
+}
+
+/* --- QUIZ ANIMATIONS --- */
+@keyframes bounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.05); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @media (max-width: 1024px) {
-    .lcd-split-layout {
-        flex-direction: column-reverse; 
-        gap: 1.5rem;
+    .lcd-nav-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
     }
-    .lcd-info-side,
+    .lcd-nav-header .back-button-container {
+        position: static;
+        transform: none;
+        align-self: flex-start;
+    }
+    .lcd-split-layout {
+        flex-direction: column;
+    }
     .lcd-model-side {
-        width: 100%; /* Forces containers to take full width */
-        flex: none; /* Disables flex ratios like flex: 1.5 */
+        order: -1;
+        padding-right: 0;
+        margin-bottom: 1.5rem;
+    }
+    .lcd-info-side {
+        order: 1;
+        width: 100%;
+        flex: none;
+    }
+    .controls {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .tabs-wrap {
+        --w-label: 100px;
+        width: 100%;
+        justify-content: flex-start;
+    }
+    .tab-label {
+        font-size: 0.72rem;
+        padding: 8px 4px;
     }
 }

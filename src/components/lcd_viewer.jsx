@@ -90,7 +90,11 @@ const lightType = [
 
 const TABS = [
     { id: "model", label: "Model" },
-    { id: "quiz", label: "Quiz Challenge" }
+    { id: "evolution", label: "Evolution" },
+    { id: "tech", label: "Technical Description" },
+    { id: "apps", label: "Applications & Evaluation" },
+    { id: "quiz", label: "Quiz Challenge" },
+    { id: "refs", label: "References" }
 ];
 
 const QUESTION_POOL = [
@@ -240,6 +244,7 @@ export default function LcdViewer() {
     const [backlight, setBacklight] = useState('ccfl');     
     const [layout, setLayout] = useState('direct-lit');    
     const [animateLight, setAnimateLight] = useState(false);
+    const [hoveredIdx, setHoveredIdx] = useState(null);
     const activeBtn = (current, target) =>
         `btn ${current === target ? 'active' : ''}`;
     const layoutInfo = lightType.find(l => l.id === layout.replace('-lit', '')) || lightType[0];
@@ -346,86 +351,125 @@ export default function LcdViewer() {
     }, [quizComplete, score, quizQuestions.length]);
 
     return (
-        <div>
+        <div className="lcd-page">
             <div className="bg"></div>
-            <div className="back-button-container" style={{ padding: '0.5rem' }}>
-                <a href={`${BASE_URL}/displays`} className="link-pill lower">
-                    ← Go Back
-                </a>
-            </div>
+            <div className="lcd-nav-header">
+                <div className="back-button-container">
+                    <a href={`${BASE_URL}/displays`} className="link-pill lower">
+                        ← Go Back
+                    </a>
+                </div>
 
-            <div style={{ padding: '0 1rem 1rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-                {TABS.map(tab => (
-                    <button
-                        key={tab.id}
-                        className={activeBtn(activeTab, tab.id)}
-                        onClick={() => setActiveTab(tab.id)}
-                    >
-                        {tab.label}
-                    </button>
-                ))}
+                <div className="tabs-wrap"
+                     style={{
+                         '--active-index': TABS.findIndex(t => t.id === activeTab),
+                         '--hover-index': hoveredIdx !== null ? hoveredIdx : TABS.findIndex(t => t.id === activeTab),
+                         '--is-hovered': hoveredIdx !== null ? 1 : 0
+                     }}>
+                    <div className="tab-slidebar" />
+                    <div className="tab-bar" />
+                    {TABS.map(tab => (
+                        <button
+                            key={tab.id}
+                            className={`tab-label ${activeTab === tab.id ? 'active' : ''}`}
+                            onClick={() => setActiveTab(tab.id)}
+                            onMouseEnter={() => setHoveredIdx(TABS.findIndex(t => t.id === tab.id))}
+                            onMouseLeave={() => setHoveredIdx(null)}
+                        >
+                            <span>{tab.label}</span>
+                        </button>
+                    ))}
+                </div>
             </div>
 
             {activeTab === 'model' ? (
-                <div className="lcd-split-layout">
-                    <div className="lcd-info-side">
-                        <h2 className="lcd-info__title">General Process</h2>
-                        <p className="lcd-info__desc">An LCD is composed of a light source, two polarizing glasses, RGB color filters, and a liquid crystal layer. 
+                <>
+                    <div className="lcd-top-side">
+                        <h2 className="lcd-info_title">General Process</h2>
+                        <p className="lcd-info_desc">An LCD is composed of a light source, two polarizing glasses, RGB color filters, and a liquid crystal layer. 
                             The light source converts electric currents into light which then proceeds to the first polarizing glass.
                             Afterwards, light moves to the liquid crystal layer where the lightwave's angle changes. 
                             The second polarizing glass adjusts brightness by blocking some of the light.
                             From here, light now proceeds to each pixel's rgb filters and show up on a display as the pixel's color.
-                            </p>
+                        </p>
 
-                        <div className="lcd-dynamic-box" style={{ marginTop: '2rem' }}>
-                            <h3 className="lcd-info__title">{activeInfo.label}</h3>
+                        <h3 className="lcd-info_title" style={{ marginTop: '1rem' }}>{layoutInfo.label}</h3>
+                        <p className="lcd-info_desc">{layoutInfo.description}</p>
+                    </div>
+
+                    <div className="lcd-split-layout">
+                        <div className="lcd-info-side">
+                            <h2 className="lcd-info__title">{activeInfo.label}</h2>
                             <p className="lcd-info__desc">{activeInfo.description}</p>
-                            <h3 className="lcd-info__title">Information</h3>
-                            <p className="lcd-info__desc">{activeInfo.processLCDDescription}</p>
-                            <h3 className="lcd-info__title">{layoutInfo.label}</h3>
-                            <p className="lcd-info__desc">{layoutInfo.description}</p>                  
+
+                            <div className="lcd-dynamic-box" style={{ marginTop: '2rem' }}>
+                                <h3 className="lcd-info__title">Information</h3>
+                                <p className="lcd-info__desc">{activeInfo.processLCDDescription}</p>
+                            </div>
+                        </div>
+                        <div className="lcd-model-side">
+                            <p>
+                                💡 Try interacting with the model below!
+                            </p>
+                            <div className="controls">
+                                <span>Backlight:</span>   
+                                <button className={activeBtn(backlight, 'ccfl')} onClick={() => { setBacklight('ccfl'); setSelectedPart('ccfl')}  }>CCFL</button>
+                                <button className={activeBtn(backlight, 'led')} onClick={() => { setBacklight('led'); setSelectedPart('led')}}>LED</button>
+                                <button className={activeBtn(backlight, 'miniled')} onClick={() => { setBacklight('miniled'); setSelectedPart('miniled')}}>MiniLED</button>
+                                <button className={activeBtn(backlight, 'qdled')} onClick={() => { setBacklight('qdled'); setSelectedPart('qdled')}}>QDLED</button>
+                            </div>    
+                            <div className="controls">   
+                                <span>Layout:</span>
+                                <button className={activeBtn(layout, 'direct-lit')} onClick={() => setLayout('direct-lit')}>Direct</button>
+                                <button className={activeBtn(layout, 'edge-lit')} onClick={() => { setLayout('edge-lit'); if (backlight === 'fald') { setBacklight('led'); setSelectedPart('led'); } }}>Edge-lit</button>
+                            </div>  
+                            <div className="controls">   
+                                <span>Light:</span>         
+                                <button className={`btn-animate-light ${animateLight ? 'active-glow' : ''}`}
+                                    onClick={() => setAnimateLight(!animateLight)}>
+                                    {animateLight ? 'Stop Light' : 'Animate Light'}
+                                </button>
+                            </div> 
+                                
+
+                            <LcdModel backlightType={backlight} layout={layout} animateLight={animateLight}
+                                selectedPart={selectedPart} setSelectedPart={setSelectedPart} />
+                            <p>
+                                Rotate and click on one of the layers for more info.
+                            </p>
                         </div>
                     </div>
-                    <div className="lcd-model-side">
-                        <p>
-                            💡 Try interacting with the model below!
-                        </p>
-                        <div className="controls">
-                            <span>Backlight:</span>   
-                            <button className={activeBtn(backlight, 'ccfl')} onClick={() => { setBacklight('ccfl'); setSelectedPart('ccfl')}  }>CCFL</button>
-                            <button className={activeBtn(backlight, 'led')} onClick={() => { setBacklight('led'); setSelectedPart('led')}}>LED</button>
-                            <button className={activeBtn(backlight, 'miniled')} onClick={() => { setBacklight('miniled'); setSelectedPart('miniled')}}>MiniLED</button>
-                            <button className={activeBtn(backlight, 'qdled')} onClick={() => { setBacklight('qdled'); setSelectedPart('qdled')}}>QDLED</button>
-                        </div>    
-                        <div className="controls">   
-                            <span>Layout:</span>
-                            <button className={activeBtn(layout, 'direct-lit')} onClick={() => setLayout('direct-lit')}>Direct</button>
-                            <button className={activeBtn(layout, 'edge-lit')} onClick={() => { setLayout('edge-lit'); if (backlight === 'fald') { setBacklight('led'); setSelectedPart('led'); } }}>Edge-lit</button>
-                        </div>  
-                        <div className="controls">   
-                            <span>Light:</span>         
-                            <button className={activeBtn(animateLight, true)} onClick={() => setAnimateLight(!animateLight)}>
-                                {animateLight ? 'Stop Light' : 'Animate Light'}
-                            </button>
-                        </div> 
-                            
-
-                        <LcdModel backlightType={backlight} layout={layout} animateLight={animateLight}
-                            selectedPart={selectedPart} setSelectedPart={setSelectedPart} />
-                        <p>
-                            Rotate and click on one of the layers for more info.
-                        </p>
-                    </div>
-                </div>
+                </>
             ) : (
-                <div style={{ padding: '1rem' }}>
+                <div className="lcd-top-side">
+                    {activeTab === 'evolution' && (
+                        <>
+                            <h2 className="lcd-info_title">Evolution of LCD Technology</h2>
+                            <p className="lcd-info_desc">Content coming soon.</p>
+                        </>
+                    )}
+
+                    {activeTab === 'tech' && (
+                        <>
+                            <h2 className="lcd-info_title">Technical Description</h2>
+                            <p className="lcd-info_desc">Content coming soon.</p>
+                        </>
+                    )}
+
+                    {activeTab === 'apps' && (
+                        <>
+                            <h2 className="lcd-info_title">Applications &amp; Evaluation</h2>
+                            <p className="lcd-info_desc">Content coming soon.</p>
+                        </>
+                    )}
+
                     {activeTab === 'quiz' && (
                         <div style={{ maxWidth: '700px', margin: '0 auto', width: '100%' }}>
-                            <h2 className="lcd-info__title">LCD Quiz Challenge</h2>
-                            <p className="lcd-info__desc">
-                                Test what you've learned about LCD technology. Answer all 5 questions to get your score.
+                            <h2 className="lcd-info_title">🧠 LCD Quiz Challenge</h2>
+                            <p className="lcd-info_desc">
+                                Test what you've learned about LCD technology! Answer all 5 questions to get your score.
                                 <br /><br />
-                                Turn your volume up for the full experience.
+                                🔊 Turn your volume up for the full experience!
                             </p>
 
                             {!quizComplete && quizQuestions.length > 0 ? (
@@ -434,7 +478,7 @@ export default function LcdViewer() {
                                         Question {currentQuestion + 1} of {quizQuestions.length}
                                     </div>
 
-                                    <h3 className="lcd-info__title" style={{ marginBottom: '1.5rem' }}>
+                                    <h3 className="lcd-info_title" style={{ marginBottom: '1.5rem' }}>
                                         {quizQuestions[currentQuestion].question}
                                     </h3>
 
@@ -488,7 +532,7 @@ export default function LcdViewer() {
                                         />
                                     )}
 
-                                    <h3 className="lcd-info__title" style={{ animation: 'bounceIn 0.6s ease-out', fontSize: '2.2rem', fontWeight: '900', position: 'relative', zIndex: 2 }}>🎉 QUIZ COMPLETE! 🎉</h3>
+                                    <h3 className="lcd-info_title" style={{ animation: 'bounceIn 0.6s ease-out', fontSize: '2.2rem', fontWeight: '900', position: 'relative', zIndex: 2 }}>🎉 QUIZ COMPLETE! 🎉</h3>
 
                                     <p style={{
                                         fontSize: '4rem',
@@ -504,7 +548,7 @@ export default function LcdViewer() {
                                         {score} / {quizQuestions.length}
                                     </p>
 
-                                    <p className="lcd-info__desc" style={{
+                                    <p className="lcd-info_desc" style={{
                                         fontSize: '1.4rem',
                                         fontWeight: '700',
                                         animation: 'fadeUp 0.8s ease-out 0.4s both',
@@ -512,9 +556,9 @@ export default function LcdViewer() {
                                         position: 'relative',
                                         zIndex: 2
                                     }}>
-                                        {score === 5 ? "PERFECT SCORE! YOU'RE AN LCD EXPERT!"
-                                         : score >= 3 ? "AWESOME JOB! YOU KNOW YOUR LCD STUFF!"
-                                         : "NICE TRY! EXPLORE THE TABS AGAIN AND CHALLENGE YOURSELF ONCE MORE!"}
+                                        {score === 5 ? "🌟 PERFECT SCORE! YOU'RE AN LCD EXPERT!"
+                                         : score >= 3 ? "✨ AWESOME JOB! YOU KNOW YOUR LCD STUFF!"
+                                         : "💥 NICE TRY! EXPLORE THE TABS AGAIN AND CHALLENGE YOURSELF ONCE MORE!"}
                                     </p>
 
                                     <button
@@ -526,11 +570,17 @@ export default function LcdViewer() {
                                     </button>
                                 </div>
                             ) : (
-                                <p className="lcd-info__desc" style={{ textAlign: 'center', marginTop: '2rem' }}>Loading quiz...</p>
+                                <p className="lcd-info_desc" style={{ textAlign: 'center', marginTop: '2rem' }}>Loading quiz...</p>
                             )}
                         </div>
                     )}
 
+                    {activeTab === 'refs' && (
+                        <>
+                            <h2 className="lcd-info_title">References</h2>
+                            <p className="lcd-info_desc">Content coming soon.</p>
+                        </>
+                    )}
                 </div>
             )}
         </div>
