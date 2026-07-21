@@ -562,6 +562,18 @@ export default function MicroLEDViewer() {
                                 AR devices, alongside research pushing MicroLED toward flexible and
                                 near-eye displays.
                             </p>
+                            <div style={{ textAlign: 'center', width: '100%' }}>
+                                <div className="square-img-frame app-img-frame">
+                                    <img 
+                                        src="https://images.fonearena.com/blog/wp-content/uploads/2019/12/Samsung-The-Wall.gif" 
+                                        alt="Samsung TV" 
+                                        className="microled-add-img"
+                                    />
+                                </div>
+                                <p className="microled-img-caption">
+                                    <strong>Sony 55-inch "Crystal LED" panel</strong>
+                                </p>
+                            </div>
                         </>
                     )}
 
