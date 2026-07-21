@@ -90,7 +90,7 @@ const lightType = [
 
 const TABS = [
     { id: "model", label: "Model" },
-    { id: "evolution", label: "Evolution" },
+    { id: "origin", label: "Origin" },
     { id: "tech", label: "Technical Description" },
     { id: "apps", label: "Applications & Evaluation" },
     { id: "quiz", label: "Quiz Challenge" },
@@ -442,10 +442,12 @@ export default function LcdViewer() {
                 </>
             ) : (
                 <div className="lcd-top-side">
-                    {activeTab === 'evolution' && (
+                    {activeTab === 'origin' && (
                         <>
-                            <h2 className="lcd-info_title">Evolution of LCD Technology</h2>
-                            <p className="lcd-info_desc">Content coming soon.</p>
+                            <h2 className="lcd-info_title" style={{ marginTop: '2rem' }}>LCD Origin</h2>
+                            <p className="lcd-info_desc">
+                                Development on LCD displays began in the 1960s with it's inventor, George H. Heilmeier working with Radio Corporation of America (RCA). By 1968, the world's first LCD display was unveiled to the world. Moving into the 1970s, further research was done on improving the performance of lcds to expand its range of application. The same decade saw lcd entering the industry.
+                            </p>
                         </>
                     )}
 
