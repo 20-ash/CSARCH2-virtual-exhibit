@@ -81,7 +81,7 @@ const TABS = [
     { id: "evolution", label: "Evolution" },
     { id: "tech", label: "Technical Description" },
     { id: "apps", label: "Applications" },
-    { id: "perf", label: "Evaluation" },
+    { id: "perf", label: "Performance Evaluation" },
     { id: "quiz", label: "Quiz Challenge" },
     { id: "refs", label: "References" }
 ];

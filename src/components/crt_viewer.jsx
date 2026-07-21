@@ -4,8 +4,6 @@ import '../styles/crt.css';
 import '../styles/pagebg.css';
 import '../styles/era.css';
 
-import braunProfile from '../assets/braun-image.jpg'
-
 const BASE_URL = import.meta.env.BASE_URL || "/";
 
 {/* 
@@ -439,7 +437,7 @@ export default function CrtViewer() {
                                 <div className="crt-inventor-side">
                                     <div className="inventor-frame">
                                         <img 
-                                            src={braunProfile}
+                                            src="https://images.computerhistory.org/revonline/images/500004670-03-01.jpg?w=600" 
                                             alt="Karl Ferdinand Braun" 
                                             className="inventor-img"
                                         />
