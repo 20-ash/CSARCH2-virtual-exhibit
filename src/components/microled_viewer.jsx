@@ -230,6 +230,7 @@ const getRandomQuestions = (count) => {
 
 export default function MicroLEDViewer() {
     const [activeTab, setActiveTab] = useState('model');
+    const [hoveredIdx, setHoveredIdx] = useState(null);             // for the hover effect in the menu tab
     const [selectedPart, setSelectedPart] = useState('backplane');
     const [animate, setAnimate] = useState(false);
     const activeBtn = (current, target) => `btn ${current === target ? 'active' : ''}`;
@@ -338,22 +339,36 @@ export default function MicroLEDViewer() {
         <div className="microled-page">
             <div className="bg"></div>
 
-            <div className="back-button-container" style={{ padding: '0.5rem' }}>
-                <a href={`${BASE_URL}/displays`} className="link-pill lower">
-                    ← Go Back
-                </a>
-            </div>
+            <div className="microled-nav-header">
+                <div className="back-button-container">
+                    <a href={`${BASE_URL}/displays`} className="link-pill lower">
+                        ← Go Back
+                    </a>
+                </div>
 
-            <div style={{ padding: '0 1rem 1rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-                {TABS.map(tab => (
-                    <button
-                        key={tab.id}
-                        className={activeBtn(activeTab, tab.id)}
-                        onClick={() => setActiveTab(tab.id)}
-                    >
-                        {tab.label}
-                    </button>
-                ))}
+                <div
+                    className="tabs-wrap"
+                    style={{
+                        '--active-index': TABS.findIndex(t => t.id === activeTab),
+                        '--hover-index': hoveredIdx !== null ? hoveredIdx : TABS.findIndex(t => t.id === activeTab),
+                        '--is-hovered': hoveredIdx !== null ? 1 : 0
+                    }}
+                >
+                    <div className="tab-slidebar" />
+                    <div className="tab-bar" />
+
+                    {TABS.map((tab, idx) => (
+                        <button
+                            key={tab.id}
+                            className={`tab-label ${activeTab === tab.id ? 'active' : ''}`}
+                            onClick={() => setActiveTab(tab.id)}
+                            onMouseEnter={() => setHoveredIdx(idx)}
+                            onMouseLeave={() => setHoveredIdx(null)}
+                        >
+                            <span>{tab.label}</span>
+                        </button>
+                    ))}
+                </div>
             </div>
 
             {activeTab === 'model' ? (
@@ -374,13 +389,11 @@ export default function MicroLEDViewer() {
 
                     <div className="microled-split-layout">
                         <div className="microled-info-side">
-                            <div className="microled-dynamic-box">
-                                <h3 className="microled-info__title">{activeInfo.label}</h3>
-                                <p className="microled-info__desc">
-                                    {activeInfo.description}
-                                </p>
-                                <br />
+                            <h2 className="microled-info__title">{activeInfo.label}</h2>
+                            <p className="microled-info__desc">{activeInfo.description}
+                            </p>
 
+                            <div className="microled-dynamic-box" style={{ marginTop: '2rem' }}>
                                 <h3 className="microled-info__title">{activeInfo.processMicroledTitle}</h3>
                                 <p className="microled-info__desc">
                                     {activeInfo.processMicroledDescription}
@@ -390,7 +403,7 @@ export default function MicroLEDViewer() {
 
                         <div className="microled-model-side">
                             <p className="microled-info__desc">
-                                💡 Select a layer or animate the light emission below!
+                                💡 Select a part or animate the light emission below!
                                 <br></br>
                                 Check the model to know more about the different layers!
                             </p>
@@ -480,35 +493,7 @@ export default function MicroLEDViewer() {
                                 limit it to premium televisions, wearables, and AR devices.
                             </p>
 
-                            <h3 className="microled-info__title" style={{ marginTop: '2rem' }}>How MicroLED Works</h3>
-                            <p className="microled-info__desc">
-                                Each micro-LED chip is built from semiconductor layers, one with an excess
-                                of electrons and one with a deficit of them (holes), joined at a central
-                                junction. When voltage from the TFT backplane reaches a chip, electrons and
-                                holes move toward each other, collide at that junction, and release the
-                                energy as light. A single pixel is made from red, green, and blue chips,
-                                each independently driven to a different brightness, so combining their
-                                output produces every color the pixel displays. Current returns from the
-                                top of each chip through a shared common electrode, and the light finally
-                                passes through a protective cover glass to reach the viewer. Individual
-                                micro-LEDs are typically smaller than 100 micrometers, and flip-chip designs,
-                                where the electrodes sit on the chip's bottom face and bond directly to the
-                                backplane, are the most common because they are easier to integrate at scale.
-                            </p>
-
-                            <h3 className="microled-info__title" style={{ marginTop: '2rem' }}>The Best of Both Worlds</h3>
-                            <p className="microled-info__desc">
-                                MicroLED borrows its strongest traits from the two display technologies it
-                                aims to replace. From OLED it inherits self-emission, high contrast, and
-                                wide viewing angles, but because it uses inorganic semiconductor materials
-                                instead of organic compounds, it tends to consume less power, tolerate a
-                                wider range of temperatures, and last longer without burn-in. From LCD it
-                                inherits high brightness and the sturdiness of inorganic materials, without
-                                LCD's characteristic weakness: light leaking through the liquid-crystal
-                                layer even when a pixel should be fully black. Since every MicroLED pixel is
-                                its own inorganic emitter, there is no backlight to leak in the first place.
-                            </p>
-
+                           
                             {/* Close-up visual of MicroLED chips */}
                             <h2 className="microled-info__title">Close-up View of MicroLED Chips</h2>
                             <div style={{ margin: '0rem 0' }}>
