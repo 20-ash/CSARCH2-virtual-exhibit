@@ -3,10 +3,6 @@ import React, { useState, useEffect, useRef } from "react";
 import '../styles/crt.css';
 import '../styles/pagebg.css';
 import '../styles/era.css';
-import oscilloscopeImg from "../assets/Oscilloscope.jpg";
-import radarImg from "../assets/radar.png";
-import televisionGif from "../assets/television.gif";
-import mriImg from "../assets/mri.png";
 
 const BASE_URL = import.meta.env.BASE_URL || "/";
 
@@ -484,7 +480,7 @@ export default function CrtViewer() {
                                 <div className="crt-inventor-side">
                                     <div className="circle-image-frame">
                                         <img 
-                                            src={oscilloscopeImg} 
+                                            src="/src/assets/Oscilloscope.jpg" 
                                             alt="Oscilloscope" 
                                             className="inventor-img"
                                         />
@@ -501,7 +497,7 @@ export default function CrtViewer() {
                                 <div className="crt-inventor-side">
                                     <div className="circle-image-frame">
                                         <img 
-                                            src={radarImg} 
+                                            src="/src/assets/radar.png" 
                                             alt="Radar" 
                                             className="inventor-img"
                                         />
@@ -532,7 +528,7 @@ export default function CrtViewer() {
                                 <div className="crt-inventor-side">
                                     <div className="circle-image-frame">
                                         <img 
-                                            src={televisionGif}
+                                            src="/src/assets/television.gif" 
                                             alt="CRT Television" 
                                             className="inventor-img"
                                         />
@@ -550,7 +546,7 @@ export default function CrtViewer() {
 
                             <div style={{ textAlign: 'center', width: '100%' }}>
                                 <img
-                                    src={mriImg}
+                                    src="/src/assets/mri.png"
                                     alt="MRI Machine"
                                     className="crt-image"
                                     style={{ marginTop: '0.5rem', marginBottom: '1rem' }}
