@@ -476,13 +476,13 @@ export default function MicroLEDViewer() {
                             <div style={{ textAlign: 'center', width: '100%' }}>
                                 <div className="square-img-frame app-img-frame">
                                     <img 
-                                        src="https://www.yugatech.com/wp-content/uploads/2018/01/samsung-the-wall-ces-2018.jpg" 
-                                        alt="Samsung TV" 
+                                        src="https://www.auo.com/upload/media/media/News_Archive/20250512_3.jpg" 
+                                        alt="AR Glasses" 
                                         className="microled-add-img"
                                     />
                                 </div>
                                 <p className="microled-img-caption">
-                                    <strong>Samsung "The Wall"</strong>
+                                    <strong>AUO AR smart glasses</strong>
                                 </p>
                             </div>
                         </>
