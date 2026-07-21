@@ -18,7 +18,7 @@
 }
 
 /* add for mobile issue */
-/* --- NAVIGATION HEADER (Go Back + Tabs) --- */
+/* --- NAVIGATION HEADER (Go Back and Menu Tab) --- */
 .crt-nav-header {
     display: flex;
     flex-direction: column;   /* Stack children vertically */
@@ -199,6 +199,7 @@
 }
 
 /* add for menu tab */
+/* https://uiverse.io/ilkhoeri/slippery-elephant-47 */
 /* --- Custom Menu Tab Navigation Styling --- */
 .tabs-wrap {
   --round: 10px;
@@ -298,6 +299,7 @@
 .tab-bar::before { top: 0; border-radius: 0 0 9999px 9999px; }
 .tab-bar::after { bottom: 0; border-radius: 9999px 9999px 0 0; }
 
+/* https://uiverse.io/zjssun/tidy-sloth-40 */
 /* Custom Glow Button Design */
 .btn-animate-light {
   padding: 10px 20px;
@@ -392,7 +394,7 @@
     }
 }
 
-/* --- ASYMMETRICAL INTRO SPLIT LAYOUT --- */
+/* --- ASYMMETRICAL SPLIT LAYOUT --- */
 .crt-intro-split {
     display: flex;
     flex-direction: row;

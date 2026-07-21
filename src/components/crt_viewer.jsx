@@ -310,7 +310,7 @@ export default function CrtViewer() {
             <div className="bg"></div>
 
             {/* Change the whole code for go back and tabs with this */}
-            {/* Header Flex Container for Go Back + Tabs */}
+            {/* Container for Go Back and Menu Tab */}
             <div className="crt-nav-header">
                 <div className="back-button-container">
                     <a href={`${BASE_URL}/displays`} className="link-pill lower">
@@ -400,7 +400,7 @@ export default function CrtViewer() {
                     {activeTab === 'intro' && (
                         <div>
                             <div className="crt-intro-split">
-                                {/* LEFT SIDE: Text Content (Bigger width) */}
+                                {/* LEFT SIDE: Text Content */}
                                 <div className="crt-intro-text">
                                     <h2 className="crt-info_title">Introduction and Fundamentals</h2>
                                     <p className="crt-info_desc">
@@ -413,7 +413,7 @@ export default function CrtViewer() {
                                     </p>
                                 </div>
 
-                                {/* RIGHT SIDE: Inventor Image in Oblong Frame (Smaller width) */}
+                                {/* RIGHT SIDE: Image */}
                                 <div className="crt-inventor-side">
                                     <div className="inventor-frame">
                                         <img 
