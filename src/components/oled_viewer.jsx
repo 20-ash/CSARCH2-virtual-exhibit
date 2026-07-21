@@ -514,246 +514,249 @@ export default function OledViewer() {
                             </p>
                         </>
                     )}
+                        {activeTab === 'tech' && (
+                            <>
+                                <div className="oled-intro-split">
+                                    {/* LEFT SIDE: Text Content */}
+                                    <div className="oled-intro-text">
+                                        <h2 className="oled-info_title">Introduction and Fundamentals</h2>
+                                        <p className="oled-info_desc">
+                                            OLED, or Organic Light-Emitting Diode, is a flat-panel display technology in which each individual pixel emits its own light. This was first developed in 1987 by Ching W. Tang and Steven Van Slyke at Eastman Kodak Company. It consists of multiple thin organic semiconductor layers arranged between two conductive electrodes (anode and cathode), in which light is generated via electroluminescence when an electric field is applied. Electron–hole recombination occurs within the emissive organic layer, releasing energy as visible photons.
+                                            <br></br> <br></br>
+                                            Because OLEDs are self-emissive, each pixel acts as an independent light source and doesn’t require a backlight unit. This architecture reduces structural thickness and improves power efficiency compared to Liquid Crystal Display (LCD) systems. OLEDs also exhibit high contrast ratios due to true black levels, wide viewing angles, and fast response times resulting from direct light emission. Additionally, the thin-film organic structure enables mechanical flexibility, allowing implementation in flexible and transparent display configurations.
+                                        </p>
+                                    </div>
+                                
 
-                    {activeTab === 'tech' && (
-                        <>
-                            <h2 className="oled-info_title">Introduction and Fundamentals</h2>
-                            <p className="oled-info_desc">
-                                OLED, or Organic Light-Emitting Diode, is a flat-panel display technology in which each individual pixel emits its own light. This was first developed in 1987 by Ching W. Tang and Steven Van Slyke at Eastman Kodak Company. It consists of multiple thin organic semiconductor layers arranged between two conductive electrodes (anode and cathode), in which light is generated via electroluminescence when an electric field is applied. Electron–hole recombination occurs within the emissive organic layer, releasing energy as visible photons.
-                            
-                                <br></br> <br></br>
-
-                                Because OLEDs are self-emissive, each pixel acts as an independent light source and doesn’t require a backlight unit. This architecture reduces structural thickness and improves power efficiency compared to Liquid Crystal Display (LCD) systems. OLEDs also exhibit high contrast ratios due to true black levels, wide viewing angles, and fast response times resulting from direct light emission. Additionally, the thin-film organic structure enables mechanical flexibility, allowing implementation in flexible and transparent display configurations.
-                            </p>
-
-                            <div className="oled-inventor-side">
-                                <div className="inventor-frame">
-                                    <img 
-                                        src="./assets/OLEDinventors.jpeg" 
-                                        alt="Ching W. Tang and Steven Van Slyke" 
-                                        className="inventor-img"
-                                    />
+                                    <div className="oled-inventor-side">
+                                        <div className="inventor-frame">
+                                            <img 
+                                                src="../src/assets/OLEDinventors.jpeg" 
+                                                alt="Ching W. Tang and Steven Van Slyke" 
+                                                className="inventor-img"
+                                            />
+                                        </div>
+                                        <p className="inventor-caption">
+                                            <strong>Ching W. Tang & Steven Van Slyke</strong><br />
+                                            Inventors of the OLED (1987)
+                                        </p>
+                                    </div>
                                 </div>
-                                <p className="inventor-caption">
-                                    <strong>Ching W. Tang & Steven Van Slyke</strong><br />
-                                    Inventors of the OLED (1987)
+
+                                {/* Trial Glowing Pixel Grid  */}
+                                <h2 className="oled-info_title"> Close-up View of OLED Pixels</h2>
+                                <div style={{ margin: '0rem 0' }}>
+                                
+                                    {/* Pixel grid structure */}
+                                    <div className="oled-pixels">
+                                        <div className="pixel red"></div>
+                                        <div className="pixel green"></div>
+                                        <div className="pixel blue"></div>
+
+                                        <div className="pixel green"></div>
+                                        <div className="pixel blue"></div>
+                                        <div className="pixel red"></div>
+
+                                        <div className="pixel blue"></div>
+                                        <div className="pixel red"></div>
+                                        <div className="pixel green"></div>
+
+                                        <div className="pixel red"></div>
+                                        <div className="pixel green"></div>
+                                        <div className="pixel blue"></div>
+
+                                        <div className="pixel green"></div>
+                                        <div className="pixel blue"></div>
+                                        <div className="pixel red"></div>
+
+                                        <div className="pixel blue"></div>
+                                        <div className="pixel red"></div>
+                                        <div className="pixel green"></div>
+                                    </div>
+
+                                    <ul className="oled-info_desc" style={{ marginTop: '1rem' }}>
+                                        <li><strong>Self-Emissive:</strong> Every subpixel generates its own light</li>
+                                        <li><strong>True Black:</strong> Pixels turn completely off with zero glow</li>
+                                        <li><strong>Color Precision:</strong> Red, green, and blue mix to produce billions of shades</li>
+                                    </ul>
+                                </div>
+                            </>
+                        )}
+
+                        {activeTab === 'apps' && (
+                            <>
+                                <h2 className="oled-info_title">Applications</h2>
+                                <p className="oled-info_desc">
+                                    OLED displays are used in many applications where good image quality, low power use, and flexible design are important. They are commonly used in consumer electronics; this includes smartphones, televisions, tablets, smartwatches, and computer monitors. They are also used in automotive systems, such as digital dashboards, infotainment screens, and head-up displays (HUDs); wearable devices and VR/AR systems; industrial control panels and instruments; and IoT smart home devices and low-power sensors.
                                 </p>
-                            </div>
 
-                            {/* Trial Glowing Pixel Grid  */}
-                            <h2 className="oled-info_title"> Close-up View of OLED Pixels</h2>
-                            <div style={{ margin: '0rem 0' }}>
-                            
-                                {/* Pixel grid structure */}
-                                <div className="oled-pixels">
-                                    <div className="pixel red"></div>
-                                    <div className="pixel green"></div>
-                                    <div className="pixel blue"></div>
-
-                                    <div className="pixel green"></div>
-                                    <div className="pixel blue"></div>
-                                    <div className="pixel red"></div>
-
-                                    <div className="pixel blue"></div>
-                                    <div className="pixel red"></div>
-                                    <div className="pixel green"></div>
-
-                                    <div className="pixel red"></div>
-                                    <div className="pixel green"></div>
-                                    <div className="pixel blue"></div>
-
-                                    <div className="pixel green"></div>
-                                    <div className="pixel blue"></div>
-                                    <div className="pixel red"></div>
-
-                                    <div className="pixel blue"></div>
-                                    <div className="pixel red"></div>
-                                    <div className="pixel green"></div>
-                                </div>
-
-                                <ul className="oled-info_desc" style={{ marginTop: '1rem' }}>
-                                    <li><strong>Self-Emissive:</strong> Every subpixel generates its own light</li>
-                                    <li><strong>True Black:</strong> Pixels turn completely off with zero glow</li>
-                                    <li><strong>Color Precision:</strong> Red, green, and blue mix to produce billions of shades</li>
+                                <h2 className="oled-info_title">Performance Evaluation</h2>
+                                <h3 className="oled-info_title">Advantages</h3>
+                                <ul className="oled-info_desc">
+                                    <li>Thin and flexible design — can be under 1mm thick, supports bending/folding</li>
+                                    <li>Wide viewing angle (~180°) with minimal color/brightness shift</li>
+                                    <li>True blacks and infinite contrast ratio</li>
+                                    <li>Ultra-fast response time (microsecond range)</li>
+                                    <li>Energy efficient for dark or black content</li>
+                                    <li>Supports transparent and rollable display formats</li>
                                 </ul>
-                            </div>
-                        </>
-                    )}
 
-                    {activeTab === 'apps' && (
-                        <>
-                            <h2 className="oled-info_title">Applications</h2>
-                            <p className="oled-info_desc">
-                                OLED displays are used in many applications where good image quality, low power use, and flexible design are important. They are commonly used in consumer electronics; this includes smartphones, televisions, tablets, smartwatches, and computer monitors. They are also used in automotive systems, such as digital dashboards, infotainment screens, and head-up displays (HUDs); wearable devices and VR/AR systems; industrial control panels and instruments; and IoT smart home devices and low-power sensors.
-                            </p>
+                                <h3 className="oled-info_title">Limitations</h3>
+                                <ul className="oled-info_desc">
+                                    <li>Shorter lifespan compared to LCD (~5,000 hours for some panels)</li>
+                                    <li>Higher manufacturing cost due to precision processes</li>
+                                    <li>Risk of permanent burn-in from static content</li>
+                                    <li>Potential brightness non-uniformity and color shift over time</li>
+                                </ul>
+                            </>
+                        )}
 
-                            <h2 className="oled-info_title">Performance Evaluation</h2>
-                            <h3 className="oled-info_title">Advantages</h3>
-                            <ul className="oled-info_desc">
-                                <li>Thin and flexible design — can be under 1mm thick, supports bending/folding</li>
-                                <li>Wide viewing angle (~180°) with minimal color/brightness shift</li>
-                                <li>True blacks and infinite contrast ratio</li>
-                                <li>Ultra-fast response time (microsecond range)</li>
-                                <li>Energy efficient for dark or black content</li>
-                                <li>Supports transparent and rollable display formats</li>
-                            </ul>
+                        {activeTab === 'quiz' && (
+                            <div style={{ maxWidth: '700px', margin: '0 auto', width: '100%' }}>
+                                <h2 className="oled-info_title">🧠 OLED Quiz Challenge</h2>
+                                <p className="oled-info_desc">
+                                    Test what you’ve learned about OLED technology! Answer all 5 questions to get your score.
+                                    <br /><br />
+                                    🔊 Turn your volume up for the full experience!
+                                </p>
 
-                            <h3 className="oled-info_title">Limitations</h3>
-                            <ul className="oled-info_desc">
-                                <li>Shorter lifespan compared to LCD (~5,000 hours for some panels)</li>
-                                <li>Higher manufacturing cost due to precision processes</li>
-                                <li>Risk of permanent burn-in from static content</li>
-                                <li>Potential brightness non-uniformity and color shift over time</li>
-                            </ul>
-                        </>
-                    )}
+                                {/* Show questions while the quiz is still ongoing */}
+                                {!quizComplete && quizQuestions.length > 0 ? (
+                                    <div style={{ marginTop: '2rem' }}>
 
-                    {activeTab === 'quiz' && (
-                        <div style={{ maxWidth: '700px', margin: '0 auto', width: '100%' }}>
-                            <h2 className="oled-info_title">🧠 OLED Quiz Challenge</h2>
-                            <p className="oled-info_desc">
-                                Test what you’ve learned about OLED technology! Answer all 5 questions to get your score.
-                                <br /><br />
-                                🔊 Turn your volume up for the full experience!
-                            </p>
+                                        {/* Show questions while the quiz is still ongoing */}
+                                        <div style={{ marginBottom: '1rem', fontSize: '0.9rem', color: '#666' }}>
+                                            Question {currentQuestion + 1} of {quizQuestions.length}
+                                        </div>
 
-                            {/* Show questions while the quiz is still ongoing */}
-                            {!quizComplete && quizQuestions.length > 0 ? (
-                                <div style={{ marginTop: '2rem' }}>
+                                        {/* Displays the current question */}
+                                        <h3 className="oled-info_title" style={{ marginBottom: '1.5rem' }}>
+                                            {quizQuestions[currentQuestion].question}
+                                        </h3>
 
-                                    {/* Show questions while the quiz is still ongoing */}
-                                    <div style={{ marginBottom: '1rem', fontSize: '0.9rem', color: '#666' }}>
-                                        Question {currentQuestion + 1} of {quizQuestions.length}
+                                        {/* Displays the current question */}
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                                            {quizQuestions[currentQuestion].options.map((option, index) => (
+                                                <button
+                                                    key={index}
+                                                    onClick={() => handleAnswer(index)}     // Checks selected answer
+                                                    disabled={selectedAnswer !== null}      // Disables buttons after an answer is selected
+                                                    style={{
+                                                        padding: '0.85rem 1.25rem',
+                                                        textAlign: 'left',
+                                                        borderRadius: '8px',
+                                                        border: '2px solid #ddd',
+                                                        background: selectedAnswer === null   // Changes color based on answer
+                                                            ? 'white' 
+                                                            : index === quizQuestions[currentQuestion].correct
+                                                                ? '#d4edda'
+                                                                : selectedAnswer === index
+                                                                    ? '#f8d7da'
+                                                                    : 'white',
+                                                        borderColor: selectedAnswer === null 
+                                                            ? '#ddd' 
+                                                            : index === quizQuestions[currentQuestion].correct
+                                                                ? '#28a745'
+                                                                : selectedAnswer === index
+                                                                    ? '#dc3545'
+                                                                    : '#ddd',
+                                                        cursor: selectedAnswer === null ? 'pointer' : 'default',
+                                                        transition: 'all 0.2s ease'
+                                                    }}
+                                                >
+                                                    {option}
+                                                </button>
+                                            ))}
+                                        </div>
                                     </div>
-
-                                    {/* Displays the current question */}
-                                    <h3 className="oled-info_title" style={{ marginBottom: '1.5rem' }}>
-                                        {quizQuestions[currentQuestion].question}
-                                    </h3>
-
-                                    {/* Displays the current question */}
-                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                                        {quizQuestions[currentQuestion].options.map((option, index) => (
-                                            <button
-                                                key={index}
-                                                onClick={() => handleAnswer(index)}     // Checks selected answer
-                                                disabled={selectedAnswer !== null}      // Disables buttons after an answer is selected
+                                ) : quizComplete ? (
+                                    <div style={{ textAlign: 'center', marginTop: '2rem', padding: '2.5rem', borderRadius: '12px', background: 'rgba(80, 118, 167, 0.08)', position: 'relative', overflow: 'hidden', border: '3px solid #5076a7' }}>
+                                        
+                                        {/* Show confetti animation for perfect scores */}
+                                        {score === quizQuestions.length && (
+                                            <canvas
+                                                ref={canvasRef}
                                                 style={{
-                                                    padding: '0.85rem 1.25rem',
-                                                    textAlign: 'left',
-                                                    borderRadius: '8px',
-                                                    border: '2px solid #ddd',
-                                                    background: selectedAnswer === null   // Changes color based on answer
-                                                        ? 'white' 
-                                                        : index === quizQuestions[currentQuestion].correct
-                                                            ? '#d4edda'
-                                                            : selectedAnswer === index
-                                                                ? '#f8d7da'
-                                                                : 'white',
-                                                    borderColor: selectedAnswer === null 
-                                                        ? '#ddd' 
-                                                        : index === quizQuestions[currentQuestion].correct
-                                                            ? '#28a745'
-                                                            : selectedAnswer === index
-                                                                ? '#dc3545'
-                                                                : '#ddd',
-                                                    cursor: selectedAnswer === null ? 'pointer' : 'default',
-                                                    transition: 'all 0.2s ease'
+                                                    position: 'absolute',
+                                                    top: 0,
+                                                    left: 0,
+                                                    width: '100%',
+                                                    height: '100%',
+                                                    pointerEvents: 'none'
                                                 }}
-                                            >
-                                                {option}
-                                            </button>
-                                        ))}
-                                    </div>
-                                </div>
-                            ) : quizComplete ? (
-                                <div style={{ textAlign: 'center', marginTop: '2rem', padding: '2.5rem', borderRadius: '12px', background: 'rgba(80, 118, 167, 0.08)', position: 'relative', overflow: 'hidden', border: '3px solid #5076a7' }}>
-                                    
-                                     {/* Show confetti animation for perfect scores */}
-                                    {score === quizQuestions.length && (
-                                        <canvas
-                                            ref={canvasRef}
-                                            style={{
-                                                position: 'absolute',
-                                                top: 0,
-                                                left: 0,
-                                                width: '100%',
-                                                height: '100%',
-                                                pointerEvents: 'none'
-                                            }}
-                                        />
-                                    )}
+                                            />
+                                        )}
 
-                                    {/* Quiz Complete Message */}
-                                    <h3 className="oled-info_title" style={{ animation: 'bounceIn 0.6s ease-out', fontSize: '2.2rem', fontWeight: '900', position: 'relative', zIndex: 2 }}>🎉 QUIZ COMPLETE! 🎉</h3>
-                                    
-                                    {/* Final Score Display */}
-                                    <p style={{ 
-                                        fontSize: '4rem', 
-                                        fontWeight: '900', 
-                                        margin: '1.5rem 0', 
-                                        color: '#5076a7', 
-                                        animation: 'bounceIn 0.8s ease-out 0.2s both',
-                                        letterSpacing: '2px',
-                                        textShadow: '0 4px 12px rgba(80, 118, 167, 0.3)',
-                                        position: 'relative',
-                                        zIndex: 2
-                                    }}>
-                                        {score} / {quizQuestions.length}
-                                    </p>
-                                    
-                                     {/* Display message based on quiz score */}
-                                    <p className="oled-info_desc" style={{ 
-                                        fontSize: '1.4rem', 
-                                        fontWeight: '700',
-                                        animation: 'fadeUp 0.8s ease-out 0.4s both',
-                                        lineHeight: '1.6',
-                                        position: 'relative',
-                                        zIndex: 2
-                                    }}>
-                                        {score === 5 ? "🌟 PERFECT SCORE! YOU’RE AN OLED EXPERT!" 
-                                         : score >= 3 ? "✨ AWESOME JOB! YOU KNOW YOUR OLED STUFF!" 
-                                         : "💥 NICE TRY! EXPLORE THE TABS AGAIN AND CHALLENGE YOURSELF ONCE MORE!"}
-                                    </p>
-                                    
-                                     {/* Reset Quiz Button */}
-                                    <button
-                                        onClick={resetQuiz}
-                                        className="btn"
-                                        style={{ marginTop: '2rem', fontSize: '1.1rem', padding: '0.8rem 2rem', animation: 'fadeUp 0.8s ease-out 0.6s both', position: 'relative', zIndex: 2 }}
-                                    >
-                                        TRY AGAIN
-                                    </button>
-                                </div>
-                            ) : (
-                                <p className="oled-info_desc" style={{ textAlign: 'center', marginTop: '2rem' }}>Loading quiz...</p>
-                            )}
-                        </div>
-                    )}
-                  
-                    {activeTab === 'refs' && (
-                        <>
-                            <h2 className="oled-info_title">References</h2>
-                            <ul className="oled-info_desc" style={{ lineHeight: '1.7', paddingLeft: '1.5rem' }}>
-                                <li>Adrian. (2025). <em>OLED Display: key advantages and disadvantages</em>. AllPCB.</li>
-                                <li><em>An introduction to OLED displays</em>. OLED-Info.</li>
-                                <li>Avantama. (2019). <em>4 Current applications for OLED devices</em>. Avantama AG.</li>
-                                <li>Avantama. (2020). <em>Advantages & Disadvantages of OLED technology</em>. Avantama AG.</li>
-                                <li>Butts, J. (2024). <em>4 differences between OLED and QD-OLED</em>. XDA Developers.</li>
-                                <li><em>OLED Displays and their applications</em>. Electronics For You.</li>
-                                <li>Freudenrich, C. <em>How OLEDs Work</em>. HowStuffWorks.</li>
-                                <li>Hill, B. (2025). <em>WOLED vs QD-OLED Monitors</em>. Tom’s Hardware.</li>
-                                <li>Luke. (2024). <em>Exploring OLED Display: Advantages and applications</em>. Riverdi.</li>
-                                <li><em>QD OLED vs OLED: What’s the difference?</em>. Philips.</li>
-                                <li><em>What is an OLED display and how does it work</em>. Proculus Technologies.</li>
-                                <li>Rocha, P. (2026). <em>QD-OLED vs. OLED Gaming Monitors</em>. ViewSonic Library.</li>
-                                <li><em>The Complete Guide to OLED Displays</em>. RS Discovery Hub.</li>
-                                <li><em>Organic Light Emitting Diodes</em>. Universal Display Corporation.</li>
-                                <li>Williams, N. <em>History of OLEDs</em>. Ossila.</li>
-                                <li>Woodford, C. (2022). <em>OLEDs and LEPs</em>. Explain That Stuff.</li>
-                            </ul>
-                        </>
-                    )}
+                                        {/* Quiz Complete Message */}
+                                        <h3 className="oled-info_title" style={{ animation: 'bounceIn 0.6s ease-out', fontSize: '2.2rem', fontWeight: '900', position: 'relative', zIndex: 2 }}>🎉 QUIZ COMPLETE! 🎉</h3>
+                                        
+                                        {/* Final Score Display */}
+                                        <p style={{ 
+                                            fontSize: '4rem', 
+                                            fontWeight: '900', 
+                                            margin: '1.5rem 0', 
+                                            color: '#5076a7', 
+                                            animation: 'bounceIn 0.8s ease-out 0.2s both',
+                                            letterSpacing: '2px',
+                                            textShadow: '0 4px 12px rgba(80, 118, 167, 0.3)',
+                                            position: 'relative',
+                                            zIndex: 2
+                                        }}>
+                                            {score} / {quizQuestions.length}
+                                        </p>
+                                        
+                                        {/* Display message based on quiz score */}
+                                        <p className="oled-info_desc" style={{ 
+                                            fontSize: '1.4rem', 
+                                            fontWeight: '700',
+                                            animation: 'fadeUp 0.8s ease-out 0.4s both',
+                                            lineHeight: '1.6',
+                                            position: 'relative',
+                                            zIndex: 2
+                                        }}>
+                                            {score === 5 ? "🌟 PERFECT SCORE! YOU’RE AN OLED EXPERT!" 
+                                            : score >= 3 ? "✨ AWESOME JOB! YOU KNOW YOUR OLED STUFF!" 
+                                            : "💥 NICE TRY! EXPLORE THE TABS AGAIN AND CHALLENGE YOURSELF ONCE MORE!"}
+                                        </p>
+                                        
+                                        {/* Reset Quiz Button */}
+                                        <button
+                                            onClick={resetQuiz}
+                                            className="btn"
+                                            style={{ marginTop: '2rem', fontSize: '1.1rem', padding: '0.8rem 2rem', animation: 'fadeUp 0.8s ease-out 0.6s both', position: 'relative', zIndex: 2 }}
+                                        >
+                                            TRY AGAIN
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <p className="oled-info_desc" style={{ textAlign: 'center', marginTop: '2rem' }}>Loading quiz...</p>
+                                )}
+                            </div>
+                        )}
+                    
+                        {activeTab === 'refs' && (
+                            <>
+                                <h2 className="oled-info_title">References</h2>
+                                <ul className="oled-info_desc" style={{ lineHeight: '1.7', paddingLeft: '1.5rem' }}>
+                                    <li>Adrian. (2025). <em>OLED Display: key advantages and disadvantages</em>. AllPCB.</li>
+                                    <li><em>An introduction to OLED displays</em>. OLED-Info.</li>
+                                    <li>Avantama. (2019). <em>4 Current applications for OLED devices</em>. Avantama AG.</li>
+                                    <li>Avantama. (2020). <em>Advantages & Disadvantages of OLED technology</em>. Avantama AG.</li>
+                                    <li>Butts, J. (2024). <em>4 differences between OLED and QD-OLED</em>. XDA Developers.</li>
+                                    <li><em>OLED Displays and their applications</em>. Electronics For You.</li>
+                                    <li>Freudenrich, C. <em>How OLEDs Work</em>. HowStuffWorks.</li>
+                                    <li>Hill, B. (2025). <em>WOLED vs QD-OLED Monitors</em>. Tom’s Hardware.</li>
+                                    <li>Luke. (2024). <em>Exploring OLED Display: Advantages and applications</em>. Riverdi.</li>
+                                    <li><em>QD OLED vs OLED: What’s the difference?</em>. Philips.</li>
+                                    <li><em>What is an OLED display and how does it work</em>. Proculus Technologies.</li>
+                                    <li>Rocha, P. (2026). <em>QD-OLED vs. OLED Gaming Monitors</em>. ViewSonic Library.</li>
+                                    <li><em>The Complete Guide to OLED Displays</em>. RS Discovery Hub.</li>
+                                    <li><em>Organic Light Emitting Diodes</em>. Universal Display Corporation.</li>
+                                    <li>Williams, N. <em>History of OLEDs</em>. Ossila.</li>
+                                    <li>Woodford, C. (2022). <em>OLEDs and LEPs</em>. Explain That Stuff.</li>
+                                </ul>
+                            </>
+                       )}
                 </div>
             )}
         </div>

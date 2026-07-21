@@ -142,6 +142,20 @@
     box-sizing: border-box;
 }
 
+/* --- ASYMMETRICAL SPLIT LAYOUT --- */
+.oled-intro-split {
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
+    align-items: center;
+    width: 100%;
+}
+
+/* Left side (Text) gets more space */
+.oled-intro-text {
+    flex: 2;
+}
+
 /* Inventor Portrait gets less space */
 .oled-inventor-side {
     flex: 1;
