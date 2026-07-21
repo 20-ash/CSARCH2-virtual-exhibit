@@ -526,6 +526,20 @@ export default function OledViewer() {
                                 Because OLEDs are self-emissive, each pixel acts as an independent light source and doesn’t require a backlight unit. This architecture reduces structural thickness and improves power efficiency compared to Liquid Crystal Display (LCD) systems. OLEDs also exhibit high contrast ratios due to true black levels, wide viewing angles, and fast response times resulting from direct light emission. Additionally, the thin-film organic structure enables mechanical flexibility, allowing implementation in flexible and transparent display configurations.
                             </p>
 
+                            <div className="oled-inventor-side">
+                                <div className="inventor-frame">
+                                    <img 
+                                        src="./assets/OLEDinventors.jpeg" 
+                                        alt="Ching W. Tang and Steven Van Slyke" 
+                                        className="inventor-img"
+                                    />
+                                </div>
+                                <p className="inventor-caption">
+                                    <strong>Ching W. Tang & Steven Van Slyke</strong><br />
+                                    Inventors of the OLED (1987)
+                                </p>
+                            </div>
+
                             {/* Trial Glowing Pixel Grid  */}
                             <h2 className="oled-info_title"> Close-up View of OLED Pixels</h2>
                             <div style={{ margin: '0rem 0' }}>
