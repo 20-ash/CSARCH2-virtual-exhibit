@@ -4,12 +4,12 @@ import '../styles/crt.css';
 import '../styles/pagebg.css';
 import '../styles/era.css';
 
-import braunProfile from '../assets/braun-image.jpg'
-import braunTube from '../assets/braunTube.jpg'
-import oscilloscope from '../assets/Oscilloscope.jpg'
-import radar from '../assets/radar.png'
-import television from '../assets/television.gif'
-import mriMachine from '../assets/mri.png'
+import braunProfile from "../assets/braun-image.jpg"
+import braunTube from "../assets/braunTube.jpg"
+import oscilloscope from "../assets/Oscilloscope.jpg"
+import radar from "../assets/radar.png"
+import television from "../assets/television.gif"
+import mriMachine from "../assets/mri.png"
 
 const BASE_URL = import.meta.env.BASE_URL || "/";
 
