@@ -763,7 +763,7 @@ export default function CrtViewer() {
                                 <li>
                                     tutorialspoint. (2025). <em>Cathode ray tube in computer graphics</em>. Tutorialspoint.com.{' '}
                                     <a href="https://www.tutorialspoint.com/computer_graphics/computer_graphics_cathode_ray_tube.htm" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
-                                        Link to Website
+                                        Link to Article
                                     </a>
                                 </li>
                             </ul>

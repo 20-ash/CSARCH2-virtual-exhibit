@@ -81,7 +81,7 @@ const TABS = [
     { id: "evolution", label: "Evolution" },
     { id: "tech", label: "Technical Description" },
     { id: "apps", label: "Applications" },
-    { id: "perf", label: "P Evaluation" },
+    { id: "perf", label: "Performance Evaluation" },
     { id: "quiz", label: "Quiz Challenge" },
     { id: "refs", label: "References" }
 ];
@@ -433,7 +433,7 @@ export default function OledViewer() {
                             <p className="oled-info_desc">
                                 💡 Select a layer or animate the light below!
                                 <br></br>
-                                Move the model around to view the different layers!
+                                Move the model around or zoom in to view the different layers!
                             </p>
 
                             <div className="controls">
@@ -532,7 +532,7 @@ export default function OledViewer() {
                                     <div className="oled-inventor-side">
                                         <div className="inventor-frame">
                                             <img 
-                                                src="../src/assets/OLEDinventors.jpeg" 
+                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWIZ4IXe6BshUfj4wlNYWPZqATuGAF2FQTcv6Sc3h3yM3NjkL7NhFFxEC82u3zcuJJieiTApgsDS4JIT1in-_9tR-ss3hrfdbDU40EGE-9&s=10" 
                                                 alt="Ching W. Tang and Steven Van Slyke" 
                                                 className="inventor-img"
                                             />
