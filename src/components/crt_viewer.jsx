@@ -437,7 +437,7 @@ export default function CrtViewer() {
                                 <div className="crt-inventor-side">
                                     <div className="inventor-frame">
                                         <img 
-                                            src="https://images.computerhistory.org/revonline/images/500004670-03-01.jpg?w=600" 
+                                            src="../src/assets/braun-image.jpg" 
                                             alt="Karl Ferdinand Braun" 
                                             className="inventor-img"
                                         />
@@ -451,7 +451,7 @@ export default function CrtViewer() {
 
                             <div>
                                 <img
-                                    src="https://coimages.sciencemuseumgroup.org.uk/55/55/medium_1936_0622__0001_.jpg"
+                                    src="../src/assets/braunTube.jpg"
                                     alt="Braun Tube"
                                     className="crt-image"
                                     style={{ marginTop: '0.5rem', marginBottom: '1rem' }}
