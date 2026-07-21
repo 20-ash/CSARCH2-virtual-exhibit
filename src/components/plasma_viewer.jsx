@@ -614,7 +614,6 @@ export default function PlasmaViewer() {
 
                     {activeTab === 'performance' && (
                         <>
-                            <h2 className="plasma-info__title">Performance Evaluation</h2>
                             <h3 className="plasma-info__title">Advantages</h3>
                             <div className="plasma-adv-lim">
                                 <ul className="plasma-info__desc">
