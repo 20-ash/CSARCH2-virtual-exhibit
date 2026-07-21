@@ -545,7 +545,6 @@ export default function LcdViewer() {
 
                     {activeTab === 'apps' && (
                         <>
-                            <h2 className="lcd-info_title">Performance Evaluation</h2>
                             <h3 className="lcd-info_title">Advantages</h3>
                             <ul className="lcd-info_desc">
                                 <li>Usable in portable devices such as smartphones thanks to being thin.</li>
