@@ -446,13 +446,49 @@ export default function CrtViewer() {
                     {activeTab === 'apps' && (
                         <>
                             <h2 className="crt-info_title">Applications</h2>
-                            <p className="crt-info_desc">
-                                In the early years of its invention, CRT was mainly used as a scientific tool. An example of its application is in the oscilloscope, which is used to study the electrical waveforms produced by oscillations. CRT is used to visualize the graphs of the electrical signal over time. However, there are other applications of CRT outside of just being a scientific tool. CRTs were also used during the World Wars as the display technology for early radar and sonar systems. Then, as time moved on, CRT also developed into the technology being used in early television. It first started as only being able to show monochrome pictures (black and white), but later evolved and was able to show other colors.
-                            
-                                <br></br> <br></br>
+                            <div className="crt-intro-split">    
+                                {/* LEFT SIDE: Image */}
+                                <div className="crt-inventor-side">
+                                    <div className="circle-image-frame">
+                                        <img 
+                                            src="https://maxmarineelectronics.com/wp-content/uploads/2018/04/SAM_4241.jpg" 
+                                            alt="Radar" 
+                                            className="inventor-img"
+                                        />
+                                    </div>
+                                    <p className="inventor-caption">
+                                        <strong>Analog Radar Display</strong><br />
+                                    </p>
+                                </div>
 
+                                {/* RIGHT SIDE: Text Content */}
+                                <div className="crt-intro-text">
+                                    <p className="crt-info_desc">
+                                        However, there are other applications of CRT outside of just being a scientific tool. CRTs were also used during the World Wars as the display technology for early radar and sonar systems.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <p className="crt-info_desc">
                                 In the present era, CRT usage has diminished with the emergence of newer display technologies. Currently, CRTS are only being used in specific areas due to certain constraints. An example would be in medical imaging devices such as MRI and X-Ray machines, where their high contrast and grayscale capabilities are useful in obtaining more precise analysis. Another area where CRT is still being used is in heavy machinery in the mining, construction, and manufacturing fields due to its reliability in withstanding the various environmental variables in these fields and providing accurate and consistent data to operators. Then, aside from these, CRT is still being used because of legacy systems or old technologies that are still being used today. For example, legacy military and aviation systems and retro gaming still use CRT since it can still provide a good display and replacing them would be costly.
                             </p>
+
+                            <div className="char-app-container">
+                                {/* sonic card */}
+                                <div className="char-app-card">
+                                    <div className="sonic-app-display" />
+                                </div>
+
+                                {/* mario card */}
+                                <div className="char-app-card">
+                                    <div className="mario-app-display" />
+                                </div>
+                            </div>
+                            <div style={{ textAlign: 'center', width: '100%' }}>
+                                <p className="inventor-caption">
+                                    <strong>Sonic and Mario</strong>
+                                </p>
+                            </div>
                         </>
                     )}
 
