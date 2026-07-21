@@ -3,6 +3,8 @@ import React, { useState, useEffect, useRef } from "react";
 import '../styles/modelo.css';
 import '../styles/pagebg.css';
 import '../styles/era.css';
+import georgeImg from "../assets/george.jpg";
+import labImg from "../assets/lab.jpg";
 
 const BASE_URL = import.meta.env.BASE_URL || "/";
 
@@ -443,16 +445,42 @@ export default function LcdViewer() {
             ) : (
                 <div className="lcd-top-side">
                     {activeTab === 'origin' && (
-                        <>
-                            <h2 className="lcd-info_title" style={{ marginTop: '2rem' }}>LCD Origin</h2>
-                            <p className="lcd-info_desc">
-                                Development on LCD displays began in the 1960s with it's inventor, George H. Heilmeier working with Radio Corporation of America (RCA). By 1968, the world's first LCD display was unveiled to the world. Moving into the 1970s, further research was done on improving the performance of lcds to expand its range of application. The same decade saw lcd entering the industry.
-                            </p>
+                        <div>
+                            <div className="lcd-intro-split">
+                                <div className="lcd-intro-text">
+                                    <h2 className="lcd-info_title">Origin of LCD Technology</h2>
+                                    <p className="lcd-info_desc">
+                                        Development on LCD displays began in the 1960s with its inventor, George H. Heilmeier working with Radio Corporation of America (RCA). By 1968, the world's first LCD display was unveiled to the world. Moving into the 1970s, further research was done on improving the performance of LCDs to expand its range of application. The same decade saw LCD entering the industry.
+                                    </p>
+                                </div>
 
-                            <p className="lcd-info_desc">
-                                The shift from bulky Cathode Ray Tube (CRT) monitors to LCD meant replacing bulky glass tubes with a slim and low-profile design, paving the way for the thin smartphone and tablet screens we use today. LCDs are also more efficient by consuming less power while generating less heat.
-                            </p>
-                        </>
+                                <div className="lcd-inventor-side">
+                                    <div className="inventor-frame">
+                                        <img
+                                            src={georgeImg.src}
+                                            alt="George Heilmeier"
+                                            className="inventor-img"
+                                        />
+                                    </div>
+                                    <p className="inventor-caption">
+                                        <strong>George Heilmeier</strong><br />
+                                        Pioneer of the First LCD
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <img
+                                    src={labImg.src}
+                                    alt="LCD Laboratory"
+                                    className="lcd-image"
+                                    style={{ marginTop: '0.5rem', marginBottom: '1rem' }}
+                                />
+                                <p className="inventor-caption">
+                                    <strong>RCA Laboratories located in Princeton, New Jersey</strong>
+                                </p>
+                            </div>
+                        </div>
                     )}
 
                     {activeTab === 'tech' && (
