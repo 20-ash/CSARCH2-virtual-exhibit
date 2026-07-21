@@ -506,7 +506,7 @@
 
 /* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 1024px) {
-    .crt-nav-header {
+    .oled-nav-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
@@ -518,18 +518,18 @@
         align-self: flex-start;
     }
 
-    .crt-split-layout {
+    .oled-split-layout {
         flex-direction: column;
     }
 
     /* Moves Interactive Controls & Diagram to the top on mobile */
-    .crt-model-side {
+    .oled-model-side {
         order: -1;
         padding-right: 0;
         margin-bottom: 1.5rem;
     }
 
-    .crt-info-side {
+    .oled-info-side {
         order: 1;
         width: 100%;
     }
@@ -548,7 +548,7 @@
         margin-bottom: 1rem;
     }
 
-    .crt-stage {
+    .oled-stage {
         padding: 10px;
     }
 
