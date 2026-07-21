@@ -80,7 +80,8 @@ const TABS = [
     { id: "model", label: "Model" },
     { id: "evolution", label: "Evolution" },
     { id: "tech", label: "Technical Description" },
-    { id: "apps", label: "Applications & Evaluation" },
+    { id: "apps", label: "Applications" },
+    { id: "perf", label: "P Evaluation" },
     { id: "quiz", label: "Quiz Challenge" },
     { id: "refs", label: "References" }
 ];
@@ -589,8 +590,11 @@ export default function OledViewer() {
                                 <p className="oled-info_desc">
                                     OLED displays are used in many applications where good image quality, low power use, and flexible design are important. They are commonly used in consumer electronics; this includes smartphones, televisions, tablets, smartwatches, and computer monitors. They are also used in automotive systems, such as digital dashboards, infotainment screens, and head-up displays (HUDs); wearable devices and VR/AR systems; industrial control panels and instruments; and IoT smart home devices and low-power sensors.
                                 </p>
+                            </>
+                        )}
 
-                                <h2 className="oled-info_title">Performance Evaluation</h2>
+                        {activeTab === 'perf' && (
+                            <>
                                 <h3 className="oled-info_title">Advantages</h3>
                                 <ul className="oled-info_desc">
                                     <li>Thin and flexible design — can be under 1mm thick, supports bending/folding</li>
