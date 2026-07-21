@@ -403,7 +403,7 @@ export default function MicroLEDViewer() {
 
                         <div className="microled-model-side">
                             <p className="microled-info__desc">
-                                💡 Select a layer or animate the light emission below!
+                                💡 Select a part or animate the light emission below!
                                 <br></br>
                                 Check the model to know more about the different layers!
                             </p>
