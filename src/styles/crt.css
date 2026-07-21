@@ -328,7 +328,7 @@
   box-shadow: 0 0 8px rgba(0, 140, 255, 0.6);
 }
 
-/* --- MOBILE RESPONSIVENESS (Matches Mobile Screenshot) --- */
+/* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 1024px) {
     .crt-nav-header {
         flex-direction: column;

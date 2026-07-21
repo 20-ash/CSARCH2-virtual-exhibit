@@ -364,37 +364,36 @@ export default function OledViewer() {
         <div className="oled-page">
             <div className="bg"></div>
           
-            <div className="back-button-container" style={{ padding: '0.5rem' }}>
-                <a href={`${BASE_URL}/displays`} className="link-pill lower">
-                    ← Go Back
-                </a>
-            </div>
+            <div className="oled-nav-header">
+                <div className="back-button-container">
+                    <a href={`${BASE_URL}/displays`} className="link-pill lower">
+                        ← Go Back
+                    </a>
+                </div>
 
-            {/* Button to return to display timeline */}
-            <div 
-                className="tabs-wrap"
-                style={{
-                    '--active-index': TABS.findIndex(t => t.id === activeTab),
-                    '--hover-index': hoveredIdx !== null ? hoveredIdx : TABS.findIndex(t => t.id === activeTab),
-                    '--is-hovered': hoveredIdx !== null ? 1 : 0
-                }}
-            >
-                {/* The sliding indicators driven gracefully by CSS variables */}
-                <div className="tab-slidebar" />
-                <div className="tab-bar" />
+                <div 
+                    className="tabs-wrap"
+                    style={{
+                        '--active-index': TABS.findIndex(t => t.id === activeTab),
+                        '--hover-index': hoveredIdx !== null ? hoveredIdx : TABS.findIndex(t => t.id === activeTab),
+                        '--is-hovered': hoveredIdx !== null ? 1 : 0
+                    }}
+                >
+                    <div className="tab-slidebar" />
+                    <div className="tab-bar" />
 
-                {/* Render the custom styled menu tab buttons */}
-                {TABS.map((tab, idx) => (
-                    <button
-                        key={tab.id}
-                        className={`tab-label ${activeTab === tab.id ? 'active' : ''}`}
-                        onClick={() => setActiveTab(tab.id)}
-                        onMouseEnter={() => setHoveredIdx(idx)}
-                        onMouseLeave={() => setHoveredIdx(null)}
-                    >
-                        <span>{tab.label}</span>
-                    </button>
-                ))}
+                    {TABS.map((tab, idx) => (
+                        <button
+                            key={tab.id}
+                            className={`tab-label ${activeTab === tab.id ? 'active' : ''}`}
+                            onClick={() => setActiveTab(tab.id)}
+                            onMouseEnter={() => setHoveredIdx(idx)}
+                            onMouseLeave={() => setHoveredIdx(null)}
+                        >
+                            <span>{tab.label}</span>
+                        </button>
+                    ))}
+                </div>
             </div>
 
             {activeTab === 'model' ? (
