@@ -308,7 +308,8 @@ export default function CrtViewer() {
     return (
         <div className="crt-page">
             <div className="bg"></div>
-          
+
+            {/* Change the whole code for go back and tabs with this */}
             {/* Header Flex Container for Go Back + Tabs */}
             <div className="crt-nav-header">
                 <div className="back-button-container">
