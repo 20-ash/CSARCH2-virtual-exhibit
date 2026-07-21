@@ -103,6 +103,8 @@
     padding: 1.5rem;
     border-radius: var(--radius);
     font-family: "JetBrains Mono", serif;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .microled-info-side h2 {
@@ -127,6 +129,11 @@
     padding: 1rem;
     border-left: 4px solid #5076a7;
     background: #f4f7f9;
+
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    box-sizing: border-box;
 }
 
 .microled-info__title {
@@ -273,6 +280,15 @@
     .tab-label {
         font-size: 0.72rem;
         padding: 8px 4px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .crt-dynamic-box {
+        padding: 0.85rem;
+    }
+    .crt-info_desc {
+        font-size: 0.85rem;
     }
 }
 

@@ -481,7 +481,7 @@
         padding: 0.85rem;
     }
     .crt-info_desc {
-        font-size: 0.85rem; /* Reduces text size slightly for narrow mobile screens */
+        font-size: 0.85rem;
     }
 }
 
