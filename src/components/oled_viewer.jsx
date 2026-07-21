@@ -81,7 +81,7 @@ const TABS = [
     { id: "evolution", label: "Evolution" },
     { id: "tech", label: "Technical Description" },
     { id: "apps", label: "Applications" },
-    { id: "perf", label: "P Evaluation" },
+    { id: "perf", label: "Evaluation" },
     { id: "quiz", label: "Quiz Challenge" },
     { id: "refs", label: "References" }
 ];
@@ -433,7 +433,7 @@ export default function OledViewer() {
                             <p className="oled-info_desc">
                                 💡 Select a layer or animate the light below!
                                 <br></br>
-                                Move the model around to view the different layers!
+                                Move the model around or zoom in to view the different layers!
                             </p>
 
                             <div className="controls">

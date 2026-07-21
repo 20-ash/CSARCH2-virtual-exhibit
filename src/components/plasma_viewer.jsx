@@ -389,6 +389,8 @@ export default function PlasmaViewer() {
                         <div className="plasma-model-side">
                             <p className="plasma-info__desc">
                                 💡 Select a layer or animate the discharge below!
+                                <br></br>
+                                You may also click the different layers to view them!
                             </p>
 
                             <div className="controls">

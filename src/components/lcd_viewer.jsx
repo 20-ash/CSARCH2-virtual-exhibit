@@ -409,7 +409,9 @@ export default function LcdViewer() {
                         </div>
                         <div className="lcd-model-side">
                             <p>
-                                💡 Try interacting with the model below!
+                                💡 Select a layer or animate the discharge below!
+                                <br></br>
+                                Move the model around or zoom in to view the different layers!
                             </p>
                             <div className="controls">
                                 <span>Backlight:</span>   
@@ -434,9 +436,6 @@ export default function LcdViewer() {
 
                             <LcdModel backlightType={backlight} layout={layout} animateLight={animateLight}
                                 selectedPart={selectedPart} setSelectedPart={setSelectedPart} />
-                            <p>
-                                Rotate and click on one of the layers for more info.
-                            </p>
                         </div>
                     </div>
                 </>
@@ -611,82 +610,74 @@ export default function LcdViewer() {
                         <>
                             <h2 className="lcd-info_title">References</h2>
                             <div>
-                                <div>
-                                    Analog Devices. (n.d.). <em>CCFL characteristics</em>.{' '}
-                                    <a href="https://www.analog.com/en/resources/design-notes/ccfl-characteristics.html" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
-                                        https://www.analog.com/en/resources/design-notes/ccfl-characteristics.html
-                                    </a>
-                                </div>
-
-                                <div>
-                                    Britannica. (2026, May 15). <em>Liquid-crystal display</em>.{' '}
-                                    <a href="https://www.britannica.com/technology/liquid-crystal-display" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
-                                        https://www.britannica.com/technology/liquid-crystal-display
-                                    </a>
-                                </div>
-
-                                <div>
-                                    Corning Incorporated. (n.d.). <em>Liquid crystal display turns 50</em>.{' '}
-                                    <a href="https://www.corning.com/worldwide/en/innovation/materials-science/glass/liquid-crystal-display-turns-50.html" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
-                                        https://www.corning.com/worldwide/en/innovation/materials-science/glass/liquid-crystal-display-turns-50.html
-                                    </a>
-                                </div>
-
-                                <div>
-                                    Deng, H. (2025, December 16). <em>Are LED backlit displays better than CCFL backlit displays?</em>{' '}
-                                    <a href="https://www.rinalgp.com/blog/are-led-backlit-displays-better-than-ccfl-backlit-displays-2149717.html" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
-                                        https://www.rinalgp.com/blog/are-led-backlit-displays-better-than-ccfl-backlit-displays-2149717.html
-                                    </a>
-                                </div>
-
-                                <div>
-                                    <em>Edge-lit vs Direct-lit LED Display: A Comprehensive Comparison</em>. (2026, June 17).{' '}
-                                    <a href="https://www.visionledpro.com/news/edge-lit-vs-direct-lit-led-display.html" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
-                                        https://www.visionledpro.com/news/edge-lit-vs-direct-lit-led-display.html
-                                    </a>
-                                </div>
-
-                                <div>
-                                    Harding, S., & Harding, S. (2022, June 25). <em>LCD vs. LED vs. Mini LED vs. OLED: A quick guide</em>.{' '}
-                                    <a href="https://arstechnica.com/gadgets/2022/06/lcd-vs-led-vs-mini-led-vs-oled-a-quick-guide/" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
-                                        https://arstechnica.com/gadgets/2022/06/lcd-vs-led-vs-mini-led-vs-oled-a-quick-guide/
-                                    </a>
-                                </div>
-
-                                <div>
-                                    HowStuffWorks. (n.d.). <em>How sunglasses work</em>.{' '}
-                                    <a href="https://science.howstuffworks.com/innovation/everyday-innovations/sunglass.html" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
-                                        https://science.howstuffworks.com/innovation/everyday-innovations/sunglass.html
-                                    </a>
-                                </div>
-
-                                <div>
-                                    Kan, D., & Kan, D. (2026, June 18). <em>What is Quantum Dot Technology?</em>{' '}
-                                    <a href="https://www.viewsonic.com/library/gaming/what-is-quantum-dot-technology/#How_Do_Quantum_Dot_Displays_Work" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
-                                        https://www.viewsonic.com/library/gaming/what-is-quantum-dot-technology/
-                                    </a>
-                                </div>
-
-                                <div>
-                                    Lenovo Philippines. (n.d.). <em>Everything you need to know about Cold Cathode fluorescent lamps</em>.{' '}
-                                    <a href="https://www.lenovo.com/ph/en/glossary/ccfl/" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
-                                        https://www.lenovo.com/ph/en/glossary/ccfl/
-                                    </a>
-                                </div>
-
-                                <div>
-                                    Orient Display. (n.d.). <em>LCD backlights: LED, EL, and CCFL backlights</em>.{' '}
-                                    <a href="https://orientdisplay.com/knowledge-base/parts-materials/lcd-backlights/led-el-and-ccfl-backlights/" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
-                                        https://orientdisplay.com/knowledge-base/parts-materials/lcd-backlights/led-el-and-ccfl-backlights/
-                                    </a>
-                                </div>
-
-                                <div>
-                                    RTINGS.com. (2025, August 29). <em>Mini LED vs OLED: Understanding Different Monitor Technologies</em>.{' '}
-                                    <a href="https://www.rtings.com/monitor/learn/mini-led-vs-oled" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
-                                        https://www.rtings.com/monitor/learn/mini-led-vs-oled
-                                    </a>
-                                </div>
+                                <ul className="lcd-info_desc" style={{ lineHeight: '1.7', paddingLeft: '1.5rem' }}>
+                                    <li>
+                                        Analog Devices. (n.d.). <em>CCFL characteristics</em>.{' '}
+                                        <a href="https://www.analog.com/en/resources/design-notes/ccfl-characteristics.html" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Britannica. (2026, May 15). <em>Liquid-crystal display</em>.{' '}
+                                        <a href="https://www.britannica.com/technology/liquid-crystal-display" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Corning Incorporated. (n.d.). <em>Liquid crystal display turns 50</em>.{' '}
+                                        <a href="https://www.corning.com/worldwide/en/innovation/materials-science/glass/liquid-crystal-display-turns-50.html" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Deng, H. (2025, December 16). <em>Are LED backlit displays better than CCFL backlit displays?</em>{' '}
+                                        <a href="https://www.rinalgp.com/blog/are-led-backlit-displays-better-than-ccfl-backlit-displays-2149717.html" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <em>Edge-lit vs Direct-lit LED Display: A Comprehensive Comparison</em>. (2026, June 17).{' '}
+                                        <a href="https://www.visionledpro.com/news/edge-lit-vs-direct-lit-led-display.html" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Harding, S., & Harding, S. (2022, June 25). <em>LCD vs. LED vs. Mini LED vs. OLED: A quick guide</em>.{' '}
+                                        <a href="https://arstechnica.com/gadgets/2022/06/lcd-vs-led-vs-mini-led-vs-oled-a-quick-guide/" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        HowStuffWorks. (n.d.). <em>How sunglasses work</em>.{' '}
+                                        <a href="https://science.howstuffworks.com/innovation/everyday-innovations/sunglass.html" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Kan, D., & Kan, D. (2026, June 18). <em>What is Quantum Dot Technology?</em>{' '}
+                                        <a href="https://www.viewsonic.com/library/gaming/what-is-quantum-dot-technology/#How_Do_Quantum_Dot_Displays_Work" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Lenovo Philippines. (n.d.). <em>Everything you need to know about Cold Cathode fluorescent lamps</em>.{' '}
+                                        <a href="https://www.lenovo.com/ph/en/glossary/ccfl/" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Orient Display. (n.d.). <em>LCD backlights: LED, EL, and CCFL backlights</em>.{' '}
+                                        <a href="https://orientdisplay.com/knowledge-base/parts-materials/lcd-backlights/led-el-and-ccfl-backlights/" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        RTINGS.com. (2025, August 29). <em>Mini LED vs OLED: Understanding Different Monitor Technologies</em>.{' '}
+                                        <a href="https://www.rtings.com/monitor/learn/mini-led-vs-oled" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </>
                     )}
