@@ -418,7 +418,7 @@
     text-align: center;
 }
 
-/* Oblong / Oval Frame styling for the image */
+/* Oblong / Oval Frame styling for the inventor image */
 .inventor-frame {
     width: 200px;
     height: 260px;
@@ -496,4 +496,59 @@
         opacity: 0.4;
         transform: translateY(12px);
     }
+}
+
+.circle-image-frame {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #5076a7;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    background: #000;
+    margin-bottom: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+/* character gifs */
+.char-app-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  
+  width: 100%;
+}
+
+.char-app-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #111;
+  border: 3px solid #5076a7;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* show sonic */
+.sonic-app-display {
+  width: 80px;
+  height: 80px;
+  background: url('/src/assets/sonic-walk.gif') no-repeat center center;
+  background-size: contain;
+  image-rendering: pixelated;     /* Preserves crisp retro pixels */
+  image-rendering: crisp-edges;
+}
+
+/* show mario */
+.mario-app-display {
+  width: 80px;
+  height: 80px;
+  background: url('/src/assets/mario-walk.gif') no-repeat center center;
+  background-size: contain;
+  image-rendering: pixelated;     /* Preserves crisp retro pixels */
+  image-rendering: crisp-edges;
 }
