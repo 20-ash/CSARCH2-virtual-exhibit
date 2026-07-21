@@ -810,22 +810,120 @@ export default function OledViewer() {
                             <>
                                 <h2 className="oled-info_title">References</h2>
                                 <ul className="oled-info_desc" style={{ lineHeight: '1.7', paddingLeft: '1.5rem' }}>
-                                    <li>Adrian. (2025). <em>OLED Display: key advantages and disadvantages</em>. AllPCB.</li>
-                                    <li><em>An introduction to OLED displays</em>. OLED-Info.</li>
-                                    <li>Avantama. (2019). <em>4 Current applications for OLED devices</em>. Avantama AG.</li>
-                                    <li>Avantama. (2020). <em>Advantages & Disadvantages of OLED technology</em>. Avantama AG.</li>
-                                    <li>Butts, J. (2024). <em>4 differences between OLED and QD-OLED</em>. XDA Developers.</li>
-                                    <li><em>OLED Displays and their applications</em>. Electronics For You.</li>
-                                    <li>Freudenrich, C. <em>How OLEDs Work</em>. HowStuffWorks.</li>
-                                    <li>Hill, B. (2025). <em>WOLED vs QD-OLED Monitors</em>. Tom’s Hardware.</li>
-                                    <li>Luke. (2024). <em>Exploring OLED Display: Advantages and applications</em>. Riverdi.</li>
-                                    <li><em>QD OLED vs OLED: What’s the difference?</em>. Philips.</li>
-                                    <li><em>What is an OLED display and how does it work</em>. Proculus Technologies.</li>
-                                    <li>Rocha, P. (2026). <em>QD-OLED vs. OLED Gaming Monitors</em>. ViewSonic Library.</li>
-                                    <li><em>The Complete Guide to OLED Displays</em>. RS Discovery Hub.</li>
-                                    <li><em>Organic Light Emitting Diodes</em>. Universal Display Corporation.</li>
-                                    <li>Williams, N. <em>History of OLEDs</em>. Ossila.</li>
-                                    <li>Woodford, C. (2022). <em>OLEDs and LEPs</em>. Explain That Stuff.</li>
+                                   <li>
+                                        Adrian. (2025). <em>OLED Display: key advantages and disadvantages</em>. AllPCB.
+                                         <a href="https://www.allpcb.com/allelectrohub/oled-display-key-advantages-and-disadvantages" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <em>An introduction to OLED displays</em>. OLED-Info.
+                                        <a href="https://www.oled-info.com/oled-introduction" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                   <li>
+                                        Avantama. (2019, January 28). <em>4 Current applications for OLED devices</em>. Avantama AG.{' '}
+                                        <a href="https://avantama.com/current-applications-oled-devices/" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Avantama. (2020, March 10). <em>Advantages & Disadvantages of OLED technology</em>. Avantama AG.{' '}
+                                        <a href="https://avantama.com/advantages-disadvantages-oled-technology/" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Babcock, A. (2025, December 4). <em>What is QD-OLED?: The pros and cons of QD-OLED TVs</em>. RTINGS.com.{' '}
+                                        <a href="https://www.rtings.com/tv/learn/what-is-qd-oled" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Butts, J. (2024, October 4). <em>4 differences between OLED and QD-OLED</em>. XDA Developers.{' '}
+                                        <a href="https://www.xda-developers.com/4-differences-oled-qdoled/" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Electronics For You. (2024, April 4). <em>OLED Displays and their applications | Learning Corner for Beginners</em>. Electronics For You.{' '}
+                                        <a href="https://www.electronicsforu.com/resources/oled-displays-applications" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Freudenrich, C. (n.d.). <em>How OLEDs Work</em>. HowStuffWorks.{' '}
+                                        <a href="https://electronics.howstuffworks.com/oled1.htm" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Freudenrich, C. (n.d.). <em>How OLEDs Work (Full Guide)</em>. HowStuffWorks.{' '}
+                                        <a href="https://electronics.howstuffworks.com/oled.htm" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Hill, B. (2025, April 5). <em>WOLED vs QD-OLED Monitors – which panel technology is better?</em>. Tom’s Hardware.{' '}
+                                        <a href="https://www.tomshardware.com/monitors/gaming-monitors/woled-vs-qd-oled-monitors-which-panel-technology-is-better" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Luke. (2024, May 20). <em>Exploring OLED Display: Advantages and applications</em>. Riverdi.{' '}
+                                        <a href="https://riverdi.com/blog/exploring-oled-display-advantages-and-applications?srsltid=AfmBOopz33hjTo6LkKs4FW7xY_0iZnJDuhotTsexB8SIw3jsPHX2o5fa" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Philips. (2026, January 14). <em>QD OLED vs OLED: What’s the difference?</em>. Philips Monitor Knowledge Library.{' '}
+                                        <a href="https://www.philips.co.uk/c-e/monitor-knowledge-library/oled-qd-oled/qd-oled-vs-oled-what-is-the-difference" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Proculus Technologies. (n.d.). <em>What is an OLED display and how does it work: Find out</em>. Proculus Technologies Co., Ltd.{' '}
+                                        <a href="https://www.proculustech.com/what-is-an-oled-display" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Rocha, P. (2026, January 8). <em>What is QD-OLED? The Next Evolution in Gaming Monitors</em>. ViewSonic Library.{' '}
+                                        <a href="https://www.viewsonic.com/library/gaming/what-is-qd-oled/" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Rocha, P. (2026, January 15). <em>QD-OLED vs. OLED Gaming Monitors: What’s the Difference?</em>. ViewSonic Library.{' '}
+                                        <a href="https://www.viewsonic.com/library/gaming/qd-oled-vs-oled-gaming-monitors-whats-the-difference/" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        RS Components. (2023, October 5). <em>The Complete Guide to OLED Displays</em>. RS Discovery Hub.{' '}
+                                        <a href="https://twen.rs-online.com/web/content/discovery/ideas-and-advice/oled-displays-guide?srsltid=AfmBOopoYfOFaQ_qP3ovPFrVmiZ7nv4ycx_HgpVZu_yVBZX5FhrW9fCc" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Universal Display Corporation. (n.d.). <em>Organic Light Emitting Diodes (OLEDs)</em>. Universal Display Corporation.{' '}
+                                        <a href="https://oled.com/oleds/" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Williams, N. (n.d.). <em>History of OLEDs</em>. Ossila.{' '}
+                                        <a href="https://www.ossila.com/pages/history-of-oleds" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
+                                    <li>
+                                        Woodford, C. (2022, September 1). <em>OLEDs (Organic LEDs) and LEPs (light-emitting polymers)</em>. Explain That Stuff.{' '}
+                                        <a href="https://www.explainthatstuff.com/how-oleds-and-leps-work.html" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a>
+                                    </li>
                                 </ul>
                             </>
                        )}
