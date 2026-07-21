@@ -558,7 +558,6 @@ export default function OledViewer() {
                                     <div className="pixel blue"></div>
                                     <div className="pixel red"></div>
                                     <div className="pixel green"></div>
-                                    <div className="pixel blue"></div>
                                 </div>
 
                                 <ul className="oled-info_desc" style={{ marginTop: '1rem' }}>
