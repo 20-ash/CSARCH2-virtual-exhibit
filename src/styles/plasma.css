@@ -19,16 +19,16 @@
 /* --- NAVIGATION HEADER --- */
 .plasma-nav-header {
     display: flex;
-    flex-direction: column;   /* Stack children vertically */
-    align-items: flex-start;   /* Align Go Back button to the left */
-    gap: 1rem;                /* Space between Go Back button and tabs */
+    flex-direction: column;  
+    align-items: flex-start;   
+    gap: 1rem;                
     width: 100%;
     margin-bottom: 1.5rem;
 }
 
 .back-button-container {
-    position: static;         /* Remove absolute positioning */
-    transform: none;          /* Reset vertical transform */
+    position: static;   
+    transform: none;          
     z-index: 10;
 }
 
@@ -189,7 +189,7 @@
 .part { cursor: pointer; transition: all 0.2s; }
 .part:hover { opacity: 0.85; }
 
-/* Base fills for each layer, rounded rather than sharp-edged */
+/* Base fills for each layer */
 .layer-glass { fill: #c9d6e3; fill-opacity: 0.35; stroke: #cfd6de; stroke-width: 1.5; }
 .layer-electrode { fill: #3a3a3a; stroke: #cfd6de; stroke-width: 1.5; }
 .layer-mgo { fill: #8a8a72; stroke: #cfd6de; stroke-width: 1.5; }
@@ -245,12 +245,12 @@
     100% { opacity: 0.55; }
 }
 
-/* --- Custom Menu Tab Navigation Styling --- */
+/* --- Menu Tab Navigation Styling --- */
 .tabs-wrap {
   --round: 10px;
   --p-x: 8px;
   --p-y: 4px;
-  --w-label: 135px;
+  --w-label: 118px;
 
   --color-pure: #ffffff;
   --color-primary: #e8e8e8;
@@ -283,6 +283,7 @@
   padding: 10px 8px;
   width: var(--w-label);
   min-width: var(--w-label);
+  flex-shrink: 0;
   text-decoration: none;
   user-select: none;
   transition: color 0.25s ease;
@@ -344,7 +345,7 @@
 .tab-bar::before { top: 0; border-radius: 0 0 9999px 9999px; }
 .tab-bar::after { bottom: 0; border-radius: 9999px 9999px 0 0; }
 
-/* Custom Glow Button Design */
+/* Glow Button Design */
 .btn-animate-light {
   padding: 10px 20px;
   text-transform: uppercase;
@@ -513,4 +514,122 @@
     opacity: 1;
     box-shadow: 0 0 25px 8px currentColor;
   }
+}
+
+/* --- ASYMMETRICAL SPLIT LAYOUT --- */
+.plasma-intro-split {
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
+    align-items: center;
+    width: 100%;
+}
+
+.plasma-intro-text {
+    flex: 2;
+}
+
+.plasma-inventor-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.inventor-frame {
+    width: 200px;
+    height: 260px;
+    border-radius: 50% / 40%; /* Creates an oblong/oval shape */
+    overflow: hidden;
+    border: 4px solid #5076a7;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    background: #000;
+    margin-bottom: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+.inventor-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: scrollFadeSoft 1s ease-out forwards;
+    animation-timeline: view();
+    animation-range: exit 10% exit 40%;
+}
+
+.inventor-caption {
+    font-size: 0.85rem;
+    font-family: "JetBrains Mono", monospace;
+    color: #666;
+    margin: 0;
+    text-align: center;
+}
+
+/* Mobile responsiveness adjustment */
+@media (max-width: 1024px) {
+    .plasma-intro-split {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .plasma-inventor-side {
+        margin-top: 1.5rem;
+    }
+}
+
+.plasma-image-centered {
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+    opacity: 0.98;
+    transform: translateY(0);
+    margin: 1.5rem auto;
+    animation: scrollFadeSoft 1s ease-out forwards;
+    animation-timeline: view();
+    animation-range: exit 10% exit 40%;
+}
+
+.circle-image-frame {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #5076a7;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    background: #000;
+    margin-bottom: 0.75rem;
+    transition: transform 0.3s ease;
+    animation: scrollFadeSoft 1s ease-out forwards;
+    animation-timeline: view();
+    animation-range: exit 10% exit 40%;
+}
+
+.char-app-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+
+  width: 100%;
+}
+
+.char-app-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #111;
+  border: 3px solid #5076a7;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: scrollFadeSoft 1s ease-out forwards;
+  animation-timeline: view();
+  animation-range: exit 10% exit 40%;
 }
