@@ -6,6 +6,13 @@
     width: 100%;
 }
 
+/* add for mobile issue */
+.microled-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .info {
     font-family: "JetBrains Mono";
 }
@@ -86,6 +93,7 @@
     border-radius: var(--radius);
     font-family: "JetBrains Mono", serif;
     box-sizing: border-box;
+    margin-bottom: 2rem;    /* add for mobile issue */
 }
 
 .microled-info-side {
@@ -110,7 +118,7 @@
     align-items: center;
     gap: 1rem;
     width: 100%;
-    padding: 0;
+    padding-right: 0;   /* add for mobile issue */
     box-sizing: border-box;
 }
 
@@ -174,7 +182,7 @@
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    box-sizing: border-box;
+    box-sizing: border-box;     /* add for mobile issue */
     margin: 0 auto;
 }
 
@@ -294,7 +302,7 @@
   --round: 10px;
   --p-x: 8px;
   --p-y: 4px;
-  --w-label: 135px; /* Adjusted slightly to fit words like "Evolution" */
+  --w-label: 135px;     /* add for mobile issue */
 
   --color-pure: #ffffff;
   --color-primary: #e8e8e8;
@@ -474,4 +482,74 @@
     opacity: 1;
     box-shadow: 0 0 25px 8px currentColor;
   }
+}
+
+/* --- ASYMMETRICAL SPLIT LAYOUT --- */
+.microled-intro-split {
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
+    align-items: center;
+    width: 100%;
+}
+
+/* Left side gets more space */
+.microled-intro-text {
+    flex: 2;
+}
+
+/* Right side gets less space */
+.microled-inventor-side {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.square-img-frame {
+    width: 180px;
+    height: auto;
+    border: 3px solid #5076a7;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background: #000;
+    border-radius: 8px;
+    margin: 0.5rem auto;
+    overflow: hidden;
+
+    /* Fade Effect */
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.98;
+    transform: translateY(0);
+    margin: 1.5rem 0; 
+    animation: scrollFadeSoft 1s ease-out forwards;
+    animation-timeline: view();
+    animation-range: exit 10% exit 40%;
+}
+
+.square-img-frame.app-img-frame {
+    max-width: 280px;
+    width: 100%;
+    margin: 1.5rem auto;
+}
+
+.microled-add-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: scale-down;
+    margin: 0 auto;
+}
+
+.microled-img-caption {
+    font-size: 0.85rem;
+    font-family: "JetBrains Mono", monospace;
+    color: #666;
+    margin: 0;
+    text-align: center;
 }
