@@ -216,6 +216,7 @@ const getRandomQuestions = (count) => {
 
 export default function PlasmaViewer() {
     const [activeTab, setActiveTab] = useState('model');
+    const [hoveredIdx, setHoveredIdx] = useState(null);
     const [selectedPart, setSelectedPart] = useState('substrates');
     const [animate, setAnimate] = useState(false);
     const activeBtn = (current, target) => `btn ${current === target ? 'active' : ''}`;
@@ -324,22 +325,37 @@ export default function PlasmaViewer() {
         <div className="plasma-page">
             <div className="bg"></div>
 
-            <div className="back-button-container" style={{ padding: '0.5rem' }}>
-                <a href={`${BASE_URL}/displays`} className="link-pill lower">
-                    ← Go Back
-                </a>
-            </div>
+            {/* Header Flex Container for Go Back + Tabs */}
+            <div className="plasma-nav-header">
+                <div className="back-button-container">
+                    <a href={`${BASE_URL}/displays`} className="link-pill lower">
+                        ← Go Back
+                    </a>
+                </div>
 
-            <div style={{ padding: '0 1rem 1rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-                {TABS.map(tab => (
-                    <button
-                        key={tab.id}
-                        className={activeBtn(activeTab, tab.id)}
-                        onClick={() => setActiveTab(tab.id)}
-                    >
-                        {tab.label}
-                    </button>
-                ))}
+                <div
+                    className="tabs-wrap"
+                    style={{
+                        '--active-index': TABS.findIndex(t => t.id === activeTab),
+                        '--hover-index': hoveredIdx !== null ? hoveredIdx : TABS.findIndex(t => t.id === activeTab),
+                        '--is-hovered': hoveredIdx !== null ? 1 : 0
+                    }}
+                >
+                    <div className="tab-slidebar" />
+                    <div className="tab-bar" />
+
+                    {TABS.map((tab, idx) => (
+                        <button
+                            key={tab.id}
+                            className={`tab-label ${activeTab === tab.id ? 'active' : ''}`}
+                            onClick={() => setActiveTab(tab.id)}
+                            onMouseEnter={() => setHoveredIdx(idx)}
+                            onMouseLeave={() => setHoveredIdx(null)}
+                        >
+                            <span>{tab.label}</span>
+                        </button>
+                    ))}
+                </div>
             </div>
 
             {activeTab === 'model' ? (
@@ -360,17 +376,12 @@ export default function PlasmaViewer() {
 
                     <div className="plasma-split-layout">
                         <div className="plasma-info-side">
-                            <div className="plasma-dynamic-box">
-                                <h3 className="plasma-info__title">{activeInfo.label}</h3>
-                                <p className="plasma-info__desc">
-                                    {activeInfo.description}
-                                </p>
-                                <br />
+                            <h2 className="plasma-info__title">{activeInfo.label}</h2>
+                            <p className="plasma-info__desc">{activeInfo.description}</p>
 
+                            <div className="plasma-dynamic-box" style={{ marginTop: '2rem' }}>
                                 <h3 className="plasma-info__title">{activeInfo.processPlasmaTitle}</h3>
-                                <p className="plasma-info__desc">
-                                    {activeInfo.processPlasmaDescription}
-                                </p>
+                                <p className="plasma-info__desc">{activeInfo.processPlasmaDescription}</p>
                             </div>
                         </div>
 
@@ -393,9 +404,11 @@ export default function PlasmaViewer() {
                             </div>
 
                             <div className="controls">
-                                <span>Action:</span>
-                                <button className={activeBtn(animate, true)} onClick={() => setAnimate(!animate)}>
-                                    {animate ? 'Stop Discharge' : 'Animate Discharge'}
+                                <button
+                                    className={`btn-animate-light ${animate ? 'active-glow' : ''}`}
+                                    onClick={() => setAnimate(!animate)}
+                                >
+                                    {animate ? 'Stop Discharge' : 'Click To Animate Discharge'}
                                 </button>
                             </div>
 
