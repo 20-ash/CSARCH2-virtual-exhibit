@@ -452,7 +452,7 @@ export default function PlasmaViewer() {
                                         compared to CRT alternatives of the time.
                                         <br /> <br />
                                         The three co-inventors were Donald Bitzer, H. Gene Slottow, and Robert Wilson, 
-                                        alongside a team at the University of Illinois. It's initial use was a digital 
+                                        alongside a team at the University of Illinois. Its initial use was a digital 
                                         display monitor for the PLATO educational computer terminal network.
                                     </p>
                                 </div>
@@ -506,7 +506,7 @@ export default function PlasmaViewer() {
                                 Around 2007, as competing display technologies improved in
                                 both quality and manufacturing cost, plasma displays began to decline in
                                 use, and by the following decade consumer plasma televisions had left the
-                                market entirely. Newer technologies simply outpaced plasma on power
+                                market entirely. Newer technologies outpaced plasma on power
                                 efficiency, cost, and sustainability, though the underlying concept of
                                 self-emissive pixels was carried into the technologies that replaced it.
                             </p>
