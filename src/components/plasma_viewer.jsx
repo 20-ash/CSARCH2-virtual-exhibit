@@ -640,7 +640,7 @@ export default function PlasmaViewer() {
 
                     {activeTab === 'quiz' && (
                         <div style={{ maxWidth: '700px', margin: '0 auto', width: '100%' }}>
-                            <h2 className="plasma-info__title">Plasma Quiz Challenge</h2>
+                            <h2 className="plasma-info__title">🧠 Plasma Quiz Challenge</h2>
                             <p className="plasma-info__desc">
                                 Test what you've learned about Plasma Display Panel technology! Answer all
                                 5 questions to get your score.
