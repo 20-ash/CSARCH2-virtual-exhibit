@@ -6,8 +6,30 @@
     width: 100%;
 }
 
+.crt-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .info {
     font-family: "JetBrains Mono";
+}
+
+/* --- NAVIGATION HEADER (Go Back + Tabs) --- */
+.crt-nav-header {
+    display: flex;
+    flex-direction: column;   /* Stack children vertically */
+    align-items: flex-start;   /* Align Go Back button to the left */
+    gap: 1rem;                /* Space between Go Back button and tabs */
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.back-button-container {
+    position: static;         /* Remove absolute positioning */
+    transform: none;          /* Reset vertical transform */
+    z-index: 10;
 }
 
 .controls {
@@ -72,6 +94,7 @@
     border-radius: var(--radius);
     font-family: "JetBrains Mono", serif;
     box-sizing: border-box;
+    margin-bottom: 2rem;
 }
 
 .crt-info-side {
@@ -94,7 +117,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding-right: 2.5rem;
+    padding-right: 0;
     box-sizing: border-box;
 }
 
@@ -123,12 +146,12 @@
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-sizing: border-box;
 }
 
 .part { cursor: pointer; transition: all 0.2s; }
 .part:hover { opacity: 0.8; }
 
-/* Interactive Cascading Highlight Selection Rules */
 .part-active path, 
 .part-active rect, 
 .part-active ellipse, 
@@ -160,28 +183,6 @@
     100% { r: 8; opacity: 0; }
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 1024px) {
-    .crt-split-layout {
-        flex-direction: column;
-    }
-    .display-container {
-        flex-direction: column;
-        align-items: center;
-        padding: 0 1rem;
-        width: 100%;
-    }
-    .controls {
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 100%;
-        margin-bottom: 1rem;
-    }
-    .crt-stage {
-        padding: 10px;
-    }
-}
-
 /* --- QUIZ COMPLETION CARD ANIMATIONS --- */
 @keyframes bounceIn {
   0% { transform: scale(0.3); opacity: 0; }
@@ -195,19 +196,17 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* https://uiverse.io/ilkhoeri/slippery-elephant-47 */
 /* --- Custom Menu Tab Navigation Styling --- */
 .tabs-wrap {
   --round: 10px;
   --p-x: 8px;
   --p-y: 4px;
-  --w-label: 110px; /* Adjusted slightly to fit words like "Evolution" */
+  --w-label: 135px;
   
-  /* Palette Variables mapped to your dark layout or custom choices */
   --color-pure: #ffffff;
   --color-primary: #e8e8e8;
   --color-secondary: #212121;
-  --muted: #5076a7; /* Using your project's blue theme highlight color */
+  --muted: #5076a7;
 
   display: flex;
   align-items: center;
@@ -217,23 +216,22 @@
   border-radius: var(--round);
   max-width: 100%;
   width: fit-content;
-  margin: 0 auto 1.5rem; /* Centers the tab menu bar */
+  margin: 0 auto;
   overflow-x: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   z-index: 1;
 }
 
-/* Hide defaults for our custom pseudo-buttons */
 .tab-label {
   cursor: pointer;
   outline: none;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--color-secondary);
   background: transparent;
   border: none;
-  padding: 12px 16px;
+  padding: 10px 8px;
   width: var(--w-label);
   min-width: var(--w-label);
   text-decoration: none;
@@ -242,21 +240,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   position: relative;
   z-index: 2;
   font-family: "JetBrains Mono", monospace;
+  line-height: 1.2;
 }
 
-/* Replaces input:checked + label styling seamlessly with your React state */
 .tab-label.active {
   color: var(--color-pure) !important;
 }
 
-/* Sliding Background indicator card */
-/* Update the sliding background to follow the hover index, falling back to active index */
 .tab-slidebar {
   position: absolute;
-  height: calc(100% - (var(--p-y) * 4));
+  height: calc(100% - (var(--p-y) * 2));
   width: var(--w-label);
   border-radius: calc(var(--round) - var(--p-y));
   background: var(--muted);
@@ -264,17 +261,13 @@
   z-index: 0;
   transition: transform 0.4s cubic-bezier(0.33, 0.83, 0.99, 0.98), background-color 0.2s ease;
   left: var(--p-x);
-  
-  /* Slides smoothly when hovering OR when active tab changes */
   transform: translateX(calc(var(--hover-index) * 100%)) scaleX(1);
 }
 
-/* Subtle visual feedback change on hover */
 .tabs-wrap:has(.tab-label:hover) .tab-slidebar {
-  opacity: 0.85; /* Makes it slightly translucent or lighter when hovering around */
+  opacity: 0.85;
 }
 
-/* The top/bottom border bar accents still stick strictly to the real selected active tab */
 .tab-bar {
   display: flex;
   align-items: center;
@@ -288,7 +281,6 @@
   pointer-events: none;
   transition: transform 0.4s cubic-bezier(0.33, 0.83, 0.99, 0.98);
   left: var(--p-x);
-  
   transform: translateX(calc(var(--active-index) * 100%)) scaleX(1);
 }
 
@@ -300,36 +292,26 @@
   width: 100%;
   background: var(--color-secondary);
 }
-.tab-bar::before {
-  top: 0;
-  border-radius: 0 0 9999px 9999px;
-}
-.tab-bar::after {
-  bottom: 0;
-  border-radius: 9999px 9999px 0 0;
-}
+.tab-bar::before { top: 0; border-radius: 0 0 9999px 9999px; }
+.tab-bar::after { bottom: 0; border-radius: 9999px 9999px 0 0; }
 
-/* https://uiverse.io/zjssun/tidy-sloth-40 */
-/* Custom Glow Button Design - Initialized State Visible */
+/* Custom Glow Button Design */
 .btn-animate-light {
   padding: 10px 20px;
   text-transform: uppercase;
   border-radius: 8px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   user-select: none;
   font-family: "JetBrains Mono", monospace;
   transition: all 0.4s ease;
-
-  /* Visible by default (Blue border, subtle background tint, and soft glow) */
   color: #008cff;
   background: rgba(0, 140, 255, 0.05);
   border: 2px solid #008cff;
   box-shadow: 0 2px 4px rgba(0, 140, 255, 0.1);
 }
 
-/* Hover State - Crank up the intensity */
 .btn-animate-light:hover,
 .btn-animate-light:focus {
   color: #ffffff;
@@ -339,10 +321,69 @@
   box-shadow: 0 0 8px rgba(0, 140, 255, 0.5), 0 4px 12px rgba(0, 140, 255, 0.3);
 }
 
-/* Active State - When "STOP LIGHT" is running (Keeps the strong neon look) */
 .btn-animate-light.active-glow {
   color: #ffffff;
   background: #008cff;
   border: 2px solid #008cff;
   box-shadow: 0 0 8px rgba(0, 140, 255, 0.6);
+}
+
+/* --- MOBILE RESPONSIVENESS (Matches Mobile Screenshot) --- */
+@media (max-width: 1024px) {
+    .crt-nav-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .back-button-container {
+        position: static;
+        transform: none;
+        align-self: flex-start;
+    }
+
+    .crt-split-layout {
+        flex-direction: column;
+    }
+
+    /* Moves Interactive Controls & Diagram to the top on mobile */
+    .crt-model-side {
+        order: -1;
+        padding-right: 0;
+        margin-bottom: 1.5rem;
+    }
+
+    .crt-info-side {
+        order: 1;
+        width: 100%;
+    }
+
+    .display-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 0.5rem;
+        width: 100%;
+    }
+
+    .controls {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .crt-stage {
+        padding: 10px;
+    }
+
+    .tabs-wrap {
+        --w-label: 100px;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .tab-label {
+        font-size: 0.72rem;
+        padding: 8px 4px;
+    }
 }
