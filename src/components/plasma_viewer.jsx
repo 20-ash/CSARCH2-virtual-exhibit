@@ -67,7 +67,8 @@ const TABS = [
     { id: "model", label: "Model" },
     { id: "evolution", label: "Evolution" },
     { id: "tech", label: "Description" },
-    { id: "apps", label: "Applications & Performance" },
+    { id: "apps", label: "Applications" },
+    { id: "performance", label: "Performance Evaluation" },
     { id: "quiz", label: "Quiz Challenge" },
     { id: "refs", label: "References" }
 ];
@@ -438,22 +439,65 @@ export default function PlasmaViewer() {
                             </p>
 
                             <h3 className="plasma-info__title">Early Use</h3>
-                            <p className="plasma-info__desc">
-                                Developed in 1964, plasma panels were originally monochrome orange displays
-                                used for industrial and commercial purposes, such as computer terminals in
-                                schools, airport display boards, and stock exchange displays. They were
-                                most known for their flat form factor and larger visibility capacity
-                                compared to CRT alternatives of the time.
-                            </p>
+                            <div className="plasma-intro-split">
+                                {/* LEFT SIDE: Text Content */}
+                                <div className="plasma-intro-text">
+                                    <p className="plasma-info__desc">
+                                        Developed in 1964, plasma panels were originally monochrome orange displays
+                                        used for industrial and commercial purposes, such as computer terminals in
+                                        schools, airport display boards, and stock exchange displays. They were
+                                        most known for their flat form factor and larger visibility capacity
+                                        compared to CRT alternatives of the time.
+                                        <br /> <br />
+                                        The three co-inventors were Donald Bitzer, H. Gene Slottow, and Robert Wilson, 
+                                        alongside a team at the University of Illinois. It's initial use was a digital 
+                                        display monitor for the PLATO educational computer terminal network.
+                                    </p>
+                                </div>
+
+                                {/* RIGHT SIDE: Image */}
+                                <div className="plasma-inventor-side">
+                                    <div className="inventor-frame">
+                                        <img
+                                            src="https://ws.engr.illinois.edu/sitemanager/viewphoto.aspx?id=13550&s=350"
+                                            alt="Photo of Donald Bitzer"
+                                            className="inventor-img"
+                                        />
+                                    </div>
+                                    <p className="inventor-caption">
+                                        <strong>Donald Bitzer</strong><br />
+                                        Co-inventor of the plasma display panel (1964)
+                                    </p>
+                                </div>
+                            </div>
 
                             <h3 className="plasma-info__title">Later Use</h3>
-                            <p className="plasma-info__desc">
-                                From the 1990s through the 2000s, plasma technology was adopted in home
-                                theater televisions, with major manufacturers offering large-screen plasma
-                                TVs. It was also used in broadcast studios, sports bars, and public display
-                                installations, where its wide screen size and consistent viewing angles
-                                were especially valued.
-                            </p>
+                            <div className="plasma-intro-split">
+                                {/* LEFT SIDE: Image */}
+                                <div className="plasma-inventor-side">
+                                    <div className="circle-image-frame">
+                                        <img
+                                            src="https://commons.wikimedia.org/wiki/Special:FilePath/Pioneer%20PDP-436XDE.jpg"
+                                            alt="Pioneer home theater plasma television"
+                                            className="inventor-img"
+                                        />
+                                    </div>
+                                    <p className="inventor-caption">
+                                        <strong>Home Theater Plasma TV</strong>
+                                    </p>
+                                </div>
+
+                                {/* RIGHT SIDE: Text Content */}
+                                <div className="plasma-intro-text">
+                                    <p className="plasma-info__desc">
+                                        From the 1990s through the 2000s, plasma technology was adopted in home
+                                        theater televisions, with major manufacturers offering large-screen plasma
+                                        TVs. It was also used in broadcast studios, sports bars, and public display
+                                        installations, where its wide screen size and consistent viewing angles
+                                        were especially valued.
+                                    </p>
+                                </div>
+                            </div>
 
                             <h3 className="plasma-info__title">Decline in Use</h3>
                             <p className="plasma-info__desc">
@@ -464,6 +508,19 @@ export default function PlasmaViewer() {
                                 efficiency, cost, and sustainability, though the underlying concept of
                                 self-emissive pixels was carried into the technologies that replaced it.
                             </p>
+
+                            <div style={{ textAlign: 'center', width: '100%' }}>
+                                <img
+                                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Plasma%20burn-in%20at%20DFW%20airport.jpg"
+                                    alt="Screen burn-in on a plasma display at DFW airport"
+                                    className="plasma-image-centered"
+                                    style={{ marginTop: '0.5rem', marginBottom: '1rem' }}
+                                />
+                                <p className="inventor-caption">
+                                    <strong>Screen Burn-In on a Plasma Display</strong><br />
+                                    A permanent ghost image caused by uneven phosphor wear
+                                </p>
+                            </div>
                         </>
                     )}
 
@@ -487,17 +544,17 @@ export default function PlasmaViewer() {
                                 than later technologies.
                             </p>
 
-                            <h3 className="plasma-info__title" style={{ marginTop: '2rem' }}>How Plasma Works</h3>
-                            <p className="plasma-info__desc">
-                                Plasma displays work by applying voltage pulses through address electrodes
-                                to select which cells should light up, while sustain electrodes maintain the
-                                discharge in the activated cells. This causes the neon and xenon gas mixture
-                                inside each targeted cell to ionize into plasma, emitting ultraviolet
-                                photons. Those photons strike the RGB phosphor coating lining each cell,
-                                exciting it into emitting visible red, green, or blue light. Millions of
-                                these individually controlled subpixels combine their output to form a
-                                full-color image, with each cell able to switch fully on or off.
-                            </p>
+                            <div style={{ textAlign: 'center', width: '100%' }}>
+                                <img
+                                    src="https://distributedmuseum.illinois.edu/wp-content/uploads/2017/12/Plasma-Display-0006443.jpg"
+                                    alt="Experimentation with a plasma display intended for a PLATO Terminal"
+                                    className="plasma-image-centered"
+                                    style={{ marginTop: '0.5rem', marginBottom: '1rem', background: '#fff', padding: '0.5rem', maxWidth: '600px' }}
+                                />
+                                <p className="inventor-caption">
+                                    <strong>Experimentation with a Plasma Display</strong><br />
+                                </p>
+                            </div>
 
                             {/* Close-up visual of plasma gas cells */}
                             <h2 className="plasma-info__title">Close-up View of Plasma Gas Cells</h2>
@@ -524,14 +581,37 @@ export default function PlasmaViewer() {
                     {activeTab === 'apps' && (
                         <>
                             <h2 className="plasma-info__title">Applications</h2>
-                            <p className="plasma-info__desc">
-                                Plasma displays were used wherever a large, flat, high-quality screen
-                                mattered most. Documented uses include: computer terminals in schools,
-                                airport display boards and stock exchange displays, 
-                                broadcast studios, sports bars, public display installations, and
-                                home theater televisions, which was plasma's mainstream use from the 1990s through the 2000s.
-                            </p>
+                            <div className="plasma-intro-split">
+                                {/* LEFT SIDE: Text Content */}
+                                <div className="plasma-intro-text">
+                                    <p className="plasma-info__desc">
+                                        Plasma displays were used wherever a large, flat, high-quality screen
+                                        mattered most. Documented uses include: computer terminals in schools,
+                                        airport display boards and stock exchange displays,
+                                        broadcast studios, sports bars, public display installations, and
+                                        home theater televisions, which was plasma's mainstream use from the 1990s through the 2000s.
+                                    </p>
+                                </div>
 
+                                {/* RIGHT SIDE: Image */}
+                                <div className="plasma-inventor-side">
+                                    <div className="circle-image-frame">
+                                        <img
+                                            src="https://mb.cision.com/Public/4740/9449478/915e0c84b22efec5_800x800ar.jpg"
+                                            alt="public display installation of plasma displays"
+                                            className="inventor-img"
+                                        />
+                                    </div>
+                                    <p className="inventor-caption">
+                                        <strong>Public Display Installation</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </>
+                    )}
+
+                    {activeTab === 'performance' && (
+                        <>
                             <h2 className="plasma-info__title">Performance Evaluation</h2>
                             <h3 className="plasma-info__title">Advantages</h3>
                             <div className="plasma-adv-lim">
