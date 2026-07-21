@@ -413,20 +413,17 @@ export default function OledViewer() {
 
                     <div className="oled-split-layout">
                         <div className="oled-info-side">
-                            <div className="oled-dynamic-box">
-                                <h3 className="oled-info_title">{activeInfo.label}</h3>
-                                <p className="oled-info_desc">
-                                    {activeInfo.description}
-                                </p>
-
+                            <h2 className="oled-info_title">{activeInfo.label}</h2>
+                            <p className="oled-info_desc">{activeInfo.description}
+                            </p>
+                            
+                            <div className="oled-dynamic-box" style={{ marginTop: '2rem' }}>
                                 <h3 className="oled-info_title">Function</h3>
-                                <p className="oled-info_desc">
-                                    {activeInfo.processOLEDDescription}
+                                <p className="oled-info_desc">{activeInfo.processOLEDDescription}
                                 </p>
 
                                 <h3 className="oled-info_title">{panelInfo.label}</h3>
-                                <p className="oled-info_desc">
-                                    {panelInfo.description}
+                                <p className="oled-info_desc">{panelInfo.description}
                                 </p>
                             </div>
                         </div>
