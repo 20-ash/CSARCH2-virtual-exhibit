@@ -62,16 +62,16 @@
 
 .microled-nav-header {
     display: flex;
-    flex-direction: column;   /* Stack children vertically */
-    align-items: flex-start;   /* Align Go Back button to the left */
-    gap: 1rem;                /* Space between Go Back button and tabs */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
     width: 100%;
     margin-bottom: 1.5rem;
 }
 
 .back-button-container {
-    position: static;         /* Remove absolute positioning */
-    transform: none;          /* Reset vertical transform */
+    position: static;
+    transform: none;
     z-index: 10;
 }
 
@@ -324,7 +324,7 @@
   --color-pure: #ffffff;
   --color-primary: #e8e8e8;
   --color-secondary: #212121;
-  --muted: #5076a7; /* Using your project's blue theme highlight color */
+  --muted: #5076a7;
 
   display: flex;
   align-items: center;
