@@ -91,8 +91,8 @@ const lightType = [
 const TABS = [
     { id: "model", label: "Model" },
     { id: "origin", label: "Origin" },
-    { id: "tech", label: "Technical Description" },
-    { id: "apps", label: "Applications & Evaluation" },
+    { id: "tech", label: "Applications" },
+    { id: "apps", label: "Evaluation" },
     { id: "quiz", label: "Quiz Challenge" },
     { id: "refs", label: "References" }
 ];
@@ -453,18 +453,26 @@ export default function LcdViewer() {
 
                     {activeTab === 'tech' && (
                         <>
-                            <h2 className="lcd-info_title">Technical Description</h2>
-                            <p className="lcd-info_desc">Content coming soon.</p>
+                            <h2 className="lcd-info_title">Applications</h2>
+                            <p className="lcd-info_desc">
+                                LCD displays see widespread use thanks to their relatively cheap manufacturing process. They see use in but not limited to:
+                                <br></br>
+                                <br></br>
+                                <ul className="lcd-info_desc">
+                                    <li>Televisions</li>
+                                    <li>Computer monitors</li>
+                                    <li>Smartphones</li>
+                                    <li>Microwave displays</li>
+                                    <li>Medical instruments</li>
+                                    <li>Industrial control panels</li>
+                                    <li>Smartwatches</li>
+                                </ul>   
+                            </p>
                         </>
                     )}
 
                     {activeTab === 'apps' && (
                         <>
-                            <h2 className="lcd-info_title">Applications</h2>
-                            <p className="lcd-info_desc">
-                                LCD displays see widespread use thanks to their relatively cheap manufacturing process. They see use in but not limited to televisions, computer monitors, smartphones, microwave displays, medical instruments, industrial control panels, and smartwatches.   
-                            </p>
-
                             <h2 className="lcd-info_title">Performance Evaluation</h2>
                             <h3 className="lcd-info_title">Advantages</h3>
                             <ul className="lcd-info_desc">
