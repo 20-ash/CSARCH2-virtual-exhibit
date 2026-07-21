@@ -128,26 +128,6 @@ const QUESTION_POOL = [
         correct: 1
     },
     {
-        question: "Roughly how small can an individual micro-LED chip be?",
-        options: ["Smaller than 100 micrometers", "About 5 millimeters", "About 1 centimeter", "About 1 inch"],
-        correct: 0
-    },
-    {
-        question: "According to the \"Best of Both Worlds\" section, what does MicroLED inherit from LCD?",
-        options: ["High brightness and the sturdiness of inorganic materials", "Organic self-emission", "Backlight light leakage", "Liquid-crystal switching"],
-        correct: 0
-    },
-    {
-        question: "Why are flip-chip micro-LEDs the most commonly used chip design?",
-        options: [
-            "They glow brighter than other designs",
-            "They are easier to bond and integrate onto the driving backplane",
-            "They don't require a common electrode",
-            "They can be made without a TFT backplane"
-        ],
-        correct: 1
-    },
-    {
         question: "What is one of the biggest manufacturing challenges facing MicroLED today?",
         options: [
             "Mass transfer of millions of microscopic LEDs with high precision",
@@ -493,9 +473,63 @@ export default function MicroLEDViewer() {
                                 limit it to premium televisions, wearables, and AR devices.
                             </p>
 
+                            <h3 className="microled-info__title">Who developed MicroLED?</h3>
+                            <p className="microled-info__desc" style={{ marginTop: '0.5rem' }}>
+                                MicroLED technology was invented in 2000 by a husband-and-wife research
+                                team, Prof. Hongxing Jiang and Prof. Jingyu Lin, while they were
+                                professors at Kansas State University. Their group first demonstrated
+                                electrically driven, individually addressable microscopic LED arrays,
+                                laying the groundwork for the microdisplay technology. In 2008 the pair
+                                relocated their research group to Texas Tech University, where in 2009
+                                they and their colleagues realized the first active-driving,
+                                high-resolution MicroLED microdisplay by integrating a MicroLED array
+                                with a CMOS driver chip. Jiang and Lin continue to lead MicroLED research
+                                today as co-directors of the Center for Nanophotonics at Texas Tech.
+                            </p>
+                            <div style={{ display: 'flex', width: '100%', gap: '2.5rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '1.5rem' }}>
+                                <div style={{ textAlign: 'center' }}>
+                                    <img
+                                        src="https://www.depts.ttu.edu/ece/images/faculty/150_200/hjiang_2011.jpg"
+                                        alt="Prof. Hongxing Jiang"
+                                        style={{
+                                            width: '150px',
+                                            height: '200px',
+                                            objectFit: 'cover',
+                                            borderRadius: '50% / 40%',
+                                            border: '4px solid #3b82c4',
+                                            display: 'block',
+                                            margin: '0 auto'
+                                        }}
+                                    />
+                                    <p className="microled-info__desc" style={{ marginTop: '0.75rem', fontSize: '0.9rem', lineHeight: '1.4' }}>
+                                        Prof. Hongxing Jiang<br />
+                                        Co-inventor of MicroLED (2000)
+                                    </p>
+                                </div>
+                                <div style={{ textAlign: 'center' }}>
+                                    <img
+                                        src="https://www.depts.ttu.edu/ece/faculty/jingyu_lin/jlin_2011.jpg"
+                                        alt="Prof. Jingyu Lin"
+                                        style={{
+                                            width: '150px',
+                                            height: '200px',
+                                            objectFit: 'cover',
+                                            borderRadius: '50% / 40%',
+                                            border: '4px solid #3b82c4',
+                                            display: 'block',
+                                            margin: '0 auto'
+                                        }}
+                                    />
+                                    <p className="microled-info__desc" style={{ marginTop: '0.75rem', fontSize: '0.9rem', lineHeight: '1.4' }}>
+                                        Prof. Jingyu Lin<br />
+                                        Co-inventor of MicroLED (2000)
+                                    </p>
+                                </div>
+                            </div>
+
                            
                             {/* Close-up visual of MicroLED chips */}
-                            <h2 className="microled-info__title">Close-up View of MicroLED Chips</h2>
+                            <h3 className="microled-info__title">Close-up View of MicroLED Chips</h3>
                             <div style={{ margin: '0rem 0' }}>
 
                                 <div className="microled-cells">
@@ -681,6 +715,9 @@ export default function MicroLEDViewer() {
                                 <li>PTCLed. (2025, January 22). <em>MicroLED VS OLED VS Mini LED: Which Display is the Future</em>.</li>
                                 <li>RF Wireless World. (n.d.). <em>What is Micro LED: Advantages and Disadvantages</em>.</li>
                                 <li>TechRadar. (2025). <em>QLED vs OLED vs micro-LED: Which is the best TV tech in 2025?</em>.</li>
+                                <li>Texas Tech University, Department of Electrical & Computer Engineering. (n.d.). <em>Hongxing Jiang, PhD</em> [Faculty profile].</li>
+                                <li>Texas Tech University, Department of Electrical & Computer Engineering. (n.d.). <em>Jingyu Lin, PhD</em> [Faculty profile].</li>
+                                <li>Wikipedia. (2025). <em>MicroLED</em>.</li>
                             </ul>
                         </>
                     )}
