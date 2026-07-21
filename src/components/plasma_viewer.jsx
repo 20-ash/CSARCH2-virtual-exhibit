@@ -759,14 +759,24 @@ export default function PlasmaViewer() {
                             <ul className="plasma-info__desc" style={{ lineHeight: '1.7', paddingLeft: '1.5rem' }}>
                                 <li>Amano, Y., Yoshida, K., Shionoya, T., & Yokono, S. (1982). <em>New dc plasma display panels and their applications</em>. Displays.</li>
                                 <li>Boardman, C. M., & Deschamps, J. (1982). <em>Plasma display panels have come of age</em>. Displays.</li>
-                                <li>Edwards, D. (2026, March 17). <em>This is why TV makers no longer use plasma panels after they were all the rage in the 2000s</em>. SBTech.</li>
-                                <li>Garcia, S. (2025, March 1). <em>Why were plasma screens discontinued: Understanding the rise and fall of a revolutionary technology</em>. SmartTechSavvy.</li>
+                                <li>Edwards, D. (2026, March 17). <em>This is why TV makers no longer use plasma panels after they were all the rage in the 2000s</em>. SBTech. <a href="https://tech.supercarblondie.com/why-tv-makers-no-longer-use-plasma-panels/" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a></li>
+                                <li>Garcia, S. (2025, March 1). <em>Why were plasma screens discontinued: Understanding the rise and fall of a revolutionary technology</em>. SmartTechSavvy. <a href="https://smarttechsavvy.com/why-were-plasma-screens-discontinued/" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a></li>
                                 <li>Kim, C.H., Kwon, I.E., Park, C.H., Hwang, Y.J., Bae, H.S., Yu, B.Y., Pyun, C.H., & Hong, G.Y. (2000). <em>Phosphors for plasma display panels</em>. Journal of Alloys and Compounds.</li>
-                                <li>Miles, S. (2026, April 12). <em>What is PDP Technology Plasma display panels explained</em>. Tech Faq.</li>
+                                <li>Miles, S. (2026, April 12). <em>What is PDP Technology Plasma display panels explained</em>. Tech Faq. <a href="https://techfaq.co.uk/what-is-pdp-technology-plasma-display-panels-explained/" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a></li>
                                 <li>Pleshko, P., Apperley, N., Zimmerman, L. L., Pearson, K. A., Sherk, T. A., St. Pierre, E. J., Hairabedian, B., Bradney, F., & Foster, R. L. J. (1984). <em>Design of a plasma flat panel large screen display for high volume manufacture</em>. Displays.</li>
                                 <li><em>Plasma display panel</em>. (n.d.). ScienceDirect.</li>
-                                <li>Srinivas, R. (2026, March 11). <em>Here’s why TV manufacturers stopped using plasma panels</em>. SlashGear.</li>
-                                <li><em>The Fate of Plasma TVs: A Look into their Demise</em>. (n.d.). BBoysLLC.</li>
+                                <li>Srinivas, R. (2026, March 11). <em>Here’s why TV manufacturers stopped using plasma panels</em>. SlashGear. <a href="https://www.slashgear.com/2119826/why-tv-manufacturers-stopped-using-plasma-panels/" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a></li>
+                                <li><em>The Fate of Plasma TVs: A Look into their Demise</em>. (n.d.). BBoysLLC. <a href="https://bboysllc.com/blog/the-fate-of-plasma-tvs--a-look-into-their-demise" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
+                                            Link to Article
+                                        </a></li>
                                 <li>Veronis, G., Inan, U. S., & Pasko, V. P. (2000). <em>Fundamental properties of inert gas mixtures for plasma display panels</em>. IEEE Transactions on Plasma Science.</li>
                                 <li>Weber, L. F., & Bitzer, D. L. (2006). <em>History of the plasma display panel</em>. IEEE Transactions on Plasma Science.</li>
                             </ul>
