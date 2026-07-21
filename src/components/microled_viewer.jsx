@@ -3,6 +3,9 @@ import React, { useState, useEffect, useRef } from "react";
 import '../styles/microled.css';
 import '../styles/pagebg.css';
 import '../styles/era.css';
+import evolutionImg from "../assets/microled-evolution-structure.png";
+import jiangImg from "../assets/prof-hongxing-jiang.jpg";
+import linImg from "../assets/prof-jingyu-lin.jpg";
 
 const BASE_URL = import.meta.env.BASE_URL || "/";
 
@@ -413,10 +416,10 @@ export default function MicroLEDViewer() {
                         <>
                             <h2 className="microled-info__title">Evolution</h2>
                             <img
-                               src="https://blog.delmic.com/hs-fs/hubfs/Website/Blog/2023_CL_MicroLEDs_Figure%201.png?width=3063&height=1488&name=2023_CL_MicroLEDs_Figure%201.png"
-                               alt="Microled evolution structure"
-                               className="microled-image"
-                               style={{ marginTop: '0.5rem', marginBottom: '1rem' }}
+                                src={evolutionImg.src}
+                                alt="Microled evolution structure"
+                                className="microled-image"
+                                style={{ marginTop: '0.5rem', marginBottom: '1rem' }}
                             />
 
                             <p className="microled-info__desc">
@@ -488,8 +491,8 @@ export default function MicroLEDViewer() {
                             </p>
                             <div style={{ display: 'flex', width: '100%', gap: '2.5rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '1.5rem' }}>
                                 <div style={{ textAlign: 'center' }}>
-                                    <img
-                                        src="https://www.depts.ttu.edu/ece/images/faculty/150_200/hjiang_2011.jpg"
+                                   <img
+                                        src={jiangImg.src}
                                         alt="Prof. Hongxing Jiang"
                                         style={{
                                             width: '150px',
@@ -508,7 +511,7 @@ export default function MicroLEDViewer() {
                                 </div>
                                 <div style={{ textAlign: 'center' }}>
                                     <img
-                                        src="https://www.depts.ttu.edu/ece/faculty/jingyu_lin/jlin_2011.jpg"
+                                        src={linImg.src}
                                         alt="Prof. Jingyu Lin"
                                         style={{
                                             width: '150px',
