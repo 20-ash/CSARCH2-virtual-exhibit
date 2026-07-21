@@ -223,6 +223,36 @@
     margin: 1.5rem auto;
 }
 
+.circle-image-frame {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #5076a7;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    background: #000;
+    margin-bottom: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+.app-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.app-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
 /* --- CUSTOM TAB NAVIGATION --- */
 .tabs-wrap {
   --round: 10px;

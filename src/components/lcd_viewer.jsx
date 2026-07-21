@@ -5,6 +5,13 @@ import '../styles/pagebg.css';
 import '../styles/era.css';
 import georgeImg from "../assets/george.jpg";
 import labImg from "../assets/lab.jpg";
+import tvImg from "../assets/tv.jpg";
+import pcImg from "../assets/pc.jpg";
+import phoneImg from "../assets/phone.jpg";
+import microwaveImg from "../assets/microwave.jpg";
+import patientImg from "../assets/patient.jpg";
+import industryImg from "../assets/industry.jpg";
+import watchImg from "../assets/watch.jpg";
 
 const BASE_URL = import.meta.env.BASE_URL || "/";
 
@@ -488,18 +495,52 @@ export default function LcdViewer() {
                             <h2 className="lcd-info_title">Applications</h2>
                             <p className="lcd-info_desc">
                                 LCD displays see widespread use thanks to their relatively cheap manufacturing process. They see use in but not limited to:
-                                <br></br>
-                                <br></br>
-                                <ul className="lcd-info_desc">
-                                    <li>Televisions</li>
-                                    <li>Computer monitors</li>
-                                    <li>Smartphones</li>
-                                    <li>Microwave displays</li>
-                                    <li>Medical instruments</li>
-                                    <li>Industrial control panels</li>
-                                    <li>Smartwatches</li>
-                                </ul>   
                             </p>
+
+                            <div className="app-grid">
+                                <div className="app-card">
+                                    <div className="circle-image-frame">
+                                        <img src={tvImg.src} alt="Televisions" className="inventor-img" />
+                                    </div>
+                                    <p className="inventor-caption"><strong>Televisions</strong></p>
+                                </div>
+                                <div className="app-card">
+                                    <div className="circle-image-frame">
+                                        <img src={pcImg.src} alt="Computer monitors" className="inventor-img" />
+                                    </div>
+                                    <p className="inventor-caption"><strong>Computer Monitors</strong></p>
+                                </div>
+                                <div className="app-card">
+                                    <div className="circle-image-frame">
+                                        <img src={phoneImg.src} alt="Smartphones" className="inventor-img" />
+                                    </div>
+                                    <p className="inventor-caption"><strong>Smartphones</strong></p>
+                                </div>
+                                <div className="app-card">
+                                    <div className="circle-image-frame">
+                                        <img src={microwaveImg.src} alt="Microwave displays" className="inventor-img" />
+                                    </div>
+                                    <p className="inventor-caption"><strong>Microwave Displays</strong></p>
+                                </div>
+                                <div className="app-card">
+                                    <div className="circle-image-frame">
+                                        <img src={patientImg.src} alt="Medical instruments" className="inventor-img" />
+                                    </div>
+                                    <p className="inventor-caption"><strong>Medical Instruments</strong></p>
+                                </div>
+                                <div className="app-card">
+                                    <div className="circle-image-frame">
+                                        <img src={industryImg.src} alt="Industrial control panels" className="inventor-img" />
+                                    </div>
+                                    <p className="inventor-caption"><strong>Industrial Control Panels</strong></p>
+                                </div>
+                                <div className="app-card">
+                                    <div className="circle-image-frame">
+                                        <img src={watchImg.src} alt="Smartwatches" className="inventor-img" />
+                                    </div>
+                                    <p className="inventor-caption"><strong>Smartwatches</strong></p>
+                                </div>
+                            </div>
                         </>
                     )}
 
