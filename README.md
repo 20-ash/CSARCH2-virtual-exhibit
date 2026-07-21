@@ -250,5 +250,5 @@ Below, we provide specific details of how AI tools were used in our assignment:
 *   <mark>Team decided to follow oled's adjustment to webpage.</mark>
 *   <mark>Troubleshooting why the github deployment does not seem to implement changes we make on new pushes.</mark>
 
-### <mark>July 20, 2026</mark>
+### <mark>July 21, 2026</mark>
 *   <mark>Finalized submission of the website by double checking for all references being accounted for and group implementing final touches on the website.</mark>
