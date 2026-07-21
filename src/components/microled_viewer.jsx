@@ -451,6 +451,18 @@ export default function MicroLEDViewer() {
                                 MicroLED display called "The Wall," shown at CES, which pushed the
                                 technology toward tiled, large-format installations.
                             </p>
+                            <div style={{ textAlign: 'center', width: '100%' }}>
+                                <div className="square-img-frame app-img-frame">
+                                    <img 
+                                        src="https://www.sony.com/en/SonyInfo/News/Press/201201/ik0fha000000g304-img/8ido1800000ep99s.jpg" 
+                                        alt="Sony TV" 
+                                        className="microled-add-img"
+                                    />
+                                </div>
+                                <p className="microled-img-caption">
+                                    <strong>Sony 55-inch "Crystal LED" panel</strong>
+                                </p>
+                            </div>
 
                             <h3 className="microled-info__title">Current State</h3>
                             <p className="microled-info__desc">
@@ -461,6 +473,18 @@ export default function MicroLEDViewer() {
                                 MicroLED mostly in the premium and large-format tiers, but the underlying
                                 technology continues to mature year over year.
                             </p>
+                            <div style={{ textAlign: 'center', width: '100%' }}>
+                                <div className="square-img-frame app-img-frame">
+                                    <img 
+                                        src="https://www.auo.com/upload/media/media/News_Archive/20250512_3.jpg" 
+                                        alt="AR Glasses" 
+                                        className="microled-add-img"
+                                    />
+                                </div>
+                                <p className="microled-img-caption">
+                                    <strong>AUO AR smart glasses</strong>
+                                </p>
+                            </div>
                         </>
                     )}
 
@@ -571,7 +595,7 @@ export default function MicroLEDViewer() {
                                     />
                                 </div>
                                 <p className="microled-img-caption">
-                                    <strong>Sony 55-inch "Crystal LED" panel</strong>
+                                    <strong>Samsung "The Wall"</strong>
                                 </p>
                             </div>
                         </>
