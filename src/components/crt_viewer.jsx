@@ -437,7 +437,7 @@ export default function CrtViewer() {
                                 <div className="crt-inventor-side">
                                     <div className="inventor-frame">
                                         <img 
-                                            src="../src/assets/braun-image.jpg" 
+                                            src="https://images.computerhistory.org/revonline/images/500004670-03-01.jpg?w=600" 
                                             alt="Karl Ferdinand Braun" 
                                             className="inventor-img"
                                         />
@@ -451,7 +451,7 @@ export default function CrtViewer() {
 
                             <div>
                                 <img
-                                    src="../src/assets/braunTube.jpg"
+                                    src="https://coimages.sciencemuseumgroup.org.uk/55/55/medium_1936_0622__0001_.jpg"
                                     alt="Braun Tube"
                                     className="crt-image"
                                     style={{ marginTop: '0.5rem', marginBottom: '1rem' }}
@@ -480,7 +480,7 @@ export default function CrtViewer() {
                                 <div className="crt-inventor-side">
                                     <div className="circle-image-frame">
                                         <img 
-                                            src="../src/assets/Oscilloscope.jpg" 
+                                            src="https://i.sstatic.net/CCoTt.jpg" 
                                             alt="Oscilloscope" 
                                             className="inventor-img"
                                         />
@@ -497,7 +497,7 @@ export default function CrtViewer() {
                                 <div className="crt-inventor-side">
                                     <div className="circle-image-frame">
                                         <img 
-                                            src="../src/assets/radar.png" 
+                                            src="https://maxmarineelectronics.com/wp-content/uploads/2018/04/SAM_4241.jpg" 
                                             alt="Radar" 
                                             className="inventor-img"
                                         />
@@ -528,7 +528,7 @@ export default function CrtViewer() {
                                 <div className="crt-inventor-side">
                                     <div className="circle-image-frame">
                                         <img 
-                                            src="../src/assets/television.gif" 
+                                            src="https://i.pinimg.com/originals/17/4f/a4/174fa46b180e45e5b8e638be8e68558b.gif" 
                                             alt="CRT Television" 
                                             className="inventor-img"
                                         />
@@ -546,7 +546,7 @@ export default function CrtViewer() {
 
                             <div style={{ textAlign: 'center', width: '100%' }}>
                                 <img
-                                    src="../src/assets/mri.png"
+                                    src="https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL21yaS0xMC5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjI5MH19fQ=="
                                     alt="MRI Machine"
                                     className="crt-image"
                                     style={{ marginTop: '0.5rem', marginBottom: '1rem' }}
