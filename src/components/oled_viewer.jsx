@@ -535,7 +535,6 @@ export default function OledViewer() {
                                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWIZ4IXe6BshUfj4wlNYWPZqATuGAF2FQTcv6Sc3h3yM3NjkL7NhFFxEC82u3zcuJJieiTApgsDS4JIT1in-_9tR-ss3hrfdbDU40EGE-9&s=10" 
                                                 alt="Ching W. Tang and Steven Van Slyke" 
                                                 className="oled-image"
-                                                 style={{ marginTop: '0rem', marginBottom: '0rem' }}
                                             />
                                         </div>
                                         <p className="inventor-caption">
@@ -587,17 +586,78 @@ export default function OledViewer() {
 
                         {activeTab === 'apps' && (
                             <>
-                                <h2 className="oled-info_title">Applications</h2>
-                                <p className="oled-info_desc">
-                                    OLED displays are used in many applications where good image quality, low power use, and flexible design are important. They are commonly used in consumer electronics; this includes smartphones, televisions, tablets, smartwatches, and computer monitors. They are also used in automotive systems, such as digital dashboards, infotainment screens, and head-up displays (HUDs); wearable devices and VR/AR systems; industrial control panels and instruments; and IoT smart home devices and low-power sensors.
-                                </p>
+                            {/* Consumer Electronics */}
+                            <div className="oled-intro-split">    
+                                {/* LEFT SIDE: Text Content */}
+                                <div className="oled-intro-text">
+                                     <h2 className="oled-info_title">Applications</h2>
+                                    <p className="oled-info_desc">
+                                        OLED displays are used in many applications where good image quality, low power use, and flexible design are important. They are commonly used in consumer electronics; this includes smartphones, televisions, tablets, smartwatches, and computer monitors. In these devices, OLEDs are preferred because they are thin and provide high-quality visuals.
+                                    </p>
+                                </div>
 
-                                <img
-                                    src="../src/assets/OLEDcp.png"
-                                    alt="OLED cp"
-                                    className="oled-image"
-                                    style={{ marginTop: '0.5rem', marginBottom: '1rem' }}
-                                />
+                                {/* RIGHT SIDE: Image */}
+                                <div className="oled-inventor-side">
+                                    <div className="circle-image-frame">
+                                        <img 
+                                            src="https://newsbytes.ph/wp-content/uploads/2026/05/Galaxy-Z-Fold7.jpg" 
+                                            alt="Smartphone OLED Display" 
+                                            className="inventor-img"
+                                        />
+                                    </div>
+                                    <p className="inventor-caption">
+                                        <strong>Smartphone OLED Display</strong>
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Automotive & Wearable */}
+                            <div className="oled-intro-split">    
+                                {/* LEFT SIDE: Image */}
+                                <div className="oled-inventor-side">
+                                    <div className="circle-image-frame">
+                                        <img 
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6D9B34bleV8Zf5ZQrgIVyNtSr1LLjAcZMzIj3jyh8P4DcsC82t5YxchE2&s=10" 
+                                            alt="Automotive OLED Display" 
+                                            className="inventor-img"
+                                        />
+                                    </div>
+                                    <p className="inventor-caption">
+                                        <strong>Automotive OLED Dashboard</strong>
+                                    </p>
+                                </div>
+
+                                {/* RIGHT SIDE: Text Content */}
+                                <div className="oled-intro-text">
+                                    <p className="oled-info_desc">
+                                        They are also used in automotive systems, such as digital dashboards, infotainment screens, and head-up displays (HUDs); these benefit from high contrast and good visibility in different lighting conditions. OLED technology is also applied in wearable devices and VR/AR systems, where fast response times and low motion blur are important for smooth visual performance.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Industrial & IoT */}
+                            <div className="oled-intro-split">    
+                                {/* LEFT SIDE: Text Content */}
+                                <div className="oled-intro-text">
+                                    <p className="oled-info_desc">
+                                        In industrial and embedded systems, OLEDs are used in control panels, handheld instruments, and monitoring devices; they are useful because they are compact and reliable. For IoT devices, OLEDs are used in smart home products and low-power sensors where space and energy efficiency are important. Overall, OLEDs are flexible and scalable; this makes them suitable for both everyday consumer products and specialized technical systems.
+                                    </p>
+                                </div>
+
+                                {/* RIGHT SIDE: Image */}
+                                <div className="oled-inventor-side">
+                                    <div className="circle-image-frame">
+                                        <img 
+                                            src="https://dlcdnwebimgs.asus.com/files/media/a9577340-698f-4813-aae9-3c5933952fc7/v1/img/proart/oled-4.jpg" 
+                                            alt="OLED Industrial Display" 
+                                            className="inventor-img"
+                                        />
+                                    </div>
+                                    <p className="inventor-caption">
+                                        <strong>OLED Professional Monitor</strong>
+                                    </p>
+                                </div>
+                            </div>  
                             </>
                         )}
 
