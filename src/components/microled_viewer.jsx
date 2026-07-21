@@ -59,7 +59,8 @@ const TABS = [
     { id: "model", label: "Model" },
     { id: "evolution", label: "Evolution" },
     { id: "tech", label: "Technical Description" },
-    { id: "apps", label: "Applications & Performance" },
+    { id: "apps", label: "Applications" },
+    { id: "perf", label: "Performance Evaluation" },
     { id: "quiz", label: "Quiz Challenge" },
     { id: "refs", label: "References" }
 ];
@@ -400,9 +401,11 @@ export default function MicroLEDViewer() {
                             </div>
 
                             <div className="controls">
-                                <span>Action:</span>
-                                <button className={activeBtn(animate, true)} onClick={() => setAnimate(!animate)}>
-                                    {animate ? 'Stop Light' : 'Animate Light'}
+                                <button
+                                    className={`btn-animate-light ${animate ? 'active-glow' : ''}`}
+                                    onClick={() => setAnimate(!animate)}
+                                >
+                                    {animate ? 'Stop Light' : 'Click To Animate Light'}
                                 </button>
                             </div>
 
@@ -559,8 +562,11 @@ export default function MicroLEDViewer() {
                                 AR devices, alongside research pushing MicroLED toward flexible and
                                 near-eye displays.
                             </p>
+                        </>
+                    )}
 
-                            <h2 className="microled-info__title">Performance Evaluation</h2>
+                    {activeTab === 'perf' && (
+                        <>
                             <h3 className="microled-info__title">Advantages</h3>
                             <div className="microled-adv-lim">
                                 <ul className="microled-info__desc">
