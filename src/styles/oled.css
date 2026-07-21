@@ -321,8 +321,7 @@
   }
 }
 
-/* https://uiverse.io/ilkhoeri/slippery-elephant-47 */
-/* --- Custom Menu Tab Navigation Styling --- */
+/* --- Menu Tab Navigation Styling --- */
 .tabs-wrap {
   --round: 10px;
   --p-x: 8px;
@@ -431,8 +430,7 @@
 .tab-bar::before { top: 0; border-radius: 0 0 9999px 9999px; }
 .tab-bar::after { bottom: 0; border-radius: 9999px 9999px 0 0; }
 
-/* https://uiverse.io/zjssun/tidy-sloth-40 */
-/* Custom Glow Button Design - Initialized State Visible */
+/* Glow Button Design - Initialized State Visible */
 .btn-animate-light {
   padding: 10px 20px;
   text-transform: uppercase;
