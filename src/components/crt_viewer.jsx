@@ -366,6 +366,12 @@ export default function CrtViewer() {
                         {/* RIGHT SIDE: Controls and 2D Model */}
                         <div className="crt-model-side">
                             {/* 2D Model Parts */}
+                            <p className="oled-info_desc">
+                                💡 Select a part or animate the light below!
+                                <br></br>
+                                You may also click the different parts to view them!
+                            </p>
+
                             <div className="controls">
                                 <span>Parts:</span>
                                 <button className={activeBtn(selectedPart, 'gun')} onClick={() => setSelectedPart('gun')}>Gun</button>
@@ -392,17 +398,49 @@ export default function CrtViewer() {
             ): (
                 <div className="crt-top-side">
                     {activeTab === 'intro' && (
-                        <>
-                            <h2 className="crt-info_title">Introduction and Fundamentals</h2>
-                            <p className="crt-info_desc">
-                                A cathode ray tube (CRT) is a specialized vacuum tube that produces images using an electron gun and a phosphorescent screen. It generates a beam of electrons that passes through a pair of deflecting horizontal and vertical plates at different directions to light up the screen. As the electrons strike the phosphor coating of the screen, they emit visible light, creating the images we see.
-                            </p>
+                        <div>
+                            <div className="crt-intro-split">
+                                {/* LEFT SIDE: Text Content (Bigger width) */}
+                                <div className="crt-intro-text">
+                                    <h2 className="crt-info_title">Introduction and Fundamentals</h2>
+                                    <p className="crt-info_desc">
+                                        A cathode ray tube (CRT) is a specialized vacuum tube that produces images using an electron gun and a phosphorescent screen. It generates a beam of electrons that passes through a pair of deflecting horizontal and vertical plates at different directions to light up the screen. As the electrons strike the phosphor coating of the screen, they emit visible light, creating the images we see.
+                                    </p>
 
-                            <h3 className="crt-info_title" style={{ marginTop: '2rem' }}>Who developed the CRT?</h3>
-                            <p className="crt-info_desc">
-                                This invention was created by Karl Ferdinand Braun in 1897 from the experiments that showed the fluorescence of the glass walls of the imperfect vacuums from early tube devices, indicating the presence of cathode rays. From this, scientists found that these electron beams could be deflected by magnetic fields and could illuminate phosphor-coated surfaces when they came in contact with them. With this, he created the CRT, also known as the “Braun Tube”.
-                            </p>
-                        </>
+                                    <h3 className="crt-info_title" style={{ marginTop: '2rem' }}>Who developed the CRT?</h3>
+                                    <p className="crt-info_desc">
+                                        This invention was created by Karl Ferdinand Braun in 1897 from the experiments that showed the fluorescence of the glass walls of the imperfect vacuums from early tube devices, indicating the presence of cathode rays. From this, scientists found that these electron beams could be deflected by magnetic fields and could illuminate phosphor-coated surfaces when they came in contact with them. With this, he created the CRT, also known as the “Braun Tube”.
+                                    </p>
+                                </div>
+
+                                {/* RIGHT SIDE: Inventor Image in Oblong Frame (Smaller width) */}
+                                <div className="crt-inventor-side">
+                                    <div className="inventor-frame">
+                                        <img 
+                                            src="https://images.computerhistory.org/revonline/images/500004670-03-01.jpg?w=600" 
+                                            alt="Karl Ferdinand Braun" 
+                                            className="inventor-img"
+                                        />
+                                    </div>
+                                    <p className="inventor-caption">
+                                        <strong>Karl Ferdinand Braun</strong><br />
+                                        Inventor of the Braun Tube (1897)
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <img
+                                    src="https://coimages.sciencemuseumgroup.org.uk/55/55/medium_1936_0622__0001_.jpg"
+                                    alt="Braun Tube"
+                                    className="crt-image"
+                                    style={{ marginTop: '0.5rem', marginBottom: '1rem' }}
+                                />
+                                <p className="inventor-caption">
+                                    <strong>Braun Tube (1897)</strong>
+                                </p>
+                            </div>
+                        </div>
                     )}
 
                     {activeTab === 'apps' && (
@@ -564,53 +602,47 @@ export default function CrtViewer() {
                     {activeTab === 'refs' && (
                         <>
                             <h2 className="crt-info_title">References</h2>
-                            <div>
-                                <div>
+                            <ul className="oled-info_desc" style={{ lineHeight: '1.7', paddingLeft: '1.5rem' }}>
+                                <li>
                                     Atwood, S. P. (2024). <em>CRTs brought technology to life for a century</em>. Information Display, 40(4), 40–41.{' '}
                                     <a href="https://doi.org/10.1002/msid.1505" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
-                                        https://doi.org/10.1002/msid.1505
+                                        Link to Article
                                     </a>
-                                </div>
-
-                                <div>
+                                </li>
+                                <li>
                                     Bishop, G. D. (1977). <em>The cathode-ray tube</em>. Electronics II, 31–37.{' '}
                                     <a href="https://doi.org/10.1007/978-1-349-03178-8_3" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
-                                        https://doi.org/10.1007/978-1-349-03178-8_3
+                                        Link to Article
                                     </a>
-                                </div>
-
-                                <div>
+                                </li>
+                                <li>
                                     Clifton, N. J. (1948). <em>The cathode-ray tube typical applications</em>.{' '}
                                     <a href="https://www.worldradiohistory.com/Archive-Early-Radio-Assorted/Pavek-Collection/DuMont-Cathode-Ray-Tube-Typical-Applications-1948.pdf" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
                                         Link to Document
                                     </a>
-                                </div>
-
-                                <div>
+                                </li>
+                                <li>
                                     Dumitru, D., & Zwarts, M. (2002). Chapter 3 - Instrumentation. In <em>Electrodiagnostic Medicine</em> (pp. 69–97). Hanley & Belfus, Cop.
-                                </div>
-
-                                <div>
+                                </li>
+                                <li>
                                     Ketchum, D. (2024, July 16). <em>The evolution of CRT monitor technology</em>. Electronicdesign.com; Electronic Design.{' '}
                                     <a href="https://www.electronicdesign.com/technologies/industrial/displays/article/55126442/thomas-electronics-the-evolution-of-cathode-ray-tube-crt-monitor-technology" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
                                         Link to Article
                                     </a>
-                                </div>
-
-                                <div>
+                                </li>
+                                <li>
                                     Singh, N., Wang, J., & Li, J. (2016). <em>Waste cathode rays tube: An assessment of global demand for processing</em>. Procedia Environmental Sciences, 31, 465–474.{' '}
                                     <a href="https://doi.org/10.1016/j.proenv.2016.02.050" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
-                                        https://doi.org/10.1016/j.proenv.2016.02.050
+                                        Link to Article
                                     </a>
-                                </div>
-
-                                <div>
+                                </li>
+                                <li>
                                     tutorialspoint. (2025). <em>Cathode ray tube in computer graphics</em>. Tutorialspoint.com.{' '}
                                     <a href="https://www.tutorialspoint.com/computer_graphics/computer_graphics_cathode_ray_tube.htm" target="_blank" rel="noopener noreferrer" style={{ color: '#5076a7', textDecoration: 'underline' }}>
-                                        Link to Tutorial
+                                        Link to Website
                                     </a>
-                                </div>
-                            </div>
+                                </li>
+                            </ul>
                         </>
                     )}
                 </div>
