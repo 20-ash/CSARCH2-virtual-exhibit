@@ -400,9 +400,11 @@ export default function MicroLEDViewer() {
                             </div>
 
                             <div className="controls">
-                                <span>Action:</span>
-                                <button className={activeBtn(animate, true)} onClick={() => setAnimate(!animate)}>
-                                    {animate ? 'Stop Light' : 'Animate Light'}
+                                <button
+                                    className={`btn-animate-light ${animate ? 'active-glow' : ''}`}
+                                    onClick={() => setAnimate(!animate)}
+                                >
+                                    {animate ? 'Stop Light' : 'Click To Animate Light'}
                                 </button>
                             </div>
 
