@@ -458,8 +458,26 @@ export default function LcdViewer() {
 
                     {activeTab === 'apps' && (
                         <>
-                            <h2 className="lcd-info_title">Applications &amp; Evaluation</h2>
-                            <p className="lcd-info_desc">Content coming soon.</p>
+                            <h2 className="lcd-info_title">Applications</h2>
+                            <p className="lcd-info_desc">
+                                LCD displays see widespread use thanks to their relatively cheap manufacturing process. They see use in but not limited to televisions, computer monitors, smartphones, microwave displays, medical instruments, industrial control panels, and smartwatches.   
+                            </p>
+
+                            <h2 className="lcd-info_title">Performance Evaluation</h2>
+                            <h3 className="lcd-info_title">Advantages</h3>
+                            <ul className="lcd-info_desc">
+                                <li>Usable in portable devices such as smartphones thanks to being thin.</li>
+                                <li>Doesn't suffer from burn-in unlike OLED.</li>
+                                <li>More energy efficient compared to plasma and CRT displays.</li>
+                                <li>Long lifespan as LCD displays use a separate backlight component.</li>
+                            </ul>
+
+                            <h3 className="lcd-info_title">Limitations</h3>
+                            <ul className="lcd-info_desc">
+                                <li>Due to the backlight, LCD screens are susceptible to bloom as light bleeds out into other pixels.</li>
+                                <li>Does not achieve the same level of contrast for blacks compared to OLED displays.</li>
+                                <li>Delivers less vibrant colors than OLED.</li>
+                            </ul>
                         </>
                     )}
 
