@@ -52,6 +52,21 @@
     cursor: not-allowed;
 }
 
+.microled-nav-header {
+    display: flex;
+    flex-direction: column;   /* Stack children vertically */
+    align-items: flex-start;   /* Align Go Back button to the left */
+    gap: 1rem;                /* Space between Go Back button and tabs */
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.back-button-container {
+    position: static;         /* Remove absolute positioning */
+    transform: none;          /* Reset vertical transform */
+    z-index: 10;
+}
+
 .microled-split-layout {
     display: flex;
     flex-direction: row;
@@ -239,6 +254,17 @@
         flex: none;
         padding: 1.25rem;
     }
+
+    .tabs-wrap {
+        --w-label: 100px;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .tab-label {
+        font-size: 0.72rem;
+        padding: 8px 4px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -250,6 +276,105 @@
         padding: 5px 12px;
     }
 }
+
+/* --- Custom Menu Tab Navigation Styling --- */
+.tabs-wrap {
+  --round: 10px;
+  --p-x: 8px;
+  --p-y: 4px;
+  --w-label: 135px; /* Adjusted slightly to fit words like "Evolution" */
+
+  --color-pure: #ffffff;
+  --color-primary: #e8e8e8;
+  --color-secondary: #212121;
+  --muted: #5076a7; /* Using your project's blue theme highlight color */
+
+  display: flex;
+  align-items: center;
+  padding: var(--p-y) var(--p-x);
+  position: relative;
+  background: var(--color-primary);
+  border-radius: var(--round);
+  max-width: 100%;
+  width: fit-content;
+  margin: 0 auto; /* Centers the tab menu bar */
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  z-index: 1;
+}
+
+.tab-label {
+  cursor: pointer;
+  outline: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  background: transparent;
+  border: none;
+  padding: 10px 8px;
+  width: var(--w-label);
+  min-width: var(--w-label);
+  text-decoration: none;
+  user-select: none;
+  transition: color 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  font-family: "JetBrains Mono", monospace;
+  line-height: 1.2;
+}
+
+.tab-label.active {
+  color: var(--color-pure) !important;
+}
+
+.tab-slidebar {
+  position: absolute;
+  height: calc(100% - (var(--p-y) * 2));
+  width: var(--w-label);
+  border-radius: calc(var(--round) - var(--p-y));
+  background: var(--muted);
+  transform-origin: 0 0 0;
+  z-index: 0;
+  transition: transform 0.4s cubic-bezier(0.33, 0.83, 0.99, 0.98), background-color 0.2s ease;
+  left: var(--p-x);
+  transform: translateX(calc(var(--hover-index) * 100%)) scaleX(1);
+}
+
+.tabs-wrap:has(.tab-label:hover) .tab-slidebar {
+  opacity: 0.85;
+}
+
+.tab-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: absolute;
+  transform-origin: 0 0 0;
+  height: 100%;
+  width: var(--w-label);
+  z-index: 3;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.33, 0.83, 0.99, 0.98);
+  left: var(--p-x);
+  transform: translateX(calc(var(--active-index) * 100%)) scaleX(1);
+}
+
+.tab-bar::before,
+.tab-bar::after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: var(--color-secondary);
+}
+.tab-bar::before { top: 0; border-radius: 0 0 9999px 9999px; }
+.tab-bar::after { bottom: 0; border-radius: 9999px 9999px 0 0; }
 
 /* Micro-LED Chip Grid Container*/
 .microled-cells {
