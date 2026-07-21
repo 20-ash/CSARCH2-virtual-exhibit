@@ -440,17 +440,6 @@
     animation-range: exit 10% exit 40%;
 }
 
-@keyframes scrollFadeSoft {
-    from {
-        opacity: 0.98;
-        transform: translateY(0);
-    }
-    to {
-        opacity: 0.4;
-        transform: translateY(12px);
-    }
-}
-
 .inventor-caption {
     font-size: 0.85rem;
     font-family: "JetBrains Mono", monospace;
@@ -486,18 +475,6 @@
     animation-range: exit 10% exit 40%;
 }
 
-/* Text formatting/styling */
-@keyframes scrollFadeSoft {
-    from {
-        opacity: 0.98;
-        transform: translateY(0);
-    }
-    to {
-        opacity: 0.4;
-        transform: translateY(12px);
-    }
-}
-
 .circle-image-frame {
     width: 200px;
     height: 200px;
@@ -508,6 +485,9 @@
     background: #000;
     margin-bottom: 0.75rem;
     transition: transform 0.3s ease;
+    animation: scrollFadeSoft 1s ease-out forwards;
+    animation-timeline: view();
+    animation-range: exit 10% exit 40%;
 }
 
 /* character gifs */
@@ -531,6 +511,20 @@
   padding: 1.5rem;
   margin-top: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: scrollFadeSoft 1s ease-out forwards;
+  animation-timeline: view();
+  animation-range: exit 10% exit 40%;
+}
+
+@keyframes scrollFadeSoft {
+    from {
+        opacity: 0.98;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0.4;
+        transform: translateY(12px);
+    }
 }
 
 /* show sonic */
