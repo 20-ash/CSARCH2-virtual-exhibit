@@ -6,6 +6,7 @@
     width: 100%;
 }
 
+/* add for mobile issue */
 .crt-page {
     width: 100%;
     display: flex;
@@ -16,6 +17,7 @@
     font-family: "JetBrains Mono";
 }
 
+/* add for mobile issue */
 /* --- NAVIGATION HEADER (Go Back + Tabs) --- */
 .crt-nav-header {
     display: flex;
@@ -94,7 +96,7 @@
     border-radius: var(--radius);
     font-family: "JetBrains Mono", serif;
     box-sizing: border-box;
-    margin-bottom: 2rem;
+    margin-bottom: 2rem;    /* add for mobile issue */
 }
 
 .crt-info-side {
@@ -117,7 +119,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding-right: 0;
+    padding-right: 0;   /* add for mobile issue */
     box-sizing: border-box;
 }
 
@@ -146,7 +148,7 @@
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    box-sizing: border-box;
+    box-sizing: border-box;     /* add for mobile issue */
 }
 
 .part { cursor: pointer; transition: all 0.2s; }
@@ -196,12 +198,13 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* add for menu tab */
 /* --- Custom Menu Tab Navigation Styling --- */
 .tabs-wrap {
   --round: 10px;
   --p-x: 8px;
   --p-y: 4px;
-  --w-label: 135px;
+  --w-label: 135px;     /* add for mobile issue */
   
   --color-pure: #ffffff;
   --color-primary: #e8e8e8;
@@ -328,6 +331,7 @@
   box-shadow: 0 0 8px rgba(0, 140, 255, 0.6);
 }
 
+/* add for the tabs issue */
 /* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 1024px) {
     .crt-nav-header {
