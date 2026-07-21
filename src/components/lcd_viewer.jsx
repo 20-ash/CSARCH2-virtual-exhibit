@@ -101,7 +101,7 @@ const TABS = [
     { id: "model", label: "Model" },
     { id: "origin", label: "Origin" },
     { id: "tech", label: "Applications" },
-    { id: "apps", label: "Evaluation" },
+    { id: "apps", label: "Performance Evaluation" },
     { id: "quiz", label: "Quiz Challenge" },
     { id: "refs", label: "References" }
 ];
